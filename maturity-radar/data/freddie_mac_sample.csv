@@ -1,0 +1,6 @@
+Loan Sequence Number,Property State,Units,Current Balance,Original Balance,Note Rate,Maturity Date,Most Recent DSCR,Most Recent Occupancy,Most Recent NOI,Property Name,City
+FM-2025-001,TX,250,45000000,50000000,4.5,07/31/2027,1.15,0.92,5500000,Riverside Park Apartments,Houston
+FM-2025-002,TX,180,32000000,35000000,3.8,01/22/2028,1.22,0.95,4200000,Lakeside Commons,Dallas
+FM-2025-003,FL,160,28000000,30000000,4.0,10/24/2027,1.25,0.96,3800000,Palm Beach Gardens,West Palm Beach
+FM-2025-004,GA,140,24000000,26000000,4.1,03/22/2028,1.20,0.94,3000000,Peach Tree Lofts,Atlanta
+FM-2025-005,TX,200,38000000,40000000,4.2,07/30/2028,1.18,0.93,4600000,Sunset Heights,Austin

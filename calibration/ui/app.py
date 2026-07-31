@@ -818,11 +818,26 @@ def render_opportunities_tab():
         # Show opportunities cards with 4-column grid layout
         if not opportunities.empty:
             st.markdown("---")
+            st.markdown("### Filters")
+
+            # State filter dropdown
+            available_states = ["Alabama", "Florida", "Georgia", "Kansas", "Kentucky", "Louisiana", "North Carolina", "Texas"]
+            selected_states = st.multiselect(
+                "State",
+                options=available_states,
+                default=available_states,
+                key="state_filter"
+            )
+
+            # Filter opportunities by selected states
+            filtered_opportunities = opportunities[opportunities['state'].isin(selected_states)]
+
+            st.markdown("---")
             st.markdown("### Top Opportunities")
 
             # For each tier, show opportunities in a 4-column grid
             for tier in [1, 2, 3]:
-                tier_opps = opportunities[opportunities['risk_tier'] == tier]
+                tier_opps = filtered_opportunities[filtered_opportunities['risk_tier'] == tier]
 
                 if not tier_opps.empty:
                     tier_labels = {
@@ -846,10 +861,11 @@ def render_opportunities_tab():
         # Export buttons section
         st.markdown("---")
         st.markdown("### Export Opportunities")
+        st.caption(f"Showing {len(filtered_opportunities)} of {len(opportunities)} opportunities")
         export_col1, export_col2, export_col3 = st.columns(3)
 
         with export_col1:
-            csv = opportunities.to_csv(index=False)
+            csv = filtered_opportunities.to_csv(index=False)
             st.download_button(
                 label="Download CSV",
                 data=csv,
@@ -862,7 +878,7 @@ def render_opportunities_tab():
             # Excel export with formatting
             try:
                 excel_buffer = BytesIO()
-                opportunities.to_excel(excel_buffer, index=False, engine='openpyxl')
+                filtered_opportunities.to_excel(excel_buffer, index=False, engine='openpyxl')
                 st.download_button(
                     label="Download Excel",
                     data=excel_buffer.getvalue(),
@@ -874,7 +890,7 @@ def render_opportunities_tab():
                 st.info("(Excel export requires openpyxl - use CSV instead)")
 
         with export_col3:
-            json_str = opportunities.to_json(orient='records', indent=2)
+            json_str = filtered_opportunities.to_json(orient='records', indent=2)
             st.download_button(
                 label="Download JSON",
                 data=json_str,

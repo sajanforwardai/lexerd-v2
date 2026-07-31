@@ -9,6 +9,7 @@ headless = true
 runOnSave = false
 enableCORS = true
 enableXsrfProtection = false
+baseUrlPath = "lexerdcapital"
 maxUploadSize = 200
 
 [logger]

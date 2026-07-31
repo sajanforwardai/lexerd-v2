@@ -1,0 +1,11 @@
+property_id,property_name,address,city,state,units,property_class,year_built,occupancy,avg_rent_per_unit,market_rent_per_unit,expense_ratio,market_expense_ratio,employment_anchors,employment_growth_yoy,population_growth_yoy,market_cap_rate,management_type
+san_marco_001,San Marco Village,123 San Marco Ave,Jacksonville,FL,180,B,2005,0.85,1200,1300,0.32,0.27,"military",0.025,0.018,0.080,Third-party
+lory_braden_001,Lory of Braden River,456 Braden River Blvd,Bradenton,FL,250,B-,2002,0.82,950,1050,0.35,0.29,"medical",0.028,0.021,0.082,Third-party
+fargo_001,Fargo Residential,789 Prairie Ave,Fargo,ND,220,B,2008,0.88,1100,1200,0.30,0.28,"military,medical",0.035,0.024,0.078,Third-party
+atlanta_001,Atlanta Metro Garden,111 Peach St,Atlanta,GA,160,B,2010,0.80,1350,1450,0.33,0.28,"medical",0.022,0.016,0.085,Third-party
+austin_001,Austin Tech Hub,222 Congress Ave,Austin,TX,200,B+,2012,0.92,1500,1550,0.26,0.26,"university,tech",0.038,0.032,0.070,Third-party
+houston_001,Houston Energy Park,333 Main St,Houston,TX,150,C,2000,0.75,900,1000,0.38,0.30,None,0.020,0.014,0.090,Owner-managed
+raleigh_001,Raleigh University Edge,444 Hillsborough St,Raleigh,NC,280,B-,2003,0.87,1100,1200,0.31,0.27,"university,tech",0.032,0.025,0.082,Third-party
+charleston_001,Charleston Harbor Court,555 East Bay St,Charleston,SC,140,B,2006,0.83,1250,1350,0.32,0.28,"military,university",0.026,0.019,0.083,Third-party
+miami_001,Miami Luxury Towers,666 Biscayne Blvd,Miami,FL,320,A,2015,0.95,2000,2050,0.24,0.25,"medical",0.025,0.020,0.065,Third-party
+tulsa_001,Tulsa Central Plaza,777 Main St,Tulsa,OK,95,B-,1998,0.78,800,900,0.36,0.30,"manufacturing",0.018,0.012,0.092,Owner-managed

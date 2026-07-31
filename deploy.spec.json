@@ -1,0 +1,51 @@
+{
+  "name": "sg-lexerdcapitalmanagement",
+  "displayName": "Lexerd Deal Engine — Stage 1",
+  "description": "Interactive thesis calibration & deal scoring dashboard",
+  "version": "1.0.0",
+  "type": "streamlit",
+  "repo": "https://github.com/sajanforwardai/sg-lexerdcapitalmanagement",
+  "branch": "master",
+  "workingDirectory": "calibration",
+  "entrypoint": "ui/app.py",
+  "port": 8501,
+  "requirements": {
+    "file": "requirements.txt",
+    "directory": "calibration"
+  },
+  "environment": {
+    "STREAMLIT_SERVER_PORT": "8501",
+    "STREAMLIT_SERVER_ADDRESS": "0.0.0.0",
+    "STREAMLIT_SERVER_HEADLESS": "true",
+    "PYTHONUNBUFFERED": "1"
+  },
+  "healthCheck": {
+    "endpoint": "/",
+    "timeout": 30,
+    "interval": 10
+  },
+  "resources": {
+    "cpu": "1",
+    "memory": "512Mi"
+  },
+  "scaling": {
+    "minReplicas": 1,
+    "maxReplicas": 3
+  },
+  "routes": [
+    {
+      "path": "/sg-lexerdcapitalmanagement",
+      "service": "sg-lexerdcapitalmanagement",
+      "port": 8501
+    }
+  ],
+  "labels": {
+    "app": "lexerd",
+    "stage": "1",
+    "feature": "deal-engine"
+  },
+  "monitoring": {
+    "logs": true,
+    "metrics": true
+  }
+}

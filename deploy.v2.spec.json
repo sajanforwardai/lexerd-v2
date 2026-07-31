@@ -1,0 +1,53 @@
+{
+  "name": "Lexerd Deal Engine v2",
+  "version": "2.0.0",
+  "status": "development",
+  "deployment": {
+    "type": "streamlit",
+    "port": 8506,
+    "entrypoint": "calibration/ui/app.py",
+    "url": "https://forwardai.dev/sg-lexerdcapitalmanagement-v2",
+    "nginx_proxy": "/sg-lexerdcapitalmanagement-v2"
+  },
+  "features": {
+    "multifamily_scoring": {
+      "enabled": true,
+      "models": ["3M Model (Market 30%, Model 40%, Management 30%)"],
+      "data_sources": [
+        "Freddie Mac B3 (GSE channel)",
+        "SEC CMBS Filings (Private-label channel)",
+        "BLS Employment Data",
+        "Census Population Data",
+        "Zillow Multifamily API"
+      ]
+    },
+    "opportunity_pipeline": {
+      "enabled": true,
+      "tier_1_critical": "< 6 months to maturity",
+      "tier_2_high": "6-24 months to maturity",
+      "tier_3_monitor": "24+ months to maturity"
+    },
+    "batch_scoring": {
+      "enabled": true,
+      "csv_upload": true,
+      "export_formats": ["CSV", "Excel"]
+    },
+    "analytics": {
+      "enabled": true,
+      "score_distribution": true,
+      "risk_breakdown": true
+    }
+  },
+  "data_freshness": {
+    "freddie_mac": "Daily",
+    "sec_cmbs": "Weekly",
+    "employment": "24-hour cache",
+    "census": "Annual",
+    "zillow": "Real-time API"
+  },
+  "performance": {
+    "score_100_properties": "< 5 minutes",
+    "load_opportunity_pipeline": "< 2 seconds",
+    "dashboard_response": "< 1 second"
+  }
+}

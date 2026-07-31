@@ -1,9 +1,10 @@
 [client]
 showErrorDetails = false
 toolbarMode = "minimal"
+showSidebarNavigation = true
 
 [server]
-port = 8505
+port = 8506
 headless = true
 runOnSave = false
 enableCORS = true

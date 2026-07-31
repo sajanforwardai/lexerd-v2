@@ -93,6 +93,39 @@ def find_recent_deals(max_deals=25, max_pages=25):
     return deals[:max_deals]
 
 
+def find_all_cmbs_deals(max_deals=150, max_pages=150):
+    """Deep search for ALL CMBS ABS-EE filings (not just recent ones).
+
+    Paginates through EDGAR's full-text search with higher max_pages to capture historical
+    deals going back 10+ years. Keeps the newest version of each trust (by CIK).
+
+    Returns [(cik, accession, deal_name)].
+    """
+    best = {}  # cik -> (accession, name)
+    deals_found = 0
+    for page in range(max_pages):
+        try:
+            data = json.loads(_get(EFTS.format(page * 10), timeout=30))
+        except Exception:
+            continue
+        hits = data.get("hits", {}).get("hits", [])
+        if not hits:
+            break
+        for h in hits:
+            src = h.get("_source", {})
+            ciks = src.get("ciks") or []
+            if not ciks:
+                continue
+            cik = str(int(ciks[0]))
+            acc = h["_id"].split(":")[0].replace("-", "")
+            name = (src.get("display_names") or ["?"])[0]
+            if cik not in best or acc > best[cik][0]:
+                best[cik] = (acc, name)
+        time.sleep(0.10)  # Slightly faster to get through pages quicker
+    deals = [(cik, acc, name) for cik, (acc, name) in best.items()]
+    return deals[:max_deals]
+
+
 def parse_ex102(xml, deal, source_url, states=None, min_maturity=date(2026, 1, 1)):
     """Extract multifamily loans (one per asset, located at its first MF property in a target
     state) from an EX-102 document. Loans maturing before ``min_maturity`` (already resolved or
@@ -183,4 +216,36 @@ def fetch_universe(states=None, max_deals=25, log=print):
         out.extend(got)
         time.sleep(0.15)
     log(f"total: {len(out)} multifamily loans in {sorted(states) if states else 'all states'}")
+    return out
+
+
+def fetch_expanded_universe(states=None, max_deals=150, log=print):
+    """Fetch ALL CMBS deals (10+ year history) and aggregate their multifamily loans in ``states``.
+
+    This is an expanded search that pages deeper through EDGAR to capture historical deals,
+    amendments, and restructurings. Yields ~100-150% more loans than fetch_universe().
+    """
+    deals = find_all_cmbs_deals(max_deals=max_deals)
+    log(f"found {len(deals)} deals (deep search); parsing multifamily loans...")
+    out = []
+    skipped = 0
+    for i, (cik, acc, name) in enumerate(deals, 1):
+        ex_url = _ex102_url(cik, acc)
+        if not ex_url:
+            skipped += 1
+            continue
+        try:
+            xml = _get(ex_url)
+        except Exception as e:
+            skipped += 1
+            continue
+        # Link each loan to the human-browsable SEC filing page, not the raw XML.
+        filing_url = DIRLIST.format(cik=cik, acc=acc)
+        got = parse_ex102(xml, deal=name.split("(")[0].strip(), source_url=filing_url, states=states)
+        if got:
+            if log and i % 10 == 0:
+                log(f"  [{i}/{len(deals)}] {name.split('(')[0].strip()}: +{len(got)} MF loan(s)")
+            out.extend(got)
+        time.sleep(0.10)
+    log(f"total: {len(out)} multifamily loans in {sorted(states) if states else 'all states'} ({skipped} deals skipped)")
     return out

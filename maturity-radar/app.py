@@ -259,9 +259,9 @@ with tab_watch:
 
         # Show expandable details for top 20 pressure loans
         st.markdown("### Loan Details", help="Click to expand individual loan details")
-        top_loans = sorted(wl, key=lambda s: s.pressure, reverse=True)[:20]
+        top_loans = sorted(wl, key=lambda s: s.pressure_score, reverse=True)[:20]
         for i, s in enumerate(top_loans):
-            with st.expander(f"🔍 {esc(s.loan.property_name)} — {esc(s.loan.city)}, {s.loan.state} | Score: {s.pressure}"):
+            with st.expander(f"🔍 {esc(s.loan.property_name)} — {esc(s.loan.city)}, {s.loan.state} | Score: {s.pressure_score}"):
                 col1, col2 = st.columns(2)
                 with col1:
                     st.write(f"**Property:** {esc(s.loan.property_name)}")
@@ -274,7 +274,7 @@ with tab_watch:
                     st.write(f"**Current Balance:** ${s.loan.current_balance:,.0f}")
                     st.write(f"**Original Balance:** ${s.loan.original_balance:,.0f}")
                     st.write(f"**Projected Refi DSCR:** {s.projected_refi_dscr:.2f}×")
-                    st.write(f"**Pressure Score:** {s.pressure}")
+                    st.write(f"**Pressure Score:** {s.pressure_score:.0f}")
                 st.write("---")
                 st.write(f"**Source:** {esc(s.loan.deal or 'SEC filing')}")
                 if s.loan.source_url:

@@ -480,11 +480,12 @@ def load_kdeal_supplemental(path, states=None, log=print):
 
     K-Deal Supplemental files contain detailed loan-level data on multifamily mortgages
     with supplemental financing, including property names, maturity dates, note rates,
-    current balances, and original balances.
+    current balances, and original balances. State information is enriched via K-Deal
+    number lookup from data/kdeal_states.json (extracted from performance reports).
 
     Args:
         path: Path to the CSV file
-        states: Set of state abbreviations to filter by (optional; most loans lack state)
+        states: Set of state abbreviations to filter by (optional; loans enriched with state)
         log: Logging function (default: print)
 
     Returns:
@@ -492,10 +493,25 @@ def load_kdeal_supplemental(path, states=None, log=print):
     """
     from datetime import date
     import csv
+    import json
     from .models import Loan
 
     loans = []
     row_count = 0
+    target = set(states) if states else None
+
+    # Load K-Deal to state mapping
+    kdeal_states_path = os.path.join(os.path.dirname(__file__), "..", "data", "kdeal_states.json")
+    kdeal_states = {}
+    try:
+        if os.path.isfile(kdeal_states_path):
+            with open(kdeal_states_path) as f:
+                kdeal_states = json.load(f)
+            if log:
+                log(f"Loaded {len(kdeal_states)} deal-to-state mappings")
+    except (OSError, json.JSONDecodeError):
+        if log:
+            log(f"Could not load K-Deal state mappings from {kdeal_states_path}")
 
     try:
         with open(path, encoding='utf-8', errors='replace') as f:
@@ -584,12 +600,19 @@ def load_kdeal_supplemental(path, states=None, log=print):
                     if "Defeased" in loan_status or "Closed" in loan_status:
                         continue
 
+                    # Enrich state via K-Deal number lookup
+                    state = kdeal_states.get(deal_id, "")
+
+                    # If state filtering is requested, skip loans not in target states
+                    if target and state and state not in target:
+                        continue
+
                     loans.append(Loan(
                         loan_id=loan_id,
                         property_name=property_name,
                         city="",
                         county="",
-                        state="",  # No state in this file
+                        state=state,  # Enriched via K-Deal to state mapping
                         units=0,
                         origination_year=0,
                         original_balance=orig_balance,

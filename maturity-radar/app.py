@@ -255,82 +255,68 @@ with tab_watch:
 </div>
 """, unsafe_allow_html=True)
 
-        # Build sortable HTML table
-        maxscore = max((s.pressure_score for s in filtered_wl), default=1) or 1
-        rows = ""
+        # Build sortable table data
+        data = []
         for i, s in enumerate(filtered_wl):
             l = s.loan
-            cls, label = band(s)
-            pct = max(4, min(100, 100 * s.pressure_score / maxscore))
-            loan_key = f"loan_{i}_{l.loan_id}"
-            rows += (
-                f'<tr onclick="document.getElementById(\'{loan_key}\').scrollIntoView(); document.getElementById(\'{loan_key}\').click();" style="cursor:pointer;">'
-                f'<td><div class="scorewrap"><div class="track"><div class="fill" style="width:{pct:.0f}%"></div></div>'
-                f'<span class="scoreval">{s.pressure_score:.0f}</span></div></td>'
-                f'<td><span class="prop">{esc(l.property_name)}</span></td>'
-                f'<td class="mkt">{market_label(s)}</td>'
-                f'<td><span class="ptype">{esc(l.program or "—")}</span></td>'
-                f'<td class="r">{l.units or "—"}</td>'
-                f'<td class="r">{esc(l.maturity.strftime("%b %Y"))}</td>'
-                f'<td class="r">{l.note_rate*100:.1f}%</td>'
-                f'<td class="r">{s.projected_refi_dscr:.2f}×</td>'
-                f'<td><span class="pill {cls}">{label}</span></td>'
-                f'<td class="src"><a href="{esc(l.source_url)}" target="_blank" rel="noopener">'
-                f'{esc(l.deal or "SEC filing")} ↗</a></td></tr>'
+            data.append({
+                'Pressure': s.pressure_score,
+                'Property': l.property_name,
+                'Market': market_label(s),
+                'Type': l.program or '—',
+                'Units': l.units or 0,
+                'Maturity': l.maturity.strftime("%b %Y"),
+                'Note': f"{l.note_rate*100:.1f}%",
+                'DSCR': f"{s.projected_refi_dscr:.2f}×",
+                'Band': band(s)[1],
+                'Source': l.deal or 'SEC filing',
+                '_idx': i,
+                '_scored_loan': s,
+            })
+        df = pd.DataFrame(data) if data else pd.DataFrame()
+
+        # Table + Details layout
+        col_table, col_detail = st.columns([3, 1])
+
+        with col_table:
+            # Sortable table via st.dataframe
+            st.dataframe(
+                df[['Pressure', 'Property', 'Market', 'Type', 'Units', 'Maturity', 'Note', 'DSCR', 'Band', 'Source']] if not df.empty else df,
+                use_container_width=True,
+                hide_index=True,
+                key="watchlist_table"
             )
-        st.markdown(
-            '<div class="scrollx"><table class="wl"><thead><tr>'
-            '<th style="width:130px">Pressure</th><th>Property</th><th>Market</th><th>Type</th>'
-            '<th class="r">Units</th><th class="r">Maturity</th><th class="r">Note</th>'
-            '<th class="r">Refi DSCR</th><th>Pressure band</th><th>Source</th>'
-            f'</tr></thead><tbody>{rows}</tbody></table></div>', unsafe_allow_html=True)
 
-        # Show expandable details for clicked loans
-        st.markdown("### Loan Details", help="Click any row to expand details")
-        for i, s in enumerate(filtered_wl):
+        # Show details for selected row (click to select via session state)
+        with col_detail:
+            st.markdown("**Details**")
+            if not df.empty:
+                # Create selectable rows
+                for idx, row in df.iterrows():
+                    if st.button(f"{row['Property'][:20]}...", key=f"btn_{idx}", use_container_width=True):
+                        st.session_state.selected_row = idx
+
+        # Display full details of selected loan
+        if "selected_row" in st.session_state and st.session_state.selected_row < len(filtered_wl):
+            s = filtered_wl[st.session_state.selected_row]
             l = s.loan
-            loan_key = f"loan_{i}_{l.loan_id}"
-            with st.expander(f"🔍 {esc(l.property_name)} — {esc(l.city)}, {l.state} | Score: {s.pressure_score:.0f}", key=loan_key):
-                col1, col2 = st.columns(2)
-                with col1:
-                    st.write(f"**Property:** {esc(l.property_name)}")
-                    st.write(f"**Location:** {esc(l.city)}, {l.state}")
-                    st.write(f"**Units:** {l.units:,}")
-                    st.write(f"**Type:** {esc(l.program or 'Agency')}")
-                    st.write(f"**Note Rate:** {l.note_rate:.2%}")
-                with col2:
-                    st.write(f"**Maturity:** {l.maturity}")
-                    st.write(f"**Current Balance:** ${l.current_balance:,.0f}")
-                    st.write(f"**Original Balance:** ${l.original_balance:,.0f}")
-                    st.write(f"**Projected Refi DSCR:** {s.projected_refi_dscr:.2f}×")
-                    st.write(f"**Pressure Score:** {s.pressure_score:.0f}")
-                st.write("---")
-                st.write(f"**Source:** {esc(l.deal or 'SEC filing')}")
-                if l.source_url:
-                    st.write(f"[View SEC Filing]({l.source_url})")
-
-        # Show expandable details for top 20 pressure loans
-        st.markdown("### Loan Details", help="Click to expand individual loan details")
-        top_loans = sorted(wl, key=lambda s: s.pressure_score, reverse=True)[:20]
-        for i, s in enumerate(top_loans):
-            with st.expander(f"🔍 {esc(s.loan.property_name)} — {esc(s.loan.city)}, {s.loan.state} | Score: {s.pressure_score}"):
-                col1, col2 = st.columns(2)
-                with col1:
-                    st.write(f"**Property:** {esc(s.loan.property_name)}")
-                    st.write(f"**Location:** {esc(s.loan.city)}, {s.loan.state}")
-                    st.write(f"**Units:** {s.loan.units:,}")
-                    st.write(f"**Type:** {esc(s.loan.program or 'Agency')}")
-                    st.write(f"**Note Rate:** {s.loan.note_rate:.2%}")
-                with col2:
-                    st.write(f"**Maturity:** {s.loan.maturity}")
-                    st.write(f"**Current Balance:** ${s.loan.current_balance:,.0f}")
-                    st.write(f"**Original Balance:** ${s.loan.original_balance:,.0f}")
-                    st.write(f"**Projected Refi DSCR:** {s.projected_refi_dscr:.2f}×")
-                    st.write(f"**Pressure Score:** {s.pressure_score:.0f}")
-                st.write("---")
-                st.write(f"**Source:** {esc(s.loan.deal or 'SEC filing')}")
-                if s.loan.source_url:
-                    st.write(f"[View SEC Filing]({s.loan.source_url})")
+            st.markdown("---")
+            st.markdown(f"### {esc(l.property_name)}")
+            col1, col2 = st.columns(2)
+            with col1:
+                st.write(f"**Location:** {esc(l.city)}, {l.state}")
+                st.write(f"**Units:** {l.units:,}")
+                st.write(f"**Type:** {esc(l.program or 'Agency')}")
+                st.write(f"**Note Rate:** {l.note_rate:.2%}")
+            with col2:
+                st.write(f"**Maturity:** {l.maturity}")
+                st.write(f"**Current Balance:** ${l.current_balance:,.0f}")
+                st.write(f"**Original Balance:** ${l.original_balance:,.0f}")
+                st.write(f"**Projected Refi DSCR:** {s.projected_refi_dscr:.2f}×")
+            st.write(f"**Pressure Score:** {s.pressure_score:.0f}")
+            st.write(f"**Source:** {esc(l.deal or 'SEC filing')}")
+            if l.source_url:
+                st.write(f"[View SEC Filing]({l.source_url})")
 
         st.markdown("""
 <div class="foot">

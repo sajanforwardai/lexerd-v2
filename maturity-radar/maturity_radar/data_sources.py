@@ -500,7 +500,7 @@ def load_kdeal_supplemental(path, states=None, log=print):
     row_count = 0
     target = set(states) if states else None
 
-    # Load K-Deal to state mapping
+    # Load K-Deal to state mapping (deal number → state)
     kdeal_states_path = os.path.join(os.path.dirname(__file__), "..", "data", "kdeal_states.json")
     kdeal_states = {}
     try:
@@ -512,6 +512,19 @@ def load_kdeal_supplemental(path, states=None, log=print):
     except (OSError, json.JSONDecodeError):
         if log:
             log(f"Could not load K-Deal state mappings from {kdeal_states_path}")
+
+    # Load property name to state mapping (fallback enrichment)
+    property_states_path = os.path.join(os.path.dirname(__file__), "..", "data", "property_states.json")
+    property_states = {}
+    try:
+        if os.path.isfile(property_states_path):
+            with open(property_states_path) as f:
+                property_states = json.load(f)
+            if log:
+                log(f"Loaded {len(property_states)} property-to-state mappings")
+    except (OSError, json.JSONDecodeError):
+        if log:
+            log(f"Could not load property state mappings from {property_states_path}")
 
     try:
         with open(path, encoding='utf-8', errors='replace') as f:
@@ -600,8 +613,11 @@ def load_kdeal_supplemental(path, states=None, log=print):
                     if "Defeased" in loan_status or "Closed" in loan_status:
                         continue
 
-                    # Enrich state via K-Deal number lookup
+                    # Enrich state via K-Deal number lookup, then property name (fallback, case-insensitive)
                     state = kdeal_states.get(deal_id, "")
+                    if not state:
+                        # Fallback: lookup by property name (normalized, case-insensitive)
+                        state = property_states.get(property_name.lower(), "")
 
                     # If state filtering is requested, skip loans not in target states
                     if target and state and state not in target:

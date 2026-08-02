@@ -230,32 +230,57 @@ with tab_watch:
 </div>
 """, unsafe_allow_html=True)
 
-        maxscore = max((s.pressure_score for s in wl), default=1) or 1
-        rows = ""
+        # Build filterable DataFrame
+        data = []
         for s in wl:
             l = s.loan
             cls, label = band(s)
-            pct = max(4, min(100, 100 * s.pressure_score / maxscore))
-            rows += (
-                f'<tr><td><div class="scorewrap"><div class="track"><div class="fill" style="width:{pct:.0f}%"></div></div>'
-                f'<span class="scoreval">{s.pressure_score:.0f}</span></div></td>'
-                f'<td><span class="prop">{esc(l.property_name)}</span></td>'
-                f'<td class="mkt">{market_label(s)}</td>'
-                f'<td><span class="ptype">{esc(l.program or "—")}</span></td>'
-                f'<td class="r">{l.units or "—"}</td>'
-                f'<td class="r">{esc(l.maturity.strftime("%b %Y"))}</td>'
-                f'<td class="r">{l.note_rate*100:.1f}%</td>'
-                f'<td class="r">{s.projected_refi_dscr:.2f}×</td>'
-                f'<td><span class="pill {cls}">{label}</span></td>'
-                f'<td class="src"><a href="{esc(l.source_url)}" target="_blank" rel="noopener">'
-                f'{esc(l.deal or "SEC filing")} ↗</a></td></tr>'
-            )
-        st.markdown(
-            '<div class="scrollx"><table class="wl"><thead><tr>'
-            '<th style="width:130px">Pressure</th><th>Property</th><th>Market</th><th>Type</th>'
-            '<th class="r">Units</th><th class="r">Maturity</th><th class="r">Note</th>'
-            '<th class="r">Refi DSCR</th><th>Pressure band</th><th>Source</th>'
-            f'</tr></thead><tbody>{rows}</tbody></table></div>', unsafe_allow_html=True)
+            data.append({
+                'Pressure': s.pressure_score,
+                'Property': l.property_name,
+                'Market': market_label(s),
+                'State': l.state,
+                'Type': l.program or '—',
+                'Units': l.units or 0,
+                'Maturity': l.maturity.strftime("%b %Y"),
+                'Note Rate': f"{l.note_rate*100:.1f}%",
+                'Refi DSCR': f"{s.projected_refi_dscr:.2f}×",
+                'Band': label,
+                'Source': l.deal or 'SEC filing',
+                'URL': l.source_url,
+            })
+        df = pd.DataFrame(data)
+
+        # Filter controls
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            min_pressure = st.slider("Min Pressure", 0, 100, value=0, step=5)
+        with col2:
+            selected_states = st.multiselect("State", sorted(df['State'].unique()), default=sorted(df['State'].unique()))
+        with col3:
+            selected_bands = st.multiselect("Band", ['Severe', 'Moderate', 'Borderline'], default=['Severe', 'Moderate', 'Borderline'])
+        with col4:
+            prop_search = st.text_input("Property search", "")
+
+        # Apply filters
+        df_filtered = df[
+            (df['Pressure'] >= min_pressure) &
+            (df['State'].isin(selected_states)) &
+            (df['Band'].isin(selected_bands))
+        ]
+        if prop_search:
+            df_filtered = df_filtered[df_filtered['Property'].str.contains(prop_search, case=False, na=False)]
+
+        # Display sortable/filterable table
+        st.dataframe(
+            df_filtered[['Pressure', 'Property', 'Market', 'Type', 'Units', 'Maturity', 'Note Rate', 'Refi DSCR', 'Band', 'Source']],
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                'Pressure': st.column_config.NumberColumn(format='%d'),
+                'Units': st.column_config.NumberColumn(format='%d'),
+            }
+        )
 
         # Show expandable details for top 20 pressure loans
         st.markdown("### Loan Details", help="Click to expand individual loan details")

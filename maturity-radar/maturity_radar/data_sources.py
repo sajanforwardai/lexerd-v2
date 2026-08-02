@@ -146,9 +146,9 @@ def _load_fannie_mae_cache(path):
 
 
 def _num(v, default=0.0):
-    """Parse a numeric value, handling strings with commas and whitespace."""
+    """Parse a numeric value, handling strings with commas, currency symbols, and whitespace."""
     try:
-        s = str(v).strip().replace(",", "")
+        s = str(v).strip().replace(",", "").replace("$", "").replace('"', "")
         return float(s) if s not in ("", "nan", "None", ".") else default
     except (ValueError, TypeError):
         return default
@@ -156,7 +156,8 @@ def _num(v, default=0.0):
 
 def _rate(v):
     """Parse interest rate, normalizing percent to decimal form."""
-    r = _num(v)
+    s = str(v).strip().replace("%", "")
+    r = _num(s)
     return r / 100.0 if r > 1 else r
 
 
@@ -474,6 +475,151 @@ def load_freddie_mac(path, states=None, log=print):
     return loans
 
 
+def load_kdeal_supplemental(path, states=None, log=print):
+    """Parse Freddie Mac K-Deal Supplemental MSIA CSV file into Loan objects.
+
+    K-Deal Supplemental files contain detailed loan-level data on multifamily mortgages
+    with supplemental financing, including property names, maturity dates, note rates,
+    current balances, and original balances.
+
+    Args:
+        path: Path to the CSV file
+        states: Set of state abbreviations to filter by (optional; most loans lack state)
+        log: Logging function (default: print)
+
+    Returns:
+        List of Loan objects matching the schema.
+    """
+    from datetime import date
+    import csv
+    from .models import Loan
+
+    loans = []
+    row_count = 0
+
+    try:
+        with open(path, encoding='utf-8', errors='replace') as f:
+            # Read all lines, skip first line (metadata), use second line as header
+            all_lines = f.readlines()
+
+            if len(all_lines) < 3:
+                if log:
+                    log(f"File too short: {path}")
+                return loans
+
+            # Line 1 is header (skip line 0 which is "Report as of...")
+            header_line = all_lines[1].strip()
+            reader = csv.reader([header_line])
+            headers = next(reader)
+
+            # Build column map
+            col_map = {}
+            for i, h in enumerate(headers):
+                h_stripped = h.strip()
+                if "K-Deal #" in h_stripped:
+                    col_map['deal_id'] = i
+                elif "Property Name" in h_stripped:
+                    col_map['property_name'] = i
+                elif "K-Deal loan" in h_stripped and "Maturity" in h_stripped:
+                    col_map['maturity'] = i
+                elif "K-Deal loan" in h_stripped and "Note Rate" in h_stripped:
+                    col_map['note_rate'] = i
+                elif "K-Deal loan" in h_stripped and "Current UPB" in h_stripped:
+                    col_map['current_balance'] = i
+                elif "K-Deal loan" in h_stripped and "Original UPB" in h_stripped:
+                    col_map['orig_balance'] = i
+                elif "KDeal loan" in h_stripped and "Loan Status" in h_stripped:
+                    col_map['loan_status'] = i
+
+            # Validate required columns
+            required = ['deal_id', 'property_name', 'maturity', 'note_rate', 'current_balance', 'orig_balance']
+            if not all(k in col_map for k in required):
+                if log:
+                    log(f"Missing required columns in {path}. Found: {col_map}")
+                return loans
+
+            # Parse data rows (starting from line 2)
+            for line_idx in range(2, len(all_lines)):
+                line = all_lines[line_idx].strip()
+                if not line:
+                    continue
+
+                row_count += 1
+                try:
+                    reader = csv.reader([line])
+                    values = next(reader)
+
+                    if len(values) < max(col_map.values()) + 1:
+                        continue
+
+                    # Extract and clean values
+                    deal_id = values[col_map['deal_id']].strip()
+                    property_name = values[col_map['property_name']].strip()
+
+                    if not deal_id or not property_name:
+                        continue
+
+                    loan_id = f"KDEAL-{deal_id}"
+
+                    # Parse numeric fields
+                    note_rate_str = values[col_map['note_rate']].strip()
+                    note_rate = _rate(note_rate_str)
+
+                    current_balance_str = values[col_map['current_balance']].strip()
+                    current_balance = _num(current_balance_str)
+
+                    orig_balance_str = values[col_map['orig_balance']].strip()
+                    orig_balance = _num(orig_balance_str, current_balance)
+
+                    maturity_str = values[col_map['maturity']].strip()
+                    maturity = _parse_date(maturity_str)
+
+                    loan_status = values[col_map.get('loan_status', len(values))].strip() if col_map.get('loan_status', len(values)) < len(values) else "Active"
+
+                    # Validation: require minimum fields
+                    if maturity is None or note_rate <= 0 or current_balance <= 0:
+                        continue
+
+                    # Skip defeased/closed loans
+                    if "Defeased" in loan_status or "Closed" in loan_status:
+                        continue
+
+                    loans.append(Loan(
+                        loan_id=loan_id,
+                        property_name=property_name,
+                        city="",
+                        county="",
+                        state="",  # No state in this file
+                        units=0,
+                        origination_year=0,
+                        original_balance=orig_balance,
+                        current_balance=current_balance,
+                        note_rate=note_rate,
+                        maturity=maturity,
+                        interest_only=False,
+                        most_recent_noi=0.0,
+                        most_recent_dscr=1.0,
+                        occupancy=0.0,
+                        program="Agency",
+                        source_url="https://mf.freddiemac.com/investors/data",
+                    ))
+
+                except Exception as e:
+                    continue
+
+        if log:
+            log(f"Parsed {len(loans)} valid loans from {row_count} data rows in {path}")
+
+    except FileNotFoundError:
+        if log:
+            log(f"File not found: {path}")
+    except Exception as e:
+        if log:
+            log(f"Error parsing {path}: {e}")
+
+    return loans
+
+
 def load_loans(source: str = "auto", states=None):
     """Return (loans, sources_used).
 
@@ -549,6 +695,33 @@ def load_loans(source: str = "auto", states=None):
         if source == "freddie" and not sources_used:
             raise FileNotFoundError(
                 "No Freddie Mac cache. Run: python3 fetch_freddie_data.py (requires K-Deal/SBL CSV files)"
+            )
+
+    # K-Deal Supplemental MSIA files (Freddie Mac agency multifamily supplemental loans)
+    kdeal_paths = [
+        "/workspace/kdeal-data/supplemental-june2026/Kdeal_Supplemental_Mortgage_Loans_June_2026 (1)-KDeal Supp MSIA.csv",
+    ]
+
+    if source in ("auto", "kdeal"):
+        for kdeal_file in kdeal_paths:
+            if os.path.isfile(kdeal_file):
+                try:
+                    loans = load_kdeal_supplemental(kdeal_file)
+                    if loans:
+                        for l in loans:
+                            # K-Deal loans have no state; skip state filtering
+                            # Loans are accepted as-is but flagged with empty state
+                            if l.loan_id not in all_loans:
+                                all_loans[l.loan_id] = l
+                        if "kdeal" not in sources_used:
+                            sources_used.append("kdeal")
+                except (ValueError, OSError, KeyError, TypeError):
+                    pass
+        if source == "kdeal" and not sources_used:
+            raise FileNotFoundError(
+                "No K-Deal Supplemental MSIA CSV found. Download from Freddie Mac investor portal "
+                "(https://mf.freddiemac.com/investors/data) and place at: "
+                "/workspace/kdeal-data/supplemental-june2026/Kdeal_Supplemental_Mortgage_Loans_June_2026-KDeal Supp MSIA.csv"
             )
 
     if source in ("auto", "mlpd"):

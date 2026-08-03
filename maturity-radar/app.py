@@ -275,11 +275,17 @@ with tab_watch:
             if "FHMS" in (l.deal or ""):
                 prop_type = "Agency"
 
+            # For conduit loans, property_name is the street address; for agency, it's just the name
+            if l.program == "Conduit":
+                address = l.property_name
+            else:
+                address = f"{l.city}, {l.state}" if l.city and l.state else "—"
+
             data.append({
                 'Pressure': int(s.pressure_score),
                 'Property': l.property_name,
                 'Market': market_label(s),
-                'Address': f"{l.city}, {l.state}",
+                'Address': address,
                 'Type': prop_type,
                 'Units': l.units or 0,
                 'Maturity': l.maturity.strftime("%b %Y"),
@@ -291,6 +297,7 @@ with tab_watch:
                 'Website': getattr(l, 'property_website', None) or '—',
                 '_scored_loan': s,
                 '_idx': i,
+                '_source_url': l.source_url,
             })
 
         df = pd.DataFrame(data) if data else pd.DataFrame()
@@ -319,7 +326,11 @@ with tab_watch:
                 table_html += f'<td class="r" style="font-weight:650;">{row["Refi DSCR"]}</td>'
                 table_html += f'<td class="r">{row["Balance"]}</td>'
                 table_html += f'<td><span class="pill {band_class}">{row["Band"]}</span></td>'
-                table_html += f'<td>{esc(row["Source"])}</td>'
+                source_url = row.get('_source_url', '')
+                if source_url:
+                    table_html += f'<td><a href="{source_url}" target="_blank" style="color:var(--navy2); font-weight:600; text-decoration:none;">{esc(row["Source"])}</a></td>'
+                else:
+                    table_html += f'<td>{esc(row["Source"])}</td>'
                 website = row['Website']
                 if website != '—':
                     table_html += f'<td><a href="{website}" target="_blank" style="color:var(--navy2); font-weight:600; text-decoration:none;">Visit</a></td>'

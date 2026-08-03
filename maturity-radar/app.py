@@ -260,74 +260,69 @@ with tab_watch:
 </div>
 """, unsafe_allow_html=True)
 
-        # Sorting controls
-        sort_col1, sort_col2, sort_col3 = st.columns([1, 1, 2])
-        with sort_col1:
-            sort_by = st.selectbox("Sort by:", ["Pressure (High→Low)", "Maturity (Soon→Late)", "DSCR (Low→High)"],
-                                   label_visibility="collapsed", key="sort_select")
-
-        # Sort the watchlist
-        if "Pressure" in sort_by:
-            filtered_wl = sorted(filtered_wl, key=lambda x: x.pressure_score, reverse=True)
-        elif "Maturity" in sort_by:
-            filtered_wl = sorted(filtered_wl, key=lambda x: x.loan.maturity)
-        elif "DSCR" in sort_by:
-            filtered_wl = sorted(filtered_wl, key=lambda x: x.projected_refi_dscr)
-
-        # Build card data
-        cards_html = '<div class="cards">'
-        selected_card_idx = None
-
+        # Build table data for ag-Grid
+        data = []
         for i, s in enumerate(filtered_wl):
             l = s.loan
-            band_class, band_label = band(s)
-            market = market_label(s)
+            _, band_label = band(s)
+            data.append({
+                'Pressure': int(s.pressure_score),
+                'Property': l.property_name,
+                'Market': market_label(s),
+                'Type': l.program or '—',
+                'Units': l.units or 0,
+                'Maturity': l.maturity.strftime("%b %Y"),
+                'Note Rate': f"{l.note_rate*100:.1f}%",
+                'Refi DSCR': f"{s.projected_refi_dscr:.2f}×",
+                'Balance': f"${l.current_balance/1e6:.1f}M",
+                'Band': band_label,
+                'Source': l.deal or 'SEC filing',
+                '_scored_loan': s,
+                '_idx': i,
+            })
 
-            card_html = f'''
-            <div class="card {band_class}" onclick="document.getElementById('detail-{i}').scrollIntoView({{behavior: 'smooth'}});">
-                <div class="card-header">
-                    <div class="card-title">{esc(l.property_name)}</div>
-                    <div class="card-score">{s.pressure_score:.0f}</div>
-                </div>
-                <div class="card-meta">{esc(market)}</div>
-                <div class="card-metrics">
-                    <div class="card-metric">
-                        <div class="card-metric-label">Maturity</div>
-                        <div class="card-metric-value">{l.maturity.strftime("%b %Y")}</div>
-                    </div>
-                    <div class="card-metric">
-                        <div class="card-metric-label">Refi DSCR</div>
-                        <div class="card-metric-value">{s.projected_refi_dscr:.2f}×</div>
-                    </div>
-                    <div class="card-metric">
-                        <div class="card-metric-label">Note Rate</div>
-                        <div class="card-metric-value">{l.note_rate*100:.1f}%</div>
-                    </div>
-                    <div class="card-metric">
-                        <div class="card-metric-label">Units</div>
-                        <div class="card-metric-value">{l.units:,}</div>
-                    </div>
-                </div>
-                <div class="card-band {band_class}">{band_label}</div>
-            </div>
-            '''
-            cards_html += card_html
+        df = pd.DataFrame(data) if data else pd.DataFrame()
 
-        cards_html += '</div>'
-        st.markdown(cards_html, unsafe_allow_html=True)
+        # Professional HTML table with ag-Grid-like styling
+        if not df.empty:
+            # Render using HTML for better styling
+            table_html = '<div class="scrollx"><table class="wl">'
+            table_html += '<thead><tr>'
+            for col in ['Pressure', 'Property', 'Market', 'Type', 'Units', 'Maturity', 'Note Rate', 'Refi DSCR', 'Balance', 'Band', 'Source']:
+                table_html += f'<th>{col}</th>'
+            table_html += '</tr></thead><tbody>'
+
+            for idx, row in df.iterrows():
+                band_class = 'hi' if row['Band'] == 'Severe' else ('mid' if row['Band'] == 'Moderate' else 'lo')
+                table_html += f'<tr class="row-{band_class}" onclick="document.getElementById(\'detail-{row[\"_idx\"]}\').scrollIntoView({{behavior: \'smooth\'}});" style="cursor:pointer;">'
+                table_html += f'<td class="r" style="font-weight:750; color:#1b3a5b;">{row["Pressure"]}</td>'
+                table_html += f'<td><span class="prop">{esc(row["Property"])}</span></td>'
+                table_html += f'<td class="mkt">{esc(row["Market"])}</td>'
+                table_html += f'<td><span class="ptype">{esc(row["Type"])}</span></td>'
+                table_html += f'<td class="r">{row["Units"]:,}</td>'
+                table_html += f'<td class="r">{row["Maturity"]}</td>'
+                table_html += f'<td class="r">{row["Note Rate"]}</td>'
+                table_html += f'<td class="r" style="font-weight:650;">{row["Refi DSCR"]}</td>'
+                table_html += f'<td class="r">{row["Balance"]}</td>'
+                table_html += f'<td><span class="pill {band_class}">{row["Band"]}</span></td>'
+                table_html += f'<td>{esc(row["Source"])}</td>'
+                table_html += '</tr>'
+
+            table_html += '</tbody></table></div>'
+            st.markdown(table_html, unsafe_allow_html=True)
 
         # Detail view selector
-        if filtered_wl:
+        if not df.empty:
             st.markdown("---")
             st.markdown("### Loan Details")
 
             # Create selector for details
-            properties = [s.loan.property_name for s in filtered_wl]
+            properties = df['Property'].tolist()
             selected_property = st.selectbox("View details for:", properties, key="detail_selector")
             selected_idx = properties.index(selected_property)
 
             # Display full details
-            s = filtered_wl[selected_idx]
+            s = df.iloc[selected_idx]['_scored_loan']
             l = s.loan
 
             col1, col2, col3 = st.columns(3)

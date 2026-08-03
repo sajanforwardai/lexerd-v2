@@ -275,11 +275,8 @@ with tab_watch:
             if "FHMS" in (l.deal or ""):
                 prop_type = "Agency"
 
-            # For conduit loans, property_name is the street address; for agency, it's just the name
-            if l.program == "Conduit":
-                address = l.property_name
-            else:
-                address = f"{l.city}, {l.state}" if l.city and l.state else "—"
+            # For all loans, use property_name as the address
+            address = l.property_name if l.property_name else "—"
 
             data.append({
                 'Pressure': int(s.pressure_score),

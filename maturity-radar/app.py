@@ -142,7 +142,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Data + live rate ─────────────────────────────────────────────────────────
-_all, SRC = load_loans("auto")
+# Load SEC + Fannie Mae only (no K-Deal / Freddie Mac)
+sec_loans, _ = load_loans("sec")
+fannie_loans, _ = load_loans("fannie")
+# Merge, deduping by loan_id (SEC wins if duplicate)
+all_by_id = {l.loan_id: l for l in fannie_loans}
+all_by_id.update({l.loan_id: l for l in sec_loans})
+_all = list(all_by_id.values())
+SRC = "sec+fannie"
+
 _rate = load_rate()
 market_rate = float(_rate["rate"]) if _rate else DEFAULT_MARKET_RATE
 
@@ -161,6 +169,7 @@ _all_states = sorted(_state_map.keys())
 
 # ── Controls ─────────────────────────────────────────────────────────────────
 st.sidebar.markdown("### Filters")
+# Default: ALL 8 states selected (AL, FL, GA, KS, KY, LA, NC, TX)
 selected_state_names = st.sidebar.multiselect("Markets (state)", _all_states, default=_all_states)
 states = [_state_map[name] for name in selected_state_names]
 angles = st.sidebar.multiselect("Refinance pressure", ["Severe", "Moderate", "Borderline"],
@@ -236,7 +245,7 @@ with tab_watch:
   <div class="kpi"><div class="n">{len(wl)}</div><div class="l">Loans on watch · {n_states} state{'s' if n_states != 1 else ''}</div></div>
   <div class="kpi hi"><div class="n">{len(severe)}</div><div class="l">Severe — can't cover new debt at {market_rate*100:.2f}%</div></div>
   <div class="kpi mid"><div class="n">{len(near)}</div><div class="l">Maturing within 24 months</div></div>
-  <div class="kpi"><div class="n">${upb/1e6:,.0f}M</div><div class="l">Total loan balance on watch</div></div>
+  <div class="kpi"><div class="n">${upb/1e9:.1f}B</div><div class="l">Total loan balance on watch</div></div>
 </div>
 """, unsafe_allow_html=True)
 

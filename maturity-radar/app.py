@@ -294,7 +294,8 @@ with tab_watch:
 
             for idx, row in df.iterrows():
                 band_class = 'hi' if row['Band'] == 'Severe' else ('mid' if row['Band'] == 'Moderate' else 'lo')
-                table_html += f'<tr class="row-{band_class}" onclick="document.getElementById(\'detail-{row[\"_idx\"]}\').scrollIntoView({{behavior: \'smooth\'}});" style="cursor:pointer;">'
+                row_idx = row['_idx']
+                table_html += f'<tr class="row-{band_class}" style="cursor:pointer;">'
                 table_html += f'<td class="r" style="font-weight:750; color:#1b3a5b;">{row["Pressure"]}</td>'
                 table_html += f'<td><span class="prop">{esc(row["Property"])}</span></td>'
                 table_html += f'<td class="mkt">{esc(row["Market"])}</td>'

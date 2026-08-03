@@ -35,6 +35,7 @@ class Loan:
     program: str = ""           # "Conduit" | "Agency" — securitization program
     deal: str = ""              # Freddie K/SBL deal name (from MLPD Dealname)
     source_url: str = ""        # link to the loan's disclosure source
+    property_website: str = ""  # official property website URL
 
     # ── Human-in-the-loop owner enrichment (top of list only) ──
     owner_entity: str = ""      # LLC on title (county assessor)

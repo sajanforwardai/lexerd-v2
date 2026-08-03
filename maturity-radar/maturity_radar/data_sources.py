@@ -242,6 +242,7 @@ def load_fannie_mae(path, states=None, log=print):
             col_city = get_col(["City", "city", "PropertyCity"])
             col_county = get_col(["County", "county", "PropertyCounty"])
             col_source_url = get_col(["Source URL", "source_url"])
+            col_property_website = get_col(["Property Website", "property_website", "Website"])
 
             row_count = 0
             for row in reader:
@@ -280,6 +281,7 @@ def load_fannie_mae(path, states=None, log=print):
                 city = (row.get(col_city) or "").strip() or state
                 county = (row.get(col_county) or "").strip()
                 source_url = (row.get(col_source_url) or "").strip() or FANNIE_MAE_DYNAMICS
+                property_website = (row.get(col_property_website) or "").strip()
 
                 # Parse origination year if possible
                 origination_year = 0
@@ -302,6 +304,7 @@ def load_fannie_mae(path, states=None, log=print):
                     occupancy=occupancy,
                     program="Agency",
                     source_url=source_url,
+                    property_website=property_website,
                 ))
 
         if log:
@@ -388,6 +391,7 @@ def load_freddie_mac(path, states=None, log=print):
             col_county = get_col(["County", "county"])
             col_deal = get_col(["Deal Name", "deal_name", "Dealname"])
             col_source_url = get_col(["Source URL", "source_url"])
+            col_property_website = get_col(["Property Website", "property_website", "Website"])
 
             row_count = 0
             for row in reader:
@@ -427,6 +431,7 @@ def load_freddie_mac(path, states=None, log=print):
                 county = (row.get(col_county) or "").strip()
                 deal = (row.get(col_deal) or "").strip()
                 source_url = (row.get(col_source_url) or "").strip() or FREDDIE_MF_DISCLOSURE
+                property_website = (row.get(col_property_website) or "").strip()
 
                 # Parse origination year from maturity or deal name if possible
                 origination_year = 0
@@ -460,6 +465,7 @@ def load_freddie_mac(path, states=None, log=print):
                     program="Agency",
                     deal=deal,
                     source_url=source_url,
+                    property_website=property_website,
                 ))
 
         if log:
@@ -559,6 +565,8 @@ def load_kdeal_supplemental(path, states=None, log=print):
                     col_map['orig_balance'] = i
                 elif "KDeal loan" in h_stripped and "Loan Status" in h_stripped:
                     col_map['loan_status'] = i
+                elif "Property Website" in h_stripped or "Website" in h_stripped:
+                    col_map['property_website'] = i
 
             # Validate required columns
             required = ['deal_id', 'property_name', 'maturity', 'note_rate', 'current_balance', 'orig_balance']
@@ -623,6 +631,11 @@ def load_kdeal_supplemental(path, states=None, log=print):
                     if target and state and state not in target:
                         continue
 
+                    # Extract property website if available
+                    property_website = ""
+                    if col_map.get('property_website') is not None:
+                        property_website = values[col_map['property_website']].strip() if col_map['property_website'] < len(values) else ""
+
                     loans.append(Loan(
                         loan_id=loan_id,
                         property_name=property_name,
@@ -641,6 +654,7 @@ def load_kdeal_supplemental(path, states=None, log=print):
                         occupancy=0.0,
                         program="Agency",
                         source_url="https://mf.freddiemac.com/investors/data",
+                        property_website=property_website,
                     ))
 
                 except Exception as e:

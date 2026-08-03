@@ -287,7 +287,7 @@ with tab_watch:
                 'Balance': f"${l.current_balance/1e6:.1f}M",
                 'Band': band_label,
                 'Source': l.deal or 'SEC filing',
-                'Website': l.source_url or '—',
+                'Website': l.property_website or '—',
                 '_scored_loan': s,
                 '_idx': i,
             })
@@ -318,8 +318,11 @@ with tab_watch:
                 table_html += f'<td class="r">{row["Balance"]}</td>'
                 table_html += f'<td><span class="pill {band_class}">{row["Band"]}</span></td>'
                 table_html += f'<td>{esc(row["Source"])}</td>'
-                prop_name = row['Property']
-                table_html += f'<td><a href="?property={prop_name.replace(" ", "+")}" style="color:var(--navy2); font-weight:600; text-decoration:none;">View</a></td>'
+                website = row['Website']
+                if website != '—':
+                    table_html += f'<td><a href="{website}" target="_blank" style="color:var(--navy2); font-weight:600; text-decoration:none;">Visit</a></td>'
+                else:
+                    table_html += f'<td>{website}</td>'
                 table_html += '</tr>'
 
             table_html += '</tbody></table></div>'
@@ -368,10 +371,13 @@ with tab_watch:
             with col_src:
                 st.markdown(f"**Source:** {esc(l.deal or 'SEC filing')}")
             with col_web:
-                if l.source_url:
-                    st.markdown(f"**Website:** [SEC Filing Link]({l.source_url})")
+                if l.property_website:
+                    st.markdown(f"**Property:** [Visit Website]({l.property_website})")
                 else:
-                    st.markdown("**Website:** —")
+                    st.markdown("**Property:** —")
+
+            if l.source_url:
+                st.markdown(f"**SEC Filing:** [View Disclosure]({l.source_url})")
 
         st.markdown("""
 <div class="foot">

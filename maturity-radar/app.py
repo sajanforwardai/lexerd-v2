@@ -265,8 +265,10 @@ with tab_watch:
         for i, s in enumerate(filtered_wl):
             l = s.loan
             _, band_label = band(s)
-            # Skip properties with 0 units
+            # Skip properties with 0 units or defeased securities
             if (l.units or 0) == 0:
+                continue
+            if "defeased" in (l.property_name or "").lower():
                 continue
             data.append({
                 'Pressure': int(s.pressure_score),

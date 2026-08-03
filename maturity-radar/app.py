@@ -265,6 +265,9 @@ with tab_watch:
         for i, s in enumerate(filtered_wl):
             l = s.loan
             _, band_label = band(s)
+            # Skip properties with 0 units
+            if (l.units or 0) == 0:
+                continue
             data.append({
                 'Pressure': int(s.pressure_score),
                 'Property': l.property_name,
@@ -277,6 +280,7 @@ with tab_watch:
                 'Balance': f"${l.current_balance/1e6:.1f}M",
                 'Band': band_label,
                 'Source': l.deal or 'SEC filing',
+                'Website': l.source_url or '—',
                 '_scored_loan': s,
                 '_idx': i,
             })
@@ -288,7 +292,7 @@ with tab_watch:
             # Render using HTML for better styling
             table_html = '<div class="scrollx"><table class="wl">'
             table_html += '<thead><tr>'
-            for col in ['Pressure', 'Property', 'Market', 'Type', 'Units', 'Maturity', 'Note Rate', 'Refi DSCR', 'Balance', 'Band', 'Source']:
+            for col in ['Pressure', 'Property', 'Market', 'Type', 'Units', 'Maturity', 'Note Rate', 'Refi DSCR', 'Balance', 'Band', 'Source', 'Website']:
                 table_html += f'<th>{col}</th>'
             table_html += '</tr></thead><tbody>'
 
@@ -307,6 +311,11 @@ with tab_watch:
                 table_html += f'<td class="r">{row["Balance"]}</td>'
                 table_html += f'<td><span class="pill {band_class}">{row["Band"]}</span></td>'
                 table_html += f'<td>{esc(row["Source"])}</td>'
+                website = row['Website']
+                if website != '—':
+                    table_html += f'<td><a href="{website}" target="_blank" style="color:var(--navy2); font-weight:600; text-decoration:none;">View</a></td>'
+                else:
+                    table_html += f'<td>{website}</td>'
                 table_html += '</tr>'
 
             table_html += '</tbody></table></div>'

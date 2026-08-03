@@ -287,7 +287,7 @@ with tab_watch:
                 'Balance': f"${l.current_balance/1e6:.1f}M",
                 'Band': band_label,
                 'Source': l.deal or 'SEC filing',
-                'Website': l.property_website or '—',
+                'Website': getattr(l, 'property_website', None) or '—',
                 '_scored_loan': s,
                 '_idx': i,
             })
@@ -371,8 +371,9 @@ with tab_watch:
             with col_src:
                 st.markdown(f"**Source:** {esc(l.deal or 'SEC filing')}")
             with col_web:
-                if l.property_website:
-                    st.markdown(f"**Property:** [Visit Website]({l.property_website})")
+                prop_website = getattr(l, 'property_website', None)
+                if prop_website:
+                    st.markdown(f"**Property:** [Visit Website]({prop_website})")
                 else:
                     st.markdown("**Property:** —")
 

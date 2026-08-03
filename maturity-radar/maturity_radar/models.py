@@ -36,6 +36,7 @@ class Loan:
     deal: str = ""              # Freddie K/SBL deal name (from MLPD Dealname)
     source_url: str = ""        # link to the loan's disclosure source
     property_website: str = ""  # official property website URL
+    property_address: str = ""  # street address of the property
 
     # ── Human-in-the-loop owner enrichment (top of list only) ──
     owner_entity: str = ""      # LLC on title (county assessor)

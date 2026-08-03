@@ -219,30 +219,8 @@ with tab_watch:
             f'<b>{market_rate*100:.2f}%</b> rate — the highest-pressure, earliest conversations first.</div>',
             unsafe_allow_html=True)
 
-        # Sidebar filters
-        with st.sidebar:
-            with st.expander("🔽 Filters", expanded=True):
-                st.markdown("#### Minimum pressure score")
-                min_pressure = st.slider("Min Pressure", 0, 100, value=0, step=5, label_visibility="collapsed")
-
-                st.markdown("#### States")
-                all_states = sorted(set(s.loan.state for s in wl))
-                selected_states = st.multiselect("Market", all_states, default=all_states, label_visibility="collapsed")
-
-                st.markdown("#### Pressure bands")
-                selected_bands = st.multiselect("Band", ['Severe', 'Moderate', 'Borderline'],
-                                                 default=['Severe', 'Moderate', 'Borderline'], label_visibility="collapsed")
-
-                st.markdown("#### Property search")
-                prop_search = st.text_input("Search", "", label_visibility="collapsed")
-
-        # Apply filters
+        # Use the watchlist directly (already filtered by sidebar controls)
         filtered_wl = wl
-        filtered_wl = [s for s in filtered_wl if s.pressure_score >= min_pressure]
-        filtered_wl = [s for s in filtered_wl if s.loan.state in selected_states]
-        filtered_wl = [s for s in filtered_wl if band(s)[1] in selected_bands]
-        if prop_search:
-            filtered_wl = [s for s in filtered_wl if prop_search.lower() in s.loan.property_name.lower()]
 
         st.markdown("""
 <div class="sect">

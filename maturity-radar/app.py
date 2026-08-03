@@ -275,48 +275,45 @@ with tab_watch:
             })
         df = pd.DataFrame(data) if data else pd.DataFrame()
 
-        # Table + Details layout
-        col_table, col_detail = st.columns([3, 1])
+        # Full-width sortable table
+        st.dataframe(
+            df[['Pressure', 'Property', 'Market', 'Type', 'Units', 'Maturity', 'Note', 'DSCR', 'Band', 'Source']] if not df.empty else df,
+            use_container_width=True,
+            hide_index=True,
+            key="watchlist_table",
+            height=400
+        )
 
-        with col_table:
-            # Sortable table via st.dataframe
-            st.dataframe(
-                df[['Pressure', 'Property', 'Market', 'Type', 'Units', 'Maturity', 'Note', 'DSCR', 'Band', 'Source']] if not df.empty else df,
-                use_container_width=True,
-                hide_index=True,
-                key="watchlist_table"
-            )
-
-        # Show details for selected row (click to select via session state)
-        with col_detail:
-            st.markdown("**Details**")
-            if not df.empty:
-                # Create selectable rows
-                for idx, row in df.iterrows():
-                    if st.button(f"{row['Property'][:20]}...", key=f"btn_{idx}", use_container_width=True):
-                        st.session_state.selected_row = idx
-
-        # Display full details of selected loan
-        if "selected_row" in st.session_state and st.session_state.selected_row < len(filtered_wl):
-            s = filtered_wl[st.session_state.selected_row]
-            l = s.loan
+        # Row detail selector
+        if not df.empty:
             st.markdown("---")
-            st.markdown(f"### {esc(l.property_name)}")
-            col1, col2 = st.columns(2)
+            st.markdown("### Loan Details")
+            # Create a simple selector for which loan to view
+            properties = df['Property'].tolist()
+            selected_property = st.selectbox("View details for:", properties, key="detail_selector")
+            selected_idx = properties.index(selected_property)
+
+            # Display details for selected loan
+            s = filtered_wl[selected_idx]
+            l = s.loan
+
+            col1, col2, col3 = st.columns(3)
             with col1:
-                st.write(f"**Location:** {esc(l.city)}, {l.state}")
-                st.write(f"**Units:** {l.units:,}")
-                st.write(f"**Type:** {esc(l.program or 'Agency')}")
-                st.write(f"**Note Rate:** {l.note_rate:.2%}")
+                st.metric("Pressure Score", f"{s.pressure_score:.0f}")
+                st.metric("Maturity", l.maturity.strftime("%b %Y"))
             with col2:
-                st.write(f"**Maturity:** {l.maturity}")
-                st.write(f"**Current Balance:** ${l.current_balance:,.0f}")
-                st.write(f"**Original Balance:** ${l.original_balance:,.0f}")
-                st.write(f"**Projected Refi DSCR:** {s.projected_refi_dscr:.2f}×")
-            st.write(f"**Pressure Score:** {s.pressure_score:.0f}")
-            st.write(f"**Source:** {esc(l.deal or 'SEC filing')}")
+                st.metric("Note Rate", f"{l.note_rate:.2%}")
+                st.metric("Units", f"{l.units:,}")
+            with col3:
+                st.metric("Refi DSCR", f"{s.projected_refi_dscr:.2f}×")
+                st.metric("Current Balance", f"${l.current_balance/1e6:.1f}M")
+
+            st.markdown(f"**Location:** {esc(l.city)}, {l.state}")
+            st.markdown(f"**Type:** {esc(l.program or 'Agency')}")
+            st.markdown(f"**Original Balance:** ${l.original_balance:,.0f}")
+            st.markdown(f"**Source:** {esc(l.deal or 'SEC filing')}")
             if l.source_url:
-                st.write(f"[View SEC Filing]({l.source_url})")
+                st.markdown(f"[View SEC Filing]({l.source_url})")
 
         st.markdown("""
 <div class="foot">

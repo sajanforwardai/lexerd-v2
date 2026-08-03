@@ -279,6 +279,7 @@ with tab_watch:
                 'Pressure': int(s.pressure_score),
                 'Property': l.property_name,
                 'Market': market_label(s),
+                'Address': f"{l.city}, {l.state}",
                 'Type': prop_type,
                 'Units': l.units or 0,
                 'Maturity': l.maturity.strftime("%b %Y"),
@@ -299,7 +300,7 @@ with tab_watch:
             # Render using HTML for better styling
             table_html = '<div class="scrollx"><table class="wl">'
             table_html += '<thead><tr>'
-            for col in ['Pressure', 'Property', 'Market', 'Type', 'Units', 'Maturity', 'Note Rate', 'Refi DSCR', 'Balance', 'Band', 'Source', 'Website']:
+            for col in ['Pressure', 'Property', 'Market', 'Address', 'Type', 'Units', 'Maturity', 'Note Rate', 'Refi DSCR', 'Balance', 'Band', 'Source', 'Website']:
                 table_html += f'<th>{col}</th>'
             table_html += '</tr></thead><tbody>'
 
@@ -310,6 +311,7 @@ with tab_watch:
                 table_html += f'<td class="r" style="font-weight:750; color:#1b3a5b;">{row["Pressure"]}</td>'
                 table_html += f'<td><span class="prop">{esc(row["Property"])}</span></td>'
                 table_html += f'<td class="mkt">{esc(row["Market"])}</td>'
+                table_html += f'<td class="mkt">{esc(row["Address"])}</td>'
                 table_html += f'<td><span class="ptype">{esc(row["Type"])}</span></td>'
                 table_html += f'<td class="r">{row["Units"]:,}</td>'
                 table_html += f'<td class="r">{row["Maturity"]}</td>'

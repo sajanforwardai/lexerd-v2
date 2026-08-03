@@ -142,14 +142,17 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Data + live rate ─────────────────────────────────────────────────────────
-# Load SEC + Fannie Mae only (no K-Deal / Freddie Mac)
-sec_loans, _ = load_loans("sec")
-fannie_loans, _ = load_loans("fannie")
-# Merge, deduping by loan_id (SEC wins if duplicate)
-all_by_id = {l.loan_id: l for l in fannie_loans}
-all_by_id.update({l.loan_id: l for l in sec_loans})
-_all = list(all_by_id.values())
-SRC = "sec+fannie"
+try:
+    # Try loading SEC + Fannie only (no K-Deal)
+    sec_loans, _ = load_loans("sec")
+    fannie_loans, _ = load_loans("fannie")
+    all_by_id = {l.loan_id: l for l in fannie_loans}
+    all_by_id.update({l.loan_id: l for l in sec_loans})
+    _all = list(all_by_id.values())
+    SRC = "sec+fannie"
+except:
+    # Fallback: load auto (includes all sources)
+    _all, SRC = load_loans("auto")
 
 _rate = load_rate()
 market_rate = float(_rate["rate"]) if _rate else DEFAULT_MARKET_RATE

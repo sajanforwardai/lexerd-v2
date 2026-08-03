@@ -311,11 +311,8 @@ with tab_watch:
                 table_html += f'<td class="r">{row["Balance"]}</td>'
                 table_html += f'<td><span class="pill {band_class}">{row["Band"]}</span></td>'
                 table_html += f'<td>{esc(row["Source"])}</td>'
-                website = row['Website']
-                if website != '—':
-                    table_html += f'<td><a href="{website}" target="_blank" style="color:var(--navy2); font-weight:600; text-decoration:none;">View</a></td>'
-                else:
-                    table_html += f'<td>{website}</td>'
+                prop_name = row['Property']
+                table_html += f'<td><a href="?property={prop_name.replace(" ", "+")}" style="color:var(--navy2); font-weight:600; text-decoration:none;">View</a></td>'
                 table_html += '</tr>'
 
             table_html += '</tbody></table></div>'
@@ -328,7 +325,17 @@ with tab_watch:
 
             # Create selector for details
             properties = df['Property'].tolist()
-            selected_property = st.selectbox("View details for:", properties, key="detail_selector")
+
+            # Check if a property is selected via URL parameter
+            initial_idx = 0
+            if 'property' in st.query_params:
+                requested_prop = st.query_params['property'].replace('+', ' ')
+                if requested_prop in properties:
+                    initial_idx = properties.index(requested_prop)
+                else:
+                    st.warning(f"Property '{requested_prop}' not found in watchlist")
+
+            selected_property = st.selectbox("View details for:", properties, index=initial_idx, key="detail_selector")
             selected_idx = properties.index(selected_property)
 
             # Display full details

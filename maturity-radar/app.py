@@ -96,6 +96,33 @@ st.markdown("""
   .src a{color:var(--navy2); font-size:12px; text-decoration:none; font-weight:600;}
   .src a:hover{text-decoration:underline;}
 
+  /* watchlist card grid */
+  .cards{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:16px; margin:16px 0;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px;
+    box-shadow:0 1px 3px rgba(20,25,35,.05); transition:all 0.2s ease; cursor:pointer;}
+  .card:hover{box-shadow:0 4px 12px rgba(20,25,35,.12); transform:translateY(-2px); border-color:var(--navy2);}
+  .card.severe{border-left:4px solid var(--hi);}
+  .card.moderate{border-left:4px solid var(--mid);}
+  .card.borderline{border-left:4px solid var(--lo);}
+  .card-header{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;}
+  .card-title{font-size:15px; font-weight:700; color:var(--ink); line-height:1.2; flex:1;}
+  .card-score{font-size:28px; font-weight:800; color:var(--navy); font-variant-numeric:tabular-nums; text-align:right;}
+  .card-meta{font-size:12px; color:var(--soft); line-height:1.4; margin-bottom:12px;}
+  .card-metrics{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:12px 0;}
+  .card-metric{background:var(--line2); padding:8px; border-radius:6px;}
+  .card-metric-label{font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--faint); font-weight:700;}
+  .card-metric-value{font-size:14px; font-weight:700; color:var(--ink); margin-top:3px; font-variant-numeric:tabular-nums;}
+  .card-band{display:inline-block; font-size:11px; font-weight:700; padding:4px 10px; border-radius:100px; margin-top:8px;}
+  .card-band.severe{color:var(--hi); background:var(--hi-bg);}
+  .card-band.moderate{color:var(--mid); background:var(--mid-bg);}
+  .card-band.borderline{color:var(--lo); background:var(--lo-bg);}
+
+  .sort-controls{display:flex; gap:8px; margin:12px 0; flex-wrap:wrap;}
+  .sort-btn{padding:8px 12px; border:1px solid var(--line); background:var(--panel); border-radius:6px;
+    cursor:pointer; font-size:12px; font-weight:600; color:var(--navy2); transition:all 0.2s;}
+  .sort-btn.active{background:var(--navy2); color:white; border-color:var(--navy2);}
+  .sort-btn:hover{border-color:var(--navy2);}
+
   .foot{color:var(--faint); font-size:11.5px; margin-top:20px; padding-top:14px; border-top:1px solid var(--line); line-height:1.6;}
   .prepared{font-size:11.5px; color:var(--faint);}
 
@@ -233,45 +260,73 @@ with tab_watch:
 </div>
 """, unsafe_allow_html=True)
 
-        # Build sortable table data
-        data = []
+        # Sorting controls
+        sort_col1, sort_col2, sort_col3 = st.columns([1, 1, 2])
+        with sort_col1:
+            sort_by = st.selectbox("Sort by:", ["Pressure (High→Low)", "Maturity (Soon→Late)", "DSCR (Low→High)"],
+                                   label_visibility="collapsed", key="sort_select")
+
+        # Sort the watchlist
+        if "Pressure" in sort_by:
+            filtered_wl = sorted(filtered_wl, key=lambda x: x.pressure_score, reverse=True)
+        elif "Maturity" in sort_by:
+            filtered_wl = sorted(filtered_wl, key=lambda x: x.loan.maturity)
+        elif "DSCR" in sort_by:
+            filtered_wl = sorted(filtered_wl, key=lambda x: x.projected_refi_dscr)
+
+        # Build card data
+        cards_html = '<div class="cards">'
+        selected_card_idx = None
+
         for i, s in enumerate(filtered_wl):
             l = s.loan
-            data.append({
-                'Pressure': s.pressure_score,
-                'Property': l.property_name,
-                'Market': market_label(s),
-                'Type': l.program or '—',
-                'Units': l.units or 0,
-                'Maturity': l.maturity.strftime("%b %Y"),
-                'Note': f"{l.note_rate*100:.1f}%",
-                'DSCR': f"{s.projected_refi_dscr:.2f}×",
-                'Band': band(s)[1],
-                'Source': l.deal or 'SEC filing',
-                '_idx': i,
-                '_scored_loan': s,
-            })
-        df = pd.DataFrame(data) if data else pd.DataFrame()
+            band_class, band_label = band(s)
+            market = market_label(s)
 
-        # Full-width sortable table
-        st.dataframe(
-            df[['Pressure', 'Property', 'Market', 'Type', 'Units', 'Maturity', 'Note', 'DSCR', 'Band', 'Source']] if not df.empty else df,
-            use_container_width=True,
-            hide_index=True,
-            key="watchlist_table",
-            height=400
-        )
+            card_html = f'''
+            <div class="card {band_class}" onclick="document.getElementById('detail-{i}').scrollIntoView({{behavior: 'smooth'}});">
+                <div class="card-header">
+                    <div class="card-title">{esc(l.property_name)}</div>
+                    <div class="card-score">{s.pressure_score:.0f}</div>
+                </div>
+                <div class="card-meta">{esc(market)}</div>
+                <div class="card-metrics">
+                    <div class="card-metric">
+                        <div class="card-metric-label">Maturity</div>
+                        <div class="card-metric-value">{l.maturity.strftime("%b %Y")}</div>
+                    </div>
+                    <div class="card-metric">
+                        <div class="card-metric-label">Refi DSCR</div>
+                        <div class="card-metric-value">{s.projected_refi_dscr:.2f}×</div>
+                    </div>
+                    <div class="card-metric">
+                        <div class="card-metric-label">Note Rate</div>
+                        <div class="card-metric-value">{l.note_rate*100:.1f}%</div>
+                    </div>
+                    <div class="card-metric">
+                        <div class="card-metric-label">Units</div>
+                        <div class="card-metric-value">{l.units:,}</div>
+                    </div>
+                </div>
+                <div class="card-band {band_class}">{band_label}</div>
+            </div>
+            '''
+            cards_html += card_html
 
-        # Row detail selector
-        if not df.empty:
+        cards_html += '</div>'
+        st.markdown(cards_html, unsafe_allow_html=True)
+
+        # Detail view selector
+        if filtered_wl:
             st.markdown("---")
             st.markdown("### Loan Details")
-            # Create a simple selector for which loan to view
-            properties = df['Property'].tolist()
+
+            # Create selector for details
+            properties = [s.loan.property_name for s in filtered_wl]
             selected_property = st.selectbox("View details for:", properties, key="detail_selector")
             selected_idx = properties.index(selected_property)
 
-            # Display details for selected loan
+            # Display full details
             s = filtered_wl[selected_idx]
             l = s.loan
 
@@ -289,9 +344,15 @@ with tab_watch:
             st.markdown(f"**Location:** {esc(l.city)}, {l.state}")
             st.markdown(f"**Type:** {esc(l.program or 'Agency')}")
             st.markdown(f"**Original Balance:** ${l.original_balance:,.0f}")
-            st.markdown(f"**Source:** {esc(l.deal or 'SEC filing')}")
-            if l.source_url:
-                st.markdown(f"[View SEC Filing]({l.source_url})")
+
+            col_src, col_web = st.columns(2)
+            with col_src:
+                st.markdown(f"**Source:** {esc(l.deal or 'SEC filing')}")
+            with col_web:
+                if l.source_url:
+                    st.markdown(f"**Website:** [SEC Filing Link]({l.source_url})")
+                else:
+                    st.markdown("**Website:** —")
 
         st.markdown("""
 <div class="foot">

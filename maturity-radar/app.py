@@ -270,11 +270,16 @@ with tab_watch:
                 continue
             if "defeased" in (l.property_name or "").lower():
                 continue
+            # Determine type: if FHMS in source, it's agency
+            prop_type = l.program or '—'
+            if "FHMS" in (l.deal or ""):
+                prop_type = "Agency"
+
             data.append({
                 'Pressure': int(s.pressure_score),
                 'Property': l.property_name,
                 'Market': market_label(s),
-                'Type': l.program or '—',
+                'Type': prop_type,
                 'Units': l.units or 0,
                 'Maturity': l.maturity.strftime("%b %Y"),
                 'Note Rate': f"{l.note_rate*100:.1f}%",

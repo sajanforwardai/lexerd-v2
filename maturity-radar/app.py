@@ -278,8 +278,8 @@ with tab_watch:
             if "FHMS" in (l.deal or ""):
                 prop_type = "Agency"
 
-            # For all loans, use property_name as the address
-            address = l.property_name if l.property_name else "—"
+            # For all loans, prefer property_address (street); fall back to property_name
+            address = getattr(l, 'property_address', None) or l.property_name or "—"
 
             data.append({
                 'Pressure': int(s.pressure_score),

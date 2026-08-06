@@ -15,6 +15,7 @@ from maturity_radar import DEFAULT_MARKET_RATE, DEFAULT_REFI_DSCR_FLOOR
 from maturity_radar.data_sources import load_loans
 from maturity_radar.rates import load_rate
 from maturity_radar.watchlist import build_watchlist
+from calibration.address_verification import verify_address
 
 st.set_page_config(page_title="Maturity Radar", page_icon="📡", layout="wide")
 
@@ -379,6 +380,28 @@ with tab_watch:
             st.markdown(f"**Location:** {esc(l.city)}, {l.state}")
             st.markdown(f"**Type:** {esc(l.program or 'Agency')}")
             st.markdown(f"**Original Balance:** ${l.original_balance:,.0f}")
+
+            # Address verification
+            st.markdown("---")
+            st.markdown("### 📍 Address Verification")
+
+            col_addr, col_verify = st.columns([3, 1])
+            with col_addr:
+                st.markdown(f"**Property Name:** {esc(l.property_name)}")
+            with col_verify:
+                if st.button("🔍 Verify Address", key=f"verify_{selected_idx}"):
+                    with st.spinner("Searching Google Maps..."):
+                        verified = verify_address(l.property_name, l.city, l.state)
+                        if verified:
+                            st.success(f"✅ Verified (confidence: {verified.confidence_score:.0%})")
+                            st.markdown(f"**Address:** {esc(verified.address)}")
+                            if verified.phone:
+                                st.markdown(f"**Phone:** {esc(verified.phone)}")
+                            if verified.website:
+                                st.markdown(f"**Website:** [Visit]({verified.website})")
+                            st.markdown(f"**Location:** [{verified.lat}, {verified.lon}](https://maps.google.com/?q={verified.lat},{verified.lon})")
+                        else:
+                            st.warning("Address not found on Google Maps. Verify manually.")
 
             col_src, col_web = st.columns(2)
             with col_src:

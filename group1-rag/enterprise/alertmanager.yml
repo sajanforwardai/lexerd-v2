@@ -1,0 +1,106 @@
+# Alertmanager Configuration for Group One Trading RAG
+
+global:
+  resolve_timeout: 5m
+  slack_api_url: '${SLACK_WEBHOOK_URL}'
+
+# Template files for alert messages
+templates:
+  - '/etc/alertmanager/templates/*.tmpl'
+
+# Top-level routing configuration
+route:
+  receiver: 'default'
+  group_by: ['alertname', 'cluster', 'service']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 12h
+
+  routes:
+    # Critical alerts - immediate notification
+    - match:
+        severity: critical
+      receiver: 'critical'
+      group_wait: 0s
+      repeat_interval: 1h
+
+    # High priority alerts
+    - match:
+        severity: high
+      receiver: 'high'
+      group_wait: 5s
+      repeat_interval: 4h
+
+    # Low priority alerts - batch daily
+    - match:
+        severity: low
+      receiver: 'low'
+      group_wait: 30m
+      repeat_interval: 24h
+
+# Alert receivers
+receivers:
+  - name: 'default'
+    # Default receiver - email
+    email_configs:
+      - to: 'ops-team@example.com'
+        from: 'alerts@example.com'
+        smarthost: 'smtp.example.com:587'
+        auth_username: 'alerts@example.com'
+        auth_password: '${SMTP_PASSWORD}'
+        headers:
+          Subject: '[{{ .GroupLabels.alertname }}] {{ .Alerts.Firing | len }} firing'
+
+  - name: 'critical'
+    # Critical alerts - Slack + PagerDuty
+    slack_configs:
+      - channel: '#alerts-critical'
+        title: '🚨 Critical: {{ .CommonAnnotations.summary }}'
+        text: '{{ .Alerts.Firing | len }} alerts firing'
+        send_resolved: true
+        color: 'danger'
+
+    pagerduty_configs:
+      - service_key: '${PAGERDUTY_SERVICE_KEY}'
+        description: '{{ .CommonAnnotations.summary }}'
+        details:
+          firing: '{{ range .Alerts.Firing }}{{ .Labels.alertname }}\n{{ end }}'
+
+  - name: 'high'
+    # High priority - Slack
+    slack_configs:
+      - channel: '#alerts-high'
+        title: '⚠️  Warning: {{ .CommonAnnotations.summary }}'
+        text: '{{ .Alerts.Firing | len }} alerts firing'
+        send_resolved: true
+        color: 'warning'
+
+  - name: 'low'
+    # Low priority - Email summary
+    email_configs:
+      - to: 'ops-team@example.com'
+        from: 'alerts@example.com'
+        smarthost: 'smtp.example.com:587'
+        auth_username: 'alerts@example.com'
+        auth_password: '${SMTP_PASSWORD}'
+
+# Alert inhibition rules
+inhibit_rules:
+  # Don't alert if instance is down (only alert on instance_down)
+  - source_match:
+      severity: 'critical'
+      alertname: 'InstanceDown'
+    target_match_re:
+      alertname: '.*'
+    equal: ['instance']
+
+  # Don't alert on high severity if critical is already firing
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'high'
+    equal: ['alertname', 'cluster']
+
+# Notification templates
+# Create a templates directory with notification template files
+# Example: /etc/alertmanager/templates/slack.tmpl

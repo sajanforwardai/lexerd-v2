@@ -1,0 +1,240 @@
+# Group One RAG Phase 2 Alerts Configuration
+# Thresholds, rules, and escalation policies for Tier 3 monitoring
+
+# ---- Tier 3 Reasoning Metrics Thresholds ----
+tier3_metrics:
+  latency:
+    p50_target_ms: 500
+    p50_warning_ms: 600
+    p50_critical_ms: 800
+
+    p99_target_ms: 4500
+    p99_warning_ms: 4800
+    p99_critical_ms: 5000  # SLA hard limit
+
+  reasoning:
+    max_steps_target: 6
+    max_steps_warning: 7
+    max_steps_critical: 8
+
+    branching_factor_target: 2.0
+    branching_factor_warning: 2.5
+    branching_factor_critical: 3.0
+
+  quality:
+    precision_target: 0.90
+    precision_warning: 0.85
+    precision_critical: 0.80
+
+    success_rate_target: 0.95
+    success_rate_warning: 0.92
+    success_rate_critical: 0.90
+
+# ---- Safety Metrics Thresholds ----
+safety_metrics:
+  violations:
+    margin_limit_warning: 5
+    margin_limit_critical: 10
+
+    position_limit_warning: 3
+    position_limit_critical: 5
+
+    greeks_exposure_warning: 2
+    greeks_exposure_critical: 4
+
+    correlation_breakdown_warning: 5
+    correlation_breakdown_critical: 10
+
+  circuit_breaker:
+    triggers_per_day_warning: 3
+    triggers_per_day_critical: 5
+    reset_interval_minutes: 30
+
+  validation:
+    safety_check_rate_target: 0.99
+    safety_check_rate_warning: 0.97
+    safety_check_rate_critical: 0.95
+
+    false_positive_rate_target: 0.01
+    false_positive_rate_warning: 0.03
+    false_positive_rate_critical: 0.05
+
+# ---- A/B Test Thresholds ----
+ab_test:
+  sharpe_ratio:
+    statistical_significance_p_value: 0.05
+    min_confidence_level: 0.95
+
+    tier2_baseline_target: 1.80
+    tier3_improvement_target: 0.25  # Minimum improvement needed
+
+  max_drawdown:
+    target_reduction: 0.02  # 2% improvement
+    acceptable_drawdown: -0.10
+
+  latency_tradeoff:
+    max_acceptable_tier3_p50_ms: 1000  # Tier 3 shouldn't exceed this
+
+  satisfaction:
+    tier2_baseline_target: 0.75
+    tier3_target: 0.88  # +12-13% improvement
+    minimum_improvement: 0.10
+
+  minimum_sample_size:
+    tier2: 500
+    tier3: 100  # Phase 2 pilot: smaller sample
+
+  test_duration_days: 14
+
+# ---- Learning Feedback Thresholds ----
+learning:
+  kb_confidence:
+    high_confidence_threshold: 0.80
+    medium_confidence_threshold: 0.60
+    low_confidence_threshold: 0.60  # Below this flagged for review
+
+    target_avg_confidence: 0.78
+    warning_avg_confidence: 0.72
+    critical_avg_confidence: 0.65
+
+  lessons:
+    extraction_rate_target: 20  # lessons/week
+    extraction_rate_warning: 15
+    extraction_rate_critical: 10
+
+  conflicts:
+    max_unresolved_warning: 3
+    max_unresolved_critical: 5
+    resolution_sla_hours: 24
+
+  deduplication:
+    target_ratio: 0.10  # 10% dedup is healthy
+    high_ratio_warning: 0.20
+    high_ratio_critical: 0.30  # Too many duplicates
+
+# ---- Live Trade Monitoring Thresholds ----
+live_trading:
+  margin:
+    utilization_warning: 0.70  # 70% used
+    utilization_critical: 0.85  # 85% used
+
+  greeks:
+    delta_limit: 1.0
+    gamma_limit: 0.05
+    vega_limit_per_point: 5.0
+    theta_daily_min: -2000  # Min theta decay acceptable
+    rho_limit: 2.0
+
+  correlation:
+    # Alert if correlation changes exceed thresholds
+    intraday_change_warning: 0.15
+    intraday_change_critical: 0.25
+
+    # Correlation regime threshold (when market structure breaks)
+    regime_shift_correlation_drop: 0.20
+
+  position_monitoring:
+    max_single_position_pct: 0.15  # 15% of portfolio
+    sector_concentration_pct: 0.40  # 40% in one sector
+
+# ---- Failure Mode Detection ----
+failure_modes:
+  reasoning_depth_exceeded:
+    severity: warning
+    threshold_steps: 6
+    escalation_action: "fallback_to_tier2"
+    alert_enabled: true
+
+  safety_escalation_triggered:
+    severity: critical
+    escalation_action: "human_review"
+    alert_enabled: true
+    escalation_sla_minutes: 15
+
+  correlation_breakdown:
+    severity: warning
+    threshold_correlation_drop: -0.20
+    escalation_action: "kg_refresh"
+    alert_enabled: true
+
+  regime_shift_detected:
+    severity: info
+    volatility_spike_pct: 30  # 30% increase in volatility
+    market_hours_only: false
+    escalation_action: "knowledge_update"
+    alert_enabled: true
+
+  circuit_breaker_trigger:
+    severity: critical
+    escalation_action: "pause_operations"
+    alert_enabled: true
+    cooldown_minutes: 30
+
+# ---- Escalation Policies ----
+escalations:
+  # Escalation chain: Info -> Warning -> Critical -> Human Review
+  human_review_triggers:
+    - critical_safety_escalation
+    - circuit_breaker_triggered
+    - multiple_concurrent_failures
+    - kb_confidence_degradation
+
+  escalation_targets:
+    critical: ["pagerduty", "slack#trading-alerts", "email:alerts@group1.com"]
+    warning: ["slack#trading-alerts", "email:team@group1.com"]
+    info: ["slack#trading-info"]
+
+  escalation_sla:
+    critical: 15  # minutes
+    warning: 60   # minutes
+    info: 240     # minutes
+
+# ---- Monitoring & Collection ----
+monitoring:
+  metrics_collection_interval_seconds: 10
+  event_log_retention_days: 30
+
+  alerting_enabled: true
+  alerting_cooldown_seconds: 300  # Don't repeat same alert within 5 min
+
+  # External integrations
+  integrations:
+    slack:
+      enabled: true
+      channel: "#group1-rag-alerts"
+
+    pagerduty:
+      enabled: true
+      escalation_policy: "group1-trading"
+
+    email:
+      enabled: true
+      smtp_server: "smtp.group1.com"
+
+  # Logging
+  logging:
+    level: "DEBUG"
+    retention_days: 30
+    export_format: "json"
+
+# ---- Dashboard Configuration ----
+dashboard:
+  refresh_interval_default_seconds: 10
+
+  # Custom alert display rules
+  alert_display:
+    show_resolved: false  # Hide resolved alerts after 1 hour
+    sort_by: "severity"
+
+  time_series:
+    sharpe_convergence_window_days: 14
+    correlation_snapshot_frequency_hours: 1
+
+# ---- Historical Thresholds (For Tier 2 baseline comparison) ----
+tier2_baseline:
+  latency_p50_ms: 280
+  latency_p99_ms: 450
+  precision: 0.84
+  user_satisfaction: 0.76
+  sharpe_ratio: 1.84
+  max_drawdown: -0.087

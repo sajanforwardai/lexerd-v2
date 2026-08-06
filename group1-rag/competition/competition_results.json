@@ -1,0 +1,176 @@
+{
+  "period": "30-day simulation",
+  "total_trading_days": 30,
+  "total_pnl": 624.1043302524532,
+  "win_rate": 1.0,
+  "sharpe_ratio": 57.320309851230355,
+  "max_drawdown": 0,
+  "escalations": 0,
+  "regime_analysis": {
+    "bear_low_vol": {
+      "days": 8,
+      "total_pnl": 155.24678818827073,
+      "avg_vol": 0.1381838393685914,
+      "winning_days": 8,
+      "win_rate": 1.0
+    },
+    "bull_low_vol": {
+      "days": 6,
+      "total_pnl": 113.45241389937914,
+      "avg_vol": 0.13840586638183178,
+      "winning_days": 6,
+      "win_rate": 1.0
+    },
+    "normal": {
+      "days": 16,
+      "total_pnl": 355.4051281648033,
+      "avg_vol": 0.16639156206854938,
+      "winning_days": 16,
+      "win_rate": 1.0
+    }
+  },
+  "final_rankings": {
+    "normal": [
+      {
+        "agent_name": "GammaScalpingAgent",
+        "rating": 1916.087559331481,
+        "games_played": 16,
+        "win_rate": 1.0,
+        "k_factor": 64
+      },
+      {
+        "agent_name": "VegaArbitrageAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "MeanReversionAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "EventDrivenAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "MomentumAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "CorrelationAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      }
+    ],
+    "bull_low_vol": [
+      {
+        "agent_name": "MomentumAgent",
+        "rating": 1759.398724309674,
+        "games_played": 6,
+        "win_rate": 1.0,
+        "k_factor": 64
+      },
+      {
+        "agent_name": "GammaScalpingAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "VegaArbitrageAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "MeanReversionAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "EventDrivenAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "CorrelationAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      }
+    ],
+    "bear_low_vol": [
+      {
+        "agent_name": "GammaScalpingAgent",
+        "rating": 1798.728422574738,
+        "games_played": 8,
+        "win_rate": 1.0,
+        "k_factor": 64
+      },
+      {
+        "agent_name": "VegaArbitrageAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "MeanReversionAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "EventDrivenAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "MomentumAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      },
+      {
+        "agent_name": "CorrelationAgent",
+        "rating": 1600.0,
+        "games_played": 0,
+        "win_rate": 0.0,
+        "k_factor": 32
+      }
+    ]
+  },
+  "competition_stats": {
+    "total_games_played": 30,
+    "total_wins": 30,
+    "total_losses": 0,
+    "overall_win_rate": 1.0,
+    "unique_regimes": 3,
+    "unique_agents": 6,
+    "selection_decisions": 30,
+    "regime_leaders": {}
+  }
+}

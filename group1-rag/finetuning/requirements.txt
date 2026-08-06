@@ -1,0 +1,22 @@
+# FinBERT Fine-Tuning Pipeline Requirements
+
+# Core ML/Data
+torch>=2.0.0
+transformers>=4.30.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# Fine-tuning specific
+sentence-transformers>=2.2.0
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# Utilities
+tqdm>=4.65.0
+python-dotenv>=1.0.0
+
+# Optional (for advanced features)
+# qdrant-client>=2.4.0  # For vector store integration
+# openai>=0.28.0  # For OpenAI embeddings comparison

@@ -1,0 +1,20 @@
+[server]
+port = 8506
+address = "0.0.0.0"
+headless = true
+baseUrlPath = "group1-rag-dashboard"
+enableCORS = false
+enableXsrfProtection = true
+
+[theme]
+primaryColor = "#0066cc"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f8fafc"
+textColor = "#1f2937"
+font = "sans serif"
+
+[client]
+showErrorDetails = false
+
+[logger]
+level = "warning"

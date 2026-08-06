@@ -1,0 +1,105 @@
+# Prometheus Configuration for Group One Trading RAG Monitoring
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'group1-rag-prod'
+    environment: 'production'
+    team: 'infrastructure'
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093
+
+# Load rules once and periodically evaluate them
+rule_files:
+  - '/etc/prometheus/alert_rules.yml'
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # API instances
+  - job_name: 'rag-api'
+    scheme: 'http'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    static_configs:
+      - targets:
+          - 'api-1:8000'
+          - 'api-2:8000'
+          - 'api-3:8000'
+    metrics_path: '/metrics'
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+
+  # PostgreSQL database (via postgres_exporter)
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['postgres:5432']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # Redis cache
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # Nginx reverse proxy
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx:80']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # Node Exporter (system metrics)
+  - job_name: 'node'
+    static_configs:
+      - targets: ['localhost:9100']
+    scrape_interval: 15s
+
+  # Docker daemon (if available)
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['localhost:9323']
+    scrape_interval: 30s
+
+  # Service discovery via DNS (for K8s or Consul)
+  # - job_name: 'kubernetes-pods'
+  #   kubernetes_sd_configs:
+  #     - role: pod
+  #   relabel_configs:
+  #     - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+  #       action: keep
+  #       regex: true
+
+  # Application logs (if Loki is deployed)
+  # - job_name: 'loki'
+  #   static_configs:
+  #     - targets: ['localhost']
+  #       labels:
+  #         job: loki
+  #   relabel_configs:
+  #     - source_labels: [__scheme__]
+  #       target_label: __param_format
+  #       replacement: json
+  #     - source_labels: [__metrics_path__]
+  #       target_label: __param_query
+  #       replacement: '{job="group1-rag"}'
+  #     - source_labels: [__address__]
+  #       target_label: __param_host
+  #       replacement: loki:3100
+  #     - target_label: __address__
+  #       replacement: 'localhost:3100'
+  #     - target_label: __metrics_path__
+  #       replacement: /loki/api/v1/query_range

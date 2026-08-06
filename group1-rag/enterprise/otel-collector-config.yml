@@ -1,0 +1,112 @@
+# OpenTelemetry Collector Configuration
+# Ingests traces from applications and exports to Jaeger and other backends
+
+receivers:
+  # OTLP gRPC receiver (default port 4317)
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+  # Jaeger native receiver
+  jaeger:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:14250
+      thrift_http:
+        endpoint: 0.0.0.0:14268
+      thrift_compact:
+        endpoint: 0.0.0.0:6831
+
+  # Zipkin receiver
+  zipkin:
+    endpoint: 0.0.0.0:9411
+
+  # Host metrics
+  hostmetrics:
+    collection_interval: 60s
+    scrapers:
+      - cpu
+      - disk
+      - filesystem
+      - load
+      - memory
+      - network
+      - paging
+      - processes
+
+processors:
+  # Batch processor - improves performance
+  batch:
+    send_batch_size: 1024
+    timeout: 10s
+
+  # Memory limiter - prevents excessive memory usage
+  memory_limiter:
+    check_interval: 5s
+    limit_mib: 512
+    spike_limit_mib: 128
+
+  # Attributes processor - add labels
+  attributes:
+    actions:
+      - key: deployment.environment
+        value: production
+        action: upsert
+      - key: service.namespace
+        value: group1-rag
+        action: upsert
+
+  # Sampling processor - reduce volume
+  probabilistic_sampler:
+    sampling_percentage: 10
+
+exporters:
+  # Jaeger exporter
+  jaeger:
+    endpoint: jaeger:14250
+    tls:
+      insecure: true
+
+  # Prometheus exporter
+  prometheus:
+    endpoint: 0.0.0.0:8888
+    namespace: otel
+    const_labels:
+      service: group1-rag
+
+  # Logging exporter (debug)
+  logging:
+    loglevel: debug
+
+  # OTLP exporter (for upstream collectors)
+  otlp:
+    endpoint: localhost:4317
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    # Traces pipeline
+    traces:
+      receivers: [otlp, jaeger, zipkin]
+      processors: [memory_limiter, batch, attributes, probabilistic_sampler]
+      exporters: [jaeger, logging]
+
+    # Metrics pipeline
+    metrics:
+      receivers: [otlp, hostmetrics]
+      processors: [memory_limiter, batch]
+      exporters: [prometheus, logging]
+
+    # Logs pipeline
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [logging]
+
+  telemetry:
+    logs:
+      level: info

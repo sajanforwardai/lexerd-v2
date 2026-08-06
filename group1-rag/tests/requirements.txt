@@ -1,0 +1,27 @@
+# Group One RAG Testing Framework Requirements
+# Install with: pip install -r requirements.txt
+
+# Core testing
+pytest>=7.0.0
+pytest-cov>=3.0.0
+pytest-html>=3.1.0
+pytest-timeout>=2.1.0
+pytest-xdist>=2.5.0  # For parallel test execution
+
+# Numerical/scientific
+numpy>=1.21.0
+
+# Utilities
+python-dateutil>=2.8.0
+
+# Optional: For advanced profiling
+pytest-profiling>=1.7.0
+
+# Optional: For better test reporting
+colorama>=0.4.4
+tabulate>=0.8.9
+
+# Development
+black>=22.0.0
+flake8>=4.0.0
+mypy>=0.910

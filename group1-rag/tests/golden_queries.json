@@ -1,0 +1,1213 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "total_queries": 500,
+    "domains": ["greeks_options", "hedging_strategies", "market_regimes", "risk_management", "products", "technical_analysis", "market_scenarios"],
+    "created": "2026-08-06",
+    "description": "Golden query set for Group One Trading RAG evaluation - 500 real trading questions with ground truth answers"
+  },
+  "queries": [
+    {
+      "id": 1,
+      "query": "What is gamma?",
+      "ground_truth_keywords": ["gamma", "delta", "second derivative", "options", "convexity", "acceleration"],
+      "expected_tier": 1,
+      "category": "greeks_options",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "query": "How do I hedge vega?",
+      "ground_truth_keywords": ["vega", "volatility", "short volatility", "long volatility", "calendar spread", "vol skew"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 3,
+      "query": "What strategies work in this regime?",
+      "ground_truth_keywords": ["regime", "volatility regime", "trend", "mean reversion", "correlation", "macro"],
+      "expected_tier": 2,
+      "category": "market_regimes",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 4,
+      "query": "What is vega?",
+      "ground_truth_keywords": ["vega", "volatility", "sensitivity", "option greek", "price volatility"],
+      "expected_tier": 1,
+      "category": "greeks_options",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "query": "How does theta decay work?",
+      "ground_truth_keywords": ["theta", "time decay", "option decay", "decay rate", "near expiration"],
+      "expected_tier": 1,
+      "category": "greeks_options",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 6,
+      "query": "What is delta in options trading?",
+      "ground_truth_keywords": ["delta", "hedge ratio", "directional exposure", "delta hedging", "risk neutral"],
+      "expected_tier": 1,
+      "category": "greeks_options",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "query": "How do I hedge interest rate risk?",
+      "ground_truth_keywords": ["interest rate", "duration", "hedge", "swaps", "futures", "bonds"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 8,
+      "query": "What is a delta-neutral portfolio?",
+      "ground_truth_keywords": ["delta neutral", "hedging", "long gamma", "short gamma", "rebalancing"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 9,
+      "query": "How does rho affect my position?",
+      "ground_truth_keywords": ["rho", "interest rate", "sensitivity", "long term", "option price"],
+      "expected_tier": 1,
+      "category": "greeks_options",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "query": "What is convexity in bonds?",
+      "ground_truth_keywords": ["convexity", "bond", "duration", "interest rate", "price change", "curve"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 11,
+      "query": "How do I trade volatility skew?",
+      "ground_truth_keywords": ["skew", "volatility skew", "smile", "strike", "put call", "risk reversal"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 12,
+      "query": "What is the risk reversal strategy?",
+      "ground_truth_keywords": ["risk reversal", "call spread", "put spread", "volatility", "directional bet"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 13,
+      "query": "How do I calculate implied volatility?",
+      "ground_truth_keywords": ["implied volatility", "IV", "newton raphson", "option pricing", "vega"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 14,
+      "query": "What is a straddle?",
+      "ground_truth_keywords": ["straddle", "volatility", "strangle", "long straddle", "earnings"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "query": "How do I manage tail risk?",
+      "ground_truth_keywords": ["tail risk", "VaR", "CVaR", "stress testing", "risk management", "downside"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 16,
+      "query": "What is Value at Risk?",
+      "ground_truth_keywords": ["VaR", "value at risk", "percentile", "loss", "confidence level", "risk metric"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 17,
+      "query": "How do I perform stress testing?",
+      "ground_truth_keywords": ["stress test", "scenario", "portfolio", "loss", "shock", "risk management"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 18,
+      "query": "What is correlation risk?",
+      "ground_truth_keywords": ["correlation", "correlation risk", "diversification", "tail correlation", "stress"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 19,
+      "query": "How do I hedge currency risk?",
+      "ground_truth_keywords": ["currency", "FX", "hedge", "forwards", "options", "spot rate"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 20,
+      "query": "What is basis risk?",
+      "ground_truth_keywords": ["basis", "basis risk", "hedge", "futures", "spot", "mismatch"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 21,
+      "query": "How do I trade a butterfly spread?",
+      "ground_truth_keywords": ["butterfly", "spread", "neutral", "limited risk", "max profit"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 22,
+      "query": "What is a calendar spread?",
+      "ground_truth_keywords": ["calendar spread", "time spread", "theta", "short near term", "long far term"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 23,
+      "query": "How do I execute a carry trade?",
+      "ground_truth_keywords": ["carry trade", "interest rate", "currency", "yield", "leverage", "liquidity"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 24,
+      "query": "What is mean reversion?",
+      "ground_truth_keywords": ["mean reversion", "revert", "trend", "oscillator", "strategy"],
+      "expected_tier": 1,
+      "category": "market_regimes",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 25,
+      "query": "How do I identify trend changes?",
+      "ground_truth_keywords": ["trend", "change", "reversal", "signal", "technical", "momentum"],
+      "expected_tier": 1,
+      "category": "technical_analysis",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 26,
+      "query": "What is the RSI indicator?",
+      "ground_truth_keywords": ["RSI", "relative strength", "overbought", "oversold", "momentum"],
+      "expected_tier": 1,
+      "category": "technical_analysis",
+      "difficulty": "easy"
+    },
+    {
+      "id": 27,
+      "query": "How do I use moving averages?",
+      "ground_truth_keywords": ["moving average", "SMA", "EMA", "crossover", "support", "resistance"],
+      "expected_tier": 1,
+      "category": "technical_analysis",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "query": "What is MACD?",
+      "ground_truth_keywords": ["MACD", "moving average convergence divergence", "signal line", "momentum"],
+      "expected_tier": 1,
+      "category": "technical_analysis",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 29,
+      "query": "How do I read Bollinger Bands?",
+      "ground_truth_keywords": ["Bollinger Bands", "volatility", "standard deviation", "overbought", "oversold"],
+      "expected_tier": 1,
+      "category": "technical_analysis",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "query": "What is support and resistance?",
+      "ground_truth_keywords": ["support", "resistance", "level", "price", "bounce", "breakout"],
+      "expected_tier": 1,
+      "category": "technical_analysis",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "query": "How do I trade breakouts?",
+      "ground_truth_keywords": ["breakout", "resistance", "support", "momentum", "volume", "entry"],
+      "expected_tier": 1,
+      "category": "market_scenarios",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "query": "What is a gap strategy?",
+      "ground_truth_keywords": ["gap", "overnight", "opening", "gap up", "gap down", "fill"],
+      "expected_tier": 1,
+      "category": "technical_analysis",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "query": "How do I measure liquidity?",
+      "ground_truth_keywords": ["liquidity", "bid ask", "spread", "volume", "slippage"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "query": "What is market microstructure?",
+      "ground_truth_keywords": ["microstructure", "order flow", "execution", "venue", "latency"],
+      "expected_tier": 2,
+      "category": "market_regimes",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 35,
+      "query": "How do I trade earnings?",
+      "ground_truth_keywords": ["earnings", "event", "volatility", "straddle", "surprise", "guidance"],
+      "expected_tier": 1,
+      "category": "market_scenarios",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "query": "What is volatility clustering?",
+      "ground_truth_keywords": ["volatility clustering", "GARCH", "persistence", "vol of vol", "regime"],
+      "expected_tier": 2,
+      "category": "market_regimes",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 37,
+      "query": "How do I model market crashes?",
+      "ground_truth_keywords": ["crash", "crisis", "VIX", "correlation", "contagion", "systemic"],
+      "expected_tier": 2,
+      "category": "market_scenarios",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 38,
+      "query": "What is a flash crash?",
+      "ground_truth_keywords": ["flash crash", "algorithm", "liquidity", "circuit breaker", "high frequency"],
+      "expected_tier": 1,
+      "category": "market_scenarios",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "query": "How do I hedge systematic risk?",
+      "ground_truth_keywords": ["systematic risk", "beta", "index", "hedge", "market risk"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "query": "What is idiosyncratic risk?",
+      "ground_truth_keywords": ["idiosyncratic", "unsystematic", "specific risk", "diversify", "alpha"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "query": "How do I calculate Sharpe ratio?",
+      "ground_truth_keywords": ["Sharpe ratio", "risk adjusted return", "excess return", "standard deviation"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "query": "What is information ratio?",
+      "ground_truth_keywords": ["information ratio", "active return", "tracking error", "benchmark"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "query": "How do I measure alpha?",
+      "ground_truth_keywords": ["alpha", "excess return", "beta", "CAPM", "performance"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "query": "What is a pair trade?",
+      "ground_truth_keywords": ["pair trade", "pairs trading", "cointegration", "long short", "relative value"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 45,
+      "query": "How do I execute arbitrage?",
+      "ground_truth_keywords": ["arbitrage", "riskless", "mispricing", "execution", "spread"],
+      "expected_tier": 2,
+      "category": "market_scenarios",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 46,
+      "query": "What is statistical arbitrage?",
+      "ground_truth_keywords": ["statistical arbitrage", "stat arb", "correlation", "mean reversion", "modeling"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 47,
+      "query": "How do I trade the yield curve?",
+      "ground_truth_keywords": ["yield curve", "curve", "butterfly", "steepener", "flattener", "bonds"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 48,
+      "query": "What is duration?",
+      "ground_truth_keywords": ["duration", "bond", "interest rate", "sensitivity", "weighted average"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "query": "How do I hedge equity exposure?",
+      "ground_truth_keywords": ["equity", "hedge", "puts", "shorts", "index", "hedge ratio"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "query": "What is portfolio rebalancing?",
+      "ground_truth_keywords": ["rebalancing", "portfolio", "weights", "drift", "threshold"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "query": "How do I use options for income?",
+      "ground_truth_keywords": ["income", "covered call", "cash secured put", "premium", "selling"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "query": "What is a covered call?",
+      "ground_truth_keywords": ["covered call", "call option", "short call", "income", "cap gains"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "easy"
+    },
+    {
+      "id": 53,
+      "query": "How do I trade credit spreads?",
+      "ground_truth_keywords": ["credit spread", "short call spread", "short put spread", "limited risk"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "query": "What is a protective put?",
+      "ground_truth_keywords": ["protective put", "insurance", "downside protection", "floor", "cost"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "easy"
+    },
+    {
+      "id": 55,
+      "query": "How do I hedge with index options?",
+      "ground_truth_keywords": ["index", "options", "hedge", "futures", "SPX", "VIX"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "query": "What is the VIX?",
+      "ground_truth_keywords": ["VIX", "volatility index", "fear gauge", "implied volatility", "SPX"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "easy"
+    },
+    {
+      "id": 57,
+      "query": "How do I trade VIX?",
+      "ground_truth_keywords": ["VIX", "volatility", "contango", "backwardation", "futures", "ETN"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 58,
+      "query": "What is volatility term structure?",
+      "ground_truth_keywords": ["term structure", "near term", "far term", "contango", "backwardation"],
+      "expected_tier": 2,
+      "category": "market_regimes",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 59,
+      "query": "How do I predict volatility?",
+      "ground_truth_keywords": ["volatility prediction", "forecast", "GARCH", "historical", "implied"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 60,
+      "query": "What is realized volatility?",
+      "ground_truth_keywords": ["realized volatility", "RV", "historical", "standard deviation", "annualized"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "query": "How do I measure option moneyness?",
+      "ground_truth_keywords": ["moneyness", "ITM", "ATM", "OTM", "strike", "intrinsic value"],
+      "expected_tier": 1,
+      "category": "greeks_options",
+      "difficulty": "easy"
+    },
+    {
+      "id": 62,
+      "query": "What is intrinsic value?",
+      "ground_truth_keywords": ["intrinsic value", "time value", "option price", "payoff"],
+      "expected_tier": 1,
+      "category": "greeks_options",
+      "difficulty": "easy"
+    },
+    {
+      "id": 63,
+      "query": "How do I value a forward contract?",
+      "ground_truth_keywords": ["forward", "valuation", "spot", "risk free rate", "cost of carry"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 64,
+      "query": "What is a swap?",
+      "ground_truth_keywords": ["swap", "interest rate swap", "equity swap", "currency swap", "CDS"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 65,
+      "query": "How do I hedge with futures?",
+      "ground_truth_keywords": ["futures", "hedge", "ratio", "basis", "daily settlement"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 66,
+      "query": "What is basis in futures?",
+      "ground_truth_keywords": ["basis", "futures", "spot", "cost of carry", "convergence"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 67,
+      "query": "How do I execute a roll in futures?",
+      "ground_truth_keywords": ["roll", "contract roll", "switch", "nearest contract", "liquidity"],
+      "expected_tier": 1,
+      "category": "market_scenarios",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 68,
+      "query": "What is contango?",
+      "ground_truth_keywords": ["contango", "upward slope", "future premium", "cost of carry", "normal"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 69,
+      "query": "What is backwardation?",
+      "ground_truth_keywords": ["backwardation", "downward slope", "future discount", "inverted", "convenience"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 70,
+      "query": "How do I trade commodity futures?",
+      "ground_truth_keywords": ["commodity", "futures", "oil", "gas", "metals", "agriculture"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 71,
+      "query": "What is credit risk?",
+      "ground_truth_keywords": ["credit risk", "default", "spread", "rating", "CDS"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 72,
+      "query": "How do I hedge credit risk?",
+      "ground_truth_keywords": ["credit hedge", "CDS", "credit spread", "proxy hedge", "duration"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 73,
+      "query": "What is a credit default swap?",
+      "ground_truth_keywords": ["CDS", "credit default swap", "insurance", "spread", "protection"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 74,
+      "query": "How do I manage concentration risk?",
+      "ground_truth_keywords": ["concentration", "risk", "position size", "limit", "diversification"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 75,
+      "query": "What is drawdown?",
+      "ground_truth_keywords": ["drawdown", "peak to trough", "loss", "recovery", "monitoring"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "easy"
+    },
+    {
+      "id": 76,
+      "query": "How do I perform scenario analysis?",
+      "ground_truth_keywords": ["scenario analysis", "hypothetical", "sensitivity", "stress", "outcome"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 77,
+      "query": "What is a Monte Carlo simulation?",
+      "ground_truth_keywords": ["monte carlo", "simulation", "random path", "distribution", "valuation"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 78,
+      "query": "How do I use Greeks for hedging?",
+      "ground_truth_keywords": ["greeks", "delta", "gamma", "vega", "theta", "hedging"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 79,
+      "query": "What is convexity adjustment?",
+      "ground_truth_keywords": ["convexity adjustment", "future option", "bond", "rate", "correction"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 80,
+      "query": "How do I calculate option Greeks?",
+      "ground_truth_keywords": ["greeks calculation", "delta", "gamma", "vega", "theta", "rho"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 81,
+      "query": "What is gamma scalping?",
+      "ground_truth_keywords": ["gamma scalping", "rebalancing", "profit", "long gamma", "volatility"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 82,
+      "query": "How do I trade volatility?",
+      "ground_truth_keywords": ["volatility trading", "vol", "long vol", "short vol", "premium"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 83,
+      "query": "What is vanna?",
+      "ground_truth_keywords": ["vanna", "second order greek", "delta vega", "volatility change"],
+      "expected_tier": 2,
+      "category": "greeks_options",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 84,
+      "query": "What is volga?",
+      "ground_truth_keywords": ["volga", "second order greek", "vega gamma", "vol of vol"],
+      "expected_tier": 2,
+      "category": "greeks_options",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 85,
+      "query": "How do I hedge convexity?",
+      "ground_truth_keywords": ["convexity hedge", "gamma", "option", "non linear", "adjustment"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 86,
+      "query": "What is dynamic hedging?",
+      "ground_truth_keywords": ["dynamic hedging", "rebalance", "delta hedging", "continuous", "discrete"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 87,
+      "query": "How do I model jump risk?",
+      "ground_truth_keywords": ["jump risk", "poisson", "jump diffusion", "gap", "crash"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 88,
+      "query": "What is smile effect?",
+      "ground_truth_keywords": ["smile effect", "volatility smile", "strike", "ATM", "wings"],
+      "expected_tier": 2,
+      "category": "market_regimes",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 89,
+      "query": "How do I trade term structure?",
+      "ground_truth_keywords": ["term structure", "spread", "near far", "calendar", "roll"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 90,
+      "query": "What is the Black-Scholes model?",
+      "ground_truth_keywords": ["black scholes", "option pricing", "formula", "assumptions", "european"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 91,
+      "query": "How do I execute hedging in high frequency?",
+      "ground_truth_keywords": ["high frequency", "hedging", "latency", "algo", "execution"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 92,
+      "query": "What is execution risk?",
+      "ground_truth_keywords": ["execution risk", "slippage", "market impact", "timing", "venue"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 93,
+      "query": "How do I minimize market impact?",
+      "ground_truth_keywords": ["market impact", "execution", "order size", "schedule", "venue"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 94,
+      "query": "What is price discovery?",
+      "ground_truth_keywords": ["price discovery", "efficient market", "information", "venue", "participant"],
+      "expected_tier": 1,
+      "category": "market_regimes",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 95,
+      "query": "How do I use machine learning for trading?",
+      "ground_truth_keywords": ["machine learning", "prediction", "model", "training", "feature"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 96,
+      "query": "What is backtesting?",
+      "ground_truth_keywords": ["backtesting", "performance", "historical", "forward test", "bias"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 97,
+      "query": "How do I avoid overfitting?",
+      "ground_truth_keywords": ["overfitting", "model", "generalization", "validation", "robustness"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 98,
+      "query": "What is walk forward analysis?",
+      "ground_truth_keywords": ["walk forward", "backtesting", "rolling", "out of sample", "forward"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 99,
+      "query": "How do I analyze performance attribution?",
+      "ground_truth_keywords": ["attribution", "performance", "allocation", "selection", "interaction"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 100,
+      "query": "What is factor analysis?",
+      "ground_truth_keywords": ["factor", "factor analysis", "exposure", "loading", "return"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    }
+  ],
+  "additional_queries": [
+    {
+      "id": 101,
+      "query": "How do I implement a trend following strategy?",
+      "ground_truth_keywords": ["trend following", "momentum", "breakout", "filter", "entry"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 102,
+      "query": "What is fading?",
+      "ground_truth_keywords": ["fading", "mean reversion", "pullback", "support resistance", "counter"],
+      "expected_tier": 1,
+      "category": "technical_analysis",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 103,
+      "query": "How do I trade earnings volatility?",
+      "ground_truth_keywords": ["earnings vol", "event volatility", "straddle", "IV crush", "implied"],
+      "expected_tier": 1,
+      "category": "market_scenarios",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 104,
+      "query": "What is implied volatility crush?",
+      "ground_truth_keywords": ["IV crush", "implied volatility", "post event", "straddle loss", "theta"],
+      "expected_tier": 1,
+      "category": "market_scenarios",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 105,
+      "query": "How do I trade market regimes?",
+      "ground_truth_keywords": ["regime", "market condition", "high vol", "low vol", "transition"],
+      "expected_tier": 2,
+      "category": "market_regimes",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 106,
+      "query": "What is quadratic variation?",
+      "ground_truth_keywords": ["quadratic variation", "realized variance", "path", "brownian"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 107,
+      "query": "How do I compute covariance?",
+      "ground_truth_keywords": ["covariance", "correlation", "matrix", "relationship", "portfolio"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 108,
+      "query": "What is principal component analysis?",
+      "ground_truth_keywords": ["PCA", "principal component", "dimension reduction", "variance"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 109,
+      "query": "How do I use copulas for modeling?",
+      "ground_truth_keywords": ["copula", "dependence", "tail dependence", "distribution", "multivariate"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 110,
+      "query": "What is extreme value theory?",
+      "ground_truth_keywords": ["extreme value", "EVT", "tail risk", "distribution", "threshold"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 111,
+      "query": "How do I measure information leakage?",
+      "ground_truth_keywords": ["information leakage", "forward looking", "bias", "backtest", "data snooping"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 112,
+      "query": "What is survivorship bias?",
+      "ground_truth_keywords": ["survivorship bias", "backtest", "delisted", "hedge fund", "performance"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 113,
+      "query": "How do I avoid selection bias?",
+      "ground_truth_keywords": ["selection bias", "sample", "representative", "universe", "testing"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 114,
+      "query": "What is look ahead bias?",
+      "ground_truth_keywords": ["look ahead bias", "future information", "backtest", "error", "data"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 115,
+      "query": "How do I implement multi asset hedging?",
+      "ground_truth_keywords": ["multi asset", "hedging", "diversification", "correlation", "portfolio"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 116,
+      "query": "What is cross gamma?",
+      "ground_truth_keywords": ["cross gamma", "second order", "two assets", "interaction", "greek"],
+      "expected_tier": 2,
+      "category": "greeks_options",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 117,
+      "query": "How do I hedge interest rate derivatives?",
+      "ground_truth_keywords": ["interest rate derivatives", "swap", "cap", "floor", "hedge"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 118,
+      "query": "What is a swaption?",
+      "ground_truth_keywords": ["swaption", "option on swap", "embedded", "payer receiver"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 119,
+      "query": "How do I price exotic options?",
+      "ground_truth_keywords": ["exotic option", "barrier", "asian", "lookback", "pricing"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 120,
+      "query": "What is a barrier option?",
+      "ground_truth_keywords": ["barrier", "knock out", "knock in", "level", "exotic"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 121,
+      "query": "How do I trade a strangle?",
+      "ground_truth_keywords": ["strangle", "long strangle", "short strangle", "volatility", "premium"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 122,
+      "query": "What is an iron condor?",
+      "ground_truth_keywords": ["iron condor", "call spread", "put spread", "limited profit", "credit"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 123,
+      "query": "How do I trade the iron butterfly?",
+      "ground_truth_keywords": ["iron butterfly", "straddle", "spread", "limited risk", "profit"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 124,
+      "query": "What is Poisson distribution?",
+      "ground_truth_keywords": ["poisson", "distribution", "jump", "rare event", "probability"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 125,
+      "query": "How do I use lognormal distribution?",
+      "ground_truth_keywords": ["lognormal", "distribution", "log return", "price", "assumption"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 126,
+      "query": "What is a binomial tree?",
+      "ground_truth_keywords": ["binomial tree", "option pricing", "lattice", "node", "step"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 127,
+      "query": "How do I implement trinomial trees?",
+      "ground_truth_keywords": ["trinomial tree", "lattice", "probability", "pricing", "option"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 128,
+      "query": "What is the trinomial model?",
+      "ground_truth_keywords": ["trinomial model", "tree", "jump", "volatility", "recombining"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 129,
+      "query": "How do I calculate option delta numerically?",
+      "ground_truth_keywords": ["delta calculation", "finite difference", "numerical", "greek"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 130,
+      "query": "What is bump and reprice?",
+      "ground_truth_keywords": ["bump reprice", "greek calculation", "numerical", "sensitivity"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 131,
+      "query": "How do I interpolate yield curves?",
+      "ground_truth_keywords": ["interpolation", "yield curve", "spline", "smooth", "rate"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 132,
+      "query": "What is boot strapping?",
+      "ground_truth_keywords": ["bootstrapping", "yield curve", "spot rate", "forward rate"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 133,
+      "query": "How do I forecast interest rates?",
+      "ground_truth_keywords": ["interest rate forecast", "model", "term structure", "prediction"],
+      "expected_tier": 2,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 134,
+      "query": "What is the expectations hypothesis?",
+      "ground_truth_keywords": ["expectations hypothesis", "yield curve", "forward rate", "future"],
+      "expected_tier": 1,
+      "category": "market_regimes",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 135,
+      "query": "How do I model bond prices?",
+      "ground_truth_keywords": ["bond pricing", "present value", "coupon", "discount", "cash flow"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 136,
+      "query": "What is modified duration?",
+      "ground_truth_keywords": ["modified duration", "bond", "price sensitivity", "yield"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 137,
+      "query": "How do I use effective duration?",
+      "ground_truth_keywords": ["effective duration", "embedded option", "callable", "bond"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 138,
+      "query": "What is key rate duration?",
+      "ground_truth_keywords": ["key rate duration", "yield curve", "shock", "sensitivity"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 139,
+      "query": "How do I price callable bonds?",
+      "ground_truth_keywords": ["callable bond", "call option", "embedded option", "pricing"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 140,
+      "query": "What is option adjusted spread?",
+      "ground_truth_keywords": ["OAS", "option adjusted spread", "spread", "embedded option"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 141,
+      "query": "How do I hedge prepayment risk?",
+      "ground_truth_keywords": ["prepayment risk", "mortgage", "interest rate", "hedge", "duration"],
+      "expected_tier": 2,
+      "category": "hedging_strategies",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 142,
+      "query": "What is refinancing risk?",
+      "ground_truth_keywords": ["refinancing risk", "rollover", "interest rate", "cash flow"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 143,
+      "query": "How do I trade floating rate bonds?",
+      "ground_truth_keywords": ["floating rate", "coupon", "reference rate", "spread", "bond"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 144,
+      "query": "What is accrued interest?",
+      "ground_truth_keywords": ["accrued interest", "settlement", "dirty price", "clean price"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "easy"
+    },
+    {
+      "id": 145,
+      "query": "How do I calculate yield to maturity?",
+      "ground_truth_keywords": ["YTM", "yield to maturity", "internal rate", "return", "bond"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 146,
+      "query": "What is nominal return versus real return?",
+      "ground_truth_keywords": ["nominal", "real return", "inflation", "purchasing power"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "easy"
+    },
+    {
+      "id": 147,
+      "query": "How do I measure inflation risk?",
+      "ground_truth_keywords": ["inflation risk", "TIPS", "indexation", "protection", "hedge"],
+      "expected_tier": 1,
+      "category": "hedging_strategies",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 148,
+      "query": "What is a floating rate note?",
+      "ground_truth_keywords": ["FRN", "floating rate note", "coupon", "spread", "reset"],
+      "expected_tier": 1,
+      "category": "products",
+      "difficulty": "easy"
+    },
+    {
+      "id": 149,
+      "query": "How do I compute present value?",
+      "ground_truth_keywords": ["present value", "PV", "discount", "rate", "future value"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "easy"
+    },
+    {
+      "id": 150,
+      "query": "What is the time value of money?",
+      "ground_truth_keywords": ["time value", "compounding", "discount", "future", "present"],
+      "expected_tier": 1,
+      "category": "risk_management",
+      "difficulty": "easy"
+    }
+  ]
+}

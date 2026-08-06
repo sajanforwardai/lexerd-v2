@@ -1,0 +1,19 @@
+# Qdrant Vector Database Client for Group One RAG
+
+# Core dependencies
+qdrant-client>=2.4.0
+numpy>=1.24.0
+pydantic>=2.0.0
+
+# Embedding models (select one or more)
+sentence-transformers>=2.2.0  # For FinBERT and BGE models
+openai>=1.0.0                  # For OpenAI text-embedding-3-large (requires API key)
+
+# Optional performance enhancements
+uvloop>=0.17.0                 # Optional: faster async event loop
+orjson>=3.9.0                  # Optional: faster JSON serialization
+
+# Development dependencies (optional)
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-benchmark>=4.0.0

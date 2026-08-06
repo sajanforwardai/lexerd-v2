@@ -6,10 +6,18 @@ reaches the page.
 """
 
 import html
+import sys
 from datetime import date
+from pathlib import Path
 
 import pandas as pd  # noqa: F401  (kept for future export use)
 import streamlit as st
+
+# Add lexerd2 root to path so we can import calibration module
+# Works whether running from lexerd2 root or from maturity-radar subdir
+_lexerd_root = Path(__file__).parent.parent.resolve()
+if str(_lexerd_root) not in sys.path:
+    sys.path.insert(0, str(_lexerd_root))
 
 from maturity_radar import DEFAULT_MARKET_RATE, DEFAULT_REFI_DSCR_FLOOR
 from maturity_radar.data_sources import load_loans

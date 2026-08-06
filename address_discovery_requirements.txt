@@ -1,0 +1,22 @@
+# Address Discovery System - Tier 1 Dependencies
+
+# Web scraping and HTML parsing
+beautifulsoup4>=4.11.0
+requests>=2.28.0
+lxml>=4.9.0
+
+# For web-based county assessor lookups
+selenium>=4.0.0  # Optional: for JavaScript-heavy county websites
+playwright>=1.40.0  # Optional: for modern web scraping
+
+# For PDF parsing (Tier 2)
+pdfplumber>=0.9.0
+PyPDF2>=3.0.0
+pytesseract>=0.3.10
+
+# Rate limiting
+ratelimit>=2.2.1
+
+# Existing dependencies (already available)
+# requests - for API calls
+# python-dotenv - for .env configuration

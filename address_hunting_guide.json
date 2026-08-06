@@ -1,0 +1,393 @@
+{
+  "timestamp": "2026-08-06T04:29:10.451531",
+  "total_to_hunt": 19,
+  "properties": [
+    {
+      "property_name": "Wimberley Hill Country",
+      "city": "Wimberley",
+      "state": "TX",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Wimberley%20Hill%20Country%20Wimberley%20TX%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Wimberley%20Hill%20Country%20Wimberley%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Wimberley&state=TX",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-wimberley-tx"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Wimberley%20Hill%20Country",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Wimberley County, TX Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Clear Lake Park",
+      "city": "Clear Lake",
+      "state": "TX",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Clear%20Lake%20Park%20Clear%20Lake%20TX%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Clear%20Lake%20Park%20Clear%20Lake%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Clear%20Lake&state=TX",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-clear lake-tx"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Clear%20Lake%20Park",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Clear Lake County, TX Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Palm Beach Gardens",
+      "city": "West Palm Beach",
+      "state": "FL",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Palm%20Beach%20Gardens%20West%20Palm%20Beach%20FL%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Palm%20Beach%20Gardens%20West%20Palm%20Beach%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=West%20Palm%20Beach&state=FL",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-west palm beach-fl"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Palm%20Beach%20Gardens",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search West Palm Beach County, FL Property Appraiser"
+      }
+    },
+    {
+      "property_name": "Walden Brook Apartments",
+      "city": "Lithonia",
+      "state": "GA",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Walden%20Brook%20Apartments%20Lithonia%20GA%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Walden%20Brook%20Apartments%20Lithonia%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Lithonia&state=GA",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-lithonia-ga"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Walden%20Brook%20Apartments",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Lithonia County, GA Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Lubbock Tech Campus",
+      "city": "Lubbock",
+      "state": "TX",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Lubbock%20Tech%20Campus%20Lubbock%20TX%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Lubbock%20Tech%20Campus%20Lubbock%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Lubbock&state=TX",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-lubbock-tx"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Lubbock%20Tech%20Campus",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Lubbock County, TX Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Edinburg Central Park",
+      "city": "Edinburg",
+      "state": "TX",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Edinburg%20Central%20Park%20Edinburg%20TX%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Edinburg%20Central%20Park%20Edinburg%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Edinburg&state=TX",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-edinburg-tx"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Edinburg%20Central%20Park",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Edinburg County, TX Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Magnolia Springs",
+      "city": "Magnolia",
+      "state": "TX",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Magnolia%20Springs%20Magnolia%20TX%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Magnolia%20Springs%20Magnolia%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Magnolia&state=TX",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-magnolia-tx"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Magnolia%20Springs",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Magnolia County, TX Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Southern Garden",
+      "city": "Valparaiso",
+      "state": "FL",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Southern%20Garden%20Valparaiso%20FL%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Southern%20Garden%20Valparaiso%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Valparaiso&state=FL",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-valparaiso-fl"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Southern%20Garden",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Valparaiso County, FL Property Appraiser"
+      }
+    },
+    {
+      "property_name": "Huntsville Tech Park",
+      "city": "Huntsville",
+      "state": "AL",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Huntsville%20Tech%20Park%20Huntsville%20AL%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Huntsville%20Tech%20Park%20Huntsville%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Huntsville&state=AL",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-huntsville-al"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Huntsville%20Tech%20Park",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Huntsville County, AL Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Topeka Heights Residential",
+      "city": "Topeka",
+      "state": "KS",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Topeka%20Heights%20Residential%20Topeka%20KS%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Topeka%20Heights%20Residential%20Topeka%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Topeka&state=KS",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-topeka-ks"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Topeka%20Heights%20Residential",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Topeka County, KS Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Villas at Traditions",
+      "city": "Bryan",
+      "state": "TX",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Villas%20at%20Traditions%20Bryan%20TX%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Villas%20at%20Traditions%20Bryan%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Bryan&state=TX",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-bryan-tx"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Villas%20at%20Traditions",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Bryan County, TX Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Charlotte Corporate Park",
+      "city": "Charlotte",
+      "state": "NC",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Charlotte%20Corporate%20Park%20Charlotte%20NC%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Charlotte%20Corporate%20Park%20Charlotte%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Charlotte&state=NC",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-charlotte-nc"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Charlotte%20Corporate%20Park",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Charlotte County, NC Tax Assessor"
+      }
+    },
+    {
+      "property_name": "BROOKSTONE CROSSING",
+      "city": "Atlanta",
+      "state": "GA",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=BROOKSTONE%20CROSSING%20Atlanta%20GA%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22BROOKSTONE%20CROSSING%20Atlanta%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Atlanta&state=GA",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-atlanta-ga"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=BROOKSTONE%20CROSSING",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Atlanta County, GA Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Sugar Land Technology",
+      "city": "Sugar Land",
+      "state": "TX",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Sugar%20Land%20Technology%20Sugar%20Land%20TX%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Sugar%20Land%20Technology%20Sugar%20Land%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Sugar%20Land&state=TX",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-sugar land-tx"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Sugar%20Land%20Technology",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Sugar Land County, TX Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Fort Worth Midtown",
+      "city": "Fort Worth",
+      "state": "TX",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Fort%20Worth%20Midtown%20Fort%20Worth%20TX%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Fort%20Worth%20Midtown%20Fort%20Worth%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Fort%20Worth&state=TX",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-fort worth-tx"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Fort%20Worth%20Midtown",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Fort Worth County, TX Tax Assessor"
+      }
+    },
+    {
+      "property_name": "The Club at Crystal Lake",
+      "city": "Deerfield Beach",
+      "state": "FL",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=The%20Club%20at%20Crystal%20Lake%20Deerfield%20Beach%20FL%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22The%20Club%20at%20Crystal%20Lake%20Deerfield%20Beach%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Deerfield%20Beach&state=FL",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-deerfield beach-fl"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=The%20Club%20at%20Crystal%20Lake",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Deerfield Beach County, FL Property Appraiser"
+      }
+    },
+    {
+      "property_name": "MEADOWS PLACE SENIORS VILLAGE",
+      "city": "Stafford",
+      "state": "TX",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=MEADOWS%20PLACE%20SENIORS%20VILLAGE%20Stafford%20TX%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22MEADOWS%20PLACE%20SENIORS%20VILLAGE%20Stafford%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Stafford&state=TX",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-stafford-tx"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=MEADOWS%20PLACE%20SENIORS%20VILLAGE",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Stafford County, TX Tax Assessor"
+      }
+    },
+    {
+      "property_name": "Magnolia Flats Apartments",
+      "city": "Balcones Heights",
+      "state": "TX",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=Magnolia%20Flats%20Apartments%20Balcones%20Heights%20TX%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22Magnolia%20Flats%20Apartments%20Balcones%20Heights%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Balcones%20Heights&state=TX",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-balcones heights-tx"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=Magnolia%20Flats%20Apartments",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Balcones Heights County, TX Tax Assessor"
+      }
+    },
+    {
+      "property_name": "THE BLUFFS",
+      "city": "Junction City",
+      "state": "KS",
+      "web_search_options": {
+        "Google": "https://www.google.com/search?q=THE%20BLUFFS%20Junction%20City%20KS%20apartments",
+        "Zillow": "https://www.zillow.com/homes/for_rent/?searchQueryState={%22usersSearchTerm%22:%22THE%20BLUFFS%20Junction%20City%22}",
+        "ApartmentsList": "https://apartmentslist.com/search?location=Junction%20City&state=KS",
+        "ZoomRental": "https://www.zoomrental.com/apartments-for-rent-in-junction city-ks"
+      },
+      "sec_cmbs": {
+        "source": "SEC EDGAR CMBS Database",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company_type=&CIK=&type=424B5&dateb=&owner=exclude&count=100&search_text=THE%20BLUFFS",
+        "note": "SEC CMBS prospectuses contain detailed property information"
+      },
+      "tax_assessor": {
+        "source": "County Tax Assessor",
+        "instruction": "Search Junction City County, KS Tax Assessor"
+      }
+    }
+  ],
+  "methodology": {
+    "1_web_search": "Google, Zillow, ApartmentsList, ZoomRental",
+    "2_sec_cmbs": "SEC EDGAR database - detailed property info in prospectuses",
+    "3_tax_assessor": "County tax/property records by state",
+    "4_property_management": "Contact property management companies directly",
+    "5_linkedin": "Search property management teams on LinkedIn"
+  }
+}

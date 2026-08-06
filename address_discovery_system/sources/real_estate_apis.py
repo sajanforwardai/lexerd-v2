@@ -139,25 +139,25 @@ class RealEstateAPILookup:
         try:
             logger.info(f"Scraping Zillow web for '{property_name}'")
 
-            url = "https://www.zillow.com/search/GetSearchPageState.htm"
-            params = {
-                "searchQueryState": {
-                    "usersSearchTerm": f"{property_name} {city} {state}",
-                    "mapBounds": None,
-                    "regionSelection": [{"regionId": None, "regionType": 2}],
-                }
-            }
+            # Build URL with proper query string encoding
+            search_term = f"{property_name} {city} {state}"
+            url = f"https://www.zillow.com/search/?q={search_term.replace(' ', '+')}&home_type=apartments"
 
             # Rate limit web scraping heavily
-            response = self.session.get(url, params=params, timeout=10)
+            response = self.session.get(url, timeout=10)
             response.raise_for_status()
 
-            data = response.json()
+            # Parse HTML for listings
+            soup = BeautifulSoup(response.content, "html.parser")
 
-            if data.get("cat1"):
-                for listing in data["cat1"]:
-                    address = listing.get("address")
-                    if address and city.lower() in address.lower():
+            # Look for property listings in page
+            listings = soup.find_all("article", class_="property-card")
+
+            for listing in listings:
+                address_elem = listing.find("address")
+                if address_elem:
+                    address = address_elem.get_text().strip()
+                    if city.lower() in address.lower():
                         return {
                             "address": address,
                             "city": city,
@@ -188,7 +188,7 @@ class RealEstateAPILookup:
 
         try:
             # ApartmentsList search
-            url = f"{self.base_url}search"
+            url = "https://apartmentslist.com/search"
             params = {
                 "q": property_name,
                 "location": f"{city}, {state}",

@@ -284,5 +284,275 @@
     "confidence_score": 0.9,
     "source": "Google Maps",
     "verified_at": ""
+  },
+  "northgate lofts|college station|tx": {
+    "address": "411 North Frio Street",
+    "city": "College Station",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Northgate Lofts",
+    "verified_at": "2026-08-06T23:50:12.026997"
+  },
+  "wolf pen crossing|college station|tx": {
+    "address": "411 North Frio Street",
+    "city": "College Station",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Wolf Pen Crossing",
+    "verified_at": "2026-08-06T23:50:12.027012"
+  },
+  "aggieland flats|college station|tx": {
+    "address": "411 North Frio Street",
+    "city": "College Station",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Aggieland Flats",
+    "verified_at": "2026-08-06T23:50:12.027018"
+  },
+  "garland central station|garland|tx": {
+    "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+    "city": "Garland",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Garland Central Station",
+    "verified_at": "2026-08-06T23:50:12.027022"
+  },
+  "galveston beach towers|galveston|tx": {
+    "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
+    "city": "Galveston",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Galveston Beach Towers",
+    "verified_at": "2026-08-06T23:50:12.027026"
+  },
+  "texas city refinery side|texas city|tx": {
+    "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
+    "city": "Texas City",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Texas City Refinery Side",
+    "verified_at": "2026-08-06T23:50:12.027030"
+  },
+  "bryan station apartments|bryan|tx": {
+    "address": "411 North Frio Street",
+    "city": "Bryan",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Bryan Station Apartments",
+    "verified_at": "2026-08-06T23:50:12.027034"
+  },
+  "new orleans garden district|new orleans|la": {
+    "address": "1 Juvenile Court, Orleans Parish Juvenile Justice Intervention Center Liquidation/City Debt, Board of LSU Agricultural Center Maternal Health Mayor, Office of the Mosquito, Termite & Rodent Control Board Motor Vehicle Inspection Bureau Municipal and Traffic Court of New Orleans Municipal Complex Advisory Committee  New Orleans Municipal Employees Retirement System New Orleans Office of Coordination and Emergency Management New Orleans Recreation Development Commission (NORD) New Orleans Redevelopment Authority Nighttime Economy, Mayor's Office of NOHHS Community Engagement, Performance, and Equity NOLA Ready NOPD Crime Lab Parks & Parkways, Department of Performance and Accountability Police Department, New Orleans (NOPD) Police Secondary Employment, Office of Population Health and Disease Prevention Property Management, Department of Public Health Emergencies & Environmental Health Public Library, New Orleans (Main Branch) Public Works, Department of Purchasing, Bureau of Real Estate and Records Registrar of Voters, Orleans Parish Revenue-Sales Tax, Bureau of  Ryan White HIV Services and Resources Safety and Permits, Department of Sanitation, Department of Short Term Rental Administration Stormwater & Green Infrastructure Supplier Diversity, Office of Sustainability, Office of Transportation, Mayor's Office of Treasury, Bureau of Vieux Carr\u00e9 Commission Workforce Development, Office of  Youth and Families, Office of",
+    "city": "New Orleans",
+    "state": "LA",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "New Orleans Garden District",
+    "verified_at": "2026-08-06T23:50:12.027038"
+  },
+  "league city bay view|league city|tx": {
+    "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
+    "city": "League City",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "League City Bay View",
+    "verified_at": "2026-08-06T23:50:12.027042"
+  },
+  "the doral|dallas|tx": {
+    "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+    "city": "Dallas",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "THE DORAL",
+    "verified_at": "2026-08-06T23:50:12.027046"
+  },
+  "chamblee heights|chamblee|ga": {
+    "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
+    "city": "Chamblee",
+    "state": "GA",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "CHAMBLEE HEIGHTS",
+    "verified_at": "2026-08-06T23:50:12.027050"
+  },
+  "irving innovation hub|irving|tx": {
+    "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+    "city": "Irving",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Irving Innovation Hub",
+    "verified_at": "2026-08-06T23:50:12.027053"
+  },
+  "walden brook apartments|lithonia|ga": {
+    "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
+    "city": "Lithonia",
+    "state": "GA",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Walden Brook Apartments",
+    "verified_at": "2026-08-06T23:50:12.027057"
+  },
+  "bryan texas park|bryan|tx": {
+    "address": "411 North Frio Street",
+    "city": "Bryan",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Bryan Texas Park",
+    "verified_at": "2026-08-06T23:50:12.027061"
+  },
+  "dallas park apartments|dallas|tx": {
+    "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+    "city": "Dallas",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Dallas Park Apartments",
+    "verified_at": "2026-08-06T23:50:12.027064"
+  },
+  "bennett property|dallas|tx": {
+    "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+    "city": "Dallas",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Bennett Property",
+    "verified_at": "2026-08-06T23:50:12.027068"
+  },
+  "college station university|college station|tx": {
+    "address": "411 North Frio Street",
+    "city": "College Station",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "College Station University",
+    "verified_at": "2026-08-06T23:50:12.027071"
+  },
+  "forest ridge|dallas|tx": {
+    "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+    "city": "Dallas",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "FOREST RIDGE",
+    "verified_at": "2026-08-06T23:50:12.027077"
+  },
+  "villas at traditions|bryan|tx": {
+    "address": "411 North Frio Street",
+    "city": "Bryan",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Villas at Traditions",
+    "verified_at": "2026-08-06T23:50:12.027081"
+  },
+  "charlotte corporate park|charlotte|nc": {
+    "address": "3205 Freedom Dr., Ste 3000",
+    "city": "Charlotte",
+    "state": "NC",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Charlotte Corporate Park",
+    "verified_at": "2026-08-06T23:50:12.027085"
+  },
+  "brookstone crossing|atlanta|ga": {
+    "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
+    "city": "Atlanta",
+    "state": "GA",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "BROOKSTONE CROSSING",
+    "verified_at": "2026-08-06T23:50:12.027088"
+  },
+  "bella grand|marietta|ga": {
+    "address": "5 million Department of Labor grantSubscribe to County NewslettersCobb County Government100 Cherokee StreetMarietta, GA 30090(770) 528-1000information@cobbcounty.govMedia Point of Contact(770) 528-1155newsroom@cobbcounty.govFeatured LinksHousing, Food, Health AssistanceHuman Trafficking NoticeCobbTVEmail & Phone DirectoryEmploymentLive Traffic CamsPublic MeetingsWebsite FeedbackGIS/MappingGIS HomepageGIS MapsTax Parcel ViewerTrail MapZoning Analysis\u00a9 2026 Cobb County Government, All rights reserved.Privacy PolicySocial Media PolicySitemapPowered by Interpersonal Frequency",
+    "city": "Marietta",
+    "state": "GA",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Bella Grand",
+    "verified_at": "2026-08-06T23:50:12.027092"
+  },
+  "pine hills|smyrna|ga": {
+    "address": "5 million Department of Labor grantSubscribe to County NewslettersCobb County Government100 Cherokee StreetMarietta, GA 30090(770) 528-1000information@cobbcounty.govMedia Point of Contact(770) 528-1155newsroom@cobbcounty.govFeatured LinksHousing, Food, Health AssistanceHuman Trafficking NoticeCobbTVEmail & Phone DirectoryEmploymentLive Traffic CamsPublic MeetingsWebsite FeedbackGIS/MappingGIS HomepageGIS MapsTax Parcel ViewerTrail MapZoning Analysis\u00a9 2026 Cobb County Government, All rights reserved.Privacy PolicySocial Media PolicySitemapPowered by Interpersonal Frequency",
+    "city": "Smyrna",
+    "state": "GA",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "PINE HILLS",
+    "verified_at": "2026-08-06T23:50:12.027096"
+  },
+  "bedford park|atlanta|ga": {
+    "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
+    "city": "Atlanta",
+    "state": "GA",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Bedford Park",
+    "verified_at": "2026-08-06T23:50:12.027099"
+  },
+  "stanford oaks|tucker|ga": {
+    "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
+    "city": "Tucker",
+    "state": "GA",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "Stanford Oaks",
+    "verified_at": "2026-08-06T23:50:12.027103"
+  },
+  "the azul apartments|dallas|tx": {
+    "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+    "city": "Dallas",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "The Azul Apartments",
+    "verified_at": "2026-08-06T23:50:12.027106"
+  },
+  "calder square apartments|league city|tx": {
+    "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
+    "city": "League City",
+    "state": "TX",
+    "phone": null,
+    "confidence_score": 0.95,
+    "source": "county_assessor",
+    "property_name": "CALDER SQUARE APARTMENTS",
+    "verified_at": "2026-08-06T23:50:12.027110"
   }
 }

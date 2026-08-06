@@ -1,0 +1,1487 @@
+{
+  "timestamp": "2026-08-06T23:50:12.022476",
+  "total": 252,
+  "found": 27,
+  "not_found": 225,
+  "coverage": "10.7%",
+  "results": [
+    {
+      "found": true,
+      "property_name": "Northgate Lofts",
+      "address": "411 North Frio Street",
+      "city": "College Station",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Wolf Pen Crossing",
+      "address": "411 North Frio Street",
+      "city": "College Station",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Aggieland Flats",
+      "address": "411 North Frio Street",
+      "city": "College Station",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Garland Central Station",
+      "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+      "city": "Garland",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Galveston Beach Towers",
+      "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
+      "city": "Galveston",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Texas City Refinery Side",
+      "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
+      "city": "Texas City",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Bryan Station Apartments",
+      "address": "411 North Frio Street",
+      "city": "Bryan",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "New Orleans Garden District",
+      "address": "1 Juvenile Court, Orleans Parish Juvenile Justice Intervention Center Liquidation/City Debt, Board of LSU Agricultural Center Maternal Health Mayor, Office of the Mosquito, Termite & Rodent Control Board Motor Vehicle Inspection Bureau Municipal and Traffic Court of New Orleans Municipal Complex Advisory Committee  New Orleans Municipal Employees Retirement System New Orleans Office of Coordination and Emergency Management New Orleans Recreation Development Commission (NORD) New Orleans Redevelopment Authority Nighttime Economy, Mayor's Office of NOHHS Community Engagement, Performance, and Equity NOLA Ready NOPD Crime Lab Parks & Parkways, Department of Performance and Accountability Police Department, New Orleans (NOPD) Police Secondary Employment, Office of Population Health and Disease Prevention Property Management, Department of Public Health Emergencies & Environmental Health Public Library, New Orleans (Main Branch) Public Works, Department of Purchasing, Bureau of Real Estate and Records Registrar of Voters, Orleans Parish Revenue-Sales Tax, Bureau of  Ryan White HIV Services and Resources Safety and Permits, Department of Sanitation, Department of Short Term Rental Administration Stormwater & Green Infrastructure Supplier Diversity, Office of Sustainability, Office of Transportation, Mayor's Office of Treasury, Bureau of Vieux Carr\u00e9 Commission Workforce Development, Office of  Youth and Families, Office of",
+      "city": "New Orleans",
+      "state": "LA",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "League City Bay View",
+      "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
+      "city": "League City",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "THE DORAL",
+      "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+      "city": "Dallas",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "CHAMBLEE HEIGHTS",
+      "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
+      "city": "Chamblee",
+      "state": "GA",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Irving Innovation Hub",
+      "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+      "city": "Irving",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Walden Brook Apartments",
+      "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
+      "city": "Lithonia",
+      "state": "GA",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Bryan Texas Park",
+      "address": "411 North Frio Street",
+      "city": "Bryan",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Dallas Park Apartments",
+      "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+      "city": "Dallas",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Bennett Property",
+      "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+      "city": "Dallas",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "College Station University",
+      "address": "411 North Frio Street",
+      "city": "College Station",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "FOREST RIDGE",
+      "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+      "city": "Dallas",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Villas at Traditions",
+      "address": "411 North Frio Street",
+      "city": "Bryan",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Charlotte Corporate Park",
+      "address": "3205 Freedom Dr., Ste 3000",
+      "city": "Charlotte",
+      "state": "NC",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "BROOKSTONE CROSSING",
+      "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
+      "city": "Atlanta",
+      "state": "GA",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Bella Grand",
+      "address": "5 million Department of Labor grantSubscribe to County NewslettersCobb County Government100 Cherokee StreetMarietta, GA 30090(770) 528-1000information@cobbcounty.govMedia Point of Contact(770) 528-1155newsroom@cobbcounty.govFeatured LinksHousing, Food, Health AssistanceHuman Trafficking NoticeCobbTVEmail & Phone DirectoryEmploymentLive Traffic CamsPublic MeetingsWebsite FeedbackGIS/MappingGIS HomepageGIS MapsTax Parcel ViewerTrail MapZoning Analysis\u00a9 2026 Cobb County Government, All rights reserved.Privacy PolicySocial Media PolicySitemapPowered by Interpersonal Frequency",
+      "city": "Marietta",
+      "state": "GA",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "PINE HILLS",
+      "address": "5 million Department of Labor grantSubscribe to County NewslettersCobb County Government100 Cherokee StreetMarietta, GA 30090(770) 528-1000information@cobbcounty.govMedia Point of Contact(770) 528-1155newsroom@cobbcounty.govFeatured LinksHousing, Food, Health AssistanceHuman Trafficking NoticeCobbTVEmail & Phone DirectoryEmploymentLive Traffic CamsPublic MeetingsWebsite FeedbackGIS/MappingGIS HomepageGIS MapsTax Parcel ViewerTrail MapZoning Analysis\u00a9 2026 Cobb County Government, All rights reserved.Privacy PolicySocial Media PolicySitemapPowered by Interpersonal Frequency",
+      "city": "Smyrna",
+      "state": "GA",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Bedford Park",
+      "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
+      "city": "Atlanta",
+      "state": "GA",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "Stanford Oaks",
+      "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
+      "city": "Tucker",
+      "state": "GA",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "The Azul Apartments",
+      "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
+      "city": "Dallas",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    },
+    {
+      "found": true,
+      "property_name": "CALDER SQUARE APARTMENTS",
+      "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
+      "city": "League City",
+      "state": "TX",
+      "phone": null,
+      "confidence_score": 0.95,
+      "source": "county_assessor",
+      "sources_tried": [
+        "county_assessor"
+      ]
+    }
+  ],
+  "not_found_list": [
+    {
+      "property_name": "Forsyth Row",
+      "city": "Savannah",
+      "state": "GA"
+    },
+    {
+      "property_name": "Hill District Flats",
+      "city": "Augusta",
+      "state": "GA"
+    },
+    {
+      "property_name": "Tybee Gateway",
+      "city": "Savannah",
+      "state": "GA"
+    },
+    {
+      "property_name": "Riverwalk Augusta",
+      "city": "Augusta",
+      "state": "GA"
+    },
+    {
+      "property_name": "Fountains Matthews",
+      "city": "",
+      "state": "TX"
+    },
+    {
+      "property_name": "Arzano",
+      "city": "",
+      "state": "TX"
+    },
+    {
+      "property_name": "2000 Penn",
+      "city": "",
+      "state": "TX"
+    },
+    {
+      "property_name": "Danker Village Apartments",
+      "city": "",
+      "state": "TX"
+    },
+    {
+      "property_name": "Ashton Parc",
+      "city": "",
+      "state": "FL"
+    },
+    {
+      "property_name": "Savannah Trellis",
+      "city": "Savannah",
+      "state": "GA"
+    },
+    {
+      "property_name": "Cobblestone at Eagle Harbor",
+      "city": "",
+      "state": "FL"
+    },
+    {
+      "property_name": "Butternut Ridge Apartments",
+      "city": "",
+      "state": "TX"
+    },
+    {
+      "property_name": "Country Glenn Apartments",
+      "city": "",
+      "state": "TX"
+    },
+    {
+      "property_name": "Flats at Dunlap",
+      "city": "",
+      "state": "KS"
+    },
+    {
+      "property_name": "Summerville Court",
+      "city": "Augusta",
+      "state": "GA"
+    },
+    {
+      "property_name": "Mill on Main",
+      "city": "Waxhaw",
+      "state": "NC"
+    },
+    {
+      "property_name": "The Flamingo",
+      "city": "",
+      "state": "TX"
+    },
+    {
+      "property_name": "Defeased",
+      "city": "(multiple)",
+      "state": "GA"
+    },
+    {
+      "property_name": "Austin Multifamily Portfolio",
+      "city": "(multiple)",
+      "state": "TX"
+    },
+    {
+      "property_name": "Portofino Cove",
+      "city": "Fort Myers",
+      "state": "FL"
+    },
+    {
+      "property_name": "Tampa Bay Heights",
+      "city": "Tampa",
+      "state": "FL"
+    },
+    {
+      "property_name": "Augusta Park Apartments",
+      "city": "Augusta",
+      "state": "GA"
+    },
+    {
+      "property_name": "Lafayette Garden Apartments",
+      "city": "Lafayette",
+      "state": "LA"
+    },
+    {
+      "property_name": "Amarillo Sunrise Apartments",
+      "city": "Amarillo",
+      "state": "TX"
+    },
+    {
+      "property_name": "Grand Prairie Industrial",
+      "city": "Grand Prairie",
+      "state": "TX"
+    },
+    {
+      "property_name": "Pharr Commerce District",
+      "city": "Pharr",
+      "state": "TX"
+    },
+    {
+      "property_name": "Pasadena Industrial Park",
+      "city": "Pasadena",
+      "state": "TX"
+    },
+    {
+      "property_name": "La Porte Harbor View",
+      "city": "La Porte",
+      "state": "TX"
+    },
+    {
+      "property_name": "Conroe East Park",
+      "city": "Conroe",
+      "state": "TX"
+    },
+    {
+      "property_name": "Beaumont Downtown",
+      "city": "Beaumont",
+      "state": "TX"
+    },
+    {
+      "property_name": "Marshall Historic District",
+      "city": "Marshall",
+      "state": "TX"
+    },
+    {
+      "property_name": "Athens Liberty",
+      "city": "Athens",
+      "state": "TX"
+    },
+    {
+      "property_name": "Corsicana Commercial",
+      "city": "Corsicana",
+      "state": "TX"
+    },
+    {
+      "property_name": "Wimberley Hill Country",
+      "city": "Wimberley",
+      "state": "TX"
+    },
+    {
+      "property_name": "Burnet Highland",
+      "city": "Burnet",
+      "state": "TX"
+    },
+    {
+      "property_name": "Peachtree Multifamily One",
+      "city": "Atlanta",
+      "state": "GA"
+    },
+    {
+      "property_name": "Greensboro Market Place",
+      "city": "Greensboro",
+      "state": "NC"
+    },
+    {
+      "property_name": "Mobile Bay Apartments",
+      "city": "Mobile",
+      "state": "AL"
+    },
+    {
+      "property_name": "Corpus Christi Bay View",
+      "city": "Corpus Christi",
+      "state": "TX"
+    },
+    {
+      "property_name": "Gainesville Campus Quarter",
+      "city": "Gainesville",
+      "state": "FL"
+    },
+    {
+      "property_name": "Montgomery Executive Park",
+      "city": "Montgomery",
+      "state": "AL"
+    },
+    {
+      "property_name": "Laredo International",
+      "city": "Laredo",
+      "state": "TX"
+    },
+    {
+      "property_name": "McAllen Gateway",
+      "city": "McAllen",
+      "state": "TX"
+    },
+    {
+      "property_name": "Angleton Industrial",
+      "city": "Angleton",
+      "state": "TX"
+    },
+    {
+      "property_name": "Seabrook Bay Side",
+      "city": "Seabrook",
+      "state": "TX"
+    },
+    {
+      "property_name": "Texarkana Twin States",
+      "city": "Texarkana",
+      "state": "TX"
+    },
+    {
+      "property_name": "San Marcos Central",
+      "city": "San Marcos",
+      "state": "TX"
+    },
+    {
+      "property_name": "Warehouse Lofts",
+      "city": "Tampa",
+      "state": "FL"
+    },
+    {
+      "property_name": "Great Oaks Apartments",
+      "city": "Lufkin",
+      "state": "TX"
+    },
+    {
+      "property_name": "Savannah Historic Residences",
+      "city": "Savannah",
+      "state": "GA"
+    },
+    {
+      "property_name": "Lewisville Lakeside",
+      "city": "Lewisville",
+      "state": "TX"
+    },
+    {
+      "property_name": "Conroe Westfield",
+      "city": "Conroe",
+      "state": "TX"
+    },
+    {
+      "property_name": "Monroe Park Plaza",
+      "city": "Monroe",
+      "state": "LA"
+    },
+    {
+      "property_name": "Odessa Basin Residences",
+      "city": "Odessa",
+      "state": "TX"
+    },
+    {
+      "property_name": "Wilton Walk Townhomes",
+      "city": "Wilton Manors",
+      "state": "FL"
+    },
+    {
+      "property_name": "Tulsa Downtown Living",
+      "city": "Tulsa",
+      "state": "TX"
+    },
+    {
+      "property_name": "Covington Riverfront",
+      "city": "Covington",
+      "state": "KY"
+    },
+    {
+      "property_name": "Tyler Rose Valley",
+      "city": "Tyler",
+      "state": "TX"
+    },
+    {
+      "property_name": "Mission Rio Valley",
+      "city": "Mission",
+      "state": "TX"
+    },
+    {
+      "property_name": "Clear Lake Park",
+      "city": "Clear Lake",
+      "state": "TX"
+    },
+    {
+      "property_name": "Jacksonville Trails",
+      "city": "Jacksonville",
+      "state": "TX"
+    },
+    {
+      "property_name": "Copperas Cove Military",
+      "city": "Copperas Cove",
+      "state": "TX"
+    },
+    {
+      "property_name": "Georgetown Historic",
+      "city": "Georgetown",
+      "state": "TX"
+    },
+    {
+      "property_name": "Miami Beach Residences",
+      "city": "Miami",
+      "state": "FL"
+    },
+    {
+      "property_name": "Cane Island Loop",
+      "city": "Kissimmee",
+      "state": "FL"
+    },
+    {
+      "property_name": "Palm Beach Gardens",
+      "city": "West Palm Beach",
+      "state": "FL"
+    },
+    {
+      "property_name": "Defeased",
+      "city": "(multiple)",
+      "state": "TX"
+    },
+    {
+      "property_name": "BRYAN WOODS APARTMENTS",
+      "city": "Garner",
+      "state": "NC"
+    },
+    {
+      "property_name": "Houston Towers Residential",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "Huntsville State College",
+      "city": "Huntsville",
+      "state": "TX"
+    },
+    {
+      "property_name": "Temple Heights",
+      "city": "Temple",
+      "state": "TX"
+    },
+    {
+      "property_name": "Riverside Park Apartments",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "Lakeside Commons",
+      "city": "Dallas",
+      "state": "TX"
+    },
+    {
+      "property_name": "The Retreat Apartments",
+      "city": "Greensboro",
+      "state": "NC"
+    },
+    {
+      "property_name": "Birmingham Valley View",
+      "city": "Birmingham",
+      "state": "AL"
+    },
+    {
+      "property_name": "Macon Central Park",
+      "city": "Macon",
+      "state": "GA"
+    },
+    {
+      "property_name": "Lubbock Tech Campus",
+      "city": "Lubbock",
+      "state": "TX"
+    },
+    {
+      "property_name": "Cleburne Historic Apartments",
+      "city": "Cleburne",
+      "state": "TX"
+    },
+    {
+      "property_name": "Lumberton Pines",
+      "city": "Lumberton",
+      "state": "TX"
+    },
+    {
+      "property_name": "Buda Parkside",
+      "city": "Buda",
+      "state": "TX"
+    },
+    {
+      "property_name": "Boerne Hill Country",
+      "city": "Boerne",
+      "state": "TX"
+    },
+    {
+      "property_name": "LAS BRISAS APARTMENTS",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "SUMMERCREST APARTMENTS",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "Defeased",
+      "city": "Sherman",
+      "state": "TX"
+    },
+    {
+      "property_name": "Lexington Park Commons",
+      "city": "Lexington",
+      "state": "KY"
+    },
+    {
+      "property_name": "Overland Park Residences",
+      "city": "Overland Park",
+      "state": "KS"
+    },
+    {
+      "property_name": "RAGHU APARTMENTS",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "Baton Rouge South Park",
+      "city": "Baton Rouge",
+      "state": "LA"
+    },
+    {
+      "property_name": "THE ROCHESTER APARTMENTS",
+      "city": "Arlington",
+      "state": "TX"
+    },
+    {
+      "property_name": "CHARTWELL COURT",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "BILTMORE APARTMENTS",
+      "city": "Arlington",
+      "state": "TX"
+    },
+    {
+      "property_name": "Spurlock Apartments",
+      "city": "Nederland",
+      "state": "TX"
+    },
+    {
+      "property_name": "San Antonio Mission District",
+      "city": "San Antonio",
+      "state": "TX"
+    },
+    {
+      "property_name": "Longview Commerce Center",
+      "city": "Longview",
+      "state": "TX"
+    },
+    {
+      "property_name": "Phoenix Desert Springs",
+      "city": "Phoenix",
+      "state": "TX"
+    },
+    {
+      "property_name": "Waxahachie Cotton Fields",
+      "city": "Waxahachie",
+      "state": "TX"
+    },
+    {
+      "property_name": "Edinburg Central Park",
+      "city": "Edinburg",
+      "state": "TX"
+    },
+    {
+      "property_name": "Baytown Refinery District",
+      "city": "Baytown",
+      "state": "TX"
+    },
+    {
+      "property_name": "Stafford Development",
+      "city": "Stafford",
+      "state": "TX"
+    },
+    {
+      "property_name": "Magnolia Springs",
+      "city": "Magnolia",
+      "state": "TX"
+    },
+    {
+      "property_name": "Longview Commerce",
+      "city": "Longview",
+      "state": "TX"
+    },
+    {
+      "property_name": "Canton Downtown",
+      "city": "Canton",
+      "state": "TX"
+    },
+    {
+      "property_name": "Pflugerville Corporate",
+      "city": "Pflugerville",
+      "state": "TX"
+    },
+    {
+      "property_name": "Southern Garden",
+      "city": "Valparaiso",
+      "state": "FL"
+    },
+    {
+      "property_name": "Kingsville Pointe Apartments",
+      "city": "Kingsville",
+      "state": "TX"
+    },
+    {
+      "property_name": "Sunrise Apartments",
+      "city": "Montgomery",
+      "state": "AL"
+    },
+    {
+      "property_name": "Cedar Creek Apartments",
+      "city": "Montgomery",
+      "state": "AL"
+    },
+    {
+      "property_name": "TZA Multifamily Portfolio I",
+      "city": "(multiple)",
+      "state": "FL"
+    },
+    {
+      "property_name": "Orlando Gateway Apartments",
+      "city": "Orlando",
+      "state": "FL"
+    },
+    {
+      "property_name": "Pensacola Historic District",
+      "city": "Pensacola",
+      "state": "FL"
+    },
+    {
+      "property_name": "Huntsville Tech Park",
+      "city": "Huntsville",
+      "state": "AL"
+    },
+    {
+      "property_name": "Denton University Park",
+      "city": "Denton",
+      "state": "TX"
+    },
+    {
+      "property_name": "Peach Tree Lofts",
+      "city": "Atlanta",
+      "state": "GA"
+    },
+    {
+      "property_name": "2500 BARNSDALE WAY",
+      "city": "Albany",
+      "state": "GA"
+    },
+    {
+      "property_name": "OAK COURT APARTMENTS",
+      "city": "Wilmington",
+      "state": "NC"
+    },
+    {
+      "property_name": "Hilltop Village Apartments",
+      "city": "Sherman",
+      "state": "TX"
+    },
+    {
+      "property_name": "Danube Apartments",
+      "city": "Orlando",
+      "state": "FL"
+    },
+    {
+      "property_name": "Louisville Riverfront",
+      "city": "Louisville",
+      "state": "KY"
+    },
+    {
+      "property_name": "Owensboro Central",
+      "city": "Owensboro",
+      "state": "KY"
+    },
+    {
+      "property_name": "Silsbee Timber Town",
+      "city": "Silsbee",
+      "state": "TX"
+    },
+    {
+      "property_name": "Kerrville Heritage",
+      "city": "Kerrville",
+      "state": "TX"
+    },
+    {
+      "property_name": "Park Lane Apartments",
+      "city": "Arlington",
+      "state": "TX"
+    },
+    {
+      "property_name": "PARK LANE APARTMENTS",
+      "city": "Arlington",
+      "state": "TX"
+    },
+    {
+      "property_name": "TLR Portfolio",
+      "city": "(multiple)",
+      "state": "FL"
+    },
+    {
+      "property_name": "ISLAND OAKS APARTMENTS",
+      "city": "Orange Beach",
+      "state": "AL"
+    },
+    {
+      "property_name": "Eagle Multifamily Portfolio",
+      "city": "(multiple)",
+      "state": "FL"
+    },
+    {
+      "property_name": "Jacksonville Waterfront",
+      "city": "Jacksonville",
+      "state": "FL"
+    },
+    {
+      "property_name": "Topeka Heights Residential",
+      "city": "Topeka",
+      "state": "KS"
+    },
+    {
+      "property_name": "McKinney Heights",
+      "city": "McKinney",
+      "state": "TX"
+    },
+    {
+      "property_name": "Pearland Park Commons",
+      "city": "Pearland",
+      "state": "TX"
+    },
+    {
+      "property_name": "The Woodlands South Gate",
+      "city": "The Woodlands",
+      "state": "TX"
+    },
+    {
+      "property_name": "Waco Central Station",
+      "city": "Waco",
+      "state": "TX"
+    },
+    {
+      "property_name": "MORTON PLACE APARTMENTS",
+      "city": "Amarillo",
+      "state": "TX"
+    },
+    {
+      "property_name": "Olathe Midtown",
+      "city": "Olathe",
+      "state": "KS"
+    },
+    {
+      "property_name": "Hawthorne Place Townhomes",
+      "city": "Lawrence",
+      "state": "KS"
+    },
+    {
+      "property_name": "Sunset Heights",
+      "city": "Austin",
+      "state": "TX"
+    },
+    {
+      "property_name": "Southern Woods",
+      "city": "Tucker",
+      "state": "GA"
+    },
+    {
+      "property_name": "Circle Apartments",
+      "city": "Denison",
+      "state": "TX"
+    },
+    {
+      "property_name": "Jacksonvile Beach Towers",
+      "city": "Jacksonville",
+      "state": "FL"
+    },
+    {
+      "property_name": "Tuscaloosa College Park",
+      "city": "Tuscaloosa",
+      "state": "AL"
+    },
+    {
+      "property_name": "Frisco Northwest",
+      "city": "Frisco",
+      "state": "TX"
+    },
+    {
+      "property_name": "Sugar Land Technology",
+      "city": "Sugar Land",
+      "state": "TX"
+    },
+    {
+      "property_name": "Round Rock Tech Corridor",
+      "city": "Round Rock",
+      "state": "TX"
+    },
+    {
+      "property_name": "Windbury Apartments",
+      "city": "San Antonio",
+      "state": "TX"
+    },
+    {
+      "property_name": "Austin Central Living",
+      "city": "Austin",
+      "state": "TX"
+    },
+    {
+      "property_name": "MIDWAY STATION",
+      "city": "Midland",
+      "state": "TX"
+    },
+    {
+      "property_name": "Landings Edge",
+      "city": "Savannah",
+      "state": "GA"
+    },
+    {
+      "property_name": "Kansas City Metropolitan",
+      "city": "Kansas City",
+      "state": "KS"
+    },
+    {
+      "property_name": "Plano Tech Quarter",
+      "city": "Plano",
+      "state": "TX"
+    },
+    {
+      "property_name": "Woodlands North Gate",
+      "city": "Spring",
+      "state": "TX"
+    },
+    {
+      "property_name": "Missouri City Central",
+      "city": "Missouri City",
+      "state": "TX"
+    },
+    {
+      "property_name": "Cedar Park Westlake",
+      "city": "Cedar Park",
+      "state": "TX"
+    },
+    {
+      "property_name": "Fayetteville Military District",
+      "city": "Fayetteville",
+      "state": "NC"
+    },
+    {
+      "property_name": "Kirbyville Pine Forest",
+      "city": "Kirbyville",
+      "state": "TX"
+    },
+    {
+      "property_name": "Fredericksburg Mountain",
+      "city": "Fredericksburg",
+      "state": "TX"
+    },
+    {
+      "property_name": "Westlake At Morganton Apartments",
+      "city": "Fayetteville",
+      "state": "NC"
+    },
+    {
+      "property_name": "Lynn Haven Cove",
+      "city": "Lynn Haven",
+      "state": "FL"
+    },
+    {
+      "property_name": "Raleigh Tech Square",
+      "city": "Raleigh",
+      "state": "NC"
+    },
+    {
+      "property_name": "Beach Bluff Apartments",
+      "city": "Jacksonville",
+      "state": "FL"
+    },
+    {
+      "property_name": "BEACH BLUFF APARTMENTS",
+      "city": "Jacksonville",
+      "state": "FL"
+    },
+    {
+      "property_name": "Fort Worth Midtown",
+      "city": "Fort Worth",
+      "state": "TX"
+    },
+    {
+      "property_name": "Wichita Central Living",
+      "city": "Wichita",
+      "state": "KS"
+    },
+    {
+      "property_name": "Arlington Marketplace Apartments",
+      "city": "Arlington",
+      "state": "TX"
+    },
+    {
+      "property_name": "Katy Central Living",
+      "city": "Katy",
+      "state": "TX"
+    },
+    {
+      "property_name": "Killeen Fort Hood",
+      "city": "Killeen",
+      "state": "TX"
+    },
+    {
+      "property_name": "Backlot Apartments",
+      "city": "Kissimmee",
+      "state": "FL"
+    },
+    {
+      "property_name": "South Gate Apartments",
+      "city": "Sherman",
+      "state": "TX"
+    },
+    {
+      "property_name": "Clubside Apartments",
+      "city": "Venice",
+      "state": "FL"
+    },
+    {
+      "property_name": "CLUBSIDE APARTMENTS",
+      "city": "Venice",
+      "state": "FL"
+    },
+    {
+      "property_name": "ADDISON RIDGE APARTMENTS - PHASE II",
+      "city": "Fayetteville",
+      "state": "NC"
+    },
+    {
+      "property_name": "SkyLoft Austin",
+      "city": "Austin",
+      "state": "TX"
+    },
+    {
+      "property_name": "MARIPOSA TOWNHOMES",
+      "city": "Topeka",
+      "state": "KS"
+    },
+    {
+      "property_name": "Woodland Trace Apartments",
+      "city": "Conyers",
+      "state": "GA"
+    },
+    {
+      "property_name": "Wilmington Downtown Living",
+      "city": "Wilmington",
+      "state": "NC"
+    },
+    {
+      "property_name": "The Club at Crystal Lake",
+      "city": "Deerfield Beach",
+      "state": "FL"
+    },
+    {
+      "property_name": "Legacy Commons",
+      "city": "Tucker",
+      "state": "GA"
+    },
+    {
+      "property_name": "THE CLIFFS AT WATERFORD",
+      "city": "Spring Lake",
+      "state": "NC"
+    },
+    {
+      "property_name": "SHADOW LAKE APARTMENTS",
+      "city": "Doraville",
+      "state": "GA"
+    },
+    {
+      "property_name": "MEADOWS PLACE SENIORS VILLAGE",
+      "city": "Stafford",
+      "state": "TX"
+    },
+    {
+      "property_name": "Westpark Club",
+      "city": "Athens",
+      "state": "GA"
+    },
+    {
+      "property_name": "The Courtyards at San Jose",
+      "city": "Jacksonville",
+      "state": "FL"
+    },
+    {
+      "property_name": "Maple Ridge Townhomes",
+      "city": "Midlothian",
+      "state": "TX"
+    },
+    {
+      "property_name": "Heights At Mcarthur Park",
+      "city": "Fayetteville",
+      "state": "NC"
+    },
+    {
+      "property_name": "Patriot Crossing Apartments",
+      "city": "Louisville",
+      "state": "KY"
+    },
+    {
+      "property_name": "CURRY JUNCTION",
+      "city": "Abilene",
+      "state": "TX"
+    },
+    {
+      "property_name": "The Avenue",
+      "city": "Davie",
+      "state": "FL"
+    },
+    {
+      "property_name": "Studio 9Forty Apartments",
+      "city": "Atlanta",
+      "state": "GA"
+    },
+    {
+      "property_name": "HAWKS LANDING APARTMENTS",
+      "city": "Hickory",
+      "state": "NC"
+    },
+    {
+      "property_name": "EAGLE POINT VILLAGE APARTMENTS",
+      "city": "Fayetteville",
+      "state": "NC"
+    },
+    {
+      "property_name": "Osprey Cove South",
+      "city": "Jacksonville",
+      "state": "NC"
+    },
+    {
+      "property_name": "ROYAL RIDGE APARTMENTS",
+      "city": "Kansas City",
+      "state": "KS"
+    },
+    {
+      "property_name": "QUAIL MEADOWS",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "Weston at Copperfield",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "GRAPEVINE STATION",
+      "city": "Grapevine",
+      "state": "TX"
+    },
+    {
+      "property_name": "WINDSOR PARK APARTMENTS",
+      "city": "Victoria",
+      "state": "TX"
+    },
+    {
+      "property_name": "University Downs Apartments",
+      "city": "Tuscaloosa",
+      "state": "AL"
+    },
+    {
+      "property_name": "Sidney Baker Apartments",
+      "city": "Kerrville",
+      "state": "TX"
+    },
+    {
+      "property_name": "Columbia Arms and Aspen-Alpine Apartments",
+      "city": "Lake City",
+      "state": "FL"
+    },
+    {
+      "property_name": "Valleybrook Apartments",
+      "city": "Newnan",
+      "state": "GA"
+    },
+    {
+      "property_name": "Marsh Landing Apartments",
+      "city": "Brunswick",
+      "state": "GA"
+    },
+    {
+      "property_name": "Bella Vista Village",
+      "city": "Gainesville",
+      "state": "FL"
+    },
+    {
+      "property_name": "Mountain Vista Apartments",
+      "city": "El Paso",
+      "state": "TX"
+    },
+    {
+      "property_name": "Fox Creek Apartments",
+      "city": "Shreveport",
+      "state": "LA"
+    },
+    {
+      "property_name": "Edison Grand",
+      "city": "Fort Myers",
+      "state": "FL"
+    },
+    {
+      "property_name": "Magnolia Gardens",
+      "city": "Baton Rouge",
+      "state": "LA"
+    },
+    {
+      "property_name": "Perimeter Bend (control)",
+      "city": "Augusta",
+      "state": "GA"
+    },
+    {
+      "property_name": "Innovo at Sunrise",
+      "city": "Sunrise",
+      "state": "FL"
+    },
+    {
+      "property_name": "Palms at Sunset Lakes",
+      "city": "Zachary",
+      "state": "LA"
+    },
+    {
+      "property_name": "Cypress Lake",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "Innovo at Waters",
+      "city": "Tampa",
+      "state": "FL"
+    },
+    {
+      "property_name": "Tifton Student Housing",
+      "city": "Tifton",
+      "state": "GA"
+    },
+    {
+      "property_name": "Magnolia Cove Apartments",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "Deer Springs Apartments",
+      "city": "Humble",
+      "state": "TX"
+    },
+    {
+      "property_name": "Whitney Place Townhomes",
+      "city": "Clearwater",
+      "state": "FL"
+    },
+    {
+      "property_name": "Citizens Square Villas",
+      "city": "Dallas",
+      "state": "GA"
+    },
+    {
+      "property_name": "Woodcreek Apartments",
+      "city": "Huntsville",
+      "state": "TX"
+    },
+    {
+      "property_name": "Cornerstone Apartments",
+      "city": "Huntsville",
+      "state": "TX"
+    },
+    {
+      "property_name": "Magnolia Flats Apartments",
+      "city": "Balcones Heights",
+      "state": "TX"
+    },
+    {
+      "property_name": "COTTAGE COVE APARTMENTS",
+      "city": "Miami",
+      "state": "FL"
+    },
+    {
+      "property_name": "THE BLUFFS",
+      "city": "Junction City",
+      "state": "KS"
+    },
+    {
+      "property_name": "CREEKSIDE AT KENNEDY MILL",
+      "city": "High Point",
+      "state": "NC"
+    },
+    {
+      "property_name": "COLONY MANOR &amp; GATEHOUSE APARTMENTS",
+      "city": "Houston",
+      "state": "TX"
+    },
+    {
+      "property_name": "PARKWYN TOWNHOMES",
+      "city": "North Richland Hills",
+      "state": "TX"
+    },
+    {
+      "property_name": "Hamdan Multifamily Portfolio",
+      "city": "(multiple)",
+      "state": "LA"
+    },
+    {
+      "property_name": "Pebble Walk Apartments",
+      "city": "Houston",
+      "state": "TX"
+    }
+  ]
+}

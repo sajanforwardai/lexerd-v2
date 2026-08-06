@@ -18,47 +18,6 @@ from maturity_radar.watchlist import build_watchlist
 
 st.set_page_config(page_title="Maturity Radar", page_icon="📡", layout="wide")
 
-# Add simulation link
-st.markdown("""
-<style>
-.simulation-banner {
-    background: linear-gradient(135deg, #1a202c, #2d3748);
-    border: 1px solid #d4af37;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-.simulation-banner h3 {
-    color: #d4af37;
-    margin: 0 0 8px 0;
-}
-.simulation-banner p {
-    color: #cbd5e0;
-    margin: 0 0 12px 0;
-    font-size: 14px;
-}
-.simulation-btn {
-    display: inline-block;
-    background: #d4af37;
-    color: #0f1419;
-    padding: 12px 24px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
-}
-.simulation-btn:hover {
-    background: #e8c547;
-}
-</style>
-<div class="simulation-banner">
-    <h3>🏦 Goldman Sachs TMT Analyst Simulation</h3>
-    <p>Experience your first day as a first-year analyst in investment banking</p>
-    <a href="/gs_simulation.html" class="simulation-btn" target="_blank">ENTER SIMULATION →</a>
-</div>
-""", unsafe_allow_html=True)
-
 
 def esc(x):
     """Normalize and HTML-escape any value before it goes into the page markup.

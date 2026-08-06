@@ -124,8 +124,6 @@ def verify_dashboard_properties():
             print(f"  → {cached.address}")
             if cached.phone:
                 print(f"  📞 {cached.phone}")
-            if cached.website:
-                print(f"  🌐 {cached.website}")
             print()
             count += 1
             if count >= 10:

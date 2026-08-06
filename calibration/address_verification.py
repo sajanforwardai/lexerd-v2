@@ -23,7 +23,6 @@ class VerifiedAddress:
     place_id: str
     property_name: str
     phone: Optional[str] = None
-    website: Optional[str] = None
     confidence_score: float = 0.0
     source: str = "Google Maps"
     verified_at: str = ""
@@ -141,7 +140,7 @@ class GoogleMapsAddressVerifier:
             url = f"{self.base_url}/place/details/json"
             params = {
                 "place_id": place_id,
-                "fields": "formatted_address,name,geometry,formatted_phone_number,website,url",
+                "fields": "formatted_address,name,geometry,formatted_phone_number",
                 "key": self.api_key,
             }
             response = requests.get(url, params=params, timeout=5)
@@ -232,7 +231,6 @@ class GoogleMapsAddressVerifier:
         lat = location.get("lat", 0.0)
         lon = location.get("lng", 0.0)
         phone = details.get("formatted_phone_number")
-        website = details.get("website")
         place_name = details.get("name", property_name)
 
         # Verify it's in the right market
@@ -242,7 +240,7 @@ class GoogleMapsAddressVerifier:
         # Calculate confidence
         confidence = self._calculate_confidence(property_name, place_name)
 
-        # Create result
+        # Create result (website field removed - only official property sites should be added)
         result = VerifiedAddress(
             address=address,
             lat=lat,
@@ -250,7 +248,6 @@ class GoogleMapsAddressVerifier:
             place_id=place_id,
             property_name=place_name,
             phone=phone,
-            website=website,
             confidence_score=confidence,
             verified_at=datetime.now().isoformat(),
         )

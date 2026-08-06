@@ -405,8 +405,6 @@ with tab_watch:
                             st.markdown(f"**Address:** {esc(verified.address)}")
                             if verified.phone:
                                 st.markdown(f"**Phone:** {esc(verified.phone)}")
-                            if verified.website:
-                                st.markdown(f"**Website:** [Visit]({verified.website})")
                             st.markdown(f"**Location:** [{verified.lat}, {verified.lon}](https://maps.google.com/?q={verified.lat},{verified.lon})")
                         else:
                             st.warning("Address not found on Google Maps. Verify manually.")

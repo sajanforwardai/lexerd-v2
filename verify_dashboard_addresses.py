@@ -55,11 +55,18 @@ def verify_dashboard_properties():
     verified = 0
     failed = 0
     already_cached = 0
+    skipped = 0
 
     for i, loan in enumerate(unique_props, 1):
         prop_name = loan.property_name
         city = loan.city
         state = loan.state
+
+        # Skip if missing city or state
+        if not city or not state or city == "(multiple)" or not state.strip():
+            skipped += 1
+            print(f"[{i:3d}/{len(unique_props)}] SKIP | {prop_name:40s} | Missing market data")
+            continue
 
         # Check if already cached
         cache_key = f"{prop_name}|{city}|{state}".lower()
@@ -89,11 +96,14 @@ def verify_dashboard_properties():
     # Final summary
     print("\n" + "=" * 60)
     print("📈 VERIFICATION COMPLETE\n")
-    print(f"Total properties checked:  {len(unique_props)}")
+    checkable = len(unique_props) - skipped
+    print(f"Total properties found:    {len(unique_props)}")
+    print(f"  ⏭️  Skipped (no market):    {skipped}")
     print(f"  ✓ Newly verified:        {verified}")
     print(f"  ✓ Already cached:        {already_cached}")
     print(f"  ✗ Not found/failed:      {failed}")
-    print(f"  Coverage:                {(verified + already_cached) / len(unique_props) * 100:.1f}%")
+    if checkable > 0:
+        print(f"  Coverage:                {(verified + already_cached) / checkable * 100:.1f}%")
 
     # Cost estimate
     api_calls = verified

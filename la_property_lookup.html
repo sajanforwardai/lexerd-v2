@@ -3,224 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LA Property Address Lookup Tool</title>
+    <title>LA Property Address Lookup</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        h1 { color: #333; margin-bottom: 10px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 8px; font-size: 28px; }
         .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
-        .stats { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 20px; }
-        .stat { flex: 1; }
-        .stat-value { font-size: 24px; font-weight: bold; color: #2563eb; }
-        .stat-label { color: #666; font-size: 12px; margin-top: 5px; }
+        .instruction-box { background: #eff6ff; border-left: 4px solid #2563eb; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+        .instruction-box h3 { color: #2563eb; margin-bottom: 10px; font-size: 14px; }
+        .instruction-box p { color: #666; font-size: 13px; line-height: 1.6; margin-bottom: 8px; }
         table { width: 100%; background: white; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         thead { background: #2563eb; color: white; }
-        th { padding: 12px; text-align: left; font-weight: 600; }
-        td { padding: 12px; border-bottom: 1px solid #eee; }
+        th { padding: 12px; text-align: left; font-weight: 600; font-size: 13px; }
+        td { padding: 12px; border-bottom: 1px solid #eee; font-size: 13px; }
         tr:hover { background: #f9fafb; }
         .property-name { font-weight: 500; color: #333; }
-        .city { color: #666; font-size: 13px; }
-        .links { display: flex; gap: 8px; flex-wrap: wrap; }
-        a { display: inline-block; padding: 6px 12px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; transition: background 0.2s; }
-        a:hover { background: #1d4ed8; }
-        a.google { background: #ea4335; }
-        a.google:hover { background: #c5221f; }
-        a.apartments { background: #f4a460; }
-        a.apartments:hover { background: #e89350; }
-        a.zillow { background: #0074e4; }
-        a.zillow:hover { background: #0059b8; }
-        a.assessor { background: #059669; }
-        a.assessor:hover { background: #047857; }
-        .instructions { background: #eff6ff; border-left: 4px solid #2563eb; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
-        .instructions h3 { color: #2563eb; margin-bottom: 10px; }
-        .instructions ol { margin-left: 20px; color: #666; font-size: 14px; }
-        .instructions li { margin-bottom: 8px; }
-        .status { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
-        .status.missing { background: #fee2e2; color: #991b1b; }
+        .city-info { color: #666; font-size: 12px; }
+        .status { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; background: #fee2e2; color: #991b1b; }
+        .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 13px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>LA Property Address Lookup Tool</h1>
-        <p class="subtitle">Click links to verify property addresses in real-time</p>
+        <h1>🔍 LA Property Address Lookup</h1>
+        <p class="subtitle">8 properties needing address verification</p>
 
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-value">8</div>
-                <div class="stat-label">Properties to Verify</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">8</div>
-                <div class="stat-label">Needing Addresses</div>
-            </div>
-        </div>
-
-        <div class="instructions">
-            <h3>How to use this tool</h3>
-            <ol>
-                <li>Find your property in the table below</li>
-                <li>Click on "Google Maps", "Apartments.com", or "County Assessor" to search</li>
-                <li>Copy the verified address back into the CSV file (la_property_lookup.csv)</li>
-                <li>Run: <code>python scripts/update_la_addresses_from_csv.py la_property_lookup.csv</code></li>
-            </ol>
+        <div class="instruction-box">
+            <h3>How to use:</h3>
+            <p><strong>1.</strong> Find each property below</p>
+            <p><strong>2.</strong> Search online: "[Property Name] [City], LA" in Google or Apartments.com</p>
+            <p><strong>3.</strong> Copy the street address (e.g., "123 Main St, City, LA 12345")</p>
+            <p><strong>4.</strong> Fill in the CSV file: la_property_lookup.csv</p>
+            <p><strong>5.</strong> Run: python scripts/update_la_addresses_from_csv.py la_property_lookup.csv</p>
         </div>
 
         <table>
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Property Name</th>
                     <th>City / County</th>
-                    <th>Search Links</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>
-                        <div class="property-name">Baton Rouge South Park</div>
-                        <div class="city">Baton Rouge</div>
-                    </td>
-                    <td>
-                        <div class="city">East Baton Rouge County</div>
-                        <span class="status missing">Address Missing</span>
-                    </td>
-                    <td>
-                        <div class="links">
-                            <a href="https://www.google.com/maps/search/Baton+Rouge+South+Park+Baton+Rouge+LA" target="_blank" class="google">🔍 Google Maps</a>
-                            <a href="https://www.apartments.com/search/?q=Baton+Rouge+South+Park+Baton+Rouge+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
-                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Baton+Rouge+South+Park+Baton+Rouge+LA%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
-                            <a href="https://google.com/search?q=East Baton Rouge+county+assessor+LA+property+search" target="_blank" class="assessor">📋 Assessor</a>
-                        </div>
-                    </td>
+                    <td>1</td>
+                    <td class="property-name">Baton Rouge South Park</td>
+                    <td class="city-info">Baton Rouge, East Baton Rouge County</td>
+                    <td><span class="status">Needs Address</span></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="property-name">Fox Creek Apartments</div>
-                        <div class="city">Shreveport</div>
-                    </td>
-                    <td>
-                        <div class="city">Caddo Parish County</div>
-                        <span class="status missing">Address Missing</span>
-                    </td>
-                    <td>
-                        <div class="links">
-                            <a href="https://www.google.com/maps/search/Fox+Creek+Apartments+Shreveport+LA" target="_blank" class="google">🔍 Google Maps</a>
-                            <a href="https://www.apartments.com/search/?q=Fox+Creek+Apartments+Shreveport+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
-                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Fox+Creek+Apartments+Shreveport+LA%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
-                            <a href="https://google.com/search?q=Caddo Parish+county+assessor+LA+property+search" target="_blank" class="assessor">📋 Assessor</a>
-                        </div>
-                    </td>
+                    <td>2</td>
+                    <td class="property-name">Fox Creek Apartments</td>
+                    <td class="city-info">Shreveport, Caddo Parish County</td>
+                    <td><span class="status">Needs Address</span></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="property-name">Lafayette Garden Apartments</div>
-                        <div class="city">Lafayette</div>
-                    </td>
-                    <td>
-                        <div class="city">Lafayette County</div>
-                        <span class="status missing">Address Missing</span>
-                    </td>
-                    <td>
-                        <div class="links">
-                            <a href="https://www.google.com/maps/search/Lafayette+Garden+Apartments+Lafayette+LA" target="_blank" class="google">🔍 Google Maps</a>
-                            <a href="https://www.apartments.com/search/?q=Lafayette+Garden+Apartments+Lafayette+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
-                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Lafayette+Garden+Apartments+Lafayette+LA%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
-                            <a href="https://google.com/search?q=Lafayette+county+assessor+LA+property+search" target="_blank" class="assessor">📋 Assessor</a>
-                        </div>
-                    </td>
+                    <td>3</td>
+                    <td class="property-name">Lafayette Garden Apartments</td>
+                    <td class="city-info">Lafayette, Lafayette County</td>
+                    <td><span class="status">Needs Address</span></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="property-name">Magnolia Gardens</div>
-                        <div class="city">Baton Rouge</div>
-                    </td>
-                    <td>
-                        <div class="city">E. Baton Rouge Parish County</div>
-                        <span class="status missing">Address Missing</span>
-                    </td>
-                    <td>
-                        <div class="links">
-                            <a href="https://www.google.com/maps/search/Magnolia+Gardens+Baton+Rouge+LA" target="_blank" class="google">🔍 Google Maps</a>
-                            <a href="https://www.apartments.com/search/?q=Magnolia+Gardens+Baton+Rouge+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
-                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Magnolia+Gardens+Baton+Rouge+LA%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
-                            <a href="https://google.com/search?q=E. Baton Rouge Parish+county+assessor+LA+property+search" target="_blank" class="assessor">📋 Assessor</a>
-                        </div>
-                    </td>
+                    <td>4</td>
+                    <td class="property-name">Magnolia Gardens</td>
+                    <td class="city-info">Baton Rouge, E. Baton Rouge Parish County</td>
+                    <td><span class="status">Needs Address</span></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="property-name">Monroe Park Plaza</div>
-                        <div class="city">Monroe</div>
-                    </td>
-                    <td>
-                        <div class="city">Ouachita County</div>
-                        <span class="status missing">Address Missing</span>
-                    </td>
-                    <td>
-                        <div class="links">
-                            <a href="https://www.google.com/maps/search/Monroe+Park+Plaza+Monroe+LA" target="_blank" class="google">🔍 Google Maps</a>
-                            <a href="https://www.apartments.com/search/?q=Monroe+Park+Plaza+Monroe+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
-                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Monroe+Park+Plaza+Monroe+LA%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
-                            <a href="https://google.com/search?q=Ouachita+county+assessor+LA+property+search" target="_blank" class="assessor">📋 Assessor</a>
-                        </div>
-                    </td>
+                    <td>5</td>
+                    <td class="property-name">Monroe Park Plaza</td>
+                    <td class="city-info">Monroe, Ouachita County</td>
+                    <td><span class="status">Needs Address</span></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="property-name">New Orleans Garden District</div>
-                        <div class="city">New Orleans</div>
-                    </td>
-                    <td>
-                        <div class="city">Orleans County</div>
-                        <span class="status missing">Address Missing</span>
-                    </td>
-                    <td>
-                        <div class="links">
-                            <a href="https://www.google.com/maps/search/New+Orleans+Garden+District+New+Orleans+LA" target="_blank" class="google">🔍 Google Maps</a>
-                            <a href="https://www.apartments.com/search/?q=New+Orleans+Garden+District+New+Orleans+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
-                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22New+Orleans+Garden+District+New+Orleans+LA%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
-                            <a href="https://google.com/search?q=Orleans+county+assessor+LA+property+search" target="_blank" class="assessor">📋 Assessor</a>
-                        </div>
-                    </td>
+                    <td>6</td>
+                    <td class="property-name">New Orleans Garden District</td>
+                    <td class="city-info">New Orleans, Orleans County</td>
+                    <td><span class="status">Needs Address</span></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="property-name">Palms at Sunset Lakes</div>
-                        <div class="city">Zachary</div>
-                    </td>
-                    <td>
-                        <div class="city">East Baton Rouge County</div>
-                        <span class="status missing">Address Missing</span>
-                    </td>
-                    <td>
-                        <div class="links">
-                            <a href="https://www.google.com/maps/search/Palms+at+Sunset+Lakes+Zachary+LA" target="_blank" class="google">🔍 Google Maps</a>
-                            <a href="https://www.apartments.com/search/?q=Palms+at+Sunset+Lakes+Zachary+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
-                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Palms+at+Sunset+Lakes+Zachary+LA%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
-                            <a href="https://google.com/search?q=East Baton Rouge+county+assessor+LA+property+search" target="_blank" class="assessor">📋 Assessor</a>
-                        </div>
-                    </td>
+                    <td>7</td>
+                    <td class="property-name">Palms at Sunset Lakes</td>
+                    <td class="city-info">Zachary, East Baton Rouge County</td>
+                    <td><span class="status">Needs Address</span></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="property-name">Shreveport Central Apartments</div>
-                        <div class="city">Shreveport</div>
-                    </td>
-                    <td>
-                        <div class="city">Caddo County</div>
-                        <span class="status missing">Address Missing</span>
-                    </td>
-                    <td>
-                        <div class="links">
-                            <a href="https://www.google.com/maps/search/Shreveport+Central+Apartments+Shreveport+LA" target="_blank" class="google">🔍 Google Maps</a>
-                            <a href="https://www.apartments.com/search/?q=Shreveport+Central+Apartments+Shreveport+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
-                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Shreveport+Central+Apartments+Shreveport+LA%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
-                            <a href="https://google.com/search?q=Caddo+county+assessor+LA+property+search" target="_blank" class="assessor">📋 Assessor</a>
-                        </div>
-                    </td>
+                    <td>8</td>
+                    <td class="property-name">Shreveport Central Apartments</td>
+                    <td class="city-info">Shreveport, Caddo County</td>
+                    <td><span class="status">Needs Address</span></td>
                 </tr>
             </tbody>
         </table>
+
+        <div class="footer">
+            <p><strong>💡 Pro tip:</strong> Use Google Maps or Apartments.com. Most results appear in top 3-5 search results. Estimated 2-3 minutes per property.</p>
+        </div>
     </div>
 </body>
 </html>

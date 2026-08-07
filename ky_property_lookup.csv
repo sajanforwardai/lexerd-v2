@@ -1,6 +1,6 @@
-Property Name,City,County,State,Google Maps Link,Apartments.com Link,Zillow Link,County Assessor Link,Address (to be filled),Confidence,Source,Notes
-Patriot Crossing Apartments,Louisville,Jefferson,KY,https://www.google.com/maps/search/Patriot+Crossing+Apartments+Louisville+KY,https://www.apartments.com/search/?q=Patriot+Crossing+Apartments+Louisville+KY,https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Patriot+Crossing+Apartments+Louisville+KY%22%7D,https://google.com/search?q=Jefferson+county+assessor+KY,,1.0,manual_verification,
-Louisville Riverfront,Louisville,Jefferson,KY,https://www.google.com/maps/search/Louisville+Riverfront+Louisville+KY,https://www.apartments.com/search/?q=Louisville+Riverfront+Louisville+KY,https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Louisville+Riverfront+Louisville+KY%22%7D,https://google.com/search?q=Jefferson+county+assessor+KY,,1.0,manual_verification,
-Lexington Park Commons,Lexington,Fayette,KY,https://www.google.com/maps/search/Lexington+Park+Commons+Lexington+KY,https://www.apartments.com/search/?q=Lexington+Park+Commons+Lexington+KY,https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Lexington+Park+Commons+Lexington+KY%22%7D,https://google.com/search?q=Fayette+county+assessor+KY,,1.0,manual_verification,
-Covington Riverfront,Covington,Kenton,KY,https://www.google.com/maps/search/Covington+Riverfront+Covington+KY,https://www.apartments.com/search/?q=Covington+Riverfront+Covington+KY,https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Covington+Riverfront+Covington+KY%22%7D,https://google.com/search?q=Kenton+county+assessor+KY,,1.0,manual_verification,
-Owensboro Central,Owensboro,Daviess,KY,https://www.google.com/maps/search/Owensboro+Central+Owensboro+KY,https://www.apartments.com/search/?q=Owensboro+Central+Owensboro+KY,https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Owensboro+Central+Owensboro+KY%22%7D,https://google.com/search?q=Daviess+county+assessor+KY,,1.0,manual_verification,
+Property Name,City,County,State,Address (to be filled),Confidence,Source
+Patriot Crossing Apartments,Louisville,Jefferson,KY,,1.0,manual_verification
+Louisville Riverfront,Louisville,Jefferson,KY,,1.0,manual_verification
+Lexington Park Commons,Lexington,Fayette,KY,,1.0,manual_verification
+Covington Riverfront,Covington,Kenton,KY,,1.0,manual_verification
+Owensboro Central,Owensboro,Daviess,KY,,1.0,manual_verification

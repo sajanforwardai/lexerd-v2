@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FL Property Website Discovery Tool</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
+        .stats { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 20px; }
+        .stat { flex: 1; }
+        .stat-value { font-size: 24px; font-weight: bold; color: #7c3aed; }
+        .stat-label { color: #666; font-size: 12px; margin-top: 5px; }
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        thead { background: #7c3aed; color: white; }
+        th { padding: 12px; text-align: left; font-weight: 600; }
+        td { padding: 12px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f9fafb; }
+        .property-name { font-weight: 500; color: #333; }
+        .city { color: #666; font-size: 13px; }
+        .links { display: flex; gap: 8px; flex-wrap: wrap; }
+        a { display: inline-block; padding: 6px 12px; background: #7c3aed; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; transition: background 0.2s; }
+        a:hover { background: #6d28d9; }
+        a.google { background: #ea4335; }
+        a.google:hover { background: #c5221f; }
+        a.apartments { background: #f4a460; }
+        a.apartments:hover { background: #e89350; }
+        a.management { background: #0891b2; }
+        a.management:hover { background: #0e7490; }
+        .instructions { background: #f3e8ff; border-left: 4px solid #7c3aed; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+        .instructions h3 { color: #7c3aed; margin-bottom: 10px; }
+        .instructions ol { margin-left: 20px; color: #666; font-size: 14px; }
+        .instructions li { margin-bottom: 8px; line-height: 1.5; }
+        .status { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+        .status.missing { background: #fce7f3; color: #be185d; }
+        .tips { background: #ecfdf5; border-left: 4px solid #10b981; padding: 12px; margin-top: 12px; border-radius: 4px; font-size: 13px; }
+        .tips strong { color: #10b981; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 FL Property Website Discovery Tool</h1>
+        <p class="subtitle">Find official websites and contact information for all properties</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">34</div>
+                <div class="stat-label">Properties to Research</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">34</div>
+                <div class="stat-label">Needing Websites</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to use this tool</h3>
+            <ol>
+                <li>Find your property in the table below</li>
+                <li>Click search links to find the property's official website</li>
+                <li>Note: Google Search and Apartments.com are fastest (2-3 min per property)</li>
+                <li>Also look for: phone number, email, management company name</li>
+                <li>Copy information into the CSV file (fl_website_lookup.csv)</li>
+                <li>Run: <code>python scripts/update_fl_websites_from_csv.py fl_website_lookup.csv</code></li>
+            </ol>
+            <div class="tips">
+                <strong>💡 Pro tip:</strong> Most properties have websites on Apartments.com or their management company's site. Start there, then verify with Google Search.
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Property Name</th>
+                    <th>City / County</th>
+                    <th>Find Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="property-name">Ashton Parc</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Ashton+Parc++FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Ashton+Parc++FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Ashton+Parc++property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Backlot Apartments</div>
+                        <div class="city">Kissimmee</div>
+                    </td>
+                    <td>
+                        <div class="city">Osceola County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Backlot+Apartments+Kissimmee+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Backlot+Apartments+Kissimmee+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Backlot+Apartments+Kissimmee+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Beach Bluff Apartments</div>
+                        <div class="city">Jacksonville</div>
+                    </td>
+                    <td>
+                        <div class="city">Duval County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Beach+Bluff+Apartments+Jacksonville+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Beach+Bluff+Apartments+Jacksonville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Beach+Bluff+Apartments+Jacksonville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Bella Vista Village</div>
+                        <div class="city">Gainesville</div>
+                    </td>
+                    <td>
+                        <div class="city">Alachua County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Bella+Vista+Village+Gainesville+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Bella+Vista+Village+Gainesville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Bella+Vista+Village+Gainesville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">COTTAGE COVE APARTMENTS</div>
+                        <div class="city">Miami</div>
+                    </td>
+                    <td>
+                        <div class="city">Miami-Dade County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=COTTAGE+COVE+APARTMENTS+Miami+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=COTTAGE+COVE+APARTMENTS+Miami+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=COTTAGE+COVE+APARTMENTS+Miami+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">CRYSTAL LAKE APARTMENTS</div>
+                        <div class="city">Pensacola</div>
+                    </td>
+                    <td>
+                        <div class="city">Escambia County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=CRYSTAL+LAKE+APARTMENTS+Pensacola+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=CRYSTAL+LAKE+APARTMENTS+Pensacola+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=CRYSTAL+LAKE+APARTMENTS+Pensacola+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Cane Island Loop</div>
+                        <div class="city">Kissimmee</div>
+                    </td>
+                    <td>
+                        <div class="city">Osceola County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Cane+Island+Loop+Kissimmee+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Cane+Island+Loop+Kissimmee+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Cane+Island+Loop+Kissimmee+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Clubside Apartments</div>
+                        <div class="city">Venice</div>
+                    </td>
+                    <td>
+                        <div class="city">Sarasota County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Clubside+Apartments+Venice+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Clubside+Apartments+Venice+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Clubside+Apartments+Venice+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Cobblestone at Eagle Harbor</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Cobblestone+at+Eagle+Harbor++FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Cobblestone+at+Eagle+Harbor++FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Cobblestone+at+Eagle+Harbor++property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Columbia Arms and Aspen-Alpine Apartments</div>
+                        <div class="city">Lake City</div>
+                    </td>
+                    <td>
+                        <div class="city">Columbia County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Columbia+Arms+and+Aspen-Alpine+Apartments+Lake+City+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Columbia+Arms+and+Aspen-Alpine+Apartments+Lake+City+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Columbia+Arms+and+Aspen-Alpine+Apartments+Lake+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Danube Apartments</div>
+                        <div class="city">Orlando</div>
+                    </td>
+                    <td>
+                        <div class="city">Orange County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Danube+Apartments+Orlando+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Danube+Apartments+Orlando+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Danube+Apartments+Orlando+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">EVERGREEN AT SOUTHWOOD</div>
+                        <div class="city">Tallahassee</div>
+                    </td>
+                    <td>
+                        <div class="city">Leon County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=EVERGREEN+AT+SOUTHWOOD+Tallahassee+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=EVERGREEN+AT+SOUTHWOOD+Tallahassee+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=EVERGREEN+AT+SOUTHWOOD+Tallahassee+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Edison Grand</div>
+                        <div class="city">Fort Myers</div>
+                    </td>
+                    <td>
+                        <div class="city">Lee County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Edison+Grand+Fort+Myers+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Edison+Grand+Fort+Myers+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Edison+Grand+Fort+Myers+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Gainesville Campus Quarter</div>
+                        <div class="city">Gainesville</div>
+                    </td>
+                    <td>
+                        <div class="city">Alachua County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Gainesville+Campus+Quarter+Gainesville+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Gainesville+Campus+Quarter+Gainesville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Gainesville+Campus+Quarter+Gainesville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Innovo at Sunrise</div>
+                        <div class="city">Sunrise</div>
+                    </td>
+                    <td>
+                        <div class="city">Broward County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Innovo+at+Sunrise+Sunrise+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Innovo+at+Sunrise+Sunrise+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Innovo+at+Sunrise+Sunrise+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Innovo at Waters</div>
+                        <div class="city">Tampa</div>
+                    </td>
+                    <td>
+                        <div class="city">Hillsborough County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Innovo+at+Waters+Tampa+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Innovo+at+Waters+Tampa+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Innovo+at+Waters+Tampa+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Jacksonvile Beach Towers</div>
+                        <div class="city">Jacksonville</div>
+                    </td>
+                    <td>
+                        <div class="city">Duval County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Jacksonvile+Beach+Towers+Jacksonville+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Jacksonvile+Beach+Towers+Jacksonville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Jacksonvile+Beach+Towers+Jacksonville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Jacksonville Waterfront</div>
+                        <div class="city">Jacksonville</div>
+                    </td>
+                    <td>
+                        <div class="city">Duval County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Jacksonville+Waterfront+Jacksonville+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Jacksonville+Waterfront+Jacksonville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Jacksonville+Waterfront+Jacksonville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Lynn Haven Cove</div>
+                        <div class="city">Lynn Haven</div>
+                    </td>
+                    <td>
+                        <div class="city">Bay County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Lynn+Haven+Cove+Lynn+Haven+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Lynn+Haven+Cove+Lynn+Haven+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Lynn+Haven+Cove+Lynn+Haven+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Miami Beach Residences</div>
+                        <div class="city">Miami</div>
+                    </td>
+                    <td>
+                        <div class="city">Miami-Dade County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Miami+Beach+Residences+Miami+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Miami+Beach+Residences+Miami+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Miami+Beach+Residences+Miami+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Orlando Gateway Apartments</div>
+                        <div class="city">Orlando</div>
+                    </td>
+                    <td>
+                        <div class="city">Orange County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Orlando+Gateway+Apartments+Orlando+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Orlando+Gateway+Apartments+Orlando+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Orlando+Gateway+Apartments+Orlando+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Palm Beach Gardens</div>
+                        <div class="city">West Palm Beach</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Palm+Beach+Gardens+West+Palm+Beach+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Palm+Beach+Gardens+West+Palm+Beach+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Palm+Beach+Gardens+West+Palm+Beach+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Pensacola Historic District</div>
+                        <div class="city">Pensacola</div>
+                    </td>
+                    <td>
+                        <div class="city">Escambia County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Pensacola+Historic+District+Pensacola+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Pensacola+Historic+District+Pensacola+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Pensacola+Historic+District+Pensacola+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Portofino Cove</div>
+                        <div class="city">Fort Myers</div>
+                    </td>
+                    <td>
+                        <div class="city">Lee County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Portofino+Cove+Fort+Myers+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Portofino+Cove+Fort+Myers+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Portofino+Cove+Fort+Myers+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Rolling Hills</div>
+                        <div class="city">Orlando</div>
+                    </td>
+                    <td>
+                        <div class="city">Orange County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Rolling+Hills+Orlando+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Rolling+Hills+Orlando+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Rolling+Hills+Orlando+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Southern Garden</div>
+                        <div class="city">Valparaiso</div>
+                    </td>
+                    <td>
+                        <div class="city">Okaloosa County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Southern+Garden+Valparaiso+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Southern+Garden+Valparaiso+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Southern+Garden+Valparaiso+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Tampa Bay Heights</div>
+                        <div class="city">Tampa</div>
+                    </td>
+                    <td>
+                        <div class="city">Hillsborough County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Tampa+Bay+Heights+Tampa+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Tampa+Bay+Heights+Tampa+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Tampa+Bay+Heights+Tampa+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Avenue</div>
+                        <div class="city">Davie</div>
+                    </td>
+                    <td>
+                        <div class="city">Broward County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=The+Avenue+Davie+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=The+Avenue+Davie+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=The+Avenue+Davie+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Club at Crystal Lake</div>
+                        <div class="city">Deerfield Beach</div>
+                    </td>
+                    <td>
+                        <div class="city">Broward County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=The+Club+at+Crystal+Lake+Deerfield+Beach+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=The+Club+at+Crystal+Lake+Deerfield+Beach+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=The+Club+at+Crystal+Lake+Deerfield+Beach+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Courtyards at San Jose</div>
+                        <div class="city">Jacksonville</div>
+                    </td>
+                    <td>
+                        <div class="city">Duval County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=The+Courtyards+at+San+Jose+Jacksonville+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=The+Courtyards+at+San+Jose+Jacksonville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=The+Courtyards+at+San+Jose+Jacksonville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Gables</div>
+                        <div class="city">Kissimmee</div>
+                    </td>
+                    <td>
+                        <div class="city">Osceola County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=The+Gables+Kissimmee+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=The+Gables+Kissimmee+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=The+Gables+Kissimmee+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Warehouse Lofts</div>
+                        <div class="city">Tampa</div>
+                    </td>
+                    <td>
+                        <div class="city">Hillsborough County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Warehouse+Lofts+Tampa+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Warehouse+Lofts+Tampa+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Warehouse+Lofts+Tampa+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Whitney Place Townhomes</div>
+                        <div class="city">Clearwater</div>
+                    </td>
+                    <td>
+                        <div class="city">Pinellas County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Whitney+Place+Townhomes+Clearwater+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Whitney+Place+Townhomes+Clearwater+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Whitney+Place+Townhomes+Clearwater+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Wilton Walk Townhomes</div>
+                        <div class="city">Wilton Manors</div>
+                    </td>
+                    <td>
+                        <div class="city">Broward County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Wilton+Walk+Townhomes+Wilton+Manors+FL+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Wilton+Walk+Townhomes+Wilton+Manors+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Wilton+Walk+Townhomes+Wilton+Manors+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

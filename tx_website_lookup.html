@@ -1,0 +1,2739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TX Property Website Discovery Tool</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
+        .stats { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 20px; }
+        .stat { flex: 1; }
+        .stat-value { font-size: 24px; font-weight: bold; color: #7c3aed; }
+        .stat-label { color: #666; font-size: 12px; margin-top: 5px; }
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        thead { background: #7c3aed; color: white; }
+        th { padding: 12px; text-align: left; font-weight: 600; }
+        td { padding: 12px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f9fafb; }
+        .property-name { font-weight: 500; color: #333; }
+        .city { color: #666; font-size: 13px; }
+        .links { display: flex; gap: 8px; flex-wrap: wrap; }
+        a { display: inline-block; padding: 6px 12px; background: #7c3aed; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; transition: background 0.2s; }
+        a:hover { background: #6d28d9; }
+        a.google { background: #ea4335; }
+        a.google:hover { background: #c5221f; }
+        a.apartments { background: #f4a460; }
+        a.apartments:hover { background: #e89350; }
+        a.management { background: #0891b2; }
+        a.management:hover { background: #0e7490; }
+        .instructions { background: #f3e8ff; border-left: 4px solid #7c3aed; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+        .instructions h3 { color: #7c3aed; margin-bottom: 10px; }
+        .instructions ol { margin-left: 20px; color: #666; font-size: 14px; }
+        .instructions li { margin-bottom: 8px; line-height: 1.5; }
+        .status { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+        .status.missing { background: #fce7f3; color: #be185d; }
+        .tips { background: #ecfdf5; border-left: 4px solid #10b981; padding: 12px; margin-top: 12px; border-radius: 4px; font-size: 13px; }
+        .tips strong { color: #10b981; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 TX Property Website Discovery Tool</h1>
+        <p class="subtitle">Find official websites and contact information for all properties</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">156</div>
+                <div class="stat-label">Properties to Research</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">156</div>
+                <div class="stat-label">Needing Websites</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to use this tool</h3>
+            <ol>
+                <li>Find your property in the table below</li>
+                <li>Click search links to find the property's official website</li>
+                <li>Note: Google Search and Apartments.com are fastest (2-3 min per property)</li>
+                <li>Also look for: phone number, email, management company name</li>
+                <li>Copy information into the CSV file (tx_website_lookup.csv)</li>
+                <li>Run: <code>python scripts/update_tx_websites_from_csv.py tx_website_lookup.csv</code></li>
+            </ol>
+            <div class="tips">
+                <strong>💡 Pro tip:</strong> Most properties have websites on Apartments.com or their management company's site. Start there, then verify with Google Search.
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Property Name</th>
+                    <th>City / County</th>
+                    <th>Find Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="property-name">2000 Penn</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=2000+Penn++TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=2000+Penn++TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=2000+Penn++property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Aggieland Flats</div>
+                        <div class="city">College Station</div>
+                    </td>
+                    <td>
+                        <div class="city">Brazos County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Aggieland+Flats+College+Station+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Aggieland+Flats+College+Station+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Aggieland+Flats+College+Station+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Amarillo Sunrise Apartments</div>
+                        <div class="city">Amarillo</div>
+                    </td>
+                    <td>
+                        <div class="city">Potter County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Amarillo+Sunrise+Apartments+Amarillo+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Amarillo+Sunrise+Apartments+Amarillo+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Amarillo+Sunrise+Apartments+Amarillo+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Angleton Industrial</div>
+                        <div class="city">Angleton</div>
+                    </td>
+                    <td>
+                        <div class="city">Brazoria County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Angleton+Industrial+Angleton+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Angleton+Industrial+Angleton+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Angleton+Industrial+Angleton+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Arlington Marketplace Apartments</div>
+                        <div class="city">Arlington</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Arlington+Marketplace+Apartments+Arlington+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Arlington+Marketplace+Apartments+Arlington+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Arlington+Marketplace+Apartments+Arlington+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Arzano</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Arzano++TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Arzano++TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Arzano++property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Athens Liberty</div>
+                        <div class="city">Athens</div>
+                    </td>
+                    <td>
+                        <div class="city">Henderson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Athens+Liberty+Athens+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Athens+Liberty+Athens+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Athens+Liberty+Athens+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Austin Central Living</div>
+                        <div class="city">Austin</div>
+                    </td>
+                    <td>
+                        <div class="city">Travis County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Austin+Central+Living+Austin+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Austin+Central+Living+Austin+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Austin+Central+Living+Austin+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Autumn Ridge Apartments</div>
+                        <div class="city">Baytown</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Autumn+Ridge+Apartments+Baytown+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Autumn+Ridge+Apartments+Baytown+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Autumn+Ridge+Apartments+Baytown+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">BILTMORE APARTMENTS</div>
+                        <div class="city">Arlington</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=BILTMORE+APARTMENTS+Arlington+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=BILTMORE+APARTMENTS+Arlington+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=BILTMORE+APARTMENTS+Arlington+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">BOSTON CREEK APARTMENTS</div>
+                        <div class="city">Lubbock</div>
+                    </td>
+                    <td>
+                        <div class="city">Lubbock County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=BOSTON+CREEK+APARTMENTS+Lubbock+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=BOSTON+CREEK+APARTMENTS+Lubbock+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=BOSTON+CREEK+APARTMENTS+Lubbock+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">BRAES HOLLOW APARTMENTS</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=BRAES+HOLLOW+APARTMENTS+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=BRAES+HOLLOW+APARTMENTS+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=BRAES+HOLLOW+APARTMENTS+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Baytown Refinery District</div>
+                        <div class="city">Baytown</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Baytown+Refinery+District+Baytown+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Baytown+Refinery+District+Baytown+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Baytown+Refinery+District+Baytown+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Beaumont Downtown</div>
+                        <div class="city">Beaumont</div>
+                    </td>
+                    <td>
+                        <div class="city">Jefferson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Beaumont+Downtown+Beaumont+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Beaumont+Downtown+Beaumont+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Beaumont+Downtown+Beaumont+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Beaumont Industrial Park</div>
+                        <div class="city">Beaumont</div>
+                    </td>
+                    <td>
+                        <div class="city">Jefferson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Beaumont+Industrial+Park+Beaumont+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Beaumont+Industrial+Park+Beaumont+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Beaumont+Industrial+Park+Beaumont+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Bennett Property</div>
+                        <div class="city">Dallas</div>
+                    </td>
+                    <td>
+                        <div class="city">Dallas County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Bennett+Property+Dallas+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Bennett+Property+Dallas+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Bennett+Property+Dallas+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Boerne Hill Country</div>
+                        <div class="city">Boerne</div>
+                    </td>
+                    <td>
+                        <div class="city">Kendall County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Boerne+Hill+Country+Boerne+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Boerne+Hill+Country+Boerne+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Boerne+Hill+Country+Boerne+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Brownsville Riverside</div>
+                        <div class="city">Brownsville</div>
+                    </td>
+                    <td>
+                        <div class="city">Cameron County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Brownsville+Riverside+Brownsville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Brownsville+Riverside+Brownsville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Brownsville+Riverside+Brownsville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Bryan Station Apartments</div>
+                        <div class="city">Bryan</div>
+                    </td>
+                    <td>
+                        <div class="city">Brazos County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Bryan+Station+Apartments+Bryan+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Bryan+Station+Apartments+Bryan+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Bryan+Station+Apartments+Bryan+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Bryan Texas Park</div>
+                        <div class="city">Bryan</div>
+                    </td>
+                    <td>
+                        <div class="city">Brazos County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Bryan+Texas+Park+Bryan+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Bryan+Texas+Park+Bryan+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Bryan+Texas+Park+Bryan+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Buda Parkside</div>
+                        <div class="city">Buda</div>
+                    </td>
+                    <td>
+                        <div class="city">Hays County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Buda+Parkside+Buda+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Buda+Parkside+Buda+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Buda+Parkside+Buda+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Burnet Highland</div>
+                        <div class="city">Burnet</div>
+                    </td>
+                    <td>
+                        <div class="city">Burnet County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Burnet+Highland+Burnet+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Burnet+Highland+Burnet+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Burnet+Highland+Burnet+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Butternut Ridge Apartments</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Butternut+Ridge+Apartments++TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Butternut+Ridge+Apartments++TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Butternut+Ridge+Apartments++property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">CALDER SQUARE APARTMENTS</div>
+                        <div class="city">League City</div>
+                    </td>
+                    <td>
+                        <div class="city">Galveston County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=CALDER+SQUARE+APARTMENTS+League+City+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=CALDER+SQUARE+APARTMENTS+League+City+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=CALDER+SQUARE+APARTMENTS+League+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">CHARTWELL COURT</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=CHARTWELL+COURT+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=CHARTWELL+COURT+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=CHARTWELL+COURT+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">COLONY MANOR &amp; GATEHOUSE APARTMENTS</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=COLONY+MANOR+&amp;+GATEHOUSE+APARTMENTS+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=COLONY+MANOR+&amp;+GATEHOUSE+APARTMENTS+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=COLONY+MANOR+&amp;+GATEHOUSE+APARTMENTS+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">CURRY JUNCTION</div>
+                        <div class="city">Abilene</div>
+                    </td>
+                    <td>
+                        <div class="city">Taylor County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=CURRY+JUNCTION+Abilene+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=CURRY+JUNCTION+Abilene+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=CURRY+JUNCTION+Abilene+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Canton Downtown</div>
+                        <div class="city">Canton</div>
+                    </td>
+                    <td>
+                        <div class="city">Van Zandt County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Canton+Downtown+Canton+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Canton+Downtown+Canton+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Canton+Downtown+Canton+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Cedar Park Westlake</div>
+                        <div class="city">Cedar Park</div>
+                    </td>
+                    <td>
+                        <div class="city">Williamson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Cedar+Park+Westlake+Cedar+Park+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Cedar+Park+Westlake+Cedar+Park+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Cedar+Park+Westlake+Cedar+Park+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Cedar Trails Apartments</div>
+                        <div class="city">Tyler</div>
+                    </td>
+                    <td>
+                        <div class="city">Smith County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Cedar+Trails+Apartments+Tyler+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Cedar+Trails+Apartments+Tyler+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Cedar+Trails+Apartments+Tyler+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Circle Apartments</div>
+                        <div class="city">Denison</div>
+                    </td>
+                    <td>
+                        <div class="city">Grayson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Circle+Apartments+Denison+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Circle+Apartments+Denison+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Circle+Apartments+Denison+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Clear Lake Park</div>
+                        <div class="city">Clear Lake</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Clear+Lake+Park+Clear+Lake+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Clear+Lake+Park+Clear+Lake+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Clear+Lake+Park+Clear+Lake+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Cleburne Historic Apartments</div>
+                        <div class="city">Cleburne</div>
+                    </td>
+                    <td>
+                        <div class="city">Johnson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Cleburne+Historic+Apartments+Cleburne+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Cleburne+Historic+Apartments+Cleburne+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Cleburne+Historic+Apartments+Cleburne+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">College Station University</div>
+                        <div class="city">College Station</div>
+                    </td>
+                    <td>
+                        <div class="city">Brazos County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=College+Station+University+College+Station+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=College+Station+University+College+Station+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=College+Station+University+College+Station+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Conroe East Park</div>
+                        <div class="city">Conroe</div>
+                    </td>
+                    <td>
+                        <div class="city">Montgomery County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Conroe+East+Park+Conroe+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Conroe+East+Park+Conroe+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Conroe+East+Park+Conroe+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Conroe Westfield</div>
+                        <div class="city">Conroe</div>
+                    </td>
+                    <td>
+                        <div class="city">Montgomery County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Conroe+Westfield+Conroe+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Conroe+Westfield+Conroe+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Conroe+Westfield+Conroe+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Copperas Cove Military</div>
+                        <div class="city">Copperas Cove</div>
+                    </td>
+                    <td>
+                        <div class="city">Coryell County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Copperas+Cove+Military+Copperas+Cove+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Copperas+Cove+Military+Copperas+Cove+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Copperas+Cove+Military+Copperas+Cove+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Cornerstone Apartments</div>
+                        <div class="city">Huntsville</div>
+                    </td>
+                    <td>
+                        <div class="city">Walker County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Cornerstone+Apartments+Huntsville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Cornerstone+Apartments+Huntsville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Cornerstone+Apartments+Huntsville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Corpus Christi Bay View</div>
+                        <div class="city">Corpus Christi</div>
+                    </td>
+                    <td>
+                        <div class="city">Nueces County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Corpus+Christi+Bay+View+Corpus+Christi+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Corpus+Christi+Bay+View+Corpus+Christi+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Corpus+Christi+Bay+View+Corpus+Christi+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Corsicana Commercial</div>
+                        <div class="city">Corsicana</div>
+                    </td>
+                    <td>
+                        <div class="city">Navarro County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Corsicana+Commercial+Corsicana+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Corsicana+Commercial+Corsicana+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Corsicana+Commercial+Corsicana+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Country Glenn Apartments</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Country+Glenn+Apartments++TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Country+Glenn+Apartments++TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Country+Glenn+Apartments++property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Cypress Lake</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Cypress+Lake+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Cypress+Lake+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Cypress+Lake+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Dallas Park Apartments</div>
+                        <div class="city">Dallas</div>
+                    </td>
+                    <td>
+                        <div class="city">Dallas County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Dallas+Park+Apartments+Dallas+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Dallas+Park+Apartments+Dallas+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Dallas+Park+Apartments+Dallas+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Danker Village Apartments</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Danker+Village+Apartments++TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Danker+Village+Apartments++TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Danker+Village+Apartments++property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Deer Springs Apartments</div>
+                        <div class="city">Humble</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Deer+Springs+Apartments+Humble+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Deer+Springs+Apartments+Humble+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Deer+Springs+Apartments+Humble+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Defeased</div>
+                        <div class="city">(multiple)</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Defeased+(multiple)+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Defeased+(multiple)+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Defeased+(multiple)+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Defeased</div>
+                        <div class="city">Sherman</div>
+                    </td>
+                    <td>
+                        <div class="city">Grayson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Defeased+Sherman+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Defeased+Sherman+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Defeased+Sherman+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Denton University Park</div>
+                        <div class="city">Denton</div>
+                    </td>
+                    <td>
+                        <div class="city">Denton County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Denton+University+Park+Denton+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Denton+University+Park+Denton+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Denton+University+Park+Denton+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Desoto Riverside</div>
+                        <div class="city">Desoto</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Desoto+Riverside+Desoto+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Desoto+Riverside+Desoto+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Desoto+Riverside+Desoto+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Edinburg Central Park</div>
+                        <div class="city">Edinburg</div>
+                    </td>
+                    <td>
+                        <div class="city">Hidalgo County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Edinburg+Central+Park+Edinburg+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Edinburg+Central+Park+Edinburg+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Edinburg+Central+Park+Edinburg+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">FOREST RIDGE</div>
+                        <div class="city">Dallas</div>
+                    </td>
+                    <td>
+                        <div class="city">Dallas County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=FOREST+RIDGE+Dallas+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=FOREST+RIDGE+Dallas+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=FOREST+RIDGE+Dallas+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Fort Worth Midtown</div>
+                        <div class="city">Fort Worth</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Fort+Worth+Midtown+Fort+Worth+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Fort+Worth+Midtown+Fort+Worth+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Fort+Worth+Midtown+Fort+Worth+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Fountains Matthews</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Fountains+Matthews++TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Fountains+Matthews++TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Fountains+Matthews++property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Fredericksburg Mountain</div>
+                        <div class="city">Fredericksburg</div>
+                    </td>
+                    <td>
+                        <div class="city">Gillespie County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Fredericksburg+Mountain+Fredericksburg+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Fredericksburg+Mountain+Fredericksburg+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Fredericksburg+Mountain+Fredericksburg+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Frisco Northwest</div>
+                        <div class="city">Frisco</div>
+                    </td>
+                    <td>
+                        <div class="city">Collin County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Frisco+Northwest+Frisco+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Frisco+Northwest+Frisco+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Frisco+Northwest+Frisco+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">GRAPEVINE STATION</div>
+                        <div class="city">Grapevine</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=GRAPEVINE+STATION+Grapevine+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=GRAPEVINE+STATION+Grapevine+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=GRAPEVINE+STATION+Grapevine+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Galveston Beach Towers</div>
+                        <div class="city">Galveston</div>
+                    </td>
+                    <td>
+                        <div class="city">Galveston County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Galveston+Beach+Towers+Galveston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Galveston+Beach+Towers+Galveston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Galveston+Beach+Towers+Galveston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Garland Central Station</div>
+                        <div class="city">Garland</div>
+                    </td>
+                    <td>
+                        <div class="city">Dallas County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Garland+Central+Station+Garland+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Garland+Central+Station+Garland+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Garland+Central+Station+Garland+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Georgetown Historic</div>
+                        <div class="city">Georgetown</div>
+                    </td>
+                    <td>
+                        <div class="city">Williamson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Georgetown+Historic+Georgetown+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Georgetown+Historic+Georgetown+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Georgetown+Historic+Georgetown+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Grand Prairie Industrial</div>
+                        <div class="city">Grand Prairie</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Grand+Prairie+Industrial+Grand+Prairie+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Grand+Prairie+Industrial+Grand+Prairie+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Grand+Prairie+Industrial+Grand+Prairie+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Great Oaks Apartments</div>
+                        <div class="city">Lufkin</div>
+                    </td>
+                    <td>
+                        <div class="city">Angelina County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Great+Oaks+Apartments+Lufkin+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Great+Oaks+Apartments+Lufkin+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Great+Oaks+Apartments+Lufkin+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Harlingen Bay View</div>
+                        <div class="city">Harlingen</div>
+                    </td>
+                    <td>
+                        <div class="city">Cameron County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Harlingen+Bay+View+Harlingen+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Harlingen+Bay+View+Harlingen+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Harlingen+Bay+View+Harlingen+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Hilltop Village Apartments</div>
+                        <div class="city">Sherman</div>
+                    </td>
+                    <td>
+                        <div class="city">Grayson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Hilltop+Village+Apartments+Sherman+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Hilltop+Village+Apartments+Sherman+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Hilltop+Village+Apartments+Sherman+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Houston Towers Residential</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Houston+Towers+Residential+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Houston+Towers+Residential+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Houston+Towers+Residential+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Huntsville State College</div>
+                        <div class="city">Huntsville</div>
+                    </td>
+                    <td>
+                        <div class="city">Walker County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Huntsville+State+College+Huntsville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Huntsville+State+College+Huntsville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Huntsville+State+College+Huntsville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Irving Innovation Hub</div>
+                        <div class="city">Irving</div>
+                    </td>
+                    <td>
+                        <div class="city">Dallas County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Irving+Innovation+Hub+Irving+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Irving+Innovation+Hub+Irving+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Irving+Innovation+Hub+Irving+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Jacksonville Trails</div>
+                        <div class="city">Jacksonville</div>
+                    </td>
+                    <td>
+                        <div class="city">Cheroklee County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Jacksonville+Trails+Jacksonville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Jacksonville+Trails+Jacksonville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Jacksonville+Trails+Jacksonville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Katy Central Living</div>
+                        <div class="city">Katy</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Katy+Central+Living+Katy+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Katy+Central+Living+Katy+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Katy+Central+Living+Katy+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Kemah Marina Residences</div>
+                        <div class="city">Kemah</div>
+                    </td>
+                    <td>
+                        <div class="city">Galveston County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Kemah+Marina+Residences+Kemah+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Kemah+Marina+Residences+Kemah+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Kemah+Marina+Residences+Kemah+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Kerrville Heritage</div>
+                        <div class="city">Kerrville</div>
+                    </td>
+                    <td>
+                        <div class="city">Kerr County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Kerrville+Heritage+Kerrville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Kerrville+Heritage+Kerrville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Kerrville+Heritage+Kerrville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Killeen Fort Hood</div>
+                        <div class="city">Killeen</div>
+                    </td>
+                    <td>
+                        <div class="city">Bell County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Killeen+Fort+Hood+Killeen+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Killeen+Fort+Hood+Killeen+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Killeen+Fort+Hood+Killeen+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Kingsville Pointe Apartments</div>
+                        <div class="city">Kingsville</div>
+                    </td>
+                    <td>
+                        <div class="city">Kleberg County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Kingsville+Pointe+Apartments+Kingsville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Kingsville+Pointe+Apartments+Kingsville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Kingsville+Pointe+Apartments+Kingsville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Kirbyville Pine Forest</div>
+                        <div class="city">Kirbyville</div>
+                    </td>
+                    <td>
+                        <div class="city">Jasper County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Kirbyville+Pine+Forest+Kirbyville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Kirbyville+Pine+Forest+Kirbyville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Kirbyville+Pine+Forest+Kirbyville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Kyle Community</div>
+                        <div class="city">Kyle</div>
+                    </td>
+                    <td>
+                        <div class="city">Hays County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Kyle+Community+Kyle+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Kyle+Community+Kyle+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Kyle+Community+Kyle+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">LAS BRISAS APARTMENTS</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=LAS+BRISAS+APARTMENTS+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=LAS+BRISAS+APARTMENTS+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=LAS+BRISAS+APARTMENTS+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">La Porte Harbor View</div>
+                        <div class="city">La Porte</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=La+Porte+Harbor+View+La+Porte+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=La+Porte+Harbor+View+La+Porte+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=La+Porte+Harbor+View+La+Porte+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Lake Jackson Bay Side</div>
+                        <div class="city">Lake Jackson</div>
+                    </td>
+                    <td>
+                        <div class="city">Brazoria County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Lake+Jackson+Bay+Side+Lake+Jackson+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Lake+Jackson+Bay+Side+Lake+Jackson+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Lake+Jackson+Bay+Side+Lake+Jackson+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Lakeside Commons</div>
+                        <div class="city">Dallas</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Lakeside+Commons+Dallas+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Lakeside+Commons+Dallas+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Lakeside+Commons+Dallas+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Laredo International</div>
+                        <div class="city">Laredo</div>
+                    </td>
+                    <td>
+                        <div class="city">Webb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Laredo+International+Laredo+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Laredo+International+Laredo+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Laredo+International+Laredo+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">League City Bay View</div>
+                        <div class="city">League City</div>
+                    </td>
+                    <td>
+                        <div class="city">Galveston County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=League+City+Bay+View+League+City+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=League+City+Bay+View+League+City+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=League+City+Bay+View+League+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Legends at Kingsville</div>
+                        <div class="city">Kingsville</div>
+                    </td>
+                    <td>
+                        <div class="city">Kleberg County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Legends+at+Kingsville+Kingsville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Legends+at+Kingsville+Kingsville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Legends+at+Kingsville+Kingsville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Lewisville Lakeside</div>
+                        <div class="city">Lewisville</div>
+                    </td>
+                    <td>
+                        <div class="city">Denton County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Lewisville+Lakeside+Lewisville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Lewisville+Lakeside+Lewisville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Lewisville+Lakeside+Lewisville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Longview Commerce</div>
+                        <div class="city">Longview</div>
+                    </td>
+                    <td>
+                        <div class="city">Gregg County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Longview+Commerce+Longview+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Longview+Commerce+Longview+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Longview+Commerce+Longview+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Longview Commerce Center</div>
+                        <div class="city">Longview</div>
+                    </td>
+                    <td>
+                        <div class="city">Gregg County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Longview+Commerce+Center+Longview+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Longview+Commerce+Center+Longview+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Longview+Commerce+Center+Longview+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Lubbock Tech Campus</div>
+                        <div class="city">Lubbock</div>
+                    </td>
+                    <td>
+                        <div class="city">Lubbock County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Lubbock+Tech+Campus+Lubbock+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Lubbock+Tech+Campus+Lubbock+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Lubbock+Tech+Campus+Lubbock+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Lumberton Pines</div>
+                        <div class="city">Lumberton</div>
+                    </td>
+                    <td>
+                        <div class="city">Hardin County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Lumberton+Pines+Lumberton+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Lumberton+Pines+Lumberton+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Lumberton+Pines+Lumberton+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">MEADOWS PLACE SENIORS VILLAGE</div>
+                        <div class="city">Stafford</div>
+                    </td>
+                    <td>
+                        <div class="city">Fort Bend County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=MEADOWS+PLACE+SENIORS+VILLAGE+Stafford+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=MEADOWS+PLACE+SENIORS+VILLAGE+Stafford+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=MEADOWS+PLACE+SENIORS+VILLAGE+Stafford+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">MIDWAY STATION</div>
+                        <div class="city">Midland</div>
+                    </td>
+                    <td>
+                        <div class="city">Midland County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=MIDWAY+STATION+Midland+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=MIDWAY+STATION+Midland+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=MIDWAY+STATION+Midland+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">MORTON PLACE APARTMENTS</div>
+                        <div class="city">Amarillo</div>
+                    </td>
+                    <td>
+                        <div class="city">Potter County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=MORTON+PLACE+APARTMENTS+Amarillo+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=MORTON+PLACE+APARTMENTS+Amarillo+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=MORTON+PLACE+APARTMENTS+Amarillo+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Magnolia Cove Apartments</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Magnolia+Cove+Apartments+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Magnolia+Cove+Apartments+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Magnolia+Cove+Apartments+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Magnolia Flats Apartments</div>
+                        <div class="city">Balcones Heights</div>
+                    </td>
+                    <td>
+                        <div class="city">Bexar County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Magnolia+Flats+Apartments+Balcones+Heights+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Magnolia+Flats+Apartments+Balcones+Heights+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Magnolia+Flats+Apartments+Balcones+Heights+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Magnolia Springs</div>
+                        <div class="city">Magnolia</div>
+                    </td>
+                    <td>
+                        <div class="city">Montgomery County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Magnolia+Springs+Magnolia+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Magnolia+Springs+Magnolia+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Magnolia+Springs+Magnolia+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Maple Ridge Townhomes</div>
+                        <div class="city">Midlothian</div>
+                    </td>
+                    <td>
+                        <div class="city">Ellis County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Maple+Ridge+Townhomes+Midlothian+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Maple+Ridge+Townhomes+Midlothian+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Maple+Ridge+Townhomes+Midlothian+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Marshall Historic District</div>
+                        <div class="city">Marshall</div>
+                    </td>
+                    <td>
+                        <div class="city">Harrison County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Marshall+Historic+District+Marshall+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Marshall+Historic+District+Marshall+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Marshall+Historic+District+Marshall+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">McAllen Gateway</div>
+                        <div class="city">McAllen</div>
+                    </td>
+                    <td>
+                        <div class="city">Hidalgo County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=McAllen+Gateway+McAllen+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=McAllen+Gateway+McAllen+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=McAllen+Gateway+McAllen+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">McKinney Heights</div>
+                        <div class="city">McKinney</div>
+                    </td>
+                    <td>
+                        <div class="city">Collin County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=McKinney+Heights+McKinney+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=McKinney+Heights+McKinney+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=McKinney+Heights+McKinney+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Mission Rio Valley</div>
+                        <div class="city">Mission</div>
+                    </td>
+                    <td>
+                        <div class="city">Hidalgo County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Mission+Rio+Valley+Mission+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Mission+Rio+Valley+Mission+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Mission+Rio+Valley+Mission+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Missouri City Central</div>
+                        <div class="city">Missouri City</div>
+                    </td>
+                    <td>
+                        <div class="city">Fort Bend County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Missouri+City+Central+Missouri+City+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Missouri+City+Central+Missouri+City+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Missouri+City+Central+Missouri+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Mountain Vista Apartments</div>
+                        <div class="city">El Paso</div>
+                    </td>
+                    <td>
+                        <div class="city">El Paso County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Mountain+Vista+Apartments+El+Paso+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Mountain+Vista+Apartments+El+Paso+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Mountain+Vista+Apartments+El+Paso+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Nassau Bay Residential</div>
+                        <div class="city">Nassau Bay</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Nassau+Bay+Residential+Nassau+Bay+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Nassau+Bay+Residential+Nassau+Bay+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Nassau+Bay+Residential+Nassau+Bay+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">New Braunfels Guadalupe</div>
+                        <div class="city">New Braunfels</div>
+                    </td>
+                    <td>
+                        <div class="city">Comal County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=New+Braunfels+Guadalupe+New+Braunfels+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=New+Braunfels+Guadalupe+New+Braunfels+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=New+Braunfels+Guadalupe+New+Braunfels+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Northgate Lofts</div>
+                        <div class="city">College Station</div>
+                    </td>
+                    <td>
+                        <div class="city">Brazos County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Northgate+Lofts+College+Station+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Northgate+Lofts+College+Station+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Northgate+Lofts+College+Station+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Oak Manor Villas</div>
+                        <div class="city">Big Spring</div>
+                    </td>
+                    <td>
+                        <div class="city">Howard County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Oak+Manor+Villas+Big+Spring+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Oak+Manor+Villas+Big+Spring+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Oak+Manor+Villas+Big+Spring+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Odessa Basin Residences</div>
+                        <div class="city">Odessa</div>
+                    </td>
+                    <td>
+                        <div class="city">Ector County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Odessa+Basin+Residences+Odessa+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Odessa+Basin+Residences+Odessa+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Odessa+Basin+Residences+Odessa+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Orange Industrial</div>
+                        <div class="city">Orange</div>
+                    </td>
+                    <td>
+                        <div class="city">Orange County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Orange+Industrial+Orange+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Orange+Industrial+Orange+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Orange+Industrial+Orange+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">PARKWYN TOWNHOMES</div>
+                        <div class="city">North Richland Hills</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=PARKWYN+TOWNHOMES+North+Richland+Hills+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=PARKWYN+TOWNHOMES+North+Richland+Hills+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=PARKWYN+TOWNHOMES+North+Richland+Hills+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Park Lane Apartments</div>
+                        <div class="city">Arlington</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Park+Lane+Apartments+Arlington+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Park+Lane+Apartments+Arlington+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Park+Lane+Apartments+Arlington+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Pasadena Industrial Park</div>
+                        <div class="city">Pasadena</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Pasadena+Industrial+Park+Pasadena+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Pasadena+Industrial+Park+Pasadena+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Pasadena+Industrial+Park+Pasadena+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Pearland Park Commons</div>
+                        <div class="city">Pearland</div>
+                    </td>
+                    <td>
+                        <div class="city">Brazoria County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Pearland+Park+Commons+Pearland+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Pearland+Park+Commons+Pearland+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Pearland+Park+Commons+Pearland+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Pebble Walk Apartments</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Pebble+Walk+Apartments+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Pebble+Walk+Apartments+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Pebble+Walk+Apartments+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Pflugerville Corporate</div>
+                        <div class="city">Pflugerville</div>
+                    </td>
+                    <td>
+                        <div class="city">Travis County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Pflugerville+Corporate+Pflugerville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Pflugerville+Corporate+Pflugerville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Pflugerville+Corporate+Pflugerville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Pharr Commerce District</div>
+                        <div class="city">Pharr</div>
+                    </td>
+                    <td>
+                        <div class="city">Nueces County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Pharr+Commerce+District+Pharr+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Pharr+Commerce+District+Pharr+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Pharr+Commerce+District+Pharr+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Phoenix Desert Springs</div>
+                        <div class="city">Phoenix</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Phoenix+Desert+Springs+Phoenix+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Phoenix+Desert+Springs+Phoenix+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Phoenix+Desert+Springs+Phoenix+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Plano Tech Quarter</div>
+                        <div class="city">Plano</div>
+                    </td>
+                    <td>
+                        <div class="city">Collin County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Plano+Tech+Quarter+Plano+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Plano+Tech+Quarter+Plano+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Plano+Tech+Quarter+Plano+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Port Arthur Harbor</div>
+                        <div class="city">Port Arthur</div>
+                    </td>
+                    <td>
+                        <div class="city">Jefferson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Port+Arthur+Harbor+Port+Arthur+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Port+Arthur+Harbor+Port+Arthur+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Port+Arthur+Harbor+Port+Arthur+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">QUAIL MEADOWS</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=QUAIL+MEADOWS+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=QUAIL+MEADOWS+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=QUAIL+MEADOWS+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">RAGHU APARTMENTS</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=RAGHU+APARTMENTS+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=RAGHU+APARTMENTS+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=RAGHU+APARTMENTS+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Riverside Park Apartments</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Riverside+Park+Apartments+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Riverside+Park+Apartments+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Riverside+Park+Apartments+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Round Rock Tech Corridor</div>
+                        <div class="city">Round Rock</div>
+                    </td>
+                    <td>
+                        <div class="city">Williamson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Round+Rock+Tech+Corridor+Round+Rock+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Round+Rock+Tech+Corridor+Round+Rock+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Round+Rock+Tech+Corridor+Round+Rock+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">SUMMERCREST APARTMENTS</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=SUMMERCREST+APARTMENTS+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=SUMMERCREST+APARTMENTS+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=SUMMERCREST+APARTMENTS+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">San Antonio Mission District</div>
+                        <div class="city">San Antonio</div>
+                    </td>
+                    <td>
+                        <div class="city">Bexar County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=San+Antonio+Mission+District+San+Antonio+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=San+Antonio+Mission+District+San+Antonio+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=San+Antonio+Mission+District+San+Antonio+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">San Marcos Central</div>
+                        <div class="city">San Marcos</div>
+                    </td>
+                    <td>
+                        <div class="city">Hays County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=San+Marcos+Central+San+Marcos+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=San+Marcos+Central+San+Marcos+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=San+Marcos+Central+San+Marcos+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Seabrook Bay Side</div>
+                        <div class="city">Seabrook</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Seabrook+Bay+Side+Seabrook+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Seabrook+Bay+Side+Seabrook+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Seabrook+Bay+Side+Seabrook+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Seguin Riverside</div>
+                        <div class="city">Seguin</div>
+                    </td>
+                    <td>
+                        <div class="city">Guadalupe County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Seguin+Riverside+Seguin+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Seguin+Riverside+Seguin+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Seguin+Riverside+Seguin+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Sidney Baker Apartments</div>
+                        <div class="city">Kerrville</div>
+                    </td>
+                    <td>
+                        <div class="city">Kerr County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Sidney+Baker+Apartments+Kerrville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Sidney+Baker+Apartments+Kerrville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Sidney+Baker+Apartments+Kerrville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Silsbee Timber Town</div>
+                        <div class="city">Silsbee</div>
+                    </td>
+                    <td>
+                        <div class="city">Hardin County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Silsbee+Timber+Town+Silsbee+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Silsbee+Timber+Town+Silsbee+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Silsbee+Timber+Town+Silsbee+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">SkyLoft Austin</div>
+                        <div class="city">Austin</div>
+                    </td>
+                    <td>
+                        <div class="city">Travis County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=SkyLoft+Austin+Austin+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=SkyLoft+Austin+Austin+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=SkyLoft+Austin+Austin+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">South 400 Apartments</div>
+                        <div class="city">Fort Worth</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=South+400+Apartments+Fort+Worth+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=South+400+Apartments+Fort+Worth+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=South+400+Apartments+Fort+Worth+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">South Gate Apartments</div>
+                        <div class="city">Sherman</div>
+                    </td>
+                    <td>
+                        <div class="city">Grayson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=South+Gate+Apartments+Sherman+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=South+Gate+Apartments+Sherman+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=South+Gate+Apartments+Sherman+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Spurlock Apartments</div>
+                        <div class="city">Nederland</div>
+                    </td>
+                    <td>
+                        <div class="city">JEFFERSON County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Spurlock+Apartments+Nederland+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Spurlock+Apartments+Nederland+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Spurlock+Apartments+Nederland+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Stafford Development</div>
+                        <div class="city">Stafford</div>
+                    </td>
+                    <td>
+                        <div class="city">Fort Bend County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Stafford+Development+Stafford+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Stafford+Development+Stafford+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Stafford+Development+Stafford+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Sugar Land Technology</div>
+                        <div class="city">Sugar Land</div>
+                    </td>
+                    <td>
+                        <div class="city">Fort Bend County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Sugar+Land+Technology+Sugar+Land+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Sugar+Land+Technology+Sugar+Land+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Sugar+Land+Technology+Sugar+Land+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Sunset Heights</div>
+                        <div class="city">Austin</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Sunset+Heights+Austin+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Sunset+Heights+Austin+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Sunset+Heights+Austin+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">THE DORAL</div>
+                        <div class="city">Dallas</div>
+                    </td>
+                    <td>
+                        <div class="city">Dallas County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=THE+DORAL+Dallas+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=THE+DORAL+Dallas+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=THE+DORAL+Dallas+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">THE ROCHESTER APARTMENTS</div>
+                        <div class="city">Arlington</div>
+                    </td>
+                    <td>
+                        <div class="city">Tarrant County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=THE+ROCHESTER+APARTMENTS+Arlington+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=THE+ROCHESTER+APARTMENTS+Arlington+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=THE+ROCHESTER+APARTMENTS+Arlington+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Temple Heights</div>
+                        <div class="city">Temple</div>
+                    </td>
+                    <td>
+                        <div class="city">Bell County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Temple+Heights+Temple+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Temple+Heights+Temple+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Temple+Heights+Temple+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Texarkana Twin States</div>
+                        <div class="city">Texarkana</div>
+                    </td>
+                    <td>
+                        <div class="city">Bowie County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Texarkana+Twin+States+Texarkana+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Texarkana+Twin+States+Texarkana+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Texarkana+Twin+States+Texarkana+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Texas City Refinery Side</div>
+                        <div class="city">Texas City</div>
+                    </td>
+                    <td>
+                        <div class="city">Galveston County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Texas+City+Refinery+Side+Texas+City+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Texas+City+Refinery+Side+Texas+City+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Texas+City+Refinery+Side+Texas+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Azul Apartments</div>
+                        <div class="city">Dallas</div>
+                    </td>
+                    <td>
+                        <div class="city">Dallas County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=The+Azul+Apartments+Dallas+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=The+Azul+Apartments+Dallas+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=The+Azul+Apartments+Dallas+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Flamingo</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=The+Flamingo++TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=The+Flamingo++TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=The+Flamingo++property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Retreat By Watermark</div>
+                        <div class="city">Corpus Christi</div>
+                    </td>
+                    <td>
+                        <div class="city">Nueces County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=The+Retreat+By+Watermark+Corpus+Christi+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=The+Retreat+By+Watermark+Corpus+Christi+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=The+Retreat+By+Watermark+Corpus+Christi+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Woodlands South Gate</div>
+                        <div class="city">The Woodlands</div>
+                    </td>
+                    <td>
+                        <div class="city">Montgomery County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=The+Woodlands+South+Gate+The+Woodlands+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=The+Woodlands+South+Gate+The+Woodlands+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=The+Woodlands+South+Gate+The+Woodlands+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Tulsa Downtown Living</div>
+                        <div class="city">Tulsa</div>
+                    </td>
+                    <td>
+                        <div class="city">Tulsa County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Tulsa+Downtown+Living+Tulsa+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Tulsa+Downtown+Living+Tulsa+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Tulsa+Downtown+Living+Tulsa+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Tyler Rose Valley</div>
+                        <div class="city">Tyler</div>
+                    </td>
+                    <td>
+                        <div class="city">Smith County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Tyler+Rose+Valley+Tyler+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Tyler+Rose+Valley+Tyler+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Tyler+Rose+Valley+Tyler+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Villas At San Gabriel</div>
+                        <div class="city">Austin</div>
+                    </td>
+                    <td>
+                        <div class="city">Travis County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Villas+At+San+Gabriel+Austin+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Villas+At+San+Gabriel+Austin+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Villas+At+San+Gabriel+Austin+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Villas at Traditions</div>
+                        <div class="city">Bryan</div>
+                    </td>
+                    <td>
+                        <div class="city">Brazos County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Villas+at+Traditions+Bryan+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Villas+at+Traditions+Bryan+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Villas+at+Traditions+Bryan+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Vista Del Sol Apts</div>
+                        <div class="city">Pasadena</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Vista+Del+Sol+Apts+Pasadena+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Vista+Del+Sol+Apts+Pasadena+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Vista+Del+Sol+Apts+Pasadena+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">WINDSOR PARK APARTMENTS</div>
+                        <div class="city">Victoria</div>
+                    </td>
+                    <td>
+                        <div class="city">Victoria County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=WINDSOR+PARK+APARTMENTS+Victoria+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=WINDSOR+PARK+APARTMENTS+Victoria+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=WINDSOR+PARK+APARTMENTS+Victoria+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Waco Central Station</div>
+                        <div class="city">Waco</div>
+                    </td>
+                    <td>
+                        <div class="city">McLennan County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Waco+Central+Station+Waco+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Waco+Central+Station+Waco+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Waco+Central+Station+Waco+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Waxahachie Cotton Fields</div>
+                        <div class="city">Waxahachie</div>
+                    </td>
+                    <td>
+                        <div class="city">Ellis County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Waxahachie+Cotton+Fields+Waxahachie+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Waxahachie+Cotton+Fields+Waxahachie+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Waxahachie+Cotton+Fields+Waxahachie+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Weston at Copperfield</div>
+                        <div class="city">Houston</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Weston+at+Copperfield+Houston+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Weston+at+Copperfield+Houston+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Weston+at+Copperfield+Houston+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Wimberley Hill Country</div>
+                        <div class="city">Wimberley</div>
+                    </td>
+                    <td>
+                        <div class="city">Hays County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Wimberley+Hill+Country+Wimberley+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Wimberley+Hill+Country+Wimberley+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Wimberley+Hill+Country+Wimberley+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Windbury Apartments</div>
+                        <div class="city">San Antonio</div>
+                    </td>
+                    <td>
+                        <div class="city">Bexar County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Windbury+Apartments+San+Antonio+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Windbury+Apartments+San+Antonio+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Windbury+Apartments+San+Antonio+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Wolf Pen Crossing</div>
+                        <div class="city">College Station</div>
+                    </td>
+                    <td>
+                        <div class="city">Brazos County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Wolf+Pen+Crossing+College+Station+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Wolf+Pen+Crossing+College+Station+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Wolf+Pen+Crossing+College+Station+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Woodcreek Apartments</div>
+                        <div class="city">Huntsville</div>
+                    </td>
+                    <td>
+                        <div class="city">Walker County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Woodcreek+Apartments+Huntsville+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Woodcreek+Apartments+Huntsville+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Woodcreek+Apartments+Huntsville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Woodlands North Gate</div>
+                        <div class="city">Spring</div>
+                    </td>
+                    <td>
+                        <div class="city">Harris County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Woodlands+North+Gate+Spring+TX+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Woodlands+North+Gate+Spring+TX" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Woodlands+North+Gate+Spring+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

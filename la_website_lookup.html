@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA Property Website Discovery Tool</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
+        .stats { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 20px; }
+        .stat { flex: 1; }
+        .stat-value { font-size: 24px; font-weight: bold; color: #7c3aed; }
+        .stat-label { color: #666; font-size: 12px; margin-top: 5px; }
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        thead { background: #7c3aed; color: white; }
+        th { padding: 12px; text-align: left; font-weight: 600; }
+        td { padding: 12px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f9fafb; }
+        .property-name { font-weight: 500; color: #333; }
+        .city { color: #666; font-size: 13px; }
+        .links { display: flex; gap: 8px; flex-wrap: wrap; }
+        a { display: inline-block; padding: 6px 12px; background: #7c3aed; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; transition: background 0.2s; }
+        a:hover { background: #6d28d9; }
+        a.google { background: #ea4335; }
+        a.google:hover { background: #c5221f; }
+        a.apartments { background: #f4a460; }
+        a.apartments:hover { background: #e89350; }
+        a.management { background: #0891b2; }
+        a.management:hover { background: #0e7490; }
+        .instructions { background: #f3e8ff; border-left: 4px solid #7c3aed; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+        .instructions h3 { color: #7c3aed; margin-bottom: 10px; }
+        .instructions ol { margin-left: 20px; color: #666; font-size: 14px; }
+        .instructions li { margin-bottom: 8px; line-height: 1.5; }
+        .status { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+        .status.missing { background: #fce7f3; color: #be185d; }
+        .tips { background: #ecfdf5; border-left: 4px solid #10b981; padding: 12px; margin-top: 12px; border-radius: 4px; font-size: 13px; }
+        .tips strong { color: #10b981; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 LA Property Website Discovery Tool</h1>
+        <p class="subtitle">Find official websites and contact information for all properties</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">11</div>
+                <div class="stat-label">Properties to Research</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">11</div>
+                <div class="stat-label">Needing Websites</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to use this tool</h3>
+            <ol>
+                <li>Find your property in the table below</li>
+                <li>Click search links to find the property's official website</li>
+                <li>Note: Google Search and Apartments.com are fastest (2-3 min per property)</li>
+                <li>Also look for: phone number, email, management company name</li>
+                <li>Copy information into the CSV file (la_website_lookup.csv)</li>
+                <li>Run: <code>python scripts/update_la_websites_from_csv.py la_website_lookup.csv</code></li>
+            </ol>
+            <div class="tips">
+                <strong>💡 Pro tip:</strong> Most properties have websites on Apartments.com or their management company's site. Start there, then verify with Google Search.
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Property Name</th>
+                    <th>City / County</th>
+                    <th>Find Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="property-name">AUDUBON VILLAGE</div>
+                        <div class="city">Bridge City</div>
+                    </td>
+                    <td>
+                        <div class="city">Jefferson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=AUDUBON+VILLAGE+Bridge+City+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=AUDUBON+VILLAGE+Bridge+City+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=AUDUBON+VILLAGE+Bridge+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Baton Rouge South Park</div>
+                        <div class="city">Baton Rouge</div>
+                    </td>
+                    <td>
+                        <div class="city">East Baton Rouge County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Baton+Rouge+South+Park+Baton+Rouge+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Baton+Rouge+South+Park+Baton+Rouge+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Baton+Rouge+South+Park+Baton+Rouge+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Edgewood Apartments</div>
+                        <div class="city">Baton Rouge</div>
+                    </td>
+                    <td>
+                        <div class="city">E. Baton Rouge Parish County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Edgewood+Apartments+Baton+Rouge+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Edgewood+Apartments+Baton+Rouge+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Edgewood+Apartments+Baton+Rouge+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Fox Creek Apartments</div>
+                        <div class="city">Shreveport</div>
+                    </td>
+                    <td>
+                        <div class="city">Caddo Parish County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Fox+Creek+Apartments+Shreveport+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Fox+Creek+Apartments+Shreveport+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Fox+Creek+Apartments+Shreveport+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Lafayette Garden Apartments</div>
+                        <div class="city">Lafayette</div>
+                    </td>
+                    <td>
+                        <div class="city">Lafayette County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Lafayette+Garden+Apartments+Lafayette+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Lafayette+Garden+Apartments+Lafayette+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Lafayette+Garden+Apartments+Lafayette+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Magnolia Gardens</div>
+                        <div class="city">Baton Rouge</div>
+                    </td>
+                    <td>
+                        <div class="city">E. Baton Rouge Parish County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Magnolia+Gardens+Baton+Rouge+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Magnolia+Gardens+Baton+Rouge+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Magnolia+Gardens+Baton+Rouge+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Monroe Park Plaza</div>
+                        <div class="city">Monroe</div>
+                    </td>
+                    <td>
+                        <div class="city">Ouachita County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Monroe+Park+Plaza+Monroe+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Monroe+Park+Plaza+Monroe+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Monroe+Park+Plaza+Monroe+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">New Orleans Garden District</div>
+                        <div class="city">New Orleans</div>
+                    </td>
+                    <td>
+                        <div class="city">Orleans County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=New+Orleans+Garden+District+New+Orleans+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=New+Orleans+Garden+District+New+Orleans+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=New+Orleans+Garden+District+New+Orleans+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Palms at Sunset Lakes</div>
+                        <div class="city">Zachary</div>
+                    </td>
+                    <td>
+                        <div class="city">East Baton Rouge County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Palms+at+Sunset+Lakes+Zachary+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Palms+at+Sunset+Lakes+Zachary+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Palms+at+Sunset+Lakes+Zachary+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Shreveport Central Apartments</div>
+                        <div class="city">Shreveport</div>
+                    </td>
+                    <td>
+                        <div class="city">Caddo County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Shreveport+Central+Apartments+Shreveport+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Shreveport+Central+Apartments+Shreveport+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Shreveport+Central+Apartments+Shreveport+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Summertree Apartments</div>
+                        <div class="city">Shreveport</div>
+                    </td>
+                    <td>
+                        <div class="city">Caddo County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Summertree+Apartments+Shreveport+LA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Summertree+Apartments+Shreveport+LA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Summertree+Apartments+Shreveport+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

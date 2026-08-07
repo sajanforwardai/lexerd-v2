@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KS Property Website Discovery Tool</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
+        .stats { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 20px; }
+        .stat { flex: 1; }
+        .stat-value { font-size: 24px; font-weight: bold; color: #7c3aed; }
+        .stat-label { color: #666; font-size: 12px; margin-top: 5px; }
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        thead { background: #7c3aed; color: white; }
+        th { padding: 12px; text-align: left; font-weight: 600; }
+        td { padding: 12px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f9fafb; }
+        .property-name { font-weight: 500; color: #333; }
+        .city { color: #666; font-size: 13px; }
+        .links { display: flex; gap: 8px; flex-wrap: wrap; }
+        a { display: inline-block; padding: 6px 12px; background: #7c3aed; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; transition: background 0.2s; }
+        a:hover { background: #6d28d9; }
+        a.google { background: #ea4335; }
+        a.google:hover { background: #c5221f; }
+        a.apartments { background: #f4a460; }
+        a.apartments:hover { background: #e89350; }
+        a.management { background: #0891b2; }
+        a.management:hover { background: #0e7490; }
+        .instructions { background: #f3e8ff; border-left: 4px solid #7c3aed; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+        .instructions h3 { color: #7c3aed; margin-bottom: 10px; }
+        .instructions ol { margin-left: 20px; color: #666; font-size: 14px; }
+        .instructions li { margin-bottom: 8px; line-height: 1.5; }
+        .status { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+        .status.missing { background: #fce7f3; color: #be185d; }
+        .tips { background: #ecfdf5; border-left: 4px solid #10b981; padding: 12px; margin-top: 12px; border-radius: 4px; font-size: 13px; }
+        .tips strong { color: #10b981; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 KS Property Website Discovery Tool</h1>
+        <p class="subtitle">Find official websites and contact information for all properties</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Properties to Research</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Needing Websites</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to use this tool</h3>
+            <ol>
+                <li>Find your property in the table below</li>
+                <li>Click search links to find the property's official website</li>
+                <li>Note: Google Search and Apartments.com are fastest (2-3 min per property)</li>
+                <li>Also look for: phone number, email, management company name</li>
+                <li>Copy information into the CSV file (ks_website_lookup.csv)</li>
+                <li>Run: <code>python scripts/update_ks_websites_from_csv.py ks_website_lookup.csv</code></li>
+            </ol>
+            <div class="tips">
+                <strong>💡 Pro tip:</strong> Most properties have websites on Apartments.com or their management company's site. Start there, then verify with Google Search.
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Property Name</th>
+                    <th>City / County</th>
+                    <th>Find Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="property-name">Flats at Dunlap</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Flats+at+Dunlap++KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Flats+at+Dunlap++KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Flats+at+Dunlap++property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Hawthorne Place Townhomes</div>
+                        <div class="city">Lawrence</div>
+                    </td>
+                    <td>
+                        <div class="city">Douglas County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Hawthorne+Place+Townhomes+Lawrence+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Hawthorne+Place+Townhomes+Lawrence+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Hawthorne+Place+Townhomes+Lawrence+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Kansas City Metropolitan</div>
+                        <div class="city">Kansas City</div>
+                    </td>
+                    <td>
+                        <div class="city">Wyandotte County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Kansas+City+Metropolitan+Kansas+City+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Kansas+City+Metropolitan+Kansas+City+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Kansas+City+Metropolitan+Kansas+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">MARIPOSA TOWNHOMES</div>
+                        <div class="city">Topeka</div>
+                    </td>
+                    <td>
+                        <div class="city">Shawnee County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=MARIPOSA+TOWNHOMES+Topeka+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=MARIPOSA+TOWNHOMES+Topeka+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=MARIPOSA+TOWNHOMES+Topeka+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Olathe Midtown</div>
+                        <div class="city">Olathe</div>
+                    </td>
+                    <td>
+                        <div class="city">Johnson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Olathe+Midtown+Olathe+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Olathe+Midtown+Olathe+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Olathe+Midtown+Olathe+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Overland Park Residences</div>
+                        <div class="city">Overland Park</div>
+                    </td>
+                    <td>
+                        <div class="city">Johnson County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Overland+Park+Residences+Overland+Park+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Overland+Park+Residences+Overland+Park+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Overland+Park+Residences+Overland+Park+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">ROYAL RIDGE APARTMENTS</div>
+                        <div class="city">Kansas City</div>
+                    </td>
+                    <td>
+                        <div class="city">Wyandotte County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=ROYAL+RIDGE+APARTMENTS+Kansas+City+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=ROYAL+RIDGE+APARTMENTS+Kansas+City+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=ROYAL+RIDGE+APARTMENTS+Kansas+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">SUNTREE APARTMENTS</div>
+                        <div class="city">Kansas City</div>
+                    </td>
+                    <td>
+                        <div class="city">Wyandotte County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=SUNTREE+APARTMENTS+Kansas+City+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=SUNTREE+APARTMENTS+Kansas+City+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=SUNTREE+APARTMENTS+Kansas+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">THE BLUFFS</div>
+                        <div class="city">Junction City</div>
+                    </td>
+                    <td>
+                        <div class="city">Geary County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=THE+BLUFFS+Junction+City+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=THE+BLUFFS+Junction+City+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=THE+BLUFFS+Junction+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Terrace Pointe Apartments</div>
+                        <div class="city">Kansas City</div>
+                    </td>
+                    <td>
+                        <div class="city">Wyandotte County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Terrace+Pointe+Apartments+Kansas+City+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Terrace+Pointe+Apartments+Kansas+City+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Terrace+Pointe+Apartments+Kansas+City+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Topeka Heights Residential</div>
+                        <div class="city">Topeka</div>
+                    </td>
+                    <td>
+                        <div class="city">Shawnee County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Topeka+Heights+Residential+Topeka+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Topeka+Heights+Residential+Topeka+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Topeka+Heights+Residential+Topeka+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Wichita Central Living</div>
+                        <div class="city">Wichita</div>
+                    </td>
+                    <td>
+                        <div class="city">Sedgwick County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Wichita+Central+Living+Wichita+KS+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Wichita+Central+Living+Wichita+KS" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Wichita+Central+Living+Wichita+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

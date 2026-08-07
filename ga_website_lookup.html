@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GA Property Website Discovery Tool</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
+        .stats { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 20px; }
+        .stat { flex: 1; }
+        .stat-value { font-size: 24px; font-weight: bold; color: #7c3aed; }
+        .stat-label { color: #666; font-size: 12px; margin-top: 5px; }
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        thead { background: #7c3aed; color: white; }
+        th { padding: 12px; text-align: left; font-weight: 600; }
+        td { padding: 12px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f9fafb; }
+        .property-name { font-weight: 500; color: #333; }
+        .city { color: #666; font-size: 13px; }
+        .links { display: flex; gap: 8px; flex-wrap: wrap; }
+        a { display: inline-block; padding: 6px 12px; background: #7c3aed; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; transition: background 0.2s; }
+        a:hover { background: #6d28d9; }
+        a.google { background: #ea4335; }
+        a.google:hover { background: #c5221f; }
+        a.apartments { background: #f4a460; }
+        a.apartments:hover { background: #e89350; }
+        a.management { background: #0891b2; }
+        a.management:hover { background: #0e7490; }
+        .instructions { background: #f3e8ff; border-left: 4px solid #7c3aed; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+        .instructions h3 { color: #7c3aed; margin-bottom: 10px; }
+        .instructions ol { margin-left: 20px; color: #666; font-size: 14px; }
+        .instructions li { margin-bottom: 8px; line-height: 1.5; }
+        .status { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+        .status.missing { background: #fce7f3; color: #be185d; }
+        .tips { background: #ecfdf5; border-left: 4px solid #10b981; padding: 12px; margin-top: 12px; border-radius: 4px; font-size: 13px; }
+        .tips strong { color: #10b981; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 GA Property Website Discovery Tool</h1>
+        <p class="subtitle">Find official websites and contact information for all properties</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">35</div>
+                <div class="stat-label">Properties to Research</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">35</div>
+                <div class="stat-label">Needing Websites</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to use this tool</h3>
+            <ol>
+                <li>Find your property in the table below</li>
+                <li>Click search links to find the property's official website</li>
+                <li>Note: Google Search and Apartments.com are fastest (2-3 min per property)</li>
+                <li>Also look for: phone number, email, management company name</li>
+                <li>Copy information into the CSV file (ga_website_lookup.csv)</li>
+                <li>Run: <code>python scripts/update_ga_websites_from_csv.py ga_website_lookup.csv</code></li>
+            </ol>
+            <div class="tips">
+                <strong>💡 Pro tip:</strong> Most properties have websites on Apartments.com or their management company's site. Start there, then verify with Google Search.
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Property Name</th>
+                    <th>City / County</th>
+                    <th>Find Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="property-name">2500 BARNSDALE WAY</div>
+                        <div class="city">Albany</div>
+                    </td>
+                    <td>
+                        <div class="city">Dougherty County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=2500+BARNSDALE+WAY+Albany+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=2500+BARNSDALE+WAY+Albany+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=2500+BARNSDALE+WAY+Albany+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">ASHGROVE APARTMENTS</div>
+                        <div class="city">Stone Mountain</div>
+                    </td>
+                    <td>
+                        <div class="city">DeKalb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=ASHGROVE+APARTMENTS+Stone+Mountain+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=ASHGROVE+APARTMENTS+Stone+Mountain+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=ASHGROVE+APARTMENTS+Stone+Mountain+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Athens College Town</div>
+                        <div class="city">Athens</div>
+                    </td>
+                    <td>
+                        <div class="city">Clarke County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Athens+College+Town+Athens+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Athens+College+Town+Athens+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Athens+College+Town+Athens+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Augusta Park Apartments</div>
+                        <div class="city">Augusta</div>
+                    </td>
+                    <td>
+                        <div class="city">Richmond County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Augusta+Park+Apartments+Augusta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Augusta+Park+Apartments+Augusta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Augusta+Park+Apartments+Augusta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">BROOKSTONE CROSSING</div>
+                        <div class="city">Atlanta</div>
+                    </td>
+                    <td>
+                        <div class="city">DeKalb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=BROOKSTONE+CROSSING+Atlanta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=BROOKSTONE+CROSSING+Atlanta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=BROOKSTONE+CROSSING+Atlanta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Bedford Park</div>
+                        <div class="city">Atlanta</div>
+                    </td>
+                    <td>
+                        <div class="city">DeKalb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Bedford+Park+Atlanta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Bedford+Park+Atlanta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Bedford+Park+Atlanta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Bella Grand</div>
+                        <div class="city">Marietta</div>
+                    </td>
+                    <td>
+                        <div class="city">Cobb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Bella+Grand+Marietta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Bella+Grand+Marietta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Bella+Grand+Marietta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">CHAMBLEE HEIGHTS</div>
+                        <div class="city">Chamblee</div>
+                    </td>
+                    <td>
+                        <div class="city">DeKalb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=CHAMBLEE+HEIGHTS+Chamblee+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=CHAMBLEE+HEIGHTS+Chamblee+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=CHAMBLEE+HEIGHTS+Chamblee+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Citizens Square Villas</div>
+                        <div class="city">Dallas</div>
+                    </td>
+                    <td>
+                        <div class="city">Paulding County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Citizens+Square+Villas+Dallas+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Citizens+Square+Villas+Dallas+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Citizens+Square+Villas+Dallas+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Defeased</div>
+                        <div class="city">(multiple)</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Defeased+(multiple)+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Defeased+(multiple)+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Defeased+(multiple)+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Forsyth Row</div>
+                        <div class="city">Savannah</div>
+                    </td>
+                    <td>
+                        <div class="city">Chatham County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Forsyth+Row+Savannah+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Forsyth+Row+Savannah+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Forsyth+Row+Savannah+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">GREENHILL APARTMENTS</div>
+                        <div class="city">Columbus</div>
+                    </td>
+                    <td>
+                        <div class="city">Muscogee County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=GREENHILL+APARTMENTS+Columbus+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=GREENHILL+APARTMENTS+Columbus+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=GREENHILL+APARTMENTS+Columbus+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Hill District Flats</div>
+                        <div class="city">Augusta</div>
+                    </td>
+                    <td>
+                        <div class="city">Richmond County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Hill+District+Flats+Augusta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Hill+District+Flats+Augusta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Hill+District+Flats+Augusta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Landings Edge</div>
+                        <div class="city">Savannah</div>
+                    </td>
+                    <td>
+                        <div class="city">Chatham County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Landings+Edge+Savannah+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Landings+Edge+Savannah+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Landings+Edge+Savannah+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Legacy Commons</div>
+                        <div class="city">Tucker</div>
+                    </td>
+                    <td>
+                        <div class="city">Gwinnett County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Legacy+Commons+Tucker+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Legacy+Commons+Tucker+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Legacy+Commons+Tucker+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Macon Central Park</div>
+                        <div class="city">Macon</div>
+                    </td>
+                    <td>
+                        <div class="city">Bibb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Macon+Central+Park+Macon+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Macon+Central+Park+Macon+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Macon+Central+Park+Macon+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Marsh Landing Apartments</div>
+                        <div class="city">Brunswick</div>
+                    </td>
+                    <td>
+                        <div class="city">Glynn County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Marsh+Landing+Apartments+Brunswick+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Marsh+Landing+Apartments+Brunswick+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Marsh+Landing+Apartments+Brunswick+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">PINE HILLS</div>
+                        <div class="city">Smyrna</div>
+                    </td>
+                    <td>
+                        <div class="city">Cobb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=PINE+HILLS+Smyrna+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=PINE+HILLS+Smyrna+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=PINE+HILLS+Smyrna+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Peach Tree Lofts</div>
+                        <div class="city">Atlanta</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Peach+Tree+Lofts+Atlanta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Peach+Tree+Lofts+Atlanta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Peach+Tree+Lofts+Atlanta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Peachtree Multifamily One</div>
+                        <div class="city">Atlanta</div>
+                    </td>
+                    <td>
+                        <div class="city">Fulton County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Peachtree+Multifamily+One+Atlanta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Peachtree+Multifamily+One+Atlanta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Peachtree+Multifamily+One+Atlanta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Perimeter Bend (control)</div>
+                        <div class="city">Augusta</div>
+                    </td>
+                    <td>
+                        <div class="city">Richmond County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Perimeter+Bend+(control)+Augusta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Perimeter+Bend+(control)+Augusta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Perimeter+Bend+(control)+Augusta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Riverwalk Augusta</div>
+                        <div class="city">Augusta</div>
+                    </td>
+                    <td>
+                        <div class="city">Richmond County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Riverwalk+Augusta+Augusta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Riverwalk+Augusta+Augusta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Riverwalk+Augusta+Augusta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">SHADOW LAKE APARTMENTS</div>
+                        <div class="city">Doraville</div>
+                    </td>
+                    <td>
+                        <div class="city">Dekalb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=SHADOW+LAKE+APARTMENTS+Doraville+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=SHADOW+LAKE+APARTMENTS+Doraville+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=SHADOW+LAKE+APARTMENTS+Doraville+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Savannah Historic Residences</div>
+                        <div class="city">Savannah</div>
+                    </td>
+                    <td>
+                        <div class="city">Chatham County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Savannah+Historic+Residences+Savannah+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Savannah+Historic+Residences+Savannah+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Savannah+Historic+Residences+Savannah+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Savannah Trellis</div>
+                        <div class="city">Savannah</div>
+                    </td>
+                    <td>
+                        <div class="city">Chatham County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Savannah+Trellis+Savannah+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Savannah+Trellis+Savannah+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Savannah+Trellis+Savannah+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Southern Woods</div>
+                        <div class="city">Tucker</div>
+                    </td>
+                    <td>
+                        <div class="city">GWINNETT County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Southern+Woods+Tucker+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Southern+Woods+Tucker+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Southern+Woods+Tucker+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Stanford Oaks</div>
+                        <div class="city">Tucker</div>
+                    </td>
+                    <td>
+                        <div class="city">DeKalb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Stanford+Oaks+Tucker+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Stanford+Oaks+Tucker+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Stanford+Oaks+Tucker+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Studio 9Forty Apartments</div>
+                        <div class="city">Atlanta</div>
+                    </td>
+                    <td>
+                        <div class="city">Fulton County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Studio+9Forty+Apartments+Atlanta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Studio+9Forty+Apartments+Atlanta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Studio+9Forty+Apartments+Atlanta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Summerville Court</div>
+                        <div class="city">Augusta</div>
+                    </td>
+                    <td>
+                        <div class="city">Richmond County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Summerville+Court+Augusta+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Summerville+Court+Augusta+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Summerville+Court+Augusta+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Tifton Student Housing</div>
+                        <div class="city">Tifton</div>
+                    </td>
+                    <td>
+                        <div class="city">Tift County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Tifton+Student+Housing+Tifton+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Tifton+Student+Housing+Tifton+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Tifton+Student+Housing+Tifton+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Tybee Gateway</div>
+                        <div class="city">Savannah</div>
+                    </td>
+                    <td>
+                        <div class="city">Chatham County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Tybee+Gateway+Savannah+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Tybee+Gateway+Savannah+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Tybee+Gateway+Savannah+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Valleybrook Apartments</div>
+                        <div class="city">Newnan</div>
+                    </td>
+                    <td>
+                        <div class="city">Coweta County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Valleybrook+Apartments+Newnan+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Valleybrook+Apartments+Newnan+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Valleybrook+Apartments+Newnan+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Walden Brook Apartments</div>
+                        <div class="city">Lithonia</div>
+                    </td>
+                    <td>
+                        <div class="city">DeKalb County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Walden+Brook+Apartments+Lithonia+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Walden+Brook+Apartments+Lithonia+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Walden+Brook+Apartments+Lithonia+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Westpark Club</div>
+                        <div class="city">Athens</div>
+                    </td>
+                    <td>
+                        <div class="city">Clarke County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Westpark+Club+Athens+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Westpark+Club+Athens+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Westpark+Club+Athens+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Woodland Trace Apartments</div>
+                        <div class="city">Conyers</div>
+                    </td>
+                    <td>
+                        <div class="city">Rockdale County</div>
+                        <span class="status missing">Website Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/search?q=Woodland+Trace+Apartments+Conyers+GA+website" target="_blank" class="google">🔍 Google</a>
+                            <a href="https://www.apartments.com/search/?q=Woodland+Trace+Apartments+Conyers+GA" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.google.com/search?q=Woodland+Trace+Apartments+Conyers+property+management+company" target="_blank" class="management">🏛️ Management</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

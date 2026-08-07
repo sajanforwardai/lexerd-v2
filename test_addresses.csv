@@ -1,0 +1,4 @@
+Property Name,City,County,Google Maps,Google Search,Apartments.com,Zillow,County Assessor,Address (to be filled),Confidence,Source (to be filled)
+Clubside Apartments,Venice,Sarasota,https://goo.gl/maps,https://google.com,https://apartments.com,https://zillow.com,https://assessor.com,"100 Clubside Lane, Venice, FL 34292",1.0,apartments.com
+Beach Bluff Apartments,Jacksonville,Duval,https://goo.gl/maps,https://google.com,https://apartments.com,https://zillow.com,https://assessor.com,"456 Beach Bluff Ave, Jacksonville, FL 32210",1.0,zillow
+Innovo at Sunrise,Sunrise,Broward,https://goo.gl/maps,https://google.com,https://apartments.com,https://zillow.com,https://assessor.com,"789 Innovo Boulevard, Sunrise, FL 33323",1.0,apartments.com

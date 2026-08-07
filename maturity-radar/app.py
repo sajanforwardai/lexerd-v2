@@ -325,8 +325,9 @@ with tab_watch:
             if "FHMS" in (l.deal or ""):
                 prop_type = "Agency"
 
-            # For all loans, prefer property_address (street); fall back to property_name
-            address = getattr(l, 'property_address', None) or l.property_name or "—"
+            # For all loans, show property_address (street) only if available
+            # Don't use property_name as fallback — if no address, show empty/dash
+            address = getattr(l, 'property_address', None) or "—"
 
             data.append({
                 'Pressure': int(s.pressure_score),

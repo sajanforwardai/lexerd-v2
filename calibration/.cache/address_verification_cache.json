@@ -2502,7 +2502,11 @@
     "phone": "(912) 298-0028",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Northgate Lofts|College Station|TX": {
     "address": "411 North Frio Street",
@@ -2511,7 +2515,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Hill District Flats|Augusta|GA": {
     "address": "934 Courtside Dr, Augusta, GA 30909, USA",
@@ -2520,7 +2529,11 @@
     "phone": "(833) 413-0852",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Tybee Gateway|Savannah|GA": {
     "address": "99 Gateway Blvd W BLDG 100, Savannah, GA 31419, USA",
@@ -2529,7 +2542,11 @@
     "phone": "(912) 250-6100",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Riverwalk Augusta|Augusta|GA": {
     "address": "205 River Pl, Augusta, GA 30909, USA",
@@ -2538,7 +2555,11 @@
     "phone": "(706) 764-4902",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Wolf Pen Crossing|College Station|TX": {
     "address": "411 North Frio Street",
@@ -2547,7 +2568,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Aggieland Flats|College Station|TX": {
     "address": "411 North Frio Street",
@@ -2556,7 +2582,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Savannah Trellis|Savannah|GA": {
     "address": "15 Brasseler Blvd, Savannah, GA 31419, USA",
@@ -2565,7 +2596,11 @@
     "phone": "(912) 785-8328",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Summerville Court|Augusta|GA": {
     "address": "2476 McDowell St, Augusta, GA 30904, USA",
@@ -2574,7 +2609,11 @@
     "phone": "(706) 808-2601",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Mill on Main|Waxhaw|NC": {
     "address": "242 Price St, Waxhaw, NC 28173, USA",
@@ -2583,7 +2622,11 @@
     "phone": "(980) 341-5011",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Portofino Cove|Fort Myers|FL": {
     "address": "4160 Ambrosia Dr, Fort Myers, FL 33916, USA",
@@ -2592,7 +2635,11 @@
     "phone": "(239) 366-3158",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Tampa Bay Heights|Tampa|FL": {
     "address": "4821 E Temple Heights Rd, Tampa, FL 33617, USA",
@@ -2601,7 +2648,11 @@
     "phone": "(813) 989-1795",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Augusta Park Apartments|Augusta|GA": {
     "address": "101 Little Rock Dr, Augusta, GA 30909, USA",
@@ -2610,7 +2661,11 @@
     "phone": "(706) 541-6151",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Lafayette Garden Apartments|Lafayette|LA": {
     "address": "110 E Martial Ave, Lafayette, LA 70508, USA",
@@ -2619,7 +2674,11 @@
     "phone": "(337) 993-8886",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Amarillo Sunrise Apartments|Amarillo|TX": {
     "address": "4300 S Austin St, Amarillo, TX 79110, USA",
@@ -2628,7 +2687,11 @@
     "phone": "(806) 905-6055",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Garland Central Station|Garland|TX": {
     "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
@@ -2637,7 +2700,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Grand Prairie Industrial|Grand Prairie|TX": {
     "address": "2015 Forum Dr, Grand Prairie, TX 75052, USA",
@@ -2646,7 +2714,11 @@
     "phone": "(469) 523-3421",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Pharr Commerce District|Pharr|TX": {
     "address": "703 W Nolana Loop, Pharr, TX 78577, USA",
@@ -2655,7 +2727,11 @@
     "phone": "(956) 403-0011",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Galveston Beach Towers|Galveston|TX": {
     "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
@@ -2664,7 +2740,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Texas City Refinery Side|Texas City|TX": {
     "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
@@ -2673,7 +2754,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Pasadena Industrial Park|Pasadena|TX": {
     "address": "4747 Burke Rd, Pasadena, TX 77504, USA",
@@ -2682,7 +2768,11 @@
     "phone": "(877) 834-6234",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "La Porte Harbor View|La Porte|TX": {
     "address": "9999 Spencer Hwy, La Porte, TX 77571, USA",
@@ -2691,7 +2781,11 @@
     "phone": "(281) 471-9634",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Conroe East Park|Conroe|TX": {
     "address": "1400 S Frazier St, Conroe, TX 77301, USA",
@@ -2700,7 +2794,11 @@
     "phone": "(979) 652-5820",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Beaumont Downtown|Beaumont|TX": {
     "address": "620 Pearl St, Beaumont, TX 77701, USA",
@@ -2709,7 +2807,11 @@
     "phone": "(800) 809-4693",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Marshall Historic District|Marshall|TX": {
     "address": "101 Country Club Dr, Marshall, TX 75672, USA",
@@ -2718,7 +2820,11 @@
     "phone": "(903) 935-7882",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Athens Liberty|Athens|TX": {
     "address": "2050 State Hwy 31 E, Athens, TX 75751, USA",
@@ -2727,7 +2833,11 @@
     "phone": "(430) 322-1066",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Corsicana Commercial|Corsicana|TX": {
     "address": "3033 TX-22 Apt.18, Corsicana, TX 75110, USA",
@@ -2736,7 +2846,11 @@
     "phone": "(903) 600-5769",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Burnet Highland|Burnet|TX": {
     "address": "103 N Hill St, Burnet, TX 78611, USA",
@@ -2745,7 +2859,11 @@
     "phone": "(512) 756-9100",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Bryan Station Apartments|Bryan|TX": {
     "address": "411 North Frio Street",
@@ -2754,7 +2872,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Peachtree Multifamily One|Atlanta|GA": {
     "address": "1000 Peachtree Park Dr NE, Atlanta, GA 30309, USA",
@@ -2763,7 +2886,11 @@
     "phone": "(478) 606-2956",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Greensboro Market Place|Greensboro|NC": {
     "address": "5515 W Market St, Greensboro, NC 27409, USA",
@@ -2772,7 +2899,11 @@
     "phone": "(336) 294-0913",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "New Orleans Garden District|New Orleans|LA": {
     "address": "1 Juvenile Court, Orleans Parish Juvenile Justice Intervention Center Liquidation/City Debt, Board of LSU Agricultural Center Maternal Health Mayor, Office of the Mosquito, Termite & Rodent Control Board Motor Vehicle Inspection Bureau Municipal and Traffic Court of New Orleans Municipal Complex Advisory Committee  New Orleans Municipal Employees Retirement System New Orleans Office of Coordination and Emergency Management New Orleans Recreation Development Commission (NORD) New Orleans Redevelopment Authority Nighttime Economy, Mayor's Office of NOHHS Community Engagement, Performance, and Equity NOLA Ready NOPD Crime Lab Parks & Parkways, Department of Performance and Accountability Police Department, New Orleans (NOPD) Police Secondary Employment, Office of Population Health and Disease Prevention Property Management, Department of Public Health Emergencies & Environmental Health Public Library, New Orleans (Main Branch) Public Works, Department of Purchasing, Bureau of Real Estate and Records Registrar of Voters, Orleans Parish Revenue-Sales Tax, Bureau of  Ryan White HIV Services and Resources Safety and Permits, Department of Sanitation, Department of Short Term Rental Administration Stormwater & Green Infrastructure Supplier Diversity, Office of Sustainability, Office of Transportation, Mayor's Office of Treasury, Bureau of Vieux Carr\u00e9 Commission Workforce Development, Office of  Youth and Families, Office of",
@@ -2781,7 +2912,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Mobile Bay Apartments|Mobile|AL": {
     "address": "3600 Michael Blvd, Mobile, AL 36609, USA",
@@ -2790,7 +2926,11 @@
     "phone": "(251) 343-0972",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Corpus Christi Bay View|Corpus Christi|TX": {
     "address": "802 S Carancahua St, Corpus Christi, TX 78401, USA",
@@ -2799,7 +2939,11 @@
     "phone": "(361) 282-1219",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Gainesville Campus Quarter|Gainesville|FL": {
     "address": "4000 SW 37th Blvd, Gainesville, FL 32608, USA",
@@ -2808,7 +2952,11 @@
     "phone": "(352) 707-9134",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Montgomery Executive Park|Montgomery|AL": {
     "address": "2495 Meadow Ridge Ln, Montgomery, AL 36117, USA",
@@ -2817,7 +2965,11 @@
     "phone": "(833) 773-5397",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Laredo International|Laredo|TX": {
     "address": "418 International Blvd, Laredo, TX 78045, USA",
@@ -2826,7 +2978,11 @@
     "phone": "(956) 602-0596",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "McAllen Gateway|McAllen|TX": {
     "address": "4200 N Chai, McAllen, TX 78504, USA",
@@ -2835,7 +2991,11 @@
     "phone": "(956) 213-8888",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Angleton Industrial|Angleton|TX": {
     "address": "1705 E Henderson Rd, Angleton, TX 77515, USA",
@@ -2844,7 +3004,11 @@
     "phone": "(979) 583-1495",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "League City Bay View|League City|TX": {
     "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
@@ -2853,7 +3017,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Seabrook Bay Side|Seabrook|TX": {
     "address": "2802 Larabee St, Seabrook, TX 77586, USA",
@@ -2862,7 +3031,11 @@
     "phone": "(832) 536-1212",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Texarkana Twin States|Texarkana|TX": {
     "address": "3515 Arista Blvd, Texarkana, TX 75503, USA",
@@ -2871,7 +3044,11 @@
     "phone": "(877) 708-3848",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "San Marcos Central|San Marcos|TX": {
     "address": "508 Labrador Blvd, San Marcos, TX 78666, USA",
@@ -2880,7 +3057,11 @@
     "phone": "(888) 502-4370",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Warehouse Lofts|Tampa|FL": {
     "address": "4513 N Florida Ave, Tampa, FL 33603, USA",
@@ -2889,7 +3070,11 @@
     "phone": "(813) 443-5160",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Great Oaks Apartments|Lufkin|TX": {
     "address": "3205 Old Union Rd, Lufkin, TX 75904, USA",
@@ -2898,7 +3083,11 @@
     "phone": "(936) 634-6497",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Savannah Historic Residences|Savannah|GA": {
     "address": "455 Montgomery St, Savannah, GA 31401, USA",
@@ -2907,7 +3096,11 @@
     "phone": "(833) 442-8268",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Lewisville Lakeside|Lewisville|TX": {
     "address": "901 Lakeside Cir, Lewisville, TX 75057, USA",
@@ -2916,7 +3109,11 @@
     "phone": "(972) 846-8737",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Conroe Westfield|Conroe|TX": {
     "address": "2211 Montgomery Park Blvd, Conroe, TX 77304, USA",
@@ -2925,7 +3122,11 @@
     "phone": "(936) 508-3030",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Monroe Park Plaza|Monroe|LA": {
     "address": "3200 Sterlington Rd, Monroe, LA 71203, USA",
@@ -2934,7 +3135,11 @@
     "phone": "(318) 361-2005",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Odessa Basin Residences|Odessa|TX": {
     "address": "8001 Brownstone Rd, Odessa, TX 79765, USA",
@@ -2943,7 +3148,11 @@
     "phone": "(361) 867-3173",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "THE DORAL|Dallas|TX": {
     "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
@@ -2952,7 +3161,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Wilton Walk Townhomes|Wilton Manors|FL": {
     "address": "609 NE 28th St #4, Wilton Manors, FL 33334, USA",
@@ -2961,7 +3175,11 @@
     "phone": null,
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Tulsa Downtown Living|Tulsa|TX": {
     "address": "420 E Archer St, Tulsa, OK 74120, USA",
@@ -2970,7 +3188,11 @@
     "phone": "(918) 205-4814",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Covington Riverfront|Covington|KY": {
     "address": "50 W Rivercenter Blvd, Covington, KY 41011, USA",
@@ -2979,7 +3201,11 @@
     "phone": "(859) 710-5199",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Tyler Rose Valley|Tyler|TX": {
     "address": "1007 N NW Loop 323 apt. 213, Tyler, TX 75702, USA",
@@ -2988,7 +3214,11 @@
     "phone": "(903) 592-7341",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Mission Rio Valley|Mission|TX": {
     "address": "301 S Inspiration Rd, Mission, TX 78572, USA",
@@ -2997,7 +3227,11 @@
     "phone": "(956) 247-4526",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Jacksonville Trails|Jacksonville|TX": {
     "address": "1027 TX-456 Loop, Jacksonville, TX 75766, USA",
@@ -3006,7 +3240,11 @@
     "phone": "(903) 586-3361",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Copperas Cove Military|Copperas Cove|TX": {
     "address": "307 Judy Ln, Copperas Cove, TX 76522, USA",
@@ -3015,7 +3253,11 @@
     "phone": "(254) 272-3613",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Georgetown Historic|Georgetown|TX": {
     "address": "500 Westinghouse Rd, Georgetown, TX 78626, USA",
@@ -3024,7 +3266,11 @@
     "phone": "(855) 592-5341",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Miami Beach Residences|Miami|FL": {
     "address": "4701 Meridian Ave, Miami Beach, FL 33140, USA",
@@ -3033,7 +3279,11 @@
     "phone": "(305) 714-4605",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Cane Island Loop|Kissimmee|FL": {
     "address": "5251 Cane Island Loop, Kissimmee, FL 34746, USA",
@@ -3042,7 +3292,11 @@
     "phone": "(689) 220-5953",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "BRYAN WOODS APARTMENTS|Garner|NC": {
     "address": "915 Bryan Pl, Garner, NC 27529, USA",
@@ -3051,7 +3305,11 @@
     "phone": "(910) 613-9785",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "CHAMBLEE HEIGHTS|Chamblee|GA": {
     "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
@@ -3060,7 +3318,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Houston Towers Residential|Houston|TX": {
     "address": "2309 Wichita St, Houston, TX 77004, USA",
@@ -3069,7 +3332,11 @@
     "phone": "(713) 900-7007",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Irving Innovation Hub|Irving|TX": {
     "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
@@ -3078,7 +3345,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Huntsville State College|Huntsville|TX": {
     "address": "2456 Montgomery Rd, Huntsville, TX 77340, USA",
@@ -3087,7 +3359,11 @@
     "phone": "(936) 439-9300",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Temple Heights|Temple|TX": {
     "address": "3000 W Adams Ave, Temple, TX 76504, USA",
@@ -3096,7 +3372,11 @@
     "phone": "(254) 773-1441",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Riverside Park Apartments|Houston|TX": {
     "address": "2601 Riverside Dr #1, Houston, TX 77004, USA",
@@ -3105,7 +3385,11 @@
     "phone": "(713) 523-9358",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Lakeside Commons|Dallas|TX": {
     "address": "9600 Golf Lakes Trail, Dallas, TX 75231, USA",
@@ -3114,7 +3398,11 @@
     "phone": "(469) 551-5528",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Walden Brook Apartments|Lithonia|GA": {
     "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
@@ -3123,7 +3411,11 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor"
+    ],
+    "discovery_method": "county_assessor"
   },
   "The Retreat Apartments|Greensboro|NC": {
     "address": "4203 Hewitt St, Greensboro, NC 27407, USA",
@@ -3132,7 +3424,11 @@
     "phone": "(336) 810-1550",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Birmingham Valley View|Birmingham|AL": {
     "address": "834 Golden Gate Ln, Birmingham, AL 35209, USA",
@@ -3141,7 +3437,11 @@
     "phone": "(205) 402-8262",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Macon Central Park|Macon|GA": {
     "address": "4755 Mercer University Dr, Macon, GA 31210, USA",
@@ -3150,7 +3450,11 @@
     "phone": "(478) 314-1900",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Lubbock Tech Campus|Lubbock|TX": {
     "address": "2210 Glenna Goodacre Blvd, Lubbock, TX 79401, USA",
@@ -3159,7 +3463,11 @@
     "phone": "(806) 368-7970",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Cleburne Historic Apartments|Cleburne|TX": {
     "address": "226 Seclusion Dr, Cleburne, TX 76033, USA",
@@ -3168,7 +3476,11 @@
     "phone": "(817) 809-9845",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Bryan Texas Park|Bryan|TX": {
     "address": "411 North Frio Street",
@@ -3177,7 +3489,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Lumberton Pines|Lumberton|TX": {
     "address": "187 S Lhs Dr, Lumberton, TX 77657, USA",
@@ -3186,7 +3503,11 @@
     "phone": "(409) 547-7678",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Buda Parkside|Buda|TX": {
     "address": "5500 Overpass Rd, Buda, TX 78610, USA",
@@ -3195,7 +3516,11 @@
     "phone": "(512) 295-7539",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Boerne Hill Country|Boerne|TX": {
     "address": "825 Johns Rd, Boerne, TX 78006, USA",
@@ -3204,7 +3529,11 @@
     "phone": "(888) 270-5269",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "LAS BRISAS APARTMENTS|Houston|TX": {
     "address": "4500 N Main St, Houston, TX 77009, USA",
@@ -3213,7 +3542,11 @@
     "phone": "(713) 880-2020",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "SUMMERCREST APARTMENTS|Houston|TX": {
     "address": "3950 Hollister Rd, Houston, TX 77080, USA",
@@ -3222,7 +3555,11 @@
     "phone": "(346) 291-1646",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Defeased|Sherman|TX": {
     "address": "3800 Lamberth Rd, Sherman, TX 75092, USA",
@@ -3231,7 +3568,11 @@
     "phone": "(844) 996-1202",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Lexington Park Commons|Lexington|KY": {
     "address": "1409 N Forbes Rd Ste 220, Lexington, KY 40508, USA",
@@ -3240,7 +3581,11 @@
     "phone": "(859) 309-0099",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Overland Park Residences|Overland Park|KS": {
     "address": "11201 Outlook St, Overland Park, KS 66211, USA",
@@ -3249,7 +3594,11 @@
     "phone": "(833) 659-8393",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "RAGHU APARTMENTS|Houston|TX": {
     "address": "8655 Pitner Rd, Houston, TX 77080, USA",
@@ -3258,7 +3607,11 @@
     "phone": "(281) 524-3275",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Baton Rouge South Park|Baton Rouge|LA": {
     "address": "4701 Southpark Dr, Baton Rouge, LA 70816, USA",
@@ -3267,7 +3620,11 @@
     "phone": "(225) 293-4858",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "THE ROCHESTER APARTMENTS|Arlington|TX": {
     "address": "1200 Nolan Ryan Expy, Arlington, TX 76011, USA",
@@ -3276,7 +3633,11 @@
     "phone": "(817) 260-0857",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "CHARTWELL COURT|Houston|TX": {
     "address": "15100 Ella Blvd, Houston, TX 77090, USA",
@@ -3285,7 +3646,11 @@
     "phone": "(888) 337-3163",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "BILTMORE APARTMENTS|Arlington|TX": {
     "address": "2300 Misty Ridge Cir, Arlington, TX 76011, USA",
@@ -3294,7 +3659,11 @@
     "phone": "(682) 270-0466",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Dallas Park Apartments|Dallas|TX": {
     "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
@@ -3303,7 +3672,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Spurlock Apartments|Nederland|TX": {
     "address": "2575 N 31st St, Nederland, TX 77627, USA",
@@ -3312,7 +3686,11 @@
     "phone": "(409) 403-2828",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "San Antonio Mission District|San Antonio|TX": {
     "address": "927 VFW Blvd Apt 7202, San Antonio, TX 78223, USA",
@@ -3321,7 +3699,11 @@
     "phone": "(210) 759-4461",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Longview Commerce Center|Longview|TX": {
     "address": "616 City Ctr Wy Apt 208, Longview, TX 75605, USA",
@@ -3330,7 +3712,11 @@
     "phone": "(430) 625-7198",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Phoenix Desert Springs|Phoenix|TX": {
     "address": "1750 E Bell Rd, Phoenix, AZ 85022, USA",
@@ -3339,7 +3725,11 @@
     "phone": "(602) 903-4793",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Waxahachie Cotton Fields|Waxahachie|TX": {
     "address": "168 Verbena Dr, Waxahachie, TX 75165, USA",
@@ -3348,7 +3738,11 @@
     "phone": "(972) 634-9292",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Edinburg Central Park|Edinburg|TX": {
     "address": "2111 W University Dr, Edinburg, TX 78539, USA",
@@ -3357,7 +3751,11 @@
     "phone": "(956) 330-0307",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Baytown Refinery District|Baytown|TX": {
     "address": "2100 W Baker Rd, Baytown, TX 77521, USA",
@@ -3366,7 +3764,11 @@
     "phone": "(281) 664-7064",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Stafford Development|Stafford|TX": {
     "address": "12700 Stafford Rd, Stafford, TX 77477, USA",
@@ -3375,7 +3777,11 @@
     "phone": "(346) 572-9214",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Longview Commerce|Longview|TX": {
     "address": "330 E Loop 281, Longview, TX 75605, USA",
@@ -3384,7 +3790,11 @@
     "phone": "(903) 759-1271",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Canton Downtown|Canton|TX": {
     "address": "13950 FM 859, Canton, TX 75103, USA",
@@ -3393,7 +3803,11 @@
     "phone": "(903) 253-0506",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Pflugerville Corporate|Pflugerville|TX": {
     "address": "17900 Pfluger Farm Ln, Pflugerville, TX 78660, USA",
@@ -3402,7 +3816,11 @@
     "phone": "(512) 884-5368",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Bennett Property|Dallas|TX": {
     "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
@@ -3411,7 +3829,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Kingsville Pointe Apartments|Kingsville|TX": {
     "address": "1201 E Caesar Ave, Kingsville, TX 78363, USA",
@@ -3420,7 +3843,11 @@
     "phone": "(830) 359-3139",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Sunrise Apartments|Montgomery|AL": {
     "address": "51 Cecil Ln, Montgomery, AL 36109, USA",
@@ -3429,7 +3856,11 @@
     "phone": "(334) 273-8100",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Cedar Creek Apartments|Montgomery|AL": {
     "address": "4233 Cedar Creek Cir, Montgomery, AL 36106, USA",
@@ -3438,7 +3869,11 @@
     "phone": "(334) 279-0361",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Orlando Gateway Apartments|Orlando|FL": {
     "address": "15050 Ember Springs Cir, Orlando, FL 32821, USA",
@@ -3447,7 +3882,11 @@
     "phone": "(407) 269-8158",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Pensacola Historic District|Pensacola|FL": {
     "address": "51 S Coyle St, Pensacola, FL 32502, USA",
@@ -3456,7 +3895,11 @@
     "phone": "(850) 940-4788",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Huntsville Tech Park|Huntsville|AL": {
     "address": "6200 Rime Village Dr NW, Huntsville, AL 35806, USA",
@@ -3465,7 +3908,11 @@
     "phone": "(256) 971-1881",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Denton University Park|Denton|TX": {
     "address": "301 Withers St, Denton, TX 76201, USA",
@@ -3474,7 +3921,11 @@
     "phone": null,
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Peach Tree Lofts|Atlanta|GA": {
     "address": "878 Peachtree St NE, Atlanta, GA 30309, USA",
@@ -3483,7 +3934,11 @@
     "phone": "(404) 815-0101",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "2500 BARNSDALE WAY|Albany|GA": {
     "address": "2611 Gillionville Rd, Albany, GA 31707, USA",
@@ -3492,7 +3947,11 @@
     "phone": "(229) 800-9101",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "College Station University|College Station|TX": {
     "address": "411 North Frio Street",
@@ -3501,7 +3960,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "OAK COURT APARTMENTS|Wilmington|NC": {
     "address": "245 S Kerr Ave, Wilmington, NC 28403, USA",
@@ -3510,7 +3974,11 @@
     "phone": "(919) 904-6076",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Hilltop Village Apartments|Sherman|TX": {
     "address": "4919 Timberview Dr, Sherman, TX 75090, USA",
@@ -3519,7 +3987,11 @@
     "phone": "(855) 912-5853",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Danube Apartments|Orlando|FL": {
     "address": "600 Stonebridge Dr, Orlando, FL 32807, USA",
@@ -3528,7 +4000,11 @@
     "phone": "(407) 275-3893",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Louisville Riverfront|Louisville|KY": {
     "address": "1800 Marinas Edge Way #100, Louisville, KY 40206, USA",
@@ -3537,7 +4013,11 @@
     "phone": "(502) 398-3402",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Owensboro Central|Owensboro|KY": {
     "address": "1200 E Byers Ave, Owensboro, KY 42303, USA",
@@ -3546,7 +4026,11 @@
     "phone": "(270) 926-2648",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Silsbee Timber Town|Silsbee|TX": {
     "address": "800 S 16th St, Silsbee, TX 77656, USA",
@@ -3555,7 +4039,11 @@
     "phone": "(409) 730-7128",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Kerrville Heritage|Kerrville|TX": {
     "address": "2350 Junction Hwy, Kerrville, TX 78028, USA",
@@ -3564,7 +4052,11 @@
     "phone": "(830) 896-5151",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Park Lane Apartments|Arlington|TX": {
     "address": "325 S Mesquite St, Arlington, TX 76010, USA",
@@ -3573,7 +4065,11 @@
     "phone": "(682) 339-2279",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "PARK LANE APARTMENTS|Arlington|TX": {
     "address": "325 S Mesquite St, Arlington, TX 76010, USA",
@@ -3582,7 +4078,11 @@
     "phone": "(682) 339-2279",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "ISLAND OAKS APARTMENTS|Orange Beach|AL": {
     "address": "26676 Canal Rd, Orange Beach, AL 36561, USA",
@@ -3591,7 +4091,11 @@
     "phone": "(251) 968-7447",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Jacksonville Waterfront|Jacksonville|FL": {
     "address": "1655 Prudential Dr, Jacksonville, FL 32207, USA",
@@ -3600,7 +4104,11 @@
     "phone": "(904) 822-5982",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "McKinney Heights|McKinney|TX": {
     "address": "1703 Rockhill Rd, McKinney, TX 75069, USA",
@@ -3609,7 +4117,11 @@
     "phone": "(469) 272-8666",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Pearland Park Commons|Pearland|TX": {
     "address": "3340 E Walnut St, Pearland, TX 77581, USA",
@@ -3618,7 +4130,11 @@
     "phone": "(346) 409-7733",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "The Woodlands South Gate|The Woodlands|TX": {
     "address": "2500 S Millbend Dr, The Woodlands, TX 77380, USA",
@@ -3627,7 +4143,11 @@
     "phone": "(713) 987-3831",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Waco Central Station|Waco|TX": {
     "address": "4900 Bagby Ave, Waco, TX 76711, USA",
@@ -3636,7 +4156,11 @@
     "phone": "(254) 279-0749",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "MORTON PLACE APARTMENTS|Amarillo|TX": {
     "address": "1025 S Virginia St, Amarillo, TX 79102, USA",
@@ -3645,7 +4169,11 @@
     "phone": "(806) 576-3676",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "FOREST RIDGE|Dallas|TX": {
     "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
@@ -3654,7 +4182,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Villas at Traditions|Bryan|TX": {
     "address": "411 North Frio Street",
@@ -3663,7 +4196,11 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Olathe Midtown|Olathe|KS": {
     "address": "11228 S Ridgeview Rd, Olathe, KS 66061, USA",
@@ -3672,7 +4209,11 @@
     "phone": "(913) 392-2905",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Hawthorne Place Townhomes|Lawrence|KS": {
     "address": "3600 Hawthorn Dr, Lawrence, KS 66047, USA",
@@ -3681,7 +4222,11 @@
     "phone": null,
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Sunset Heights|Austin|TX": {
     "address": "5800 Brodie Ln, Austin, TX 78745, USA",
@@ -3690,7 +4235,11 @@
     "phone": "(512) 722-7307",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Charlotte Corporate Park|Charlotte|NC": {
     "address": "3205 Freedom Dr., Ste 3000",
@@ -3699,7 +4248,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "BROOKSTONE CROSSING|Atlanta|GA": {
     "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
@@ -3708,7 +4262,11 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Southern Woods|Tucker|GA": {
     "address": "1286 Southern Woods Dr, Tucker, GA 30084, USA",
@@ -3717,7 +4275,11 @@
     "phone": "(770) 491-7745",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Circle Apartments|Denison|TX": {
     "address": "1527 S Austin Ave, Denison, TX 75020, USA",
@@ -3726,7 +4288,11 @@
     "phone": "(430) 964-8888",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Jacksonvile Beach Towers|Jacksonville|FL": {
     "address": "115 3rd St S, Jacksonville Beach, FL 32250, USA",
@@ -3735,7 +4301,11 @@
     "phone": "(904) 249-3866",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Tuscaloosa College Park|Tuscaloosa|AL": {
     "address": "1306 University Blvd, Tuscaloosa, AL 35401, USA",
@@ -3744,7 +4314,11 @@
     "phone": "(205) 759-2444",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Frisco Northwest|Frisco|TX": {
     "address": "Frisco Apartments, Frisco, TX 75034, USA",
@@ -3753,7 +4327,11 @@
     "phone": null,
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Round Rock Tech Corridor|Round Rock|TX": {
     "address": "8030 Co Rd 110, Round Rock, TX 78665, USA",
@@ -3762,7 +4340,11 @@
     "phone": "(737) 757-7872",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Windbury Apartments|San Antonio|TX": {
     "address": "4515 Gardendale Rd, San Antonio, TX 78240, USA",
@@ -3771,7 +4353,11 @@
     "phone": "(830) 283-7594",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Austin Central Living|Austin|TX": {
     "address": "2401 E 6th St #3033, Austin, TX 78702, USA",
@@ -3780,7 +4366,11 @@
     "phone": "(512) 809-4333",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "MIDWAY STATION|Midland|TX": {
     "address": "3700 N A St, Midland, TX 79705, USA",
@@ -3789,7 +4379,11 @@
     "phone": "(432) 242-0499",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Landings Edge|Savannah|GA": {
     "address": "101 Cay Plz, Savannah, GA 31421, USA",
@@ -3798,7 +4392,11 @@
     "phone": "(205) 855-6700",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Kansas City Metropolitan|Kansas City|KS": {
     "address": "600 E 8th St, Kansas City, MO 64106, USA",
@@ -3807,7 +4405,11 @@
     "phone": "(816) 221-1877",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Plano Tech Quarter|Plano|TX": {
     "address": "9601 Custer Rd, Plano, TX 75025, USA",
@@ -3816,7 +4418,11 @@
     "phone": "(469) 747-1405",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Woodlands North Gate|Spring|TX": {
     "address": "26325 Northgate Crossing Blvd, Spring, TX 77373, USA",
@@ -3825,7 +4431,11 @@
     "phone": "(346) 660-2933",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Missouri City Central|Missouri City|TX": {
     "address": "10030 Hwy 6, Missouri City, TX 77459, USA",
@@ -3834,7 +4444,11 @@
     "phone": "(346) 486-4838",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Cedar Park Westlake|Cedar Park|TX": {
     "address": "2801 S Lakeline Blvd, Cedar Park, TX 78613, USA",
@@ -3843,7 +4457,11 @@
     "phone": "(833) 796-2555",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Fayetteville Military District|Fayetteville|NC": {
     "address": "1025 Hirschfeld Dr, Fayetteville, NC 28303, USA",
@@ -3852,7 +4470,11 @@
     "phone": "(910) 537-2549",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Kirbyville Pine Forest|Kirbyville|TX": {
     "address": "1001 Charlsie Ave #100, Kirbyville, TX 75956, USA",
@@ -3861,7 +4483,11 @@
     "phone": "(409) 423-4411",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Fredericksburg Mountain|Fredericksburg|TX": {
     "address": "175 Friendship Ln, Fredericksburg, TX 78624, USA",
@@ -3870,7 +4496,11 @@
     "phone": "(830) 490-0693",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Westlake At Morganton Apartments|Fayetteville|NC": {
     "address": "3311 Woodhill Ln, Fayetteville, NC 28314, USA",
@@ -3879,7 +4509,11 @@
     "phone": "(910) 812-3245",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Lynn Haven Cove|Lynn Haven|FL": {
     "address": "905 W 26th St, Lynn Haven, FL 32444, USA",
@@ -3888,7 +4522,11 @@
     "phone": "(850) 763-8980",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Raleigh Tech Square|Raleigh|NC": {
     "address": "1021 S Saunders St, Raleigh, NC 27603, USA",
@@ -3897,7 +4535,11 @@
     "phone": "(984) 464-4685",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Beach Bluff Apartments|Jacksonville|FL": {
     "address": "3210 Discovery Way #602, Jacksonville, FL 32224, USA",
@@ -3906,7 +4548,11 @@
     "phone": "(904) 263-5249",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "BEACH BLUFF APARTMENTS|Jacksonville|FL": {
     "address": "3210 Discovery Way #602, Jacksonville, FL 32224, USA",
@@ -3915,7 +4561,11 @@
     "phone": "(904) 263-5249",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Wichita Central Living|Wichita|KS": {
     "address": "6500 W Central Ave, Wichita, KS 67212, USA",
@@ -3924,7 +4574,11 @@
     "phone": "(316) 260-4147",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Arlington Marketplace Apartments|Arlington|TX": {
     "address": "3701 Dr. Martin Luther King Jr. Dr, Arlington, TX 76014, USA",
@@ -3933,7 +4587,11 @@
     "phone": "(817) 826-9257",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Katy Central Living|Katy|TX": {
     "address": "23615 Kingsland Blvd, Katy, TX 77494, USA",
@@ -3942,7 +4600,11 @@
     "phone": "(346) 651-1232",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Killeen Fort Hood|Killeen|TX": {
     "address": "905 N Gilmer St, Killeen, TX 76541, USA",
@@ -3951,7 +4613,11 @@
     "phone": "(254) 699-2222",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Bella Grand|Marietta|GA": {
     "address": "5 million Department of Labor grantSubscribe to County NewslettersCobb County Government100 Cherokee StreetMarietta, GA 30090(770) 528-1000information@cobbcounty.govMedia Point of Contact(770) 528-1155newsroom@cobbcounty.govFeatured LinksHousing, Food, Health AssistanceHuman Trafficking NoticeCobbTVEmail & Phone DirectoryEmploymentLive Traffic CamsPublic MeetingsWebsite FeedbackGIS/MappingGIS HomepageGIS MapsTax Parcel ViewerTrail MapZoning Analysis\u00a9 2026 Cobb County Government, All rights reserved.Privacy PolicySocial Media PolicySitemapPowered by Interpersonal Frequency",
@@ -3960,7 +4626,11 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Backlot Apartments|Kissimmee|FL": {
     "address": "8600 W Irlo Bronson Memorial Hwy, Kissimmee, FL 34747, USA",
@@ -3969,7 +4639,11 @@
     "phone": "(407) 274-0390",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "South Gate Apartments|Sherman|TX": {
     "address": "915 S Travis St, Sherman, TX 75090, USA",
@@ -3978,7 +4652,11 @@
     "phone": "(903) 892-3171",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "PINE HILLS|Smyrna|GA": {
     "address": "5 million Department of Labor grantSubscribe to County NewslettersCobb County Government100 Cherokee StreetMarietta, GA 30090(770) 528-1000information@cobbcounty.govMedia Point of Contact(770) 528-1155newsroom@cobbcounty.govFeatured LinksHousing, Food, Health AssistanceHuman Trafficking NoticeCobbTVEmail & Phone DirectoryEmploymentLive Traffic CamsPublic MeetingsWebsite FeedbackGIS/MappingGIS HomepageGIS MapsTax Parcel ViewerTrail MapZoning Analysis\u00a9 2026 Cobb County Government, All rights reserved.Privacy PolicySocial Media PolicySitemapPowered by Interpersonal Frequency",
@@ -3987,7 +4665,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Clubside Apartments|Venice|FL": {
     "address": "1020 Capri Isles Blvd, Venice, FL 34292, USA",
@@ -3996,7 +4679,11 @@
     "phone": "(941) 488-7766",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "CLUBSIDE APARTMENTS|Venice|FL": {
     "address": "1020 Capri Isles Blvd, Venice, FL 34292, USA",
@@ -4005,7 +4692,11 @@
     "phone": "(941) 488-7766",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "ADDISON RIDGE APARTMENTS - PHASE II|Fayetteville|NC": {
     "address": "1000 Antietam Crk Dr, Fayetteville, NC 28303, USA",
@@ -4014,7 +4705,11 @@
     "phone": "(910) 867-9094",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "SkyLoft Austin|Austin|TX": {
     "address": "507 W 23rd St, Austin, TX 78705, USA",
@@ -4023,7 +4718,11 @@
     "phone": "(737) 207-9400",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "MARIPOSA TOWNHOMES|Topeka|KS": {
     "address": "2536 SW Brandywine Ln, Topeka, KS 66614, USA",
@@ -4032,7 +4731,11 @@
     "phone": "(785) 783-5283",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Woodland Trace Apartments|Conyers|GA": {
     "address": "1669 Iris Dr SE, Conyers, GA 30013, USA",
@@ -4041,7 +4744,11 @@
     "phone": "(770) 766-0363",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Wilmington Downtown Living|Wilmington|NC": {
     "address": "1045 N Front St, Wilmington, NC 28401, USA",
@@ -4050,7 +4757,11 @@
     "phone": "(910) 601-8460",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Legacy Commons|Tucker|GA": {
     "address": "6259 S Norcross Tucker Rd, Tucker, GA 30084, USA",
@@ -4059,7 +4770,11 @@
     "phone": "(770) 938-3682",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "THE CLIFFS AT WATERFORD|Spring Lake|NC": {
     "address": "859 Cliffs Cir, Spring Lake, NC 28390, USA",
@@ -4068,7 +4783,11 @@
     "phone": "(910) 339-0550",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "SHADOW LAKE APARTMENTS|Doraville|GA": {
     "address": "3515 Pleasantdale Rd, Doraville, GA 30340, USA",
@@ -4077,7 +4796,11 @@
     "phone": "(470) 613-7140",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Westpark Club|Athens|GA": {
     "address": "150 Westpark Dr, Athens, GA 30606, USA",
@@ -4086,7 +4809,11 @@
     "phone": "(706) 810-2315",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Bedford Park|Atlanta|GA": {
     "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
@@ -4095,7 +4822,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "The Courtyards at San Jose|Jacksonville|FL": {
     "address": "6701 St Augustine Rd, Jacksonville, FL 32217, USA",
@@ -4104,7 +4836,11 @@
     "phone": "(904) 379-3335",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Maple Ridge Townhomes|Midlothian|TX": {
     "address": "Ridge Ct, 136 East Maple, Midlothian, TX 76065, USA",
@@ -4113,7 +4849,11 @@
     "phone": "(817) 495-6965",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Heights At Mcarthur Park|Fayetteville|NC": {
     "address": "2523 Mulranny Dr, Fayetteville, NC 28311, USA",
@@ -4122,7 +4862,11 @@
     "phone": "(910) 569-9462",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Patriot Crossing Apartments|Louisville|KY": {
     "address": "7415 Patrick Henry Ct, Louisville, KY 40214, USA",
@@ -4131,7 +4875,11 @@
     "phone": "(502) 236-9105",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "CURRY JUNCTION|Abilene|TX": {
     "address": "3549 Curry Ln, Abilene, TX 79606, USA",
@@ -4140,7 +4888,11 @@
     "phone": "(855) 970-8499",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "The Avenue|Davie|FL": {
     "address": "6220 Reese Rd, Davie, FL 33314, USA",
@@ -4149,7 +4901,11 @@
     "phone": "(954) 749-3526",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Studio 9Forty Apartments|Atlanta|GA": {
     "address": "940 Piedmont Ave NE, Atlanta, GA 30309, USA",
@@ -4158,7 +4914,11 @@
     "phone": "(877) 644-6069",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "HAWKS LANDING APARTMENTS|Hickory|NC": {
     "address": "2778 2nd St NE, Hickory, NC 28601, USA",
@@ -4167,7 +4927,11 @@
     "phone": "(828) 855-3300",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "EAGLE POINT VILLAGE APARTMENTS|Fayetteville|NC": {
     "address": "830 Allonby Rd, Fayetteville, NC 28314, USA",
@@ -4176,7 +4940,11 @@
     "phone": "(910) 849-2470",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Osprey Cove South|Jacksonville|NC": {
     "address": "1834 Wilmington Hwy Unit 200, Jacksonville, NC 28540, USA",
@@ -4185,7 +4953,11 @@
     "phone": "(866) 596-4708",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "ROYAL RIDGE APARTMENTS|Kansas City|KS": {
     "address": "7350 State Ave, Kansas City, KS 66112, USA",
@@ -4194,7 +4966,11 @@
     "phone": "(913) 355-6355",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Stanford Oaks|Tucker|GA": {
     "address": "911\n\n\n\n\n\n\n\n \n\n\n\nOpen Bids\n\n\n\n\n\n\n\n \n\n\n\nCurrent Contracts",
@@ -4203,7 +4979,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "QUAIL MEADOWS|Houston|TX": {
     "address": "10201 Telephone Rd, Houston, TX 77075, USA",
@@ -4212,7 +4993,11 @@
     "phone": "(713) 991-3022",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Weston at Copperfield|Houston|TX": {
     "address": "15125 West Rd, Houston, TX 77095, USA",
@@ -4221,7 +5006,11 @@
     "phone": "(346) 476-1087",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "GRAPEVINE STATION|Grapevine|TX": {
     "address": "1022 Texan Trail, Grapevine, TX 76051, USA",
@@ -4230,7 +5019,11 @@
     "phone": "(817) 601-0409",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "WINDSOR PARK APARTMENTS|Victoria|TX": {
     "address": "3001 Arroyo Dr, Victoria, TX 77901, USA",
@@ -4239,7 +5032,11 @@
     "phone": "(361) 200-1813",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "University Downs Apartments|Tuscaloosa|AL": {
     "address": "120 15th St E, Tuscaloosa, AL 35401, USA",
@@ -4248,7 +5045,11 @@
     "phone": "(205) 409-0049",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Sidney Baker Apartments|Kerrville|TX": {
     "address": "1407 Sidney Baker St, Kerrville, TX 78028, USA",
@@ -4257,7 +5058,11 @@
     "phone": "(830) 496-4332",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Columbia Arms and Aspen-Alpine Apartments|Lake City|FL": {
     "address": "1414 S Marion Ave, Lake City, FL 32025, USA",
@@ -4266,7 +5071,11 @@
     "phone": "(386) 288-3128",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Valleybrook Apartments|Newnan|GA": {
     "address": "169 Roscoe Rd, Newnan, GA 30263, USA",
@@ -4275,7 +5084,11 @@
     "phone": "(678) 552-2105",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Marsh Landing Apartments|Brunswick|GA": {
     "address": "3875 Darien Hwy, Brunswick, GA 31525, USA",
@@ -4284,7 +5097,11 @@
     "phone": "(912) 342-4893",
     "confidence_score": 0.7224999999999999,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Bella Vista Village|Gainesville|FL": {
     "address": "110 NW 39th Ave, Gainesville, FL 32609, USA",
@@ -4293,7 +5110,11 @@
     "phone": "(352) 378-3988",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Mountain Vista Apartments|El Paso|TX": {
     "address": "5757 Will Ruth Ave, El Paso, TX 79924, USA",
@@ -4302,7 +5123,11 @@
     "phone": "(915) 751-5757",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Fox Creek Apartments|Shreveport|LA": {
     "address": "1100 W 70th St, Shreveport, LA 71106, USA",
@@ -4311,7 +5136,11 @@
     "phone": "(318) 219-1112",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Edison Grand|Fort Myers|FL": {
     "address": "5015 Mina Cir, Fort Myers, FL 33905, USA",
@@ -4320,7 +5149,11 @@
     "phone": "(239) 256-2893",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Magnolia Gardens|Baton Rouge|LA": {
     "address": "8820 Greenwell Springs Rd Apt#111, Baton Rouge, LA 70814, USA",
@@ -4329,7 +5162,11 @@
     "phone": "(225) 925-2312",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Perimeter Bend (control)|Augusta|GA": {
     "address": "50 St Andrews Dr, Augusta, GA 30909, USA",
@@ -4338,7 +5175,11 @@
     "phone": "(706) 873-9780",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Innovo at Sunrise|Sunrise|FL": {
     "address": "8798 NW 38th St, Sunrise, FL 33351, USA",
@@ -4347,7 +5188,11 @@
     "phone": "(954) 741-8888",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Palms at Sunset Lakes|Zachary|LA": {
     "address": "4150 Mchugh Rd, Zachary, LA 70791, USA",
@@ -4356,7 +5201,11 @@
     "phone": "(225) 306-4577",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Cypress Lake|Houston|TX": {
     "address": "555 Butterfield Rd, Houston, TX 77090, USA",
@@ -4365,7 +5214,11 @@
     "phone": "(281) 397-0307",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Innovo at Waters|Tampa|FL": {
     "address": "8421 Del Lago Cir, Tampa, FL 33614, USA",
@@ -4374,7 +5227,11 @@
     "phone": "(813) 252-6306",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Tifton Student Housing|Tifton|GA": {
     "address": "208 Zoey Way, Tifton, GA 31793, USA",
@@ -4383,7 +5240,11 @@
     "phone": "(229) 396-4606",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Magnolia Cove Apartments|Houston|TX": {
     "address": "103 Goodson Dr, Houston, TX 77060, USA",
@@ -4392,7 +5253,11 @@
     "phone": "(281) 448-8590",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Deer Springs Apartments|Humble|TX": {
     "address": "98 Isaacks Rd, Humble, TX 77338, USA",
@@ -4401,7 +5266,11 @@
     "phone": "(346) 345-2070",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Whitney Place Townhomes|Clearwater|FL": {
     "address": "3301 Whitney Rd, Clearwater, FL 33760, USA",
@@ -4410,7 +5279,11 @@
     "phone": "(727) 410-2361",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "The Azul Apartments|Dallas|TX": {
     "address": "2026 appraisal roll and its system will be unavailable, beginning Friday, July 17, 2026, until Friday, July 24, 2026.(full details...)",
@@ -4419,7 +5292,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "Citizens Square Villas|Dallas|GA": {
     "address": "200 Citizens Square Rd, Dallas, GA 30157, USA",
@@ -4428,7 +5306,11 @@
     "phone": "(678) 556-5915",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Woodcreek Apartments|Huntsville|TX": {
     "address": "1235 Josey St, Huntsville, TX 77340, USA",
@@ -4437,7 +5319,11 @@
     "phone": "(936) 439-4949",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Cornerstone Apartments|Huntsville|TX": {
     "address": "2209 Bobby K Marks Drive, Huntsville, TX 77340, USA",
@@ -4446,7 +5332,11 @@
     "phone": "(936) 295-3311",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "COTTAGE COVE APARTMENTS|Miami|FL": {
     "address": "12 NE 188th St, Miami, FL 33179, USA",
@@ -4455,7 +5345,11 @@
     "phone": "(305) 652-2501",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "CALDER SQUARE APARTMENTS|League City|TX": {
     "address": "2026 Board of Directors Election Information\nBoard of Directors\n2026 Holiday Calendar\nSocial Media Policy\n2026 Galveston County Directory\nGCAD Careers\nContact",
@@ -4464,7 +5358,12 @@
     "phone": null,
     "confidence_score": 0.95,
     "source": "county_assessor",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "county_assessor",
+      "google_maps"
+    ],
+    "discovery_method": "county_assessor"
   },
   "CREEKSIDE AT KENNEDY MILL|High Point|NC": {
     "address": "2350 Bellemeade St, High Point, NC 27263, USA",
@@ -4473,7 +5372,11 @@
     "phone": "(336) 361-2953",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "COLONY MANOR &amp; GATEHOUSE APARTMENTS|Houston|TX": {
     "address": "2520 Beatty St #101, Houston, TX 77023, USA",
@@ -4482,7 +5385,11 @@
     "phone": "(713) 645-8687",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "PARKWYN TOWNHOMES|North Richland Hills|TX": {
     "address": "4401 Glenview Ct, North Richland Hills, TX 76180, USA",
@@ -4491,7 +5398,11 @@
     "phone": "(817) 591-7189",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   },
   "Pebble Walk Apartments|Houston|TX": {
     "address": "8500 Broadway St, Houston, TX 77061, USA",
@@ -4500,6 +5411,10 @@
     "phone": "(713) 847-8800",
     "confidence_score": 0.85,
     "source": "google_maps",
-    "discovered_at": null
+    "discovered_at": null,
+    "sources_tried": [
+      "google_maps"
+    ],
+    "discovery_method": "google_maps"
   }
 }

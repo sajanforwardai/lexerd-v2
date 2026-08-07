@@ -20,3 +20,4 @@ ratelimit>=2.2.1
 # Existing dependencies (already available)
 # requests - for API calls
 # python-dotenv - for .env configuration
+sqlalchemy>=2.0.0

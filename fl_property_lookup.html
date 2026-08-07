@@ -1,604 +1,568 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Florida Property Lookup Tool</title>
+    <title>FL Property Address Lookup Tool</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-            margin: 0;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 30px;
-        }
-        h1 {
-            color: #333;
-            margin-top: 0;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-        }
-        .property {
-            margin-bottom: 30px;
-            padding: 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            background: #fafafa;
-        }
-        .property-header {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 12px;
-        }
-        .property-info {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        .info-item {
-            flex: 1;
-        }
-        .info-label {
-            color: #666;
-            font-weight: 500;
-        }
-        .info-value {
-            color: #333;
-            margin-top: 3px;
-        }
-        .links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-        }
-        .link-btn {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #667eea;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 500;
-            text-align: center;
-            transition: background 0.2s;
-        }
-        .link-btn:hover {
-            background: #5568d3;
-        }
-        .link-btn.secondary {
-            background: #6c757d;
-        }
-        .link-btn.secondary:hover {
-            background: #5a6268;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
+        .stats { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 20px; }
+        .stat { flex: 1; }
+        .stat-value { font-size: 24px; font-weight: bold; color: #2563eb; }
+        .stat-label { color: #666; font-size: 12px; margin-top: 5px; }
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        thead { background: #2563eb; color: white; }
+        th { padding: 12px; text-align: left; font-weight: 600; }
+        td { padding: 12px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f9fafb; }
+        .property-name { font-weight: 500; color: #333; }
+        .city { color: #666; font-size: 13px; }
+        .links { display: flex; gap: 8px; flex-wrap: wrap; }
+        a { display: inline-block; padding: 6px 12px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; transition: background 0.2s; }
+        a:hover { background: #1d4ed8; }
+        a.google { background: #ea4335; }
+        a.google:hover { background: #c5221f; }
+        a.apartments { background: #f4a460; }
+        a.apartments:hover { background: #e89350; }
+        a.zillow { background: #0074e4; }
+        a.zillow:hover { background: #0059b8; }
+        a.assessor { background: #059669; }
+        a.assessor:hover { background: #047857; }
+        .instructions { background: #eff6ff; border-left: 4px solid #2563eb; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+        .instructions h3 { color: #2563eb; margin-bottom: 10px; }
+        .instructions ol { margin-left: 20px; color: #666; font-size: 14px; }
+        .instructions li { margin-bottom: 8px; }
+        .status { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+        .status.missing { background: #fee2e2; color: #991b1b; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🏠 Florida Property Lookup Tool</h1>
-        <p>Click links below to verify property addresses. Record found addresses in the database.</p>
+        <h1>FL Property Address Lookup Tool</h1>
+        <p class="subtitle">Click links to verify property addresses in real-time</p>
 
-        <div class="property">
-            <div class="property-header">Clubside Apartments</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Venice, Sarasota County, FL</div>
-                </div>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">27</div>
+                <div class="stat-label">Properties to Verify</div>
             </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Clubside%20Apartments%20Venice%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Clubside%20Apartments%22%20%22Venice%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Clubside%20Apartments%20Venice" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Clubside%20Apartments%20Venice%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.sarasotacountyassessor.org/Search/Search" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            <div class="stat">
+                <div class="stat-value">27</div>
+                <div class="stat-label">Needing Addresses</div>
             </div>
         </div>
 
-        <div class="property">
-            <div class="property-header">Beach Bluff Apartments</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Jacksonville, Duval County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Beach%20Bluff%20Apartments%20Jacksonville%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Beach%20Bluff%20Apartments%22%20%22Jacksonville%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Beach%20Bluff%20Apartments%20Jacksonville" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Beach%20Bluff%20Apartments%20Jacksonville%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://webpub.duvalassessor.com/Map/" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
+        <div class="instructions">
+            <h3>How to use this tool</h3>
+            <ol>
+                <li>Find your property in the table below</li>
+                <li>Click on "Google Maps", "Apartments.com", or "County Assessor" to search</li>
+                <li>Copy the verified address back into the CSV file (fl_property_lookup.csv)</li>
+                <li>Run: <code>python scripts/update_fl_addresses_from_csv.py fl_property_lookup.csv</code></li>
+            </ol>
         </div>
 
-        <div class="property">
-            <div class="property-header">Warehouse Lofts</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Tampa, Hillsborough County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Warehouse%20Lofts%20Tampa%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Warehouse%20Lofts%22%20%22Tampa%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Warehouse%20Lofts%20Tampa" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Warehouse%20Lofts%20Tampa%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://apps.hcpafl.org/Asp/GeneralSearch.asp" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Whitney Place Townhomes</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Clearwater, Pinellas County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Whitney%20Place%20Townhomes%20Clearwater%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Whitney%20Place%20Townhomes%22%20%22Clearwater%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Whitney%20Place%20Townhomes%20Clearwater" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Whitney%20Place%20Townhomes%20Clearwater%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.pcpafl.org/onlineservices/search.html" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Edison Grand</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Fort Myers, Lee County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Edison%20Grand%20Fort%20Myers%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Edison%20Grand%22%20%22Fort%20Myers%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Edison%20Grand%20Fort%20Myers" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Edison%20Grand%20Fort%20Myers%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.leecountyfl.gov/pa/property-search" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Innovo at Waters</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Tampa, Hillsborough County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Innovo%20at%20Waters%20Tampa%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Innovo%20at%20Waters%22%20%22Tampa%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Innovo%20at%20Waters%20Tampa" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Innovo%20at%20Waters%20Tampa%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://apps.hcpafl.org/Asp/GeneralSearch.asp" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Innovo at Sunrise</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Sunrise, Broward County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Innovo%20at%20Sunrise%20Sunrise%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Innovo%20at%20Sunrise%22%20%22Sunrise%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Innovo%20at%20Sunrise%20Sunrise" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Innovo%20at%20Sunrise%20Sunrise%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.broward.org/PD/AssessorsOffice/Pages/Search.aspx" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Southern Garden</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Valparaiso, Okaloosa County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Southern%20Garden%20Valparaiso%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Southern%20Garden%22%20%22Valparaiso%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Southern%20Garden%20Valparaiso" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Southern%20Garden%20Valparaiso%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.okaloosaassessor.com/" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">COTTAGE COVE APARTMENTS</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Miami, Miami-Dade County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/COTTAGE%20COVE%20APARTMENTS%20Miami%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22COTTAGE%20COVE%20APARTMENTS%22%20%22Miami%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=COTTAGE%20COVE%20APARTMENTS%20Miami" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/COTTAGE%20COVE%20APARTMENTS%20Miami%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.miamidade.gov/pa/propertysearch/index.html" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Columbia Arms and Aspen-Alpine Apartments</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Lake City, Columbia County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Columbia%20Arms%20and%20Aspen-Alpine%20Apartments%20Lake%20City%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Columbia%20Arms%20and%20Aspen-Alpine%20Apartments%22%20%22Lake%20City%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Columbia%20Arms%20and%20Aspen-Alpine%20Apartments%20Lake%20City" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Columbia%20Arms%20and%20Aspen-Alpine%20Apartments%20Lake%20City%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.columbiacountyfl.com/departments/property-appraiser" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">The Avenue</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Davie, Broward County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/The%20Avenue%20Davie%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22The%20Avenue%22%20%22Davie%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=The%20Avenue%20Davie" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/The%20Avenue%20Davie%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.broward.org/PD/AssessorsOffice/Pages/Search.aspx" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Wilton Walk Townhomes</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Wilton Manors, Broward County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Wilton%20Walk%20Townhomes%20Wilton%20Manors%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Wilton%20Walk%20Townhomes%22%20%22Wilton%20Manors%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Wilton%20Walk%20Townhomes%20Wilton%20Manors" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Wilton%20Walk%20Townhomes%20Wilton%20Manors%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.broward.org/PD/AssessorsOffice/Pages/Search.aspx" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">The Club at Crystal Lake</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Deerfield Beach, Broward County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/The%20Club%20at%20Crystal%20Lake%20Deerfield%20Beach%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22The%20Club%20at%20Crystal%20Lake%22%20%22Deerfield%20Beach%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=The%20Club%20at%20Crystal%20Lake%20Deerfield%20Beach" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/The%20Club%20at%20Crystal%20Lake%20Deerfield%20Beach%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.broward.org/PD/AssessorsOffice/Pages/Search.aspx" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">The Courtyards at San Jose</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Jacksonville, Duval County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/The%20Courtyards%20at%20San%20Jose%20Jacksonville%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22The%20Courtyards%20at%20San%20Jose%22%20%22Jacksonville%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=The%20Courtyards%20at%20San%20Jose%20Jacksonville" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/The%20Courtyards%20at%20San%20Jose%20Jacksonville%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://webpub.duvalassessor.com/Map/" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Cane Island Loop</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Kissimmee, Osceola County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Cane%20Island%20Loop%20Kissimmee%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Cane%20Island%20Loop%22%20%22Kissimmee%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Cane%20Island%20Loop%20Kissimmee" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Cane%20Island%20Loop%20Kissimmee%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.osceolacountyfl.com/Department/PropertyAppraiser" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Lynn Haven Cove</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Lynn Haven, Bay County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Lynn%20Haven%20Cove%20Lynn%20Haven%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Lynn%20Haven%20Cove%22%20%22Lynn%20Haven%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Lynn%20Haven%20Cove%20Lynn%20Haven" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Lynn%20Haven%20Cove%20Lynn%20Haven%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.baycountyfl.gov/Departments/PropertyAppraiser" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Portofino Cove</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Fort Myers, Lee County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Portofino%20Cove%20Fort%20Myers%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Portofino%20Cove%22%20%22Fort%20Myers%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Portofino%20Cove%20Fort%20Myers" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Portofino%20Cove%20Fort%20Myers%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.leecountyfl.gov/pa/property-search" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Danube Apartments</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Orlando, Orange County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Danube%20Apartments%20Orlando%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Danube%20Apartments%22%20%22Orlando%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Danube%20Apartments%20Orlando" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Danube%20Apartments%20Orlando%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://epass.ocpafl.org/ePass/Search/QuickSearch.aspx" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Backlot Apartments</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Kissimmee, Osceola County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Backlot%20Apartments%20Kissimmee%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Backlot%20Apartments%22%20%22Kissimmee%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Backlot%20Apartments%20Kissimmee" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Backlot%20Apartments%20Kissimmee%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.osceolacountyfl.com/Department/PropertyAppraiser" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Bella Vista Village</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Gainesville, Alachua County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Bella%20Vista%20Village%20Gainesville%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Bella%20Vista%20Village%22%20%22Gainesville%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Bella%20Vista%20Village%20Gainesville" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Bella%20Vista%20Village%20Gainesville%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.acpafl.org/" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Palm Beach Gardens</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">West Palm Beach, Unknown County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Palm%20Beach%20Gardens%20West%20Palm%20Beach%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Palm%20Beach%20Gardens%22%20%22West%20Palm%20Beach%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Palm%20Beach%20Gardens%20West%20Palm%20Beach" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Palm%20Beach%20Gardens%20West%20Palm%20Beach%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Tampa Bay Heights</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Tampa, Hillsborough County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Tampa%20Bay%20Heights%20Tampa%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Tampa%20Bay%20Heights%22%20%22Tampa%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Tampa%20Bay%20Heights%20Tampa" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Tampa%20Bay%20Heights%20Tampa%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://apps.hcpafl.org/Asp/GeneralSearch.asp" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Miami Beach Residences</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Miami, Miami-Dade County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Miami%20Beach%20Residences%20Miami%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Miami%20Beach%20Residences%22%20%22Miami%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Miami%20Beach%20Residences%20Miami" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Miami%20Beach%20Residences%20Miami%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.miamidade.gov/pa/propertysearch/index.html" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Jacksonville Waterfront</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Jacksonville, Duval County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Jacksonville%20Waterfront%20Jacksonville%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Jacksonville%20Waterfront%22%20%22Jacksonville%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Jacksonville%20Waterfront%20Jacksonville" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Jacksonville%20Waterfront%20Jacksonville%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://webpub.duvalassessor.com/Map/" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Orlando Gateway Apartments</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Orlando, Orange County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Orlando%20Gateway%20Apartments%20Orlando%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Orlando%20Gateway%20Apartments%22%20%22Orlando%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Orlando%20Gateway%20Apartments%20Orlando" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Orlando%20Gateway%20Apartments%20Orlando%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://epass.ocpafl.org/ePass/Search/QuickSearch.aspx" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Gainesville Campus Quarter</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Gainesville, Alachua County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Gainesville%20Campus%20Quarter%20Gainesville%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Gainesville%20Campus%20Quarter%22%20%22Gainesville%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Gainesville%20Campus%20Quarter%20Gainesville" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Gainesville%20Campus%20Quarter%20Gainesville%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.acpafl.org/" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Pensacola Historic District</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Pensacola, Escambia County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Pensacola%20Historic%20District%20Pensacola%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Pensacola%20Historic%20District%22%20%22Pensacola%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Pensacola%20Historic%20District%20Pensacola" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Pensacola%20Historic%20District%20Pensacola%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://www.escambiaassessor.com/" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Jacksonvile Beach Towers</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Jacksonville, Duval County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Jacksonvile%20Beach%20Towers%20Jacksonville%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Jacksonvile%20Beach%20Towers%22%20%22Jacksonville%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Jacksonvile%20Beach%20Towers%20Jacksonville" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Jacksonvile%20Beach%20Towers%20Jacksonville%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="https://webpub.duvalassessor.com/Map/" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Ashton Parc</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">, Unknown County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Ashton%20Parc%20%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Ashton%20Parc%22%20%22%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Ashton%20Parc%20" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Ashton%20Parc%20%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
-        <div class="property">
-            <div class="property-header">Cobblestone at Eagle Harbor</div>
-            <div class="property-info">
-                <div class="info-item">
-                    <div class="info-label">City</div>
-                    <div class="info-value">, Unknown County, FL</div>
-                </div>
-            </div>
-            <div class="links">
-                <a href="https://www.google.com/maps/search/Cobblestone%20at%20Eagle%20Harbor%20%20FL" target="_blank" class="link-btn">🗺️ Google Maps</a>
-                <a href="https://www.google.com/search?q=%22Cobblestone%20at%20Eagle%20Harbor%22%20%22%22%20%22FL%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
-                <a href="https://www.apartments.com/search/?query=Cobblestone%20at%20Eagle%20Harbor%20" target="_blank" class="link-btn">🏢 Apartments.com</a>
-                <a href="https://www.zillow.com/homes/Cobblestone%20at%20Eagle%20Harbor%20%20FL_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
-                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
-            </div>
-        </div>
-
+        <table>
+            <thead>
+                <tr>
+                    <th>Property Name</th>
+                    <th>City / County</th>
+                    <th>Search Links</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="property-name">Ashton Parc</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Ashton+Parc++FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Ashton+Parc++FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Ashton+Parc++FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=unknown+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Backlot Apartments</div>
+                        <div class="city">Kissimmee</div>
+                    </td>
+                    <td>
+                        <div class="city">Osceola County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Backlot+Apartments+Kissimmee+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Backlot+Apartments+Kissimmee+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Backlot+Apartments+Kissimmee+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Osceola+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Bella Vista Village</div>
+                        <div class="city">Gainesville</div>
+                    </td>
+                    <td>
+                        <div class="city">Alachua County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Bella+Vista+Village+Gainesville+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Bella+Vista+Village+Gainesville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Bella+Vista+Village+Gainesville+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Alachua+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">COTTAGE COVE APARTMENTS</div>
+                        <div class="city">Miami</div>
+                    </td>
+                    <td>
+                        <div class="city">Miami-Dade County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/COTTAGE+COVE+APARTMENTS+Miami+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=COTTAGE+COVE+APARTMENTS+Miami+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22COTTAGE+COVE+APARTMENTS+Miami+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Miami-Dade+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Cane Island Loop</div>
+                        <div class="city">Kissimmee</div>
+                    </td>
+                    <td>
+                        <div class="city">Osceola County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Cane+Island+Loop+Kissimmee+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Cane+Island+Loop+Kissimmee+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Cane+Island+Loop+Kissimmee+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Osceola+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Cobblestone at Eagle Harbor</div>
+                        <div class="city">Unknown</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Cobblestone+at+Eagle+Harbor++FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Cobblestone+at+Eagle+Harbor++FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Cobblestone+at+Eagle+Harbor++FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=unknown+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Columbia Arms and Aspen-Alpine Apartments</div>
+                        <div class="city">Lake City</div>
+                    </td>
+                    <td>
+                        <div class="city">Columbia County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Columbia+Arms+and+Aspen-Alpine+Apartments+Lake+City+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Columbia+Arms+and+Aspen-Alpine+Apartments+Lake+City+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Columbia+Arms+and+Aspen-Alpine+Apartments+Lake+City+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Columbia+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Danube Apartments</div>
+                        <div class="city">Orlando</div>
+                    </td>
+                    <td>
+                        <div class="city">Orange County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Danube+Apartments+Orlando+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Danube+Apartments+Orlando+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Danube+Apartments+Orlando+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Orange+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Edison Grand</div>
+                        <div class="city">Fort Myers</div>
+                    </td>
+                    <td>
+                        <div class="city">Lee County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Edison+Grand+Fort+Myers+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Edison+Grand+Fort+Myers+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Edison+Grand+Fort+Myers+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Lee+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Gainesville Campus Quarter</div>
+                        <div class="city">Gainesville</div>
+                    </td>
+                    <td>
+                        <div class="city">Alachua County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Gainesville+Campus+Quarter+Gainesville+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Gainesville+Campus+Quarter+Gainesville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Gainesville+Campus+Quarter+Gainesville+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Alachua+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Innovo at Waters</div>
+                        <div class="city">Tampa</div>
+                    </td>
+                    <td>
+                        <div class="city">Hillsborough County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Innovo+at+Waters+Tampa+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Innovo+at+Waters+Tampa+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Innovo+at+Waters+Tampa+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Hillsborough+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Jacksonvile Beach Towers</div>
+                        <div class="city">Jacksonville</div>
+                    </td>
+                    <td>
+                        <div class="city">Duval County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Jacksonvile+Beach+Towers+Jacksonville+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Jacksonvile+Beach+Towers+Jacksonville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Jacksonvile+Beach+Towers+Jacksonville+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Duval+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Jacksonville Waterfront</div>
+                        <div class="city">Jacksonville</div>
+                    </td>
+                    <td>
+                        <div class="city">Duval County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Jacksonville+Waterfront+Jacksonville+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Jacksonville+Waterfront+Jacksonville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Jacksonville+Waterfront+Jacksonville+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Duval+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Lynn Haven Cove</div>
+                        <div class="city">Lynn Haven</div>
+                    </td>
+                    <td>
+                        <div class="city">Bay County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Lynn+Haven+Cove+Lynn+Haven+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Lynn+Haven+Cove+Lynn+Haven+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Lynn+Haven+Cove+Lynn+Haven+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Bay+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Miami Beach Residences</div>
+                        <div class="city">Miami</div>
+                    </td>
+                    <td>
+                        <div class="city">Miami-Dade County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Miami+Beach+Residences+Miami+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Miami+Beach+Residences+Miami+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Miami+Beach+Residences+Miami+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Miami-Dade+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Orlando Gateway Apartments</div>
+                        <div class="city">Orlando</div>
+                    </td>
+                    <td>
+                        <div class="city">Orange County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Orlando+Gateway+Apartments+Orlando+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Orlando+Gateway+Apartments+Orlando+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Orlando+Gateway+Apartments+Orlando+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Orange+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Palm Beach Gardens</div>
+                        <div class="city">West Palm Beach</div>
+                    </td>
+                    <td>
+                        <div class="city">Unknown County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Palm+Beach+Gardens+West+Palm+Beach+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Palm+Beach+Gardens+West+Palm+Beach+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Palm+Beach+Gardens+West+Palm+Beach+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=unknown+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Pensacola Historic District</div>
+                        <div class="city">Pensacola</div>
+                    </td>
+                    <td>
+                        <div class="city">Escambia County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Pensacola+Historic+District+Pensacola+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Pensacola+Historic+District+Pensacola+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Pensacola+Historic+District+Pensacola+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Escambia+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Portofino Cove</div>
+                        <div class="city">Fort Myers</div>
+                    </td>
+                    <td>
+                        <div class="city">Lee County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Portofino+Cove+Fort+Myers+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Portofino+Cove+Fort+Myers+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Portofino+Cove+Fort+Myers+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Lee+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Southern Garden</div>
+                        <div class="city">Valparaiso</div>
+                    </td>
+                    <td>
+                        <div class="city">Okaloosa County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Southern+Garden+Valparaiso+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Southern+Garden+Valparaiso+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Southern+Garden+Valparaiso+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Okaloosa+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Tampa Bay Heights</div>
+                        <div class="city">Tampa</div>
+                    </td>
+                    <td>
+                        <div class="city">Hillsborough County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Tampa+Bay+Heights+Tampa+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Tampa+Bay+Heights+Tampa+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Tampa+Bay+Heights+Tampa+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Hillsborough+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Avenue</div>
+                        <div class="city">Davie</div>
+                    </td>
+                    <td>
+                        <div class="city">Broward County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/The+Avenue+Davie+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=The+Avenue+Davie+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22The+Avenue+Davie+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Broward+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Club at Crystal Lake</div>
+                        <div class="city">Deerfield Beach</div>
+                    </td>
+                    <td>
+                        <div class="city">Broward County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/The+Club+at+Crystal+Lake+Deerfield+Beach+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=The+Club+at+Crystal+Lake+Deerfield+Beach+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22The+Club+at+Crystal+Lake+Deerfield+Beach+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Broward+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">The Courtyards at San Jose</div>
+                        <div class="city">Jacksonville</div>
+                    </td>
+                    <td>
+                        <div class="city">Duval County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/The+Courtyards+at+San+Jose+Jacksonville+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=The+Courtyards+at+San+Jose+Jacksonville+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22The+Courtyards+at+San+Jose+Jacksonville+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Duval+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Warehouse Lofts</div>
+                        <div class="city">Tampa</div>
+                    </td>
+                    <td>
+                        <div class="city">Hillsborough County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Warehouse+Lofts+Tampa+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Warehouse+Lofts+Tampa+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Warehouse+Lofts+Tampa+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Hillsborough+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Whitney Place Townhomes</div>
+                        <div class="city">Clearwater</div>
+                    </td>
+                    <td>
+                        <div class="city">Pinellas County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Whitney+Place+Townhomes+Clearwater+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Whitney+Place+Townhomes+Clearwater+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Whitney+Place+Townhomes+Clearwater+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Pinellas+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-name">Wilton Walk Townhomes</div>
+                        <div class="city">Wilton Manors</div>
+                    </td>
+                    <td>
+                        <div class="city">Broward County</div>
+                        <span class="status missing">Address Missing</span>
+                    </td>
+                    <td>
+                        <div class="links">
+                            <a href="https://www.google.com/maps/search/Wilton+Walk+Townhomes+Wilton+Manors+FL" target="_blank" class="google">🔍 Google Maps</a>
+                            <a href="https://www.apartments.com/search/?q=Wilton+Walk+Townhomes+Wilton+Manors+FL" target="_blank" class="apartments">🏢 Apartments.com</a>
+                            <a href="https://www.zillow.com/homes/for_sale/?searchQueryState=%7B%22usersSearchTerm%22:%22Wilton+Walk+Townhomes+Wilton+Manors+FL%22%7D" target="_blank" class="zillow">🏠 Zillow</a>
+                            <a href="https://google.com/search?q=Broward+county+assessor+FL+property+search" target="_blank" class="assessor">📋 Assessor</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

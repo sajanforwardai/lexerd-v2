@@ -1,10 +1,13 @@
 """Website discovery models - parallels address discovery"""
 
+import sys
+from pathlib import Path
 from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, Boolean
-from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 
-Base = declarative_base()
+sys.path.insert(0, str(Path.cwd()))
+
+from address_discovery_system.models import Base
 
 
 class Website(Base):

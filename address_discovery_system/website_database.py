@@ -7,8 +7,8 @@ from sqlalchemy.orm import sessionmaker
 
 sys.path.insert(0, str(Path.cwd()))
 
-from address_discovery_system.website_model import Base, Website, WebsiteDiscovery
-from address_discovery_system.models import Loan
+from address_discovery_system.models import Base, Loan
+from address_discovery_system.website_model import Website, WebsiteDiscovery
 
 
 DATABASE_URL = "sqlite:///data/loans.db"

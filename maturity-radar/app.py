@@ -25,6 +25,11 @@ from maturity_radar.rates import load_rate
 from maturity_radar.watchlist import build_watchlist
 from calibration.address_verification import verify_address
 
+# Add lexerd2 root for dashboard filter import
+if str(_lexerd_root) not in sys.path:
+    sys.path.insert(0, str(_lexerd_root))
+from address_discovery_system.dashboard_filter import filter_dashboard_loans
+
 st.set_page_config(page_title="Maturity Radar", page_icon="📡", layout="wide")
 
 
@@ -152,37 +157,11 @@ st.markdown("""
 
 # ── Data + live rate ─────────────────────────────────────────────────────────
 # Load all loans including conduit CMBS and K-Deal
-_all, SRC = load_loans("auto")
+_all_unfiltered, SRC = load_loans("auto")
 
-
-def clean_watchlist(loans):
-    """Remove portfolio properties and duplicates from watchlist.
-
-    Portfolio properties (with 'portfolio' in name) and duplicate entries
-    are filtered out to maintain a clean dashboard dataset.
-    Returns: Filtered list of unique, non-portfolio loans
-    """
-    seen = {}
-    cleaned = []
-
-    for loan in loans:
-        # Skip portfolio-based properties
-        if 'portfolio' in (loan.property_name or "").lower():
-            continue
-
-        # Track unique properties (property_name, city, state)
-        key = (loan.property_name, loan.city, loan.state)
-
-        # Keep only first occurrence (skip duplicates)
-        if key not in seen:
-            seen[key] = True
-            cleaned.append(loan)
-
-    return cleaned
-
-
-# Apply cleaning to all loans
-_all = clean_watchlist(_all)
+# Filter to dashboard loans only: 8-state watchlist (AL, FL, GA, KS, KY, LA, NC, TX)
+# Removes: loans outside 8 states, portfolio properties, duplicates
+_all = filter_dashboard_loans(_all_unfiltered)
 
 _rate = load_rate()
 market_rate = float(_rate["rate"]) if _rate else DEFAULT_MARKET_RATE

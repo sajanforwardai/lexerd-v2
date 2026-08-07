@@ -1,0 +1,266 @@
+================================================================================
+COUNTY ASSESSOR INTEGRATION - REQUIREMENTS SPECIFICATION (UPDATED)
+================================================================================
+
+PROJECT: Tier 2 Address Discovery System
+PHASE: County Assessor API Integration
+DATE: 2026-08-07
+STATUS: Requirements Review (Pending User Approval)
+
+================================================================================
+1. EXECUTIVE SUMMARY
+================================================================================
+
+Phase 2 targets 24 remaining properties (8.8%) that were not found in Phase 1
+Google Maps search. These properties require county-level assessor lookups.
+
+Current State (After Dashboard Cleanup):
+  • Total Clean Properties: 273 (removed 5 portfolio + 2 duplicates)
+  • With Addresses (Raw): 26 (9.5%)
+  • Phase 1 Found: 223 (90.3% of missing)
+  • Combined Coverage: 249/273 (91.2%)
+  • Missing: 24 properties (8.8%)
+  • Phase 2 Target: 95%+ combined (15-20 additional addresses)
+
+Problem: County Assessor APIs have inconsistent APIs, authentication, and data
+formats. No universal API exists. Each county maintains separate systems.
+
+================================================================================
+2. SCOPE & CONSTRAINTS
+================================================================================
+
+Target: 24 Missing Properties
+  • Spread across multiple counties
+  • Mix of small/medium multifamily
+  • No portfolio properties (removed)
+  • No duplicate entries
+
+Constraints:
+  ✓ No per-request API cost (county systems are free)
+  ✓ Rate limiting 2-5 requests/second per county
+  ✗ No authentication tokens/keys required
+  ✗ Frequent changes in API endpoints/formats
+  ✗ Web scraping fallback may fail if HTML structure changes
+
+================================================================================
+3. DATA REQUIREMENTS
+================================================================================
+
+Input:
+  • Property name (exact match preferred, substring acceptable)
+  • City
+  • State
+  • County (optional, derived from property database)
+  • Unit count (optional, for validation)
+
+Output (per property):
+  • Full address (street, city, state, zip)
+  • Parcel number (if available)
+  • Confidence score (0.0-1.0)
+  • Source (county_assessor_<county>)
+  • API method used (REST API, web scrape, ArcGIS)
+
+Quality Requirements:
+  • Address format validation: "123 Main St, City, State 12345"
+  • City/state must match input (100% exact match)
+  • Confidence score baseline: 0.90+ for API results, 0.80+ for web scrape
+  • Deduplicate against Phase 1 results (no duplicates in cache)
+
+================================================================================
+4. INTEGRATION ARCHITECTURE
+================================================================================
+
+Module Structure:
+  /address_discovery_system/sources/county_assessor_phase2.py
+    ├─ CountyAssessorPhase2 class (base dispatcher)
+    ├─ State-specific methods: _search_texas_county(), _search_florida_county()
+    ├─ County-specific methods for high-value counties
+    └─ Error handling & fallback logic
+
+Flow:
+  1. Input: (county, state, property_name, city)
+  2. Dispatch by state
+  3. Try county-specific API endpoint
+  4. If API fails: Try web scrape fallback
+  5. If both fail: Return None
+  6. Output: {address, confidence, source} or None
+
+Rate Limiting:
+  • Global: 2-5 requests/second across all counties
+  • Per-county: Queue requests, implement exponential backoff
+  • Retry on 429/503: Wait 5-10 seconds, then retry (max 3 attempts)
+  • Cache negative results: Don't re-query same property for 24 hours
+
+Error Handling:
+  ✓ Connection timeout (>10 sec): Skip property, log error, continue
+  ✓ HTTP 4xx (not found): Log, return None
+  ✓ HTTP 5xx (server error): Retry with backoff
+  ✓ Malformed response: Log error, continue
+  ✓ Invalid address format: Log warning, score 0.70-0.80
+  ✗ Must NOT crash on any error
+
+================================================================================
+5. COUNTY-SPECIFIC APIs (IMPLEMENTATION OPTIONS)
+================================================================================
+
+TEXAS COUNTIES (Primary Target)
+────────────────────────────────
+
+Option 1 - Use County CAD REST APIs (RECOMMENDED)
+  • County Appraisal Districts maintain web forms
+  • Some expose ArcGIS REST endpoints
+  • Fallback: Web scrape property details
+
+Option 2 - Use ArcGIS REST APIs (for counties that support it)
+  • Endpoint: https://services.arcgisonline.com/arcgis/rest/services/<County>/MapServer
+  • Query format: { where: "PROPERTY_NAME LIKE '%name%'", outFields: "*, GEOMETRY", f: "json" }
+  • Advantage: Structured JSON responses
+  • Disadvantage: Not all counties expose this
+
+Option 3 - Web Scraping (Last Resort)
+  • Use BeautifulSoup to parse property details
+  • High maintenance (breaks when county updates website)
+  • Reserve for counties without API options
+
+RECOMMENDATION: Try ArcGIS REST → Web scrape HTML → Return None
+
+
+FLORIDA, GEORGIA, OTHER COUNTIES
+─────────────────────────────────
+
+Option 1 - County Property Appraiser Web Scrape
+  • Each county maintains web search portal
+  • Parse HTML responses for property details
+  • Implement retry logic for failures
+
+Option 2 - Third-Party Data (Future Phases)
+  • Zillow API (Phase 3, separate implementation)
+  • Google Maps (already used in Phase 1)
+
+RECOMMENDATION: Web scrape county Property Appraiser portals
+
+================================================================================
+6. IMPLEMENTATION STRATEGY
+================================================================================
+
+Phase 2 - Single-Pass Implementation
+  Target: 24 missing properties
+  Expected: 15-20 addresses found (63-83% success rate)
+  Effort: 30-40 hours
+  Timeline: 1-2 weeks
+  Result: 264-269/273 properties (96.7-98.5% coverage)
+
+Testing Strategy:
+  1. Unit tests: Mock county API responses
+  2. Integration tests: Real API calls on 5 sample properties
+  3. Quality checks: Verify address format, confidence scores
+  4. Regression: Ensure Phase 1 results not overwritten
+
+================================================================================
+7. SUCCESS CRITERIA
+================================================================================
+
+Quantitative:
+  ✓ Phase 2 finds 15-20 additional addresses (coverage 96-98%)
+  ✓ Confidence scores 0.85+
+  ✓ Zero false positives (validated addresses)
+  ✓ Processing time <3 minutes for 24 properties
+  ✓ No crashes or unhandled exceptions
+
+Qualitative:
+  ✓ Clean, testable code (unit test coverage >90%)
+  ✓ Proper error logging for debugging
+  ✓ Rate limiting respected (no IP blocks)
+  ✓ Maintainable for county API changes
+  ✓ Documentation for each county's API
+
+Acceptance:
+  ✓ All 24 properties processed
+  ✓ Results exported to tier2_discovery_results.json
+  ✓ Cache updated with source tracking
+  ✓ Dashboard shows updated coverage % (96%+)
+  ✓ Commits with clear messages
+
+================================================================================
+8. RISK ASSESSMENT
+================================================================================
+
+RISK 1: County API Changes
+  • Impact: High
+  • Probability: Medium (1-2x/year per county)
+  • Mitigation: Implement fallback web scraping, use ArcGIS standard
+
+RISK 2: Web Scraping HTML Changes
+  • Impact: High
+  • Probability: High (counties update sites regularly)
+  • Mitigation: Comprehensive error handling, logging, fallback to None
+
+RISK 3: Rate Limiting / IP Blocks
+  • Impact: Medium
+  • Probability: Low (2-5 req/sec is reasonable)
+  • Mitigation: Progressive backoff, random delays
+
+RISK 4: Data Quality Issues
+  • Impact: Medium
+  • Probability: Medium (typos, formatting differences)
+  • Mitigation: Validation rules, confidence scoring, manual review
+
+================================================================================
+9. DEPENDENCIES & TOOLS
+================================================================================
+
+Required Libraries:
+  ✓ requests (HTTP calls) — Already installed
+  ✓ beautifulsoup4 (HTML scraping) — Already installed
+  ✓ lxml (XML/HTML parsing) — Already installed
+
+Third-Party Services:
+  ✗ No API keys required (all county systems are free)
+  ✗ No billing required
+
+================================================================================
+10. DELIVERABLES
+================================================================================
+
+Code:
+  • /address_discovery_system/sources/county_assessor_phase2.py
+  • /run_phase2_discovery.py (orchestrator)
+  • Unit tests: /tests/test_county_assessor_phase2.py
+
+Documentation:
+  • COUNTY_ASSESSOR_REQUIREMENTS.txt (this file)
+  • PHASE2_IMPLEMENTATION_GUIDE.md (technical specs)
+
+Results:
+  • tier2_discovery_results.json (Phase 2 results)
+  • Updated calibration/.cache/address_verification_cache.json
+  • Dashboard integration (96%+ coverage)
+
+Commits:
+  • "Clean dashboard: remove portfolio properties & duplicates"
+  • "Implement Phase 2: County Assessor APIs"
+  • "Phase 2 complete: 96%+ coverage achieved (264+/273 addresses)"
+
+================================================================================
+11. QUESTIONS FOR USER REVIEW
+================================================================================
+
+1. Web Scraping Approach: Acceptable for counties without APIs?
+   • Pro: Gets data, no cost
+   • Con: High maintenance, breaks with site updates
+   • Alternative: Zillow API instead (Phase 3)?
+
+2. Confidence Scoring: What score threshold for cache acceptance?
+   • 0.85+ only (conservative, high quality)?
+   • 0.80+ (balanced, broader coverage)?
+   • 0.75+ (aggressive, risk false positives)?
+
+3. Priority: Start Phase 2 now, or implement Zillow first?
+   • Phase 2 targets 15-20 additional addresses (estimated)
+   • Zillow targets 50+ additional addresses (untested, Phase 3 work)
+
+4. Implementation: Run Phase 2A only (high-value counties), or full?
+   • Phase 2A: 3-5 high-ROI counties (10-15 addresses)
+   • Full Phase 2: All counties (15-20 addresses)
+
+================================================================================

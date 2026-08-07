@@ -1,0 +1,184 @@
+{
+  "timestamp": "2026-08-07T00:43:23.052146",
+  "phase": "Phase 2 - County Assessor APIs",
+  "total": 29,
+  "found": 0,
+  "not_found": 29,
+  "results": [
+    {
+      "property_name": "Fountains Matthews",
+      "city": "",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Arzano",
+      "city": "",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "2000 Penn",
+      "city": "",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Danker Village Apartments",
+      "city": "",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Ashton Parc",
+      "city": "",
+      "state": "FL",
+      "found": false
+    },
+    {
+      "property_name": "Cobblestone at Eagle Harbor",
+      "city": "",
+      "state": "FL",
+      "found": false
+    },
+    {
+      "property_name": "Butternut Ridge Apartments",
+      "city": "",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Country Glenn Apartments",
+      "city": "",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Flats at Dunlap",
+      "city": "",
+      "state": "KS",
+      "found": false
+    },
+    {
+      "property_name": "The Flamingo",
+      "city": "",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Defeased",
+      "city": "(multiple)",
+      "state": "GA",
+      "found": false
+    },
+    {
+      "property_name": "Austin Multifamily Portfolio",
+      "city": "(multiple)",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Wimberley Hill Country",
+      "city": "Wimberley",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Clear Lake Park",
+      "city": "Clear Lake",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Palm Beach Gardens",
+      "city": "West Palm Beach",
+      "state": "FL",
+      "found": false
+    },
+    {
+      "property_name": "Defeased",
+      "city": "(multiple)",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Magnolia Springs",
+      "city": "Magnolia",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Southern Garden",
+      "city": "Valparaiso",
+      "state": "FL",
+      "found": false
+    },
+    {
+      "property_name": "TZA Multifamily Portfolio I",
+      "city": "(multiple)",
+      "state": "FL",
+      "found": false
+    },
+    {
+      "property_name": "TLR Portfolio",
+      "city": "(multiple)",
+      "state": "FL",
+      "found": false
+    },
+    {
+      "property_name": "Eagle Multifamily Portfolio",
+      "city": "(multiple)",
+      "state": "FL",
+      "found": false
+    },
+    {
+      "property_name": "Topeka Heights Residential",
+      "city": "Topeka",
+      "state": "KS",
+      "found": false
+    },
+    {
+      "property_name": "Sugar Land Technology",
+      "city": "Sugar Land",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Fort Worth Midtown",
+      "city": "Fort Worth",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "The Club at Crystal Lake",
+      "city": "Deerfield Beach",
+      "state": "FL",
+      "found": false
+    },
+    {
+      "property_name": "MEADOWS PLACE SENIORS VILLAGE",
+      "city": "Stafford",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "Magnolia Flats Apartments",
+      "city": "Balcones Heights",
+      "state": "TX",
+      "found": false
+    },
+    {
+      "property_name": "THE BLUFFS",
+      "city": "Junction City",
+      "state": "KS",
+      "found": false
+    },
+    {
+      "property_name": "Hamdan Multifamily Portfolio",
+      "city": "(multiple)",
+      "state": "LA",
+      "found": false
+    }
+  ],
+  "coverage": "0.0%"
+}

@@ -1,0 +1,2576 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florida Property Lookup Tool</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .property {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        .property-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .property-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .info-item {
+            flex: 1;
+        }
+        .info-label {
+            color: #666;
+            font-weight: 500;
+        }
+        .info-value {
+            color: #333;
+            margin-top: 3px;
+        }
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .link-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .link-btn:hover {
+            background: #5568d3;
+        }
+        .link-btn.secondary {
+            background: #6c757d;
+        }
+        .link-btn.secondary:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 Florida Property Lookup Tool</h1>
+        <p>Click links below to verify property addresses. Record found addresses in the database.</p>
+
+        <div class="property">
+            <div class="property-header">THE DORAL</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Dallas, Dallas County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/THE%20DORAL%20Dallas%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22THE%20DORAL%22%20%22Dallas%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=THE%20DORAL%20Dallas" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/THE%20DORAL%20Dallas%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">LAS BRISAS APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/LAS%20BRISAS%20APARTMENTS%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22LAS%20BRISAS%20APARTMENTS%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=LAS%20BRISAS%20APARTMENTS%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/LAS%20BRISAS%20APARTMENTS%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Bennett Property</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Dallas, Dallas County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Bennett%20Property%20Dallas%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Bennett%20Property%22%20%22Dallas%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Bennett%20Property%20Dallas" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Bennett%20Property%20Dallas%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Park Lane Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Arlington, Tarrant County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Park%20Lane%20Apartments%20Arlington%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Park%20Lane%20Apartments%22%20%22Arlington%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Park%20Lane%20Apartments%20Arlington" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Park%20Lane%20Apartments%20Arlington%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">QUAIL MEADOWS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/QUAIL%20MEADOWS%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22QUAIL%20MEADOWS%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=QUAIL%20MEADOWS%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/QUAIL%20MEADOWS%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">MORTON PLACE APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Amarillo, Potter County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/MORTON%20PLACE%20APARTMENTS%20Amarillo%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22MORTON%20PLACE%20APARTMENTS%22%20%22Amarillo%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=MORTON%20PLACE%20APARTMENTS%20Amarillo" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/MORTON%20PLACE%20APARTMENTS%20Amarillo%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Magnolia Cove Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Magnolia%20Cove%20Apartments%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Magnolia%20Cove%20Apartments%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Magnolia%20Cove%20Apartments%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Magnolia%20Cove%20Apartments%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Defeased</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">(multiple), Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Defeased%20%28multiple%29%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Defeased%22%20%22%28multiple%29%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Defeased%20%28multiple%29" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Defeased%20%28multiple%29%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">SUMMERCREST APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/SUMMERCREST%20APARTMENTS%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22SUMMERCREST%20APARTMENTS%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=SUMMERCREST%20APARTMENTS%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/SUMMERCREST%20APARTMENTS%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">BILTMORE APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Arlington, Tarrant County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/BILTMORE%20APARTMENTS%20Arlington%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22BILTMORE%20APARTMENTS%22%20%22Arlington%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=BILTMORE%20APARTMENTS%20Arlington" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/BILTMORE%20APARTMENTS%20Arlington%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">RAGHU APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/RAGHU%20APARTMENTS%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22RAGHU%20APARTMENTS%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=RAGHU%20APARTMENTS%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/RAGHU%20APARTMENTS%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">THE ROCHESTER APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Arlington, Tarrant County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/THE%20ROCHESTER%20APARTMENTS%20Arlington%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22THE%20ROCHESTER%20APARTMENTS%22%20%22Arlington%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=THE%20ROCHESTER%20APARTMENTS%20Arlington" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/THE%20ROCHESTER%20APARTMENTS%20Arlington%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">CURRY JUNCTION</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Abilene, Taylor County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/CURRY%20JUNCTION%20Abilene%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22CURRY%20JUNCTION%22%20%22Abilene%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=CURRY%20JUNCTION%20Abilene" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/CURRY%20JUNCTION%20Abilene%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">MEADOWS PLACE SENIORS VILLAGE</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Stafford, Fort Bend County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/MEADOWS%20PLACE%20SENIORS%20VILLAGE%20Stafford%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22MEADOWS%20PLACE%20SENIORS%20VILLAGE%22%20%22Stafford%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=MEADOWS%20PLACE%20SENIORS%20VILLAGE%20Stafford" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/MEADOWS%20PLACE%20SENIORS%20VILLAGE%20Stafford%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">GRAPEVINE STATION</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Grapevine, Tarrant County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/GRAPEVINE%20STATION%20Grapevine%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22GRAPEVINE%20STATION%22%20%22Grapevine%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=GRAPEVINE%20STATION%20Grapevine" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/GRAPEVINE%20STATION%20Grapevine%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">FOREST RIDGE</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Dallas, Dallas County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/FOREST%20RIDGE%20Dallas%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22FOREST%20RIDGE%22%20%22Dallas%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=FOREST%20RIDGE%20Dallas" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/FOREST%20RIDGE%20Dallas%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Deer Springs Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Humble, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Deer%20Springs%20Apartments%20Humble%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Deer%20Springs%20Apartments%22%20%22Humble%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Deer%20Springs%20Apartments%20Humble" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Deer%20Springs%20Apartments%20Humble%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">The Azul Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Dallas, Dallas County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/The%20Azul%20Apartments%20Dallas%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22The%20Azul%20Apartments%22%20%22Dallas%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=The%20Azul%20Apartments%20Dallas" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/The%20Azul%20Apartments%20Dallas%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Cypress Lake</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Cypress%20Lake%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Cypress%20Lake%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Cypress%20Lake%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Cypress%20Lake%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Woodcreek Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Huntsville, Walker County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Woodcreek%20Apartments%20Huntsville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Woodcreek%20Apartments%22%20%22Huntsville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Woodcreek%20Apartments%20Huntsville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Woodcreek%20Apartments%20Huntsville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Cornerstone Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Huntsville, Walker County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Cornerstone%20Apartments%20Huntsville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Cornerstone%20Apartments%22%20%22Huntsville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Cornerstone%20Apartments%20Huntsville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Cornerstone%20Apartments%20Huntsville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Magnolia Flats Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Balcones Heights, Bexar County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Magnolia%20Flats%20Apartments%20Balcones%20Heights%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Magnolia%20Flats%20Apartments%22%20%22Balcones%20Heights%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Magnolia%20Flats%20Apartments%20Balcones%20Heights" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Magnolia%20Flats%20Apartments%20Balcones%20Heights%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">CALDER SQUARE APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">League City, Galveston County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/CALDER%20SQUARE%20APARTMENTS%20League%20City%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22CALDER%20SQUARE%20APARTMENTS%22%20%22League%20City%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=CALDER%20SQUARE%20APARTMENTS%20League%20City" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/CALDER%20SQUARE%20APARTMENTS%20League%20City%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">COLONY MANOR &amp; GATEHOUSE APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/COLONY%20MANOR%20%26amp%3B%20GATEHOUSE%20APARTMENTS%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22COLONY%20MANOR%20%26amp%3B%20GATEHOUSE%20APARTMENTS%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=COLONY%20MANOR%20%26amp%3B%20GATEHOUSE%20APARTMENTS%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/COLONY%20MANOR%20%26amp%3B%20GATEHOUSE%20APARTMENTS%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Weston at Copperfield</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Weston%20at%20Copperfield%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Weston%20at%20Copperfield%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Weston%20at%20Copperfield%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Weston%20at%20Copperfield%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Mountain Vista Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">El Paso, El Paso County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Mountain%20Vista%20Apartments%20El%20Paso%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Mountain%20Vista%20Apartments%22%20%22El%20Paso%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Mountain%20Vista%20Apartments%20El%20Paso" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Mountain%20Vista%20Apartments%20El%20Paso%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">PARKWYN TOWNHOMES</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">North Richland Hills, Tarrant County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/PARKWYN%20TOWNHOMES%20North%20Richland%20Hills%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22PARKWYN%20TOWNHOMES%22%20%22North%20Richland%20Hills%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=PARKWYN%20TOWNHOMES%20North%20Richland%20Hills" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/PARKWYN%20TOWNHOMES%20North%20Richland%20Hills%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">CHARTWELL COURT</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/CHARTWELL%20COURT%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22CHARTWELL%20COURT%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=CHARTWELL%20COURT%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/CHARTWELL%20COURT%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Kingsville Pointe Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Kingsville, Kleberg County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Kingsville%20Pointe%20Apartments%20Kingsville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Kingsville%20Pointe%20Apartments%22%20%22Kingsville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Kingsville%20Pointe%20Apartments%20Kingsville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Kingsville%20Pointe%20Apartments%20Kingsville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Defeased</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Sherman, Grayson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Defeased%20Sherman%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Defeased%22%20%22Sherman%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Defeased%20Sherman" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Defeased%20Sherman%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Great Oaks Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Lufkin, Angelina County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Great%20Oaks%20Apartments%20Lufkin%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Great%20Oaks%20Apartments%22%20%22Lufkin%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Great%20Oaks%20Apartments%20Lufkin" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Great%20Oaks%20Apartments%20Lufkin%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Maple Ridge Townhomes</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Midlothian, Ellis County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Maple%20Ridge%20Townhomes%20Midlothian%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Maple%20Ridge%20Townhomes%22%20%22Midlothian%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Maple%20Ridge%20Townhomes%20Midlothian" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Maple%20Ridge%20Townhomes%20Midlothian%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Hilltop Village Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Sherman, Grayson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Hilltop%20Village%20Apartments%20Sherman%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Hilltop%20Village%20Apartments%22%20%22Sherman%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Hilltop%20Village%20Apartments%20Sherman" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Hilltop%20Village%20Apartments%20Sherman%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">SkyLoft Austin</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Austin, Travis County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/SkyLoft%20Austin%20Austin%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22SkyLoft%20Austin%22%20%22Austin%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=SkyLoft%20Austin%20Austin" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/SkyLoft%20Austin%20Austin%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Sidney Baker Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Kerrville, Kerr County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Sidney%20Baker%20Apartments%20Kerrville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Sidney%20Baker%20Apartments%22%20%22Kerrville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Sidney%20Baker%20Apartments%20Kerrville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Sidney%20Baker%20Apartments%20Kerrville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">WINDSOR PARK APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Victoria, Victoria County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/WINDSOR%20PARK%20APARTMENTS%20Victoria%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22WINDSOR%20PARK%20APARTMENTS%22%20%22Victoria%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=WINDSOR%20PARK%20APARTMENTS%20Victoria" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/WINDSOR%20PARK%20APARTMENTS%20Victoria%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Pebble Walk Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Pebble%20Walk%20Apartments%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Pebble%20Walk%20Apartments%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Pebble%20Walk%20Apartments%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Pebble%20Walk%20Apartments%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Windbury Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">San Antonio, Bexar County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Windbury%20Apartments%20San%20Antonio%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Windbury%20Apartments%22%20%22San%20Antonio%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Windbury%20Apartments%20San%20Antonio" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Windbury%20Apartments%20San%20Antonio%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">South Gate Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Sherman, Grayson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/South%20Gate%20Apartments%20Sherman%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22South%20Gate%20Apartments%22%20%22Sherman%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=South%20Gate%20Apartments%20Sherman" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/South%20Gate%20Apartments%20Sherman%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Circle Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Denison, Grayson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Circle%20Apartments%20Denison%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Circle%20Apartments%22%20%22Denison%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Circle%20Apartments%20Denison" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Circle%20Apartments%20Denison%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Spurlock Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Nederland, JEFFERSON County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Spurlock%20Apartments%20Nederland%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Spurlock%20Apartments%22%20%22Nederland%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Spurlock%20Apartments%20Nederland" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Spurlock%20Apartments%20Nederland%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">MIDWAY STATION</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Midland, Midland County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/MIDWAY%20STATION%20Midland%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22MIDWAY%20STATION%22%20%22Midland%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=MIDWAY%20STATION%20Midland" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/MIDWAY%20STATION%20Midland%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Riverside Park Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Riverside%20Park%20Apartments%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Riverside%20Park%20Apartments%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Riverside%20Park%20Apartments%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Riverside%20Park%20Apartments%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Lakeside Commons</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Dallas, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Lakeside%20Commons%20Dallas%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Lakeside%20Commons%22%20%22Dallas%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Lakeside%20Commons%20Dallas" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Lakeside%20Commons%20Dallas%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Sunset Heights</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Austin, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Sunset%20Heights%20Austin%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Sunset%20Heights%22%20%22Austin%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Sunset%20Heights%20Austin" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Sunset%20Heights%20Austin%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Dallas Park Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Dallas, Dallas County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Dallas%20Park%20Apartments%20Dallas%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Dallas%20Park%20Apartments%22%20%22Dallas%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Dallas%20Park%20Apartments%20Dallas" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Dallas%20Park%20Apartments%20Dallas%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Houston Towers Residential</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Houston, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Houston%20Towers%20Residential%20Houston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Houston%20Towers%20Residential%22%20%22Houston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Houston%20Towers%20Residential%20Houston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Houston%20Towers%20Residential%20Houston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Austin Central Living</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Austin, Travis County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Austin%20Central%20Living%20Austin%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Austin%20Central%20Living%22%20%22Austin%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Austin%20Central%20Living%20Austin" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Austin%20Central%20Living%20Austin%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Tulsa Downtown Living</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Tulsa, Tulsa County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Tulsa%20Downtown%20Living%20Tulsa%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Tulsa%20Downtown%20Living%22%20%22Tulsa%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Tulsa%20Downtown%20Living%20Tulsa" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Tulsa%20Downtown%20Living%20Tulsa%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Fort Worth Midtown</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Fort Worth, Tarrant County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Fort%20Worth%20Midtown%20Fort%20Worth%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Fort%20Worth%20Midtown%22%20%22Fort%20Worth%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Fort%20Worth%20Midtown%20Fort%20Worth" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Fort%20Worth%20Midtown%20Fort%20Worth%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">San Antonio Mission District</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">San Antonio, Bexar County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/San%20Antonio%20Mission%20District%20San%20Antonio%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22San%20Antonio%20Mission%20District%22%20%22San%20Antonio%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=San%20Antonio%20Mission%20District%20San%20Antonio" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/San%20Antonio%20Mission%20District%20San%20Antonio%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Corpus Christi Bay View</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Corpus Christi, Nueces County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Corpus%20Christi%20Bay%20View%20Corpus%20Christi%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Corpus%20Christi%20Bay%20View%22%20%22Corpus%20Christi%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Corpus%20Christi%20Bay%20View%20Corpus%20Christi" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Corpus%20Christi%20Bay%20View%20Corpus%20Christi%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Brownsville Riverside</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Brownsville, Cameron County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Brownsville%20Riverside%20Brownsville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Brownsville%20Riverside%22%20%22Brownsville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Brownsville%20Riverside%20Brownsville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Brownsville%20Riverside%20Brownsville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Lubbock Tech Campus</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Lubbock, Lubbock County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Lubbock%20Tech%20Campus%20Lubbock%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Lubbock%20Tech%20Campus%22%20%22Lubbock%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Lubbock%20Tech%20Campus%20Lubbock" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Lubbock%20Tech%20Campus%20Lubbock%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Amarillo Sunrise Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Amarillo, Potter County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Amarillo%20Sunrise%20Apartments%20Amarillo%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Amarillo%20Sunrise%20Apartments%22%20%22Amarillo%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Amarillo%20Sunrise%20Apartments%20Amarillo" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Amarillo%20Sunrise%20Apartments%20Amarillo%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Beaumont Industrial Park</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Beaumont, Jefferson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Beaumont%20Industrial%20Park%20Beaumont%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Beaumont%20Industrial%20Park%22%20%22Beaumont%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Beaumont%20Industrial%20Park%20Beaumont" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Beaumont%20Industrial%20Park%20Beaumont%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Tyler Rose Valley</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Tyler, Smith County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Tyler%20Rose%20Valley%20Tyler%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Tyler%20Rose%20Valley%22%20%22Tyler%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Tyler%20Rose%20Valley%20Tyler" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Tyler%20Rose%20Valley%20Tyler%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Longview Commerce Center</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Longview, Gregg County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Longview%20Commerce%20Center%20Longview%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Longview%20Commerce%20Center%22%20%22Longview%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Longview%20Commerce%20Center%20Longview" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Longview%20Commerce%20Center%20Longview%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Odessa Basin Residences</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Odessa, Ector County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Odessa%20Basin%20Residences%20Odessa%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Odessa%20Basin%20Residences%22%20%22Odessa%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Odessa%20Basin%20Residences%20Odessa" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Odessa%20Basin%20Residences%20Odessa%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Phoenix Desert Springs</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Phoenix, Tarrant County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Phoenix%20Desert%20Springs%20Phoenix%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Phoenix%20Desert%20Springs%22%20%22Phoenix%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Phoenix%20Desert%20Springs%20Phoenix" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Phoenix%20Desert%20Springs%20Phoenix%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Arlington Marketplace Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Arlington, Tarrant County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Arlington%20Marketplace%20Apartments%20Arlington%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Arlington%20Marketplace%20Apartments%22%20%22Arlington%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Arlington%20Marketplace%20Apartments%20Arlington" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Arlington%20Marketplace%20Apartments%20Arlington%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Irving Innovation Hub</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Irving, Dallas County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Irving%20Innovation%20Hub%20Irving%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Irving%20Innovation%20Hub%22%20%22Irving%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Irving%20Innovation%20Hub%20Irving" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Irving%20Innovation%20Hub%20Irving%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Garland Central Station</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Garland, Dallas County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Garland%20Central%20Station%20Garland%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Garland%20Central%20Station%22%20%22Garland%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Garland%20Central%20Station%20Garland" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Garland%20Central%20Station%20Garland%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Plano Tech Quarter</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Plano, Collin County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Plano%20Tech%20Quarter%20Plano%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Plano%20Tech%20Quarter%22%20%22Plano%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Plano%20Tech%20Quarter%20Plano" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Plano%20Tech%20Quarter%20Plano%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">McKinney Heights</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">McKinney, Collin County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/McKinney%20Heights%20McKinney%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22McKinney%20Heights%22%20%22McKinney%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=McKinney%20Heights%20McKinney" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/McKinney%20Heights%20McKinney%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Denton University Park</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Denton, Denton County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Denton%20University%20Park%20Denton%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Denton%20University%20Park%22%20%22Denton%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Denton%20University%20Park%20Denton" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Denton%20University%20Park%20Denton%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Lewisville Lakeside</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Lewisville, Denton County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Lewisville%20Lakeside%20Lewisville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Lewisville%20Lakeside%22%20%22Lewisville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Lewisville%20Lakeside%20Lewisville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Lewisville%20Lakeside%20Lewisville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Frisco Northwest</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Frisco, Collin County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Frisco%20Northwest%20Frisco%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Frisco%20Northwest%22%20%22Frisco%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Frisco%20Northwest%20Frisco" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Frisco%20Northwest%20Frisco%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Grand Prairie Industrial</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Grand Prairie, Tarrant County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Grand%20Prairie%20Industrial%20Grand%20Prairie%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Grand%20Prairie%20Industrial%22%20%22Grand%20Prairie%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Grand%20Prairie%20Industrial%20Grand%20Prairie" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Grand%20Prairie%20Industrial%20Grand%20Prairie%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Desoto Riverside</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Desoto, Tarrant County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Desoto%20Riverside%20Desoto%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Desoto%20Riverside%22%20%22Desoto%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Desoto%20Riverside%20Desoto" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Desoto%20Riverside%20Desoto%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Cleburne Historic Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Cleburne, Johnson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Cleburne%20Historic%20Apartments%20Cleburne%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Cleburne%20Historic%20Apartments%22%20%22Cleburne%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Cleburne%20Historic%20Apartments%20Cleburne" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Cleburne%20Historic%20Apartments%20Cleburne%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Waxahachie Cotton Fields</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Waxahachie, Ellis County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Waxahachie%20Cotton%20Fields%20Waxahachie%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Waxahachie%20Cotton%20Fields%22%20%22Waxahachie%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Waxahachie%20Cotton%20Fields%20Waxahachie" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Waxahachie%20Cotton%20Fields%20Waxahachie%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Laredo International</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Laredo, Webb County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Laredo%20International%20Laredo%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Laredo%20International%22%20%22Laredo%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Laredo%20International%20Laredo" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Laredo%20International%20Laredo%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">McAllen Gateway</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">McAllen, Hidalgo County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/McAllen%20Gateway%20McAllen%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22McAllen%20Gateway%22%20%22McAllen%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=McAllen%20Gateway%20McAllen" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/McAllen%20Gateway%20McAllen%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Harlingen Bay View</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Harlingen, Cameron County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Harlingen%20Bay%20View%20Harlingen%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Harlingen%20Bay%20View%22%20%22Harlingen%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Harlingen%20Bay%20View%20Harlingen" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Harlingen%20Bay%20View%20Harlingen%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Mission Rio Valley</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Mission, Hidalgo County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Mission%20Rio%20Valley%20Mission%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Mission%20Rio%20Valley%22%20%22Mission%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Mission%20Rio%20Valley%20Mission" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Mission%20Rio%20Valley%20Mission%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Edinburg Central Park</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Edinburg, Hidalgo County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Edinburg%20Central%20Park%20Edinburg%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Edinburg%20Central%20Park%22%20%22Edinburg%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Edinburg%20Central%20Park%20Edinburg" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Edinburg%20Central%20Park%20Edinburg%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Pharr Commerce District</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Pharr, Nueces County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Pharr%20Commerce%20District%20Pharr%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Pharr%20Commerce%20District%22%20%22Pharr%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Pharr%20Commerce%20District%20Pharr" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Pharr%20Commerce%20District%20Pharr%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Angleton Industrial</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Angleton, Brazoria County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Angleton%20Industrial%20Angleton%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Angleton%20Industrial%22%20%22Angleton%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Angleton%20Industrial%20Angleton" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Angleton%20Industrial%20Angleton%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Lake Jackson Bay Side</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Lake Jackson, Brazoria County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Lake%20Jackson%20Bay%20Side%20Lake%20Jackson%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Lake%20Jackson%20Bay%20Side%22%20%22Lake%20Jackson%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Lake%20Jackson%20Bay%20Side%20Lake%20Jackson" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Lake%20Jackson%20Bay%20Side%20Lake%20Jackson%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Bryan Texas Park</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Bryan, Brazos County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Bryan%20Texas%20Park%20Bryan%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Bryan%20Texas%20Park%22%20%22Bryan%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Bryan%20Texas%20Park%20Bryan" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Bryan%20Texas%20Park%20Bryan%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">College Station University</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">College Station, Brazos County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/College%20Station%20University%20College%20Station%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22College%20Station%20University%22%20%22College%20Station%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=College%20Station%20University%20College%20Station" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/College%20Station%20University%20College%20Station%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Conroe Westfield</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Conroe, Montgomery County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Conroe%20Westfield%20Conroe%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Conroe%20Westfield%22%20%22Conroe%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Conroe%20Westfield%20Conroe" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Conroe%20Westfield%20Conroe%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Woodlands North Gate</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Spring, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Woodlands%20North%20Gate%20Spring%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Woodlands%20North%20Gate%22%20%22Spring%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Woodlands%20North%20Gate%20Spring" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Woodlands%20North%20Gate%20Spring%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Galveston Beach Towers</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Galveston, Galveston County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Galveston%20Beach%20Towers%20Galveston%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Galveston%20Beach%20Towers%22%20%22Galveston%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Galveston%20Beach%20Towers%20Galveston" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Galveston%20Beach%20Towers%20Galveston%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Texas City Refinery Side</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Texas City, Galveston County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Texas%20City%20Refinery%20Side%20Texas%20City%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Texas%20City%20Refinery%20Side%22%20%22Texas%20City%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Texas%20City%20Refinery%20Side%20Texas%20City" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Texas%20City%20Refinery%20Side%20Texas%20City%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">League City Bay View</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">League City, Galveston County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/League%20City%20Bay%20View%20League%20City%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22League%20City%20Bay%20View%22%20%22League%20City%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=League%20City%20Bay%20View%20League%20City" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/League%20City%20Bay%20View%20League%20City%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Kemah Marina Residences</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Kemah, Galveston County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Kemah%20Marina%20Residences%20Kemah%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Kemah%20Marina%20Residences%22%20%22Kemah%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Kemah%20Marina%20Residences%20Kemah" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Kemah%20Marina%20Residences%20Kemah%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Pearland Park Commons</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Pearland, Brazoria County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Pearland%20Park%20Commons%20Pearland%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Pearland%20Park%20Commons%22%20%22Pearland%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Pearland%20Park%20Commons%20Pearland" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Pearland%20Park%20Commons%20Pearland%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Katy Central Living</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Katy, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Katy%20Central%20Living%20Katy%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Katy%20Central%20Living%22%20%22Katy%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Katy%20Central%20Living%20Katy" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Katy%20Central%20Living%20Katy%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Baytown Refinery District</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Baytown, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Baytown%20Refinery%20District%20Baytown%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Baytown%20Refinery%20District%22%20%22Baytown%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Baytown%20Refinery%20District%20Baytown" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Baytown%20Refinery%20District%20Baytown%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Pasadena Industrial Park</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Pasadena, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Pasadena%20Industrial%20Park%20Pasadena%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Pasadena%20Industrial%20Park%22%20%22Pasadena%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Pasadena%20Industrial%20Park%20Pasadena" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Pasadena%20Industrial%20Park%20Pasadena%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">La Porte Harbor View</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">La Porte, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/La%20Porte%20Harbor%20View%20La%20Porte%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22La%20Porte%20Harbor%20View%22%20%22La%20Porte%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=La%20Porte%20Harbor%20View%20La%20Porte" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/La%20Porte%20Harbor%20View%20La%20Porte%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Seabrook Bay Side</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Seabrook, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Seabrook%20Bay%20Side%20Seabrook%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Seabrook%20Bay%20Side%22%20%22Seabrook%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Seabrook%20Bay%20Side%20Seabrook" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Seabrook%20Bay%20Side%20Seabrook%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Nassau Bay Residential</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Nassau Bay, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Nassau%20Bay%20Residential%20Nassau%20Bay%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Nassau%20Bay%20Residential%22%20%22Nassau%20Bay%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Nassau%20Bay%20Residential%20Nassau%20Bay" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Nassau%20Bay%20Residential%20Nassau%20Bay%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Clear Lake Park</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Clear Lake, Harris County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Clear%20Lake%20Park%20Clear%20Lake%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Clear%20Lake%20Park%22%20%22Clear%20Lake%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Clear%20Lake%20Park%20Clear%20Lake" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Clear%20Lake%20Park%20Clear%20Lake%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Stafford Development</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Stafford, Fort Bend County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Stafford%20Development%20Stafford%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Stafford%20Development%22%20%22Stafford%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Stafford%20Development%20Stafford" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Stafford%20Development%20Stafford%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Sugar Land Technology</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Sugar Land, Fort Bend County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Sugar%20Land%20Technology%20Sugar%20Land%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Sugar%20Land%20Technology%22%20%22Sugar%20Land%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Sugar%20Land%20Technology%20Sugar%20Land" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Sugar%20Land%20Technology%20Sugar%20Land%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Missouri City Central</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Missouri City, Fort Bend County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Missouri%20City%20Central%20Missouri%20City%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Missouri%20City%20Central%22%20%22Missouri%20City%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Missouri%20City%20Central%20Missouri%20City" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Missouri%20City%20Central%20Missouri%20City%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Magnolia Springs</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Magnolia, Montgomery County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Magnolia%20Springs%20Magnolia%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Magnolia%20Springs%22%20%22Magnolia%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Magnolia%20Springs%20Magnolia" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Magnolia%20Springs%20Magnolia%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">The Woodlands South Gate</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">The Woodlands, Montgomery County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/The%20Woodlands%20South%20Gate%20The%20Woodlands%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22The%20Woodlands%20South%20Gate%22%20%22The%20Woodlands%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=The%20Woodlands%20South%20Gate%20The%20Woodlands" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/The%20Woodlands%20South%20Gate%20The%20Woodlands%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Conroe East Park</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Conroe, Montgomery County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Conroe%20East%20Park%20Conroe%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Conroe%20East%20Park%22%20%22Conroe%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Conroe%20East%20Park%20Conroe" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Conroe%20East%20Park%20Conroe%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Huntsville State College</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Huntsville, Walker County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Huntsville%20State%20College%20Huntsville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Huntsville%20State%20College%22%20%22Huntsville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Huntsville%20State%20College%20Huntsville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Huntsville%20State%20College%20Huntsville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Beaumont Downtown</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Beaumont, Jefferson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Beaumont%20Downtown%20Beaumont%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Beaumont%20Downtown%22%20%22Beaumont%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Beaumont%20Downtown%20Beaumont" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Beaumont%20Downtown%20Beaumont%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Port Arthur Harbor</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Port Arthur, Jefferson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Port%20Arthur%20Harbor%20Port%20Arthur%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Port%20Arthur%20Harbor%22%20%22Port%20Arthur%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Port%20Arthur%20Harbor%20Port%20Arthur" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Port%20Arthur%20Harbor%20Port%20Arthur%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Orange Industrial</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Orange, Orange County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Orange%20Industrial%20Orange%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Orange%20Industrial%22%20%22Orange%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Orange%20Industrial%20Orange" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Orange%20Industrial%20Orange%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="https://epass.ocpafl.org/ePass/Search/QuickSearch.aspx" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Lumberton Pines</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Lumberton, Hardin County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Lumberton%20Pines%20Lumberton%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Lumberton%20Pines%22%20%22Lumberton%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Lumberton%20Pines%20Lumberton" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Lumberton%20Pines%20Lumberton%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Silsbee Timber Town</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Silsbee, Hardin County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Silsbee%20Timber%20Town%20Silsbee%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Silsbee%20Timber%20Town%22%20%22Silsbee%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Silsbee%20Timber%20Town%20Silsbee" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Silsbee%20Timber%20Town%20Silsbee%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Kirbyville Pine Forest</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Kirbyville, Jasper County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Kirbyville%20Pine%20Forest%20Kirbyville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Kirbyville%20Pine%20Forest%22%20%22Kirbyville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Kirbyville%20Pine%20Forest%20Kirbyville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Kirbyville%20Pine%20Forest%20Kirbyville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Jacksonville Trails</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Jacksonville, Cheroklee County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Jacksonville%20Trails%20Jacksonville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Jacksonville%20Trails%22%20%22Jacksonville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Jacksonville%20Trails%20Jacksonville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Jacksonville%20Trails%20Jacksonville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Longview Commerce</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Longview, Gregg County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Longview%20Commerce%20Longview%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Longview%20Commerce%22%20%22Longview%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Longview%20Commerce%20Longview" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Longview%20Commerce%20Longview%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Marshall Historic District</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Marshall, Harrison County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Marshall%20Historic%20District%20Marshall%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Marshall%20Historic%20District%22%20%22Marshall%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Marshall%20Historic%20District%20Marshall" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Marshall%20Historic%20District%20Marshall%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Texarkana Twin States</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Texarkana, Bowie County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Texarkana%20Twin%20States%20Texarkana%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Texarkana%20Twin%20States%22%20%22Texarkana%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Texarkana%20Twin%20States%20Texarkana" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Texarkana%20Twin%20States%20Texarkana%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Athens Liberty</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Athens, Henderson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Athens%20Liberty%20Athens%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Athens%20Liberty%22%20%22Athens%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Athens%20Liberty%20Athens" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Athens%20Liberty%20Athens%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Canton Downtown</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Canton, Van Zandt County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Canton%20Downtown%20Canton%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Canton%20Downtown%22%20%22Canton%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Canton%20Downtown%20Canton" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Canton%20Downtown%20Canton%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Corsicana Commercial</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Corsicana, Navarro County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Corsicana%20Commercial%20Corsicana%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Corsicana%20Commercial%22%20%22Corsicana%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Corsicana%20Commercial%20Corsicana" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Corsicana%20Commercial%20Corsicana%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Waco Central Station</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Waco, McLennan County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Waco%20Central%20Station%20Waco%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Waco%20Central%20Station%22%20%22Waco%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Waco%20Central%20Station%20Waco" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Waco%20Central%20Station%20Waco%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Temple Heights</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Temple, Bell County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Temple%20Heights%20Temple%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Temple%20Heights%22%20%22Temple%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Temple%20Heights%20Temple" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Temple%20Heights%20Temple%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Killeen Fort Hood</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Killeen, Bell County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Killeen%20Fort%20Hood%20Killeen%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Killeen%20Fort%20Hood%22%20%22Killeen%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Killeen%20Fort%20Hood%20Killeen" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Killeen%20Fort%20Hood%20Killeen%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Copperas Cove Military</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Copperas Cove, Coryell County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Copperas%20Cove%20Military%20Copperas%20Cove%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Copperas%20Cove%20Military%22%20%22Copperas%20Cove%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Copperas%20Cove%20Military%20Copperas%20Cove" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Copperas%20Cove%20Military%20Copperas%20Cove%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Round Rock Tech Corridor</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Round Rock, Williamson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Round%20Rock%20Tech%20Corridor%20Round%20Rock%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Round%20Rock%20Tech%20Corridor%22%20%22Round%20Rock%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Round%20Rock%20Tech%20Corridor%20Round%20Rock" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Round%20Rock%20Tech%20Corridor%20Round%20Rock%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Cedar Park Westlake</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Cedar Park, Williamson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Cedar%20Park%20Westlake%20Cedar%20Park%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Cedar%20Park%20Westlake%22%20%22Cedar%20Park%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Cedar%20Park%20Westlake%20Cedar%20Park" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Cedar%20Park%20Westlake%20Cedar%20Park%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Pflugerville Corporate</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Pflugerville, Travis County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Pflugerville%20Corporate%20Pflugerville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Pflugerville%20Corporate%22%20%22Pflugerville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Pflugerville%20Corporate%20Pflugerville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Pflugerville%20Corporate%20Pflugerville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Georgetown Historic</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Georgetown, Williamson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Georgetown%20Historic%20Georgetown%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Georgetown%20Historic%22%20%22Georgetown%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Georgetown%20Historic%20Georgetown" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Georgetown%20Historic%20Georgetown%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">San Marcos Central</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">San Marcos, Hays County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/San%20Marcos%20Central%20San%20Marcos%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22San%20Marcos%20Central%22%20%22San%20Marcos%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=San%20Marcos%20Central%20San%20Marcos" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/San%20Marcos%20Central%20San%20Marcos%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Kyle Community</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Kyle, Hays County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Kyle%20Community%20Kyle%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Kyle%20Community%22%20%22Kyle%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Kyle%20Community%20Kyle" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Kyle%20Community%20Kyle%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Buda Parkside</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Buda, Hays County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Buda%20Parkside%20Buda%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Buda%20Parkside%22%20%22Buda%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Buda%20Parkside%20Buda" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Buda%20Parkside%20Buda%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Wimberley Hill Country</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Wimberley, Hays County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Wimberley%20Hill%20Country%20Wimberley%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Wimberley%20Hill%20Country%22%20%22Wimberley%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Wimberley%20Hill%20Country%20Wimberley" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Wimberley%20Hill%20Country%20Wimberley%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">New Braunfels Guadalupe</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">New Braunfels, Comal County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/New%20Braunfels%20Guadalupe%20New%20Braunfels%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22New%20Braunfels%20Guadalupe%22%20%22New%20Braunfels%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=New%20Braunfels%20Guadalupe%20New%20Braunfels" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/New%20Braunfels%20Guadalupe%20New%20Braunfels%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Seguin Riverside</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Seguin, Guadalupe County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Seguin%20Riverside%20Seguin%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Seguin%20Riverside%22%20%22Seguin%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Seguin%20Riverside%20Seguin" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Seguin%20Riverside%20Seguin%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Boerne Hill Country</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Boerne, Kendall County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Boerne%20Hill%20Country%20Boerne%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Boerne%20Hill%20Country%22%20%22Boerne%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Boerne%20Hill%20Country%20Boerne" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Boerne%20Hill%20Country%20Boerne%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Kerrville Heritage</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Kerrville, Kerr County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Kerrville%20Heritage%20Kerrville%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Kerrville%20Heritage%22%20%22Kerrville%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Kerrville%20Heritage%20Kerrville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Kerrville%20Heritage%20Kerrville%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Fredericksburg Mountain</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Fredericksburg, Gillespie County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Fredericksburg%20Mountain%20Fredericksburg%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Fredericksburg%20Mountain%22%20%22Fredericksburg%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Fredericksburg%20Mountain%20Fredericksburg" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Fredericksburg%20Mountain%20Fredericksburg%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Burnet Highland</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Burnet, Burnet County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Burnet%20Highland%20Burnet%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Burnet%20Highland%22%20%22Burnet%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Burnet%20Highland%20Burnet" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Burnet%20Highland%20Burnet%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Fountains Matthews</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Fountains%20Matthews%20%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Fountains%20Matthews%22%20%22%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Fountains%20Matthews%20" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Fountains%20Matthews%20%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Butternut Ridge Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Butternut%20Ridge%20Apartments%20%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Butternut%20Ridge%20Apartments%22%20%22%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Butternut%20Ridge%20Apartments%20" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Butternut%20Ridge%20Apartments%20%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Arzano</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Arzano%20%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Arzano%22%20%22%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Arzano%20" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Arzano%20%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Danker Village Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Danker%20Village%20Apartments%20%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Danker%20Village%20Apartments%22%20%22%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Danker%20Village%20Apartments%20" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Danker%20Village%20Apartments%20%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Country Glenn Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Country%20Glenn%20Apartments%20%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Country%20Glenn%20Apartments%22%20%22%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Country%20Glenn%20Apartments%20" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Country%20Glenn%20Apartments%20%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">2000 Penn</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/2000%20Penn%20%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%222000%20Penn%22%20%22%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=2000%20Penn%20" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/2000%20Penn%20%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">The Flamingo</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/The%20Flamingo%20%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22The%20Flamingo%22%20%22%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=The%20Flamingo%20" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/The%20Flamingo%20%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Aggieland Flats</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">College Station, Brazos County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Aggieland%20Flats%20College%20Station%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Aggieland%20Flats%22%20%22College%20Station%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Aggieland%20Flats%20College%20Station" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Aggieland%20Flats%20College%20Station%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Wolf Pen Crossing</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">College Station, Brazos County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Wolf%20Pen%20Crossing%20College%20Station%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Wolf%20Pen%20Crossing%22%20%22College%20Station%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Wolf%20Pen%20Crossing%20College%20Station" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Wolf%20Pen%20Crossing%20College%20Station%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Bryan Station Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Bryan, Brazos County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Bryan%20Station%20Apartments%20Bryan%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Bryan%20Station%20Apartments%22%20%22Bryan%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Bryan%20Station%20Apartments%20Bryan" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Bryan%20Station%20Apartments%20Bryan%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Northgate Lofts</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">College Station, Brazos County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Northgate%20Lofts%20College%20Station%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Northgate%20Lofts%22%20%22College%20Station%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Northgate%20Lofts%20College%20Station" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Northgate%20Lofts%20College%20Station%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Villas at Traditions</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Bryan, Brazos County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Villas%20at%20Traditions%20Bryan%20TX" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Villas%20at%20Traditions%22%20%22Bryan%22%20%22TX%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Villas%20at%20Traditions%20Bryan" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Villas%20at%20Traditions%20Bryan%20TX_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

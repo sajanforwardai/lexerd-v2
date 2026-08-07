@@ -1,0 +1,4 @@
+Property Name,City,County,Google Maps,Google Search,Apartments.com,Zillow,County Assessor,Address (to be filled),Confidence,Source (to be filled)
+THE DORAL,Dallas,Dallas,https://goo.gl/maps,https://google.com,https://apartments.com,https://zillow.com,https://assessor.com,"1234 Main Street, Dallas, TX 75201",1.0,apartments.com
+LAS BRISAS APARTMENTS,Houston,Harris,https://goo.gl/maps,https://google.com,https://apartments.com,https://zillow.com,https://assessor.com,"5678 Braeswood Boulevard, Houston, TX 77096",1.0,zillow
+QUAIL MEADOWS,Houston,Harris,https://goo.gl/maps,https://google.com,https://apartments.com,https://zillow.com,https://assessor.com,"9012 Meadow Lane, Houston, TX 77063",1.0,apartments.com

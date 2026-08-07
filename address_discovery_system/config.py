@@ -179,13 +179,13 @@ RATE_LIMIT_CONFIG = {
 
 # Logging
 LOGGING_CONFIG = {
-    "log_file": "/workspace/lexerd2/address_discovery_system.log",
+    "log_file": "address_discovery_system.log",
     "log_level": "INFO",
     "verbose": True,
 }
 
 # Output
 OUTPUT_CONFIG = {
-    "cache_file": "/workspace/lexerd2/calibration/.cache/address_verification_cache.json",
-    "report_file": "/workspace/lexerd2/address_discovery_report.json",
+    "cache_file": "calibration/.cache/address_verification_cache.json",
+    "report_file": "address_discovery_report.json",
 }

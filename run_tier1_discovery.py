@@ -79,7 +79,7 @@ def main():
 
     summary = orchestrator.discover_addresses(
         loans_to_search,
-        output_file="/workspace/lexerd2/tier1_discovery_results.json"
+        output_file="tier1_discovery_results.json"
     )
 
     # Print results
@@ -97,8 +97,8 @@ def main():
 
     print("\n" + "=" * 80)
     print(f"\n✨ Tier 1 discovery complete!")
-    print(f"   Results: /workspace/lexerd2/tier1_discovery_results.json")
-    print(f"   Cache: /workspace/lexerd2/calibration/.cache/address_verification_cache.json\n")
+    print(f"   Results: tier1_discovery_results.json")
+    print(f"   Cache: calibration/.cache/address_verification_cache.json\n")
 
     return summary
 

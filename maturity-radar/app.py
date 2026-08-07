@@ -154,6 +154,36 @@ st.markdown("""
 # Load all loans including conduit CMBS and K-Deal
 _all, SRC = load_loans("auto")
 
+
+def clean_watchlist(loans):
+    """Remove portfolio properties and duplicates from watchlist.
+
+    Portfolio properties (with 'portfolio' in name) and duplicate entries
+    are filtered out to maintain a clean dashboard dataset.
+    Returns: Filtered list of unique, non-portfolio loans
+    """
+    seen = {}
+    cleaned = []
+
+    for loan in loans:
+        # Skip portfolio-based properties
+        if 'portfolio' in (loan.property_name or "").lower():
+            continue
+
+        # Track unique properties (property_name, city, state)
+        key = (loan.property_name, loan.city, loan.state)
+
+        # Keep only first occurrence (skip duplicates)
+        if key not in seen:
+            seen[key] = True
+            cleaned.append(loan)
+
+    return cleaned
+
+
+# Apply cleaning to all loans
+_all = clean_watchlist(_all)
+
 _rate = load_rate()
 market_rate = float(_rate["rate"]) if _rate else DEFAULT_MARKET_RATE
 
@@ -238,10 +268,18 @@ with tab_watch:
         st.info("No loans match the current filters. Widen the markets, pressure bands, or lower "
                 "the minimum score in the sidebar.")
     else:
+        # Calculate dashboard KPIs (dynamically from cleaned watchlist)
         severe = [s for s in wl if s.projected_refi_dscr < 1.0]
         near = [s for s in wl if s.months_to_maturity <= 24]
         upb = sum(s.loan.current_balance for s in wl)
         n_states = len({s.loan.state for s in wl})
+
+        # KPI Metrics:
+        # - Loans on watch: Total loans in watchlist (dynamic, updates with filters)
+        # - Severe: Loans with projected DSCR < 1.0 at current rate
+        # - Maturing within 24 months: Loans with maturity <= 24 months
+        # - Total loan balance: Sum of current balances for all loans on watch
+        # All metrics recalculate automatically when portfolio properties are removed or filters change
 
         st.markdown(f"""
 <div class="kpis">

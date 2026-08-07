@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Discovery System - Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        /* Navigation tabs */
+        .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .nav-tabs a, .nav-tabs span {
+            display: inline-block;
+            padding: 10px 16px;
+            background: white;
+            border-radius: 6px 6px 0 0;
+            text-decoration: none;
+            color: #666;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            transition: all 0.2s;
+        }
+        .nav-tabs a:hover { color: #2563eb; background: #f9fafb; }
+        .nav-tabs .active { background: #2563eb; color: white; border-color: #2563eb; }
+
+        /* States grid */
+        .states-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .states-grid a {
+            display: block;
+            padding: 12px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #2563eb;
+            text-align: center;
+            font-weight: 500;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .states-grid a:hover { background: #eff6ff; border-color: #2563eb; }
+
+        h1 { color: #333; margin-bottom: 8px; font-size: 28px; }
+        .subtitle { color: #666; margin-bottom: 30px; font-size: 14px; }
+        h2 { color: #333; margin-top: 30px; margin-bottom: 15px; font-size: 18px; border-bottom: 2px solid #2563eb; padding-bottom: 8px; }
+        h3 { color: #2563eb; margin-top: 20px; margin-bottom: 10px; font-size: 14px; }
+        p { color: #666; line-height: 1.6; margin-bottom: 12px; font-size: 13px; }
+
+        .step-box {
+            background: #f0f9ff;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .step-box strong { color: #2563eb; }
+
+        ol { margin-left: 20px; color: #666; font-size: 13px; line-height: 1.8; }
+        ol li { margin-bottom: 10px; }
+
+        ul { margin-left: 20px; color: #666; font-size: 13px; line-height: 1.8; }
+        ul li { margin-bottom: 8px; }
+
+        .code-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .table-box {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th {
+            background: #f3f4f6;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #666;
+        }
+
+        .highlight {
+            background: #fef08a;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+
+        .tip-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .tip-box strong { color: #10b981; }
+
+        .warning-box {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .warning-box strong { color: #ef4444; }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #999;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <div class="nav-tabs">
+            <span class="active">📖 Guide</span>
+            <a href="al_property_lookup.html">AL</a>
+            <a href="fl_property_lookup.html">FL</a>
+            <a href="ga_property_lookup.html">GA</a>
+            <a href="ks_property_lookup.html">KS</a>
+            <a href="ky_property_lookup.html">KY</a>
+            <a href="la_property_lookup.html">LA</a>
+            <a href="nc_property_lookup.html">NC</a>
+            <a href="tx_property_lookup.html">TX</a>
+        </div>
+
+        <h1>📖 Property Address Discovery System</h1>
+        <p class="subtitle">Complete guide to finding and verifying addresses for 283 multifamily properties across 8 states</p>
+
+        <!-- Quick Access -->
+        <h2>Quick Access - Choose a State</h2>
+        <div class="states-grid">
+            <a href="al_property_lookup.html">🏠 Alabama (9)</a>
+            <a href="fl_property_lookup.html">🏠 Florida (27)</a>
+            <a href="ga_property_lookup.html">🏠 Georgia (32)</a>
+            <a href="ks_property_lookup.html">🏠 Kansas (10)</a>
+            <a href="ky_property_lookup.html">🏠 Kentucky (5)</a>
+            <a href="la_property_lookup.html">🏠 Louisiana (8)</a>
+            <a href="nc_property_lookup.html">🏠 North Carolina (17)</a>
+            <a href="tx_property_lookup.html">🏠 Texas (143)</a>
+        </div>
+
+        <!-- Overview -->
+        <h2>System Overview</h2>
+        <p>This system helps you find and verify street addresses for multifamily properties across 8 states. The process is simple and takes about 2-3 minutes per property.</p>
+
+        <div class="table-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>State</th>
+                        <th>Properties</th>
+                        <th>Need Address</th>
+                        <th>Time Estimate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alabama</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>20-30 min</td>
+                    </tr>
+                    <tr>
+                        <td>Florida</td>
+                        <td>34</td>
+                        <td>27</td>
+                        <td>1-1.5 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Georgia</td>
+                        <td>35</td>
+                        <td>32</td>
+                        <td>1.5-2 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Kansas</td>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>30-45 min</td>
+                    </tr>
+                    <tr>
+                        <td>Kentucky</td>
+                        <td>6</td>
+                        <td>5</td>
+                        <td>15-25 min</td>
+                    </tr>
+                    <tr>
+                        <td>Louisiana</td>
+                        <td>11</td>
+                        <td>8</td>
+                        <td>25-40 min</td>
+                    </tr>
+                    <tr>
+                        <td>North Carolina</td>
+                        <td>20</td>
+                        <td>17</td>
+                        <td>45-60 min</td>
+                    </tr>
+                    <tr>
+                        <td>Texas</td>
+                        <td>156</td>
+                        <td>143</td>
+                        <td>7-10 hours</td>
+                    </tr>
+                    <tr style="background: #f3f4f6; font-weight: 600;">
+                        <td>TOTAL</td>
+                        <td>283</td>
+                        <td>251</td>
+                        <td>11-15 hours</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- How It Works -->
+        <h2>How It Works - 5 Simple Steps</h2>
+
+        <div class="step-box">
+            <strong>Step 1: Pick a State</strong><br/>
+            Click one of the state buttons above (AL, FL, GA, etc.)
+        </div>
+
+        <div class="step-box">
+            <strong>Step 2: Search Online</strong><br/>
+            For each property, search: "[Property Name] [City], [State]" in Google Maps or Apartments.com
+        </div>
+
+        <div class="step-box">
+            <strong>Step 3: Copy Address</strong><br/>
+            When you find it, copy the full street address (e.g., "123 Main St, City, AL 36601")
+        </div>
+
+        <div class="step-box">
+            <strong>Step 4: Update CSV</strong><br/>
+            Paste the address into the [state]_property_lookup.csv file in the "Address" column
+        </div>
+
+        <div class="step-box">
+            <strong>Step 5: Import to Database</strong><br/>
+            Run: <span class="code-box">python scripts/update_[state]_addresses_from_csv.py [state]_property_lookup.csv</span>
+        </div>
+
+        <!-- Best Practices -->
+        <h2>Best Practices for Fast Results</h2>
+
+        <h3>🏃 Fastest Method (2-3 min per property):</h3>
+        <ol>
+            <li>Open Google Maps (maps.google.com)</li>
+            <li>Search: "[Property Name] [City], [State]"</li>
+            <li>Look at the top result or map pins</li>
+            <li>Copy the full address from Google</li>
+        </ol>
+
+        <h3>⚡ Second Fastest Method (2-4 min per property):</h3>
+        <ol>
+            <li>Open Apartments.com</li>
+            <li>Search: "[Property Name] [City], [State]"</li>
+            <li>Click on the property listing</li>
+            <li>Copy address from property details (also shows phone number!)</li>
+        </ol>
+
+        <h3>📍 Pro Tips:</h3>
+        <ul>
+            <li>Group properties by city: Search all Houston properties together (reduces context switching)</li>
+            <li>Use keyboard shortcuts: Cmd+C to copy, Cmd+V to paste (Windows: Ctrl instead of Cmd)</li>
+            <li>Have two windows open: Search engine on left, CSV file on right</li>
+            <li>Most results appear in the top 3-5 search results - don't dig deep</li>
+            <li>If a property name is common, add the county name to narrow results</li>
+        </ul>
+
+        <div class="tip-box">
+            <strong>💡 Tip:</strong> For 10 properties, you can find all addresses in 20-30 minutes with this method. Focus on speed over perfection - approximate addresses are better than no addresses.
+        </div>
+
+        <!-- What to Record -->
+        <h2>What to Record</h2>
+
+        <h3>Required (Must Have):</h3>
+        <ul>
+            <li><span class="highlight">Property Name</span> (e.g., "Uptown Dallas Apartments")</li>
+            <li><span class="highlight">City</span> (e.g., "Dallas")</li>
+            <li><span class="highlight">State</span> (e.g., "TX")</li>
+            <li><span class="highlight">Address</span> (e.g., "123 Main St, Dallas, TX 75001")</li>
+        </ul>
+
+        <h3>Address Format Examples:</h3>
+        <ul>
+            <li>✓ "123 Main Street, Dallas, TX 75001"</li>
+            <li>✓ "456 Oak Ave, Houston, TX 77001"</li>
+            <li>✓ "789 Elm Rd, Austin, TX 78701"</li>
+            <li>✗ "123 Main St" (incomplete - missing city/state/zip)</li>
+            <li>✗ "Dallas, TX" (incomplete - missing street address)</li>
+        </ul>
+
+        <!-- Troubleshooting -->
+        <h2>Troubleshooting</h2>
+
+        <h3>Property not found on Google Maps</h3>
+        <ul>
+            <li>Try adding the county name: "[Property Name] [County] County [State]"</li>
+            <li>Try Apartments.com instead (usually has better multifamily listings)</li>
+            <li>Try searching for the property management company name</li>
+            <li>The property may be older/defunct - skip it for now</li>
+        </ul>
+
+        <h3>Multiple results for same property name</h3>
+        <ul>
+            <li>Add the city to narrow results: "[Property Name] [City], [State]"</li>
+            <li>Look at the correct city in the CSV to identify the right one</li>
+            <li>Use county name if available: "[Property Name] [County] County"</li>
+        </ul>
+
+        <h3>Address looks incomplete</h3>
+        <ul>
+            <li>Copy the complete address Google shows at the top of the search result</li>
+            <li>Example: "123 Main St, Dallas, TX 75001" ← This is complete</li>
+            <li>Avoid partial addresses like just "123 Main St" without city/state/zip</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>⚠️ Important:</strong> Always include Street, City, State, and ZIP in addresses. Partial addresses will cause import errors.
+        </div>
+
+        <!-- After Finding Addresses -->
+        <h2>After Finding Addresses</h2>
+
+        <h3>1. Update the CSV File</h3>
+        <p>Each state has a [state]_property_lookup.csv file (e.g., al_property_lookup.csv). Open it in Excel/Google Sheets and fill in the "Address (to be filled)" column with the addresses you found.</p>
+
+        <h3>2. Save the CSV File</h3>
+        <p>Make sure to save it with the same filename. The import script will look for it.</p>
+
+        <h3>3. Run the Import Script</h3>
+        <p>Open Terminal/Command Prompt and run:</p>
+        <div class="code-box">python scripts/update_[state]_addresses_from_csv.py [state]_property_lookup.csv</div>
+
+        <p>Example for Alabama:</p>
+        <div class="code-box">python scripts/update_al_addresses_from_csv.py al_property_lookup.csv</div>
+
+        <h3>4. Check the Results</h3>
+        <p>You should see output like:</p>
+        <div class="code-box">✓ ISLAND OAKS APARTMENTS (Orange Beach)
+  → 123 Main St, Orange Beach, AL 36561
+✓ University Downs Apartments (Tuscaloosa)
+  → 456 University Ave, Tuscaloosa, AL 35401
+...
+✅ All addresses successfully updated!</div>
+
+        <h3>5. Verify Progress</h3>
+        <p>To see how many addresses have been found so far, run:</p>
+        <div class="code-box">python scripts/audit_all_states.py</div>
+
+        <!-- Navigation Sidebar -->
+        <h2>State Navigation</h2>
+        <p>Click any state below to go to that state's lookup page:</p>
+        <div class="states-grid">
+            <a href="al_property_lookup.html">🏠 Alabama</a>
+            <a href="fl_property_lookup.html">🏠 Florida</a>
+            <a href="ga_property_lookup.html">🏠 Georgia</a>
+            <a href="ks_property_lookup.html">🏠 Kansas</a>
+            <a href="ky_property_lookup.html">🏠 Kentucky</a>
+            <a href="la_property_lookup.html">🏠 Louisiana</a>
+            <a href="nc_property_lookup.html">🏠 North Carolina</a>
+            <a href="tx_property_lookup.html">🏠 Texas</a>
+        </div>
+
+        <div class="footer">
+            <p>Property Discovery System | Address Verification</p>
+        </div>
+    </div>
+</body>
+</html>

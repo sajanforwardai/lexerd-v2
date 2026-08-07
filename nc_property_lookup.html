@@ -21,11 +21,40 @@
         .property-name { font-weight: 500; color: #333; }
         .city-info { color: #666; font-size: 12px; }
         .status { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; background: #fee2e2; color: #991b1b; }
-        .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 13px; }
+                .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .nav-tabs a, .nav-tabs span {
+            display: inline-block;
+            padding: 10px 16px;
+            background: white;
+            border-radius: 6px 6px 0 0;
+            text-decoration: none;
+            color: #666;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            transition: all 0.2s;
+        }
+        .nav-tabs a:hover { color: #2563eb; background: #f9fafb; }
+        .nav-tabs .active { background: #2563eb; color: white; border-color: #2563eb; }
+                .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 13px; }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Navigation tabs -->
+        <div class="nav-tabs">
+            <a href="about.html">📖 Guide</a>
+            <a href="al_property_lookup.html">AL</a>
+            <a href="fl_property_lookup.html">FL</a>
+            <a href="ga_property_lookup.html">GA</a>
+            <a href="ks_property_lookup.html">KS</a>
+            <a href="ky_property_lookup.html">KY</a>
+            <a href="la_property_lookup.html">LA</a>
+            <span class="active">NC</span>
+            <a href="tx_property_lookup.html">TX</a>
+        </div>
+
         <h1>🔍 NC Property Address Lookup</h1>
         <p class="subtitle">17 properties needing address verification</p>
 

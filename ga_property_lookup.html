@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florida Property Lookup Tool</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .property {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        .property-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .property-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .info-item {
+            flex: 1;
+        }
+        .info-label {
+            color: #666;
+            font-weight: 500;
+        }
+        .info-value {
+            color: #333;
+            margin-top: 3px;
+        }
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .link-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .link-btn:hover {
+            background: #5568d3;
+        }
+        .link-btn.secondary {
+            background: #6c757d;
+        }
+        .link-btn.secondary:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 Florida Property Lookup Tool</h1>
+        <p>Click links below to verify property addresses. Record found addresses in the database.</p>
+
+        <div class="property">
+            <div class="property-header">Walden Brook Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Lithonia, DeKalb County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Walden%20Brook%20Apartments%20Lithonia%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Walden%20Brook%20Apartments%22%20%22Lithonia%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Walden%20Brook%20Apartments%20Lithonia" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Walden%20Brook%20Apartments%20Lithonia%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Tifton Student Housing</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Tifton, Tift County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Tifton%20Student%20Housing%20Tifton%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Tifton%20Student%20Housing%22%20%22Tifton%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Tifton%20Student%20Housing%20Tifton" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Tifton%20Student%20Housing%20Tifton%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">SHADOW LAKE APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Doraville, Dekalb County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/SHADOW%20LAKE%20APARTMENTS%20Doraville%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22SHADOW%20LAKE%20APARTMENTS%22%20%22Doraville%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=SHADOW%20LAKE%20APARTMENTS%20Doraville" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/SHADOW%20LAKE%20APARTMENTS%20Doraville%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Defeased</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">(multiple), Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Defeased%20%28multiple%29%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Defeased%22%20%22%28multiple%29%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Defeased%20%28multiple%29" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Defeased%20%28multiple%29%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">2500 BARNSDALE WAY</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Albany, Dougherty County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/2500%20BARNSDALE%20WAY%20Albany%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%222500%20BARNSDALE%20WAY%22%20%22Albany%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=2500%20BARNSDALE%20WAY%20Albany" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/2500%20BARNSDALE%20WAY%20Albany%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">BROOKSTONE CROSSING</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Atlanta, DeKalb County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/BROOKSTONE%20CROSSING%20Atlanta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22BROOKSTONE%20CROSSING%22%20%22Atlanta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=BROOKSTONE%20CROSSING%20Atlanta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/BROOKSTONE%20CROSSING%20Atlanta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">PINE HILLS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Smyrna, Cobb County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/PINE%20HILLS%20Smyrna%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22PINE%20HILLS%22%20%22Smyrna%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=PINE%20HILLS%20Smyrna" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/PINE%20HILLS%20Smyrna%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Citizens Square Villas</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Dallas, Paulding County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Citizens%20Square%20Villas%20Dallas%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Citizens%20Square%20Villas%22%20%22Dallas%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Citizens%20Square%20Villas%20Dallas" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Citizens%20Square%20Villas%20Dallas%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Marsh Landing Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Brunswick, Glynn County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Marsh%20Landing%20Apartments%20Brunswick%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Marsh%20Landing%20Apartments%22%20%22Brunswick%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Marsh%20Landing%20Apartments%20Brunswick" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Marsh%20Landing%20Apartments%20Brunswick%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Westpark Club</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Athens, Clarke County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Westpark%20Club%20Athens%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Westpark%20Club%22%20%22Athens%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Westpark%20Club%20Athens" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Westpark%20Club%20Athens%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Woodland Trace Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Conyers, Rockdale County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Woodland%20Trace%20Apartments%20Conyers%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Woodland%20Trace%20Apartments%22%20%22Conyers%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Woodland%20Trace%20Apartments%20Conyers" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Woodland%20Trace%20Apartments%20Conyers%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Studio 9Forty Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Atlanta, Fulton County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Studio%209Forty%20Apartments%20Atlanta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Studio%209Forty%20Apartments%22%20%22Atlanta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Studio%209Forty%20Apartments%20Atlanta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Studio%209Forty%20Apartments%20Atlanta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Bedford Park</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Atlanta, DeKalb County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Bedford%20Park%20Atlanta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Bedford%20Park%22%20%22Atlanta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Bedford%20Park%20Atlanta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Bedford%20Park%20Atlanta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Legacy Commons</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Tucker, Gwinnett County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Legacy%20Commons%20Tucker%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Legacy%20Commons%22%20%22Tucker%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Legacy%20Commons%20Tucker" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Legacy%20Commons%20Tucker%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Stanford Oaks</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Tucker, DeKalb County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Stanford%20Oaks%20Tucker%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Stanford%20Oaks%22%20%22Tucker%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Stanford%20Oaks%20Tucker" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Stanford%20Oaks%20Tucker%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Bella Grand</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Marietta, Cobb County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Bella%20Grand%20Marietta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Bella%20Grand%22%20%22Marietta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Bella%20Grand%20Marietta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Bella%20Grand%20Marietta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Valleybrook Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Newnan, Coweta County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Valleybrook%20Apartments%20Newnan%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Valleybrook%20Apartments%22%20%22Newnan%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Valleybrook%20Apartments%20Newnan" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Valleybrook%20Apartments%20Newnan%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Southern Woods</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Tucker, GWINNETT County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Southern%20Woods%20Tucker%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Southern%20Woods%22%20%22Tucker%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Southern%20Woods%20Tucker" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Southern%20Woods%20Tucker%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">CHAMBLEE HEIGHTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Chamblee, DeKalb County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/CHAMBLEE%20HEIGHTS%20Chamblee%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22CHAMBLEE%20HEIGHTS%22%20%22Chamblee%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=CHAMBLEE%20HEIGHTS%20Chamblee" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/CHAMBLEE%20HEIGHTS%20Chamblee%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Peach Tree Lofts</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Atlanta, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Peach%20Tree%20Lofts%20Atlanta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Peach%20Tree%20Lofts%22%20%22Atlanta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Peach%20Tree%20Lofts%20Atlanta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Peach%20Tree%20Lofts%20Atlanta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Peachtree Multifamily One</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Atlanta, Fulton County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Peachtree%20Multifamily%20One%20Atlanta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Peachtree%20Multifamily%20One%22%20%22Atlanta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Peachtree%20Multifamily%20One%20Atlanta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Peachtree%20Multifamily%20One%20Atlanta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Savannah Historic Residences</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Savannah, Chatham County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Savannah%20Historic%20Residences%20Savannah%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Savannah%20Historic%20Residences%22%20%22Savannah%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Savannah%20Historic%20Residences%20Savannah" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Savannah%20Historic%20Residences%20Savannah%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Augusta Park Apartments</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Augusta, Richmond County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Augusta%20Park%20Apartments%20Augusta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Augusta%20Park%20Apartments%22%20%22Augusta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Augusta%20Park%20Apartments%20Augusta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Augusta%20Park%20Apartments%20Augusta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Macon Central Park</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Macon, Bibb County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Macon%20Central%20Park%20Macon%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Macon%20Central%20Park%22%20%22Macon%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Macon%20Central%20Park%20Macon" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Macon%20Central%20Park%20Macon%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Riverwalk Augusta</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Augusta, Richmond County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Riverwalk%20Augusta%20Augusta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Riverwalk%20Augusta%22%20%22Augusta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Riverwalk%20Augusta%20Augusta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Riverwalk%20Augusta%20Augusta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Summerville Court</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Augusta, Richmond County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Summerville%20Court%20Augusta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Summerville%20Court%22%20%22Augusta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Summerville%20Court%20Augusta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Summerville%20Court%20Augusta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Hill District Flats</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Augusta, Richmond County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Hill%20District%20Flats%20Augusta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Hill%20District%20Flats%22%20%22Augusta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Hill%20District%20Flats%20Augusta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Hill%20District%20Flats%20Augusta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Savannah Trellis</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Savannah, Chatham County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Savannah%20Trellis%20Savannah%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Savannah%20Trellis%22%20%22Savannah%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Savannah%20Trellis%20Savannah" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Savannah%20Trellis%20Savannah%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Tybee Gateway</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Savannah, Chatham County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Tybee%20Gateway%20Savannah%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Tybee%20Gateway%22%20%22Savannah%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Tybee%20Gateway%20Savannah" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Tybee%20Gateway%20Savannah%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Forsyth Row</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Savannah, Chatham County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Forsyth%20Row%20Savannah%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Forsyth%20Row%22%20%22Savannah%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Forsyth%20Row%20Savannah" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Forsyth%20Row%20Savannah%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Landings Edge</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Savannah, Chatham County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Landings%20Edge%20Savannah%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Landings%20Edge%22%20%22Savannah%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Landings%20Edge%20Savannah" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Landings%20Edge%20Savannah%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Perimeter Bend (control)</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Augusta, Richmond County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Perimeter%20Bend%20%28control%29%20Augusta%20GA" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Perimeter%20Bend%20%28control%29%22%20%22Augusta%22%20%22GA%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Perimeter%20Bend%20%28control%29%20Augusta" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Perimeter%20Bend%20%28control%29%20Augusta%20GA_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

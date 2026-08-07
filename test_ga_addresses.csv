@@ -1,0 +1,3 @@
+Property Name,City,County,Google Maps,Google Search,Apartments.com,Zillow,County Assessor,Address (to be filled),Confidence,Source (to be filled)
+TIMBER RIDGE,Atlanta,Fulton,https://goo.gl/maps,https://google.com,https://apartments.com,https://zillow.com,https://assessor.com,"1111 Oak Street, Atlanta, GA 30301",1.0,apartments.com
+WILLOW CREEK,Marietta,Cobb,https://goo.gl/maps,https://google.com,https://apartments.com,https://zillow.com,https://assessor.com,"2222 Elm Avenue, Marietta, GA 30060",1.0,zillow

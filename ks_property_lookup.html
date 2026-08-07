@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florida Property Lookup Tool</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .property {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        .property-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .property-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .info-item {
+            flex: 1;
+        }
+        .info-label {
+            color: #666;
+            font-weight: 500;
+        }
+        .info-value {
+            color: #333;
+            margin-top: 3px;
+        }
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .link-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .link-btn:hover {
+            background: #5568d3;
+        }
+        .link-btn.secondary {
+            background: #6c757d;
+        }
+        .link-btn.secondary:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 Florida Property Lookup Tool</h1>
+        <p>Click links below to verify property addresses. Record found addresses in the database.</p>
+
+        <div class="property">
+            <div class="property-header">MARIPOSA TOWNHOMES</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Topeka, Shawnee County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/MARIPOSA%20TOWNHOMES%20Topeka%20KS" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22MARIPOSA%20TOWNHOMES%22%20%22Topeka%22%20%22KS%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=MARIPOSA%20TOWNHOMES%20Topeka" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/MARIPOSA%20TOWNHOMES%20Topeka%20KS_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">ROYAL RIDGE APARTMENTS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Kansas City, Wyandotte County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/ROYAL%20RIDGE%20APARTMENTS%20Kansas%20City%20KS" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22ROYAL%20RIDGE%20APARTMENTS%22%20%22Kansas%20City%22%20%22KS%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=ROYAL%20RIDGE%20APARTMENTS%20Kansas%20City" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/ROYAL%20RIDGE%20APARTMENTS%20Kansas%20City%20KS_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">THE BLUFFS</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Junction City, Geary County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/THE%20BLUFFS%20Junction%20City%20KS" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22THE%20BLUFFS%22%20%22Junction%20City%22%20%22KS%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=THE%20BLUFFS%20Junction%20City" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/THE%20BLUFFS%20Junction%20City%20KS_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Hawthorne Place Townhomes</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Lawrence, Douglas County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Hawthorne%20Place%20Townhomes%20Lawrence%20KS" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Hawthorne%20Place%20Townhomes%22%20%22Lawrence%22%20%22KS%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Hawthorne%20Place%20Townhomes%20Lawrence" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Hawthorne%20Place%20Townhomes%20Lawrence%20KS_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Kansas City Metropolitan</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Kansas City, Wyandotte County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Kansas%20City%20Metropolitan%20Kansas%20City%20KS" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Kansas%20City%20Metropolitan%22%20%22Kansas%20City%22%20%22KS%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Kansas%20City%20Metropolitan%20Kansas%20City" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Kansas%20City%20Metropolitan%20Kansas%20City%20KS_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Topeka Heights Residential</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Topeka, Shawnee County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Topeka%20Heights%20Residential%20Topeka%20KS" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Topeka%20Heights%20Residential%22%20%22Topeka%22%20%22KS%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Topeka%20Heights%20Residential%20Topeka" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Topeka%20Heights%20Residential%20Topeka%20KS_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Wichita Central Living</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Wichita, Sedgwick County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Wichita%20Central%20Living%20Wichita%20KS" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Wichita%20Central%20Living%22%20%22Wichita%22%20%22KS%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Wichita%20Central%20Living%20Wichita" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Wichita%20Central%20Living%20Wichita%20KS_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Olathe Midtown</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Olathe, Johnson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Olathe%20Midtown%20Olathe%20KS" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Olathe%20Midtown%22%20%22Olathe%22%20%22KS%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Olathe%20Midtown%20Olathe" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Olathe%20Midtown%20Olathe%20KS_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Overland Park Residences</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">Overland Park, Johnson County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Overland%20Park%20Residences%20Overland%20Park%20KS" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Overland%20Park%20Residences%22%20%22Overland%20Park%22%20%22KS%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Overland%20Park%20Residences%20Overland%20Park" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Overland%20Park%20Residences%20Overland%20Park%20KS_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+        <div class="property">
+            <div class="property-header">Flats at Dunlap</div>
+            <div class="property-info">
+                <div class="info-item">
+                    <div class="info-label">City</div>
+                    <div class="info-value">, Unknown County, FL</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="https://www.google.com/maps/search/Flats%20at%20Dunlap%20%20KS" target="_blank" class="link-btn">🗺️ Google Maps</a>
+                <a href="https://www.google.com/search?q=%22Flats%20at%20Dunlap%22%20%22%22%20%22KS%22%20address" target="_blank" class="link-btn">🔍 Google Search</a>
+                <a href="https://www.apartments.com/search/?query=Flats%20at%20Dunlap%20" target="_blank" class="link-btn">🏢 Apartments.com</a>
+                <a href="https://www.zillow.com/homes/Flats%20at%20Dunlap%20%20KS_rb/" target="_blank" class="link-btn">🏠 Zillow</a>
+                <a href="" target="_blank" class="link-btn secondary">📋 County Assessor</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

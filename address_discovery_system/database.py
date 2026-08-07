@@ -54,6 +54,10 @@ def load_loans_into_db(loans, state_filter=None):
 
     try:
         for loan in loans:
+            # Skip portfolio properties (removed from database entirely)
+            if 'portfolio' in (loan.property_name or "").lower():
+                continue
+
             # Optional state filter
             if state_filter and loan.state not in state_filter:
                 continue

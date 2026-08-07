@@ -12,14 +12,16 @@ def filter_dashboard_loans(loans) -> List:
 
     Removes:
     - Loans outside the 8-state watchlist
-    - Portfolio-based properties (with 'portfolio' in name)
     - Duplicate entries (keeps first occurrence only)
+
+    Note: Portfolio properties are removed at database load time,
+    not here, so they never exist in the database.
 
     Args:
         loans: List of loan objects with state attribute
 
     Returns:
-        Filtered list of unique, non-portfolio loans in dashboard states
+        Filtered list of unique loans in dashboard states
     """
     seen = {}
     filtered = []
@@ -29,11 +31,7 @@ def filter_dashboard_loans(loans) -> List:
         if loan.state not in DASHBOARD_STATES:
             continue
 
-        # 2. Skip portfolio properties
-        if 'portfolio' in (loan.property_name or "").lower():
-            continue
-
-        # 3. Skip duplicates
+        # 2. Skip duplicates
         key = (loan.property_name, loan.city, loan.state)
         if key in seen:
             continue
